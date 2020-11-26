@@ -1,0 +1,109 @@
+# [dein.toml]
+# Reference:
+# https://woodyzootopia.github.io/2018/12/自分のVimのプラグイン環境設定-Dein/Denite/Deoplete を動かすまで
+
+# dein.vim
+[[plugins]]
+repo = 'Shougo/dein.vim'
+
+# denite.nvim
+[[plugins]]
+repo = 'Shougo/denite.nvim'
+hook_source = '''
+  if !has('nvim')
+          call dein#add('roxma/nvim-yarp')
+          call dein#add('roxma/vim-hug-neovim-rpc')
+  endif
+'''
+hook_add='''
+  nnoremap <silent> <space>fr :<C-u>Denite file_mru<CR>
+  nnoremap <silent> <space>fb :<C-u>Denite buffer<CR>
+  nnoremap <silent> <space>fy :<C-u>Denite neoyank<CR>
+  nnoremap <silent> <space>ff :<C-u>Denite file/rec<CR>
+  nnoremap <silent> <space>fu :<C-u>Denite outline<CR>
+'''
+
+# unite-outline
+[[plugins]]
+repo = 'Shougo/unite-outline'
+
+# neomru
+[[plugins]]
+repo = 'Shougo/neomru.vim'
+
+# neoyank
+[[plugins]]
+repo = 'Shougo/neoyank.vim'
+
+# vimdoc-ja
+[[plugins]]
+repo = 'vim-jp/vimdoc-ja'
+
+# Color scheme
+#[[plugins]]
+# forest-night
+#repo = 'sainnhe/forest-night'
+#hook_add = '''
+#        " important!!
+#        set termguicolors
+#
+#        " the configuration options should be placed before `colorscheme forest-night`
+#        "let g:forest_night_enable_italic = 1
+#        let g:forest_night_disable_italic_comment = 1
+#
+#        colorscheme forest-night
+#'''
+
+#[[plugins]]
+# lightline for forest-night
+#repo = 'itchyny/lightline.vim'
+#hook_add = '''
+#        let g:lightline = {
+#                \ 'colorscheme': 'forest_night'
+#                \ }
+#        set laststatus=2
+#'''
+
+#[[plugins]]
+## lightline for gruvbox_material
+#repo = 'itchyny/lightline.vim'
+#hook_add = '''
+#        let g:lightline = {
+#                \ 'colorscheme': 'gruvbox_material'
+#                \ }
+#        set laststatus=2
+#'''
+
+# lightline.vim
+[[plugins]]
+repo = 'itchyny/lightline.vim'
+hook_add = '''
+        let g:lightline = {
+                \ 'colorscheme': 'jellybeans'
+                \ }
+        set laststatus=2
+'''
+
+# vim-unimpaired
+[[plugins]]
+repo = 'tpope/vim-unimpaired'
+
+# fzf.vim (command-line fuzzy finder)
+[[plugins]]
+repo = 'junegunn/fzf.vim'
+hook_add = '''
+        nnoremap s :Buffers<CR>
+        nnoremap t :Files<CR>
+'''
+
+# vim-eunuch
+# Vim sugar for the UNIX shell commands that need it the most.
+[[plugins]]
+repo = 'tpope/vim-eunuch'
+
+# vim-better-whitespace
+[[plugins]]
+repo = 'ntpeters/vim-better-whitespace'
+
+# END OF FILE dein.toml
+

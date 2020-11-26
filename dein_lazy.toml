@@ -1,0 +1,108 @@
+# dein_lazy.toml
+
+# Reference:
+# https://woodyzootopia.github.io/2018/12/自分のVimのプラグイン環境設定-Dein/Denite/Deoplete を動かすまで
+
+# deoplete.nvim
+[[plugins]]
+repo = 'Shougo/deoplete.nvim'
+hook_source = '''
+  if !has('nvim')
+          pythonx import pynvim
+  endif
+
+  if !has('nvim')
+          call dein#add('roxma/nvim-yarp')
+          call dein#add('roxma/vim-hug-neovim-rpc')
+  endif
+
+  let g:deoplete#enable_at_startup = 1
+
+  inoremap <expr><tab> pumvisible() ? "\<C-n>" : "\<tab>"
+
+  " Expand the completed snippet trigger by <CR>.
+  imap <expr><CR>
+  \ (pumvisible() && neosnippet#expandable()) ?
+  \ "\<Plug>(neosnippet_expand)" : "<C-r>=<SID>my_cr_function()<CR>"
+
+  function! s:my_cr_function() abort
+    return deoplete#close_popup() . "\<CR>"
+  endfunction
+
+  let g:deoplete#auto_complete_delay = 0
+  let g:deoplete#enable_camel_case = 0
+  let g:deoplete#enable_ignore_case = 0
+  let g:deoplete#enable_refresh_always = 0
+  let g:deoplete#enable_smart_case = 1
+  let g:deoplete#file#enable_buffer_path = 1
+  let g:deoplete#auto_complete_start_length = 1
+  let g:deoplete#max_list = 100
+'''
+on_event = 'InsertEnter'
+
+# neco-syntax
+[[plugins]]
+repo = 'Shougo/neco-syntax'
+on_event = 'InsertEnter'
+
+# neosnippet
+[[plugins]]
+repo = 'Shougo/neosnippet'
+hook_source = '''
+  imap <C-k> <Plug>(neosnippet_expand_or_jump)
+  smap <C-k> <Plug>(neosnippet_expand_or_jump)
+  xmap <C-k> <Plug>(neosnippet_expand_target)
+  if has('conceal')
+    set conceallevel=0 concealcursor=niv
+  endif
+'''
+on_event = 'InsertEnter'
+depends = ['neosnippet-snippets']
+
+# neosnippet-snippets
+[[plugins]]
+repo = 'Shougo/neosnippet-snippets'
+
+# surround.vim
+[[plugins]]
+repo = 'tpope/vim-surround'
+
+#vim-sweep_trail
+[[plugins]]
+repo = 'vim-jp/vim-sweep_trail'
+
+#vim-python-pep8-indent
+[[plugins]]
+repo = 'Vimjas/vim-python-pep8-indent'
+on_ft = 'python'
+
+# ack.vim
+[[plugins]]
+repo = 'mileszs/ack.vim'
+hook_source = '''
+  if executable('ag')
+    let g:ackprg = 'ag --vimgrep'
+  endif
+'''
+
+# vim-qfreplace
+[[plugins]]
+repo = 'thinca/vim-qfreplace'
+
+# undotree
+[[plugins]]
+repo = 'mbbill/undotree'
+
+# memolist.vim
+# https://github.com/glidenote/memolist.vim
+[[plugins]]
+repo ='glidenote/memolist.vim'
+hook_add = '''
+        let g:memolist_path = "$HOME/memo"
+        nnoremap <Leader>nn  :MemoNew<CR>
+        nnoremap <Leader>nl  :MemoList<CR>
+        nnoremap <Leader>ng  :MemoGrep<CR>
+'''
+
+# END OF FILE dein_lazy.toml
+

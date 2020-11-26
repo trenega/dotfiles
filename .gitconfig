@@ -1,0 +1,23 @@
+[user]
+	name = trenega
+	email = takashiniijima213@gmail.com
+[gui]
+	recentrepo = /Users/nis/pl/git/LearnGitMoL/ch05/newrepo
+	fontui = -family \"Ricty Diminished Discord\" -size 18 -weight normal -slant roman -underline 0 -overstrike 0
+	fontdiff = -family \"Ricty Diminished Discord\" -size 18 -weight normal -slant roman -underline 0 -overstrike 0
+	recentrepo = /Users/nis/pl/git/LearnGitMoL/ch11/math.clone2
+	recentrepo = /Users/nis/pl/git/LearnGitMoL/ch12/math2.github
+[alias]
+	lol = log --graph --decorate --pretty=oneline --all --abbrev-commit
+[push]
+	default = simple
+[core]
+	excludesFile = /Users/nis/.gitignore_global
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path =
+[mergetool "sourcetree"]
+	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
+[commit]
+	template = /Users/nis/.stCommitMsg
