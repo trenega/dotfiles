@@ -105,5 +105,5 @@ repo = 'tpope/vim-eunuch'
 [[plugins]]
 repo = 'ntpeters/vim-better-whitespace'
 
-# END OF FILE dein.toml
+# END OF FILE: dein.toml
 

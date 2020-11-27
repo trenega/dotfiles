@@ -104,5 +104,5 @@ hook_add = '''
         nnoremap <Leader>ng  :MemoGrep<CR>
 '''
 
-# END OF FILE dein_lazy.toml
+# END OF FILE: dein_lazy.toml
 

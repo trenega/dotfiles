@@ -94,6 +94,8 @@ set ignorecase
 set incsearch
 " ignorecase optionの副作用を解除する(cf.Practical Vim, Drew Neil p.354)
 set infercase
+" Move cursor by mouse
+set mouse=a
 set nocp incsearch
 " relative number
 set relativenumber
@@ -114,8 +116,6 @@ set wildmenu
 set wildmode=full
 " No backup file
 set nobackup
-" Move cursor by mouse
-set mouse=a
 
 " ----------------------------------------------------------------------------
 " CUSTOM COMMANDS AND FUNCTIONS

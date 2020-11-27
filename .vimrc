@@ -78,6 +78,8 @@ set ignorecase
 set incsearch
 " ignorecase optionの副作用を解除する(cf.Practical Vim, Drew Neil p.354)
 set infercase
+" Move cursor by mouse
+set mouse=a
 set nocp incsearch
 " relative number
 set relativenumber
@@ -96,8 +98,6 @@ set tabstop=8
 set wildmenu
 " List all options and complete
 set wildmode=full
-" Move cursor by mouse
-set mouse=a
 
 " ----------------------------------------------------------------------------
 " PLUGIN SETTINGS
