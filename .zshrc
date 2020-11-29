@@ -171,7 +171,14 @@ bindkey -v
 # -------------------------------------------------------------------
 zstyle ':completion:*' format '%BCompleting %d%b'
 zstyle ':completion:*' group-name ''
-autoload -U compinit && compinit
+
+# >>> Complement for git commands >>>
+# Reference: https://blog.qnyp.com/2013/05/14/zsh-git-completion/
+fpath=($(brew --prefix)/share/zsh/site-functions $fpath)
+autoload -U compinit
+compinit -u
+# <<< Complement for git commands <<<
+
 # <<< Sample .zshrc file <<<
 
 # -------------------------------------------------------------------
