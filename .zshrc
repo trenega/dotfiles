@@ -151,6 +151,8 @@ alias note=note.py
 alias zak=zak.sh
 # edit ~/.config/nvim
 alias vimcf='nvim ~/.config/nvim'
+# Activate Sourcetree
+alias sourcetree='open -a Sourcetree'
 
 # -------------------------------------------------------------------
 # Suffix aliases(起動コマンドは環境によって変更する)
