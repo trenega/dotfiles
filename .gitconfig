@@ -9,6 +9,7 @@
 	recentrepo = /Users/nis/pl/git/LearnGitMoL/ch12/math2.github
 	recentrepo = /Users/nis/pl/git/LearnGitMoL/05/newrepo
 	recentrepo = /Users/nis/pl/git/LearnGitMoL/06/math
+	recentrepo = /Users/nis/pl/git /LearnGitMoL/06/math.clone2
 [alias]
 	lol = log --graph --decorate --pretty=oneline --all --abbrev-commit
 [push]
