@@ -2,9 +2,10 @@
 " |
 " File name     :  .vimrc
 " Copyright     :  nis
-" Modified      :  2020/11/26 10:54
+" Modified      :  2021/06/03 16:55
 "-----------------------------------------------------------------------------
 
+set nocompatible
 
 " >>> dein settings >>>
 " Reference:
@@ -220,7 +221,6 @@ cnoremap <C-n> <Down>
 
 " アクティブなファイルが含まれているディレクトリを手早く展開する
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
-set nocompatible
 
 " Vimに同梱されているmatchitプラグインを有効化する (cf. p.176)
 runtime macros/matchit.vim
@@ -405,8 +405,9 @@ set runtimepath+=~/src/vim-polyglot
 " ~/.exrc ファイルを読み込む
 source ~/.exrc
 
-" >>> MacVim setting >>>
-" <<< MacVim setting <<<
+" set vim-commentary commentstring
+ autocmd FileType python setlocal commentstring=#\ %s
+ autocmd FileType haskell setlocal commentstring=--\ %s
 
 " ----------------------------------------------------------------------------
 " END OF FILE: .vimrc
