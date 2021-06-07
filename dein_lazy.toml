@@ -63,10 +63,6 @@ depends = ['neosnippet-snippets']
 [[plugins]]
 repo = 'Shougo/neosnippet-snippets'
 
-# surround.vim
-[[plugins]]
-repo = 'tpope/vim-surround'
-
 #vim-sweep_trail
 [[plugins]]
 repo = 'vim-jp/vim-sweep_trail'
@@ -93,15 +89,24 @@ repo = 'thinca/vim-qfreplace'
 [[plugins]]
 repo = 'mbbill/undotree'
 
-# memolist.vim
-# https://github.com/glidenote/memolist.vim
+# deol.vim
+# Dark powered shell interface for NeoVim and Vim8.
 [[plugins]]
-repo ='glidenote/memolist.vim'
+repo = 'Shougo/deol.nvim'
 hook_add = '''
-        let g:memolist_path = "$HOME/memo"
-        nnoremap <Leader>nn  :MemoNew<CR>
-        nnoremap <Leader>nl  :MemoList<CR>
-        nnoremap <Leader>ng  :MemoGrep<CR>
+        let g:deol#custom_map = {
+                \ 'edit': 'e',
+                \ 'start_insert': 'i',
+                \ 'start_insert_first': 'I',
+                \ 'start_append': 'a',
+                \ 'start_append_last': 'A',
+                \ 'execute_line': '<CR>',
+                \ 'previous_prompt': '<C-p>',
+                \ 'next_prompt': '<C-n>',
+                \ 'paste_prompt': '<C-y>',
+                \ 'bg': '<C-z>',
+                \ 'quit': 'q',
+                \ }
 '''
 
 # END OF FILE: dein_lazy.toml
