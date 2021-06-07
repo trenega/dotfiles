@@ -37,18 +37,18 @@ HISTSIZE=200 HISTFILE=~/.zhistory SAVEHIST=180
 # >>> PROMPT with git branch status >>>
 # Reference: https://qiita.com/nishina555/items/f4f1ddc6ed7b0b296825
 # prompt
-if [ $UID -eq 0 ];then
-PROMPT="%F{red}%n:%f%F{green}%d%f [%m] %%
-"
-PROMPT2="%F{red}%n:%f%F{green}%_%f [%m] %%
-"
-else
-# mac
-PROMPT="%F{cyan}%n:%f%F{green}%d%f [%m] %%
-"
-PROMPT2="%F{cyan}%n:%f%F{green}%_%f [%m] %%
-"
-fi
+# if [ $UID -eq 0 ];then
+# PROMPT="%F{red}%n:%f%F{green}%d%f [%m] %%
+# "
+# PROMPT2="%F{red}%n:%f%F{green}%_%f [%m] %%
+# "
+# else
+# # mac
+# PROMPT="%F{cyan}%n:%f%F{green}%d%f [%m] %%
+# "
+# PROMPT2="%F{cyan}%n:%f%F{green}%_%f [%m] %%
+# "
+# fi
 
 
 # funciton for showing git branch status
@@ -113,6 +113,7 @@ alias copy='cp -ip' del='rm -i' move='mv -i'
 alias fullreset='echo "\ec\ec"'
 h () 		{history $* | less}
 alias ja='LANG=ja_JP.eucJP XMODIFIERS=@im=kinput2'
+alias fl='fc -l'
 alias ls='ls -F --color=auto' la='ls -a --color=auto' ll='ls -la --color=auto'
 mdcd ()		{mkdir -p "$@" && cd "$*[-1]"}
 mdpu ()		{mkdir -p "$@" && pushd "$*[-1]"}
@@ -216,16 +217,20 @@ export CPPFLAGS="-I/usr/local/opt/ruby/include"
 #export PYENV_ROOT="$HOME/.pyenv"
 # idle3 change path
 # Reference:https://teratail.com/questions/211641
-export PYENV_ROOT=/usr/local/var/pyenv
-export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
+# export PYENV_ROOT=/usr/local/var/pyenv
+# export PATH="$PYENV_ROOT/bin:$PATH"
+if command -v pyenv 1>/dev/null 2>&1; then
+        eval "$(pyenv init -)"
+fi
 # <<< pyenv environment variable <<<
 
 # python3.8/site-packages PATH
-export PYTHONPATH="$PYENV_ROOT/versions/3.8.5/lib/python3.8/site-packages"
+# export PYTHONPATH="$PYENV_ROOT/versions/3.8.5/lib/python3.8/site-packages"
+export PYTHONPATH="/usr/local/var/pyenv/versions/3.8.5/lib/python3.8/site-packages"
 
 # certifi PATH
-export SSL_CERT_FILE="$PYENV_ROOT/versions/3.8.5/lib/python3.8/site-packages/certifi/cacert.pem"
+# export SSL_CERT_FILE="$PYENV_ROOT/versions/3.8.5/lib/python3.8/site-packages/certifi/cacert.pem"
+export SSL_CERT_FILE="/usr/local/var/pyenv/versions/3.8.5/lib/python3.8/site-packages/certifi/cacert.pem"
 
 # >>> python@3.9 PATH >>>
 # If you need to have python@3.9 first in your PATH run:
@@ -396,6 +401,7 @@ if [ -z "$TMUX" ]
 then
   tmux attach -t works
 fi
+
 # <<< tmux making session <<<
 
 # >>> tcl-tk initialize >>>
@@ -437,9 +443,27 @@ zle -N fancy-ctrl-z
 bindkey '^Z' fancy-ctrl-z
 # <<< Ctrl-Zを使ってVimにスイッチバックする <<<
 
+# >>> sindresorhus/pure >>>
+# Pretty, minimal and fast ZSH prompt
+
+autoload -U promptinit; promptinit
+
+# turn on git stash status
+zstyle :prompt:pure:git:stash show yes
+
+# change the color for both `prompt:success` and `prompt:error`
+zstyle ':prompt:pure:prompt:*' color cyan
+
+prompt pure
+# <<< sindresorhus/pure <<<
+
+# >>> zsh-users/zsh-syntax-highlightling >>>
+# Fish shell like syntax highlightling for Zsh.
+
+if [ -f /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]; then source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+fi
+
+# <<< zsh-users/zsh-syntax-highlightling <<<
+
 # Don't end with errors.
 true
-
-# -------------------------------------------------------------------
-# END OF FILE .zshrc
-# -------------------------------------------------------------------
