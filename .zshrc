@@ -121,7 +121,8 @@ alias pu=pushd po=popd dirs='dirs -v'
 # Use Neovim instead of Vim
 alias vim=nvim
 alias vi=nvim
-alias view='nvim -R'
+# set view mode 'vv' is "vim view"
+alias vv='nvim -R'
 # Use Vim instead of v
 alias v=/usr/local/bin/vim
 # alias of script/note.py
