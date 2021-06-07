@@ -73,7 +73,6 @@ set runtimepath+=~/src/vim-polyglot
 " OPTIONS
 " ----------------------------------------------------------------------------
 
-set nocompatible
 " Essential for syntax
 syntax enable
 " Essential for filetype plugins.
