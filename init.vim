@@ -6,6 +6,7 @@
 " ----------------------------------------------------------------------------
 
 
+
 " ----------------------------------------------------------------------------
 " PLUGIN SETTINGS
 " ----------------------------------------------------------------------------
@@ -13,6 +14,10 @@
 " >>> dein.vim settings >>>
 " Reference:
 " https://woodyzootopia.github.io/2018/12/自分のVimのプラグイン環境設定-Dein/Denite/Deoplete を動かすまで
+
+if &compatible
+  set nocompatible " Be iMproved
+endif
 
 " Use dein for plugin management. See update.sh in this directory.
 let s:cache_home = expand('~/.config/nvim')
@@ -44,7 +49,10 @@ if has('vim_starting') && dein#check_install()
 endif
 
 " plugins delete
-call map(dein#check_clean(), "delete(v:val, 'rf')")
+if len(dein#check_clean()) != 0
+  call map(dein#check_clean(), "delete(v:val, 'rf')")
+  call dein#recache_runtimepath()
+endif
 " <<< dein.vim settings <<<
 
 " ----------------------------------------------------------------------------
@@ -65,6 +73,7 @@ set runtimepath+=~/src/vim-polyglot
 " OPTIONS
 " ----------------------------------------------------------------------------
 
+set nocompatible
 " Essential for syntax
 syntax enable
 " Essential for filetype plugins.
@@ -94,11 +103,15 @@ set ignorecase
 set incsearch
 " ignorecase optionの副作用を解除する(cf.Practical Vim, Drew Neil p.354)
 set infercase
+" modifiable
+" set modifiable
 " Move cursor by mouse
 set mouse=a
 set nocp incsearch
 " relative number
-set relativenumber
+" set relativenumber
+" number
+" set number
 " 大文字/小文字の区別を予測してくれる
 set smartcase
 set smartindent
@@ -153,7 +166,6 @@ inoremap <C-d> <Del>
 " >>> Practical Vim, Drew Neil >>>
 " アクティブなファイルが含まれているディレクトリを手早く展開する
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
-set nocompatible
 
 " Vimに同梱されているmatchitプラグインを有効化する (cf. p.176)
 filetype plugin on
@@ -175,6 +187,13 @@ function! QuickfixFilenames()
           endfor
           return join(map(values(buffer_numbers), 'fnameescape(v:val)'))
 endfunction
+
+" Vimのリストをサクサク移動するためのキーマッピング p.116
+" nnoremap <silent> [b :bprevious<CR>
+" nnoremap <silent> ]b :bnext<CR>
+" nnoremap <silent> [B :bfirst<CR>
+" nnoremap <silent> ]B :blast<CR>
+
 " <<< Practical Vim, Drew Neil <<<
 
 " >>> 俺的にはずせない[Vim]こだわりmap(説明付き) >>>
@@ -217,7 +236,7 @@ let mapleader = "\<Space>"
 nnoremap <Leader> <Nop>
 
 " <Space>e を押して新しいファイルを開く
-nnoremap <Leader>e :edit
+nnoremap <Leader>e :edit<Space>
 " <Space>w を押してファイルを保存する
 nnoremap <Leader>w :<C-u>write<CR>
 " <<< Vimの生産性を高める12の方法 <<<
@@ -249,11 +268,11 @@ nnoremap <Leader>wl <C-w>l
 " Hot key for open init.vim file
 nnoremap <Leader>. :<C-u>edit $MYVIMRC<CR>
 " Check for marks
-nnoremap <Leader>m :<C-u>marks
+nnoremap <Leader>mm :<C-u>marks<CR>
 " Check for registers
 nnoremap <Leader>r :<C-u>registers<CR>
 " sweep_trail.vim
-nnoremap <Leader>sw :<C-u>SweepTrail
+nnoremap <Leader>sw :<C-u>SweepTrail<CR>
 " undotree
 " The undo history visualizer for VIM
 nnoremap <Leader>ut :<C-u>UndotreeToggle<CR>
@@ -261,7 +280,7 @@ nnoremap <Leader>ut :<C-u>UndotreeToggle<CR>
 
 " >>> HOT KEYS >>>
 " :helpを3倍の速度で引く
-nnoremap <C-h>  :<C-u>help<Space>
+nnoremap <C-h> :<C-u>help<Space>
 " <<< HOT KEYS <<<
 
 " 検索後にジャンプした際に検索単語を画面中央に持ってくる
@@ -362,6 +381,7 @@ endif
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 set termguicolors
 " Reference: https://github.com/w0ng/vim-hybrid
+" Set color for iTerm2
 let g:hybrid_custom_term_colors = 1
 set background=dark
 colorscheme hybrid
