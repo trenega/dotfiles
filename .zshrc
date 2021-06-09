@@ -260,6 +260,9 @@ export PATH="$HOME/.pyenv/shims:$PATH"
 # pynvim
 export PATH="$HOME/.pyenv/versions/3.8.5/lib/python3.8/site-packages:$PATH"
 
+# stack
+export PATH="~/.local/bin:$PATH"
+
 # -------------------------------------------------------------------
 # APPLICATION CUSTOMIZATIONS
 # -------------------------------------------------------------------
