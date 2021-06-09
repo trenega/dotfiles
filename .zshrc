@@ -262,6 +262,10 @@ export PATH="$HOME/.pyenv/versions/3.8.5/lib/python3.8/site-packages:$PATH"
 
 # stack
 export PATH="~/.local/bin:$PATH"
+# stack Use bash completion
+# autoload -U +X compinit && compinit
+# autoload -U +X bashcompinit && bashcompinit
+# eval "$(stack ---bash-completion-script stack)"
 
 # -------------------------------------------------------------------
 # APPLICATION CUSTOMIZATIONS
