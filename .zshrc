@@ -93,6 +93,10 @@ alias zak=zak.sh
 alias vimcf='nvim ~/.config/nvim'
 # Activate Sourcetree
 alias st='open -a Sourcetree'
+# ghc
+alias ghci='stack ghci'
+alias ghc='stack ghc --'
+alias runghc='stack runghc --'
 
 # -------------------------------------------------------------------
 # Suffix aliases(起動コマンドは環境によって変更する)
