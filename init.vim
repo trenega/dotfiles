@@ -292,7 +292,6 @@ nnoremap g# g#zz
 
 " >>> INSERT MODE KEYMAPS >>>
 " Change INSERT mode to NORMAL mode
-" fとdの同時押しでINSERTモードから抜ける
 inoremap <silent> fd <Esc>
 
 " File Save
