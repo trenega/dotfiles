@@ -224,5 +224,9 @@ autocmd FileType defx call s:defx_my_settings()
 '''
 # <<< defx.nvim setting <<<
 
+# Very simple vim plugin for easy resizing of your vim windows.
+[[plugins]]
+repo = 'simeji/winresizer'
+
 # END OF FILE: dein.toml
 
