@@ -109,5 +109,11 @@ hook_add = '''
                 \ }
 '''
 
+# A completion plugin for Haskell, using ghc-mod or hhpc
+[[plugins]]
+repo = 'eagletmt/neco-ghc'
+# load on insert mod
+on_i = 1
+
 # END OF FILE: dein_lazy.toml
 
