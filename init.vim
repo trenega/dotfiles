@@ -241,6 +241,7 @@ nnoremap <Leader>w :<C-u>write<CR>
 " <<< Vimの生産性を高める12の方法 <<<
 
 " >>> Leader key setting >>>
+
 " 現在のウィンドウを水平に分割する
 nnoremap <Leader>sp :split<CR>
 " 現在のウィンドウを垂直に分割する
@@ -303,6 +304,9 @@ inoremap <silent> zz <C-o>zz
 inoremap <silent> zk <C-o>z<CR>
 " Scroll to bottom line
 inoremap <silent> zj <C-o>z-
+
+" Bracket Completion
+" inoremap {<Enter> {}<Left><CR><Esc>>S-o>
 " <<< INSERT MODE KEYMAPS <<<
 
 " >>> Python codes execute on Terminal >>>
