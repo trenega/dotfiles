@@ -271,6 +271,8 @@ export PATH="~/.local/bin:$PATH"
 # autoload -U +X bashcompinit && bashcompinit
 # eval "$(stack ---bash-completion-script stack)"
 
+# ghcup
+export PATH="~/.ghcup/bin:$PATH"
 # -------------------------------------------------------------------
 # APPLICATION CUSTOMIZATIONS
 # -------------------------------------------------------------------
@@ -341,15 +343,15 @@ fi
 # セッションなかったら作る
 # https://girigiribauer.com/tech/20200427/
 
-if ! $(tmux has-session -t works 2> /dev/null)
+if ! $(tmux has-session -t main 2> /dev/null)
 then
-  tmux new -s works
+  tmux new -s main
 fi
 
 # tmux からの起動じゃなかったら tmux attach
 if [ -z "$TMUX" ]
 then
-  tmux attach -t works
+  tmux attach -t main
 fi
 
 # <<< tmux making session <<<
@@ -417,3 +419,5 @@ fi
 
 # Don't end with errors.
 true
+#[ -f "/Users/nis/.ghcup/env" ] && source "/Users/nis/.ghcup/env" # ghcup-env
+[ -f "/Users/nis/.ghcup/env" ] && source "/Users/nis/.ghcup/env" # ghcup-env
