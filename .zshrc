@@ -33,7 +33,7 @@ HISTSIZE=200 HISTFILE=~/.zhistory SAVEHIST=180
 # -------------------------------------------------------------------
 
 # 有効にしてあるのは副作用の少ないもの
-setopt auto_cd auto_remove_slash auto_name_dirs
+setopt auto_cd auto_pushd auto_remove_slash auto_name_dirs
 setopt extended_history hist_ignore_dups hist_ignore_space prompt_subst
 setopt extended_glob list_types no_beep always_last_prompt
 setopt cdable_vars sh_word_split auto_param_keys pushd_ignore_dups
@@ -55,7 +55,7 @@ alias fl='fc -l'
 alias ls='ls -F --color=auto' la='ls -a --color=auto' ll='ls -la --color=auto'
 mdcd ()		{mkdir -p "$@" && cd "$*[-1]"}
 mdpu ()		{mkdir -p "$@" && pushd "$*[-1]"}
-alias pd=pushd po=popd ds='dirs -v'
+alias psd=pushd ppd=popd ds='dirs -v'
 # Use Neovim instead of Vim
 alias vim=nvim
 alias vi=nvim
