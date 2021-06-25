@@ -55,7 +55,7 @@ alias fl='fc -l'
 alias ls='ls -F --color=auto' la='ls -a --color=auto' ll='ls -la --color=auto'
 mdcd ()		{mkdir -p "$@" && cd "$*[-1]"}
 mdpu ()		{mkdir -p "$@" && pushd "$*[-1]"}
-alias pu=pushd po=popd dirs='dirs -v'
+alias pd=pushd po=popd ds='dirs -v'
 # Use Neovim instead of Vim
 alias vim=nvim
 alias vi=nvim
