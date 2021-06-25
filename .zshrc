@@ -97,7 +97,8 @@ alias st='open -a Sourcetree'
 alias ghci='stack ghci'
 alias ghc='stack ghc --'
 alias runghc='stack runghc --'
-
+# Git
+alias g='git'
 # -------------------------------------------------------------------
 # Suffix aliases(起動コマンドは環境によって変更する)
 # -------------------------------------------------------------------
@@ -271,8 +272,10 @@ export PATH="~/.local/bin:$PATH"
 # autoload -U +X bashcompinit && bashcompinit
 # eval "$(stack ---bash-completion-script stack)"
 
+# Cabal PATH
+# export PATH="~/.cabal/bin:$PATH"
 # ghcup
-export PATH="~/.ghcup/bin:$PATH"
+# export PATH="~/.ghcup/bin:$PATH"
 # -------------------------------------------------------------------
 # APPLICATION CUSTOMIZATIONS
 # -------------------------------------------------------------------
