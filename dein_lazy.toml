@@ -115,5 +115,18 @@ repo = 'eagletmt/neco-ghc'
 # load on insert mod
 on_i = 1
 
+# goyo.vim
+# Distraction-free writing in Vim
+[[plugins]]
+repo = 'junegunn/goyo.vim'
+hook_add = '''
+        nnoremap <silent> <space>gy :Goyo<CR>
+'''
+
+# limelight.vim
+# All the world's indeed a stage and we are merely players
+[[plugins]]
+repo = 'junegunn/limelight.vim'
+
 # END OF FILE: dein_lazy.toml
 
