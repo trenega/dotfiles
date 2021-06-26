@@ -228,5 +228,14 @@ autocmd FileType defx call s:defx_my_settings()
 [[plugins]]
 repo = 'simeji/winresizer'
 
+# vim-gitgutter
+[[plugins]]
+repo = 'airblade/vim-gitgutter'
+
+# vim-fugitive
+[[plugins]]
+repo = 'tpope/vim-fugitive'
+
+
 # END OF FILE: dein.toml
 
