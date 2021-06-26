@@ -105,6 +105,7 @@ alias tm='tmux'
 # -------------------------------------------------------------------
 # Suffix aliases(起動コマンドは環境によって変更する)
 # -------------------------------------------------------------------
+
 # alias -s pdf=acroread dvi=xdvi
 # alias -s {odt,ods,odp,doc,xls,ppt}=soffice
 # alias -s {tgz,lzh,zip,arc}=file-roller
@@ -112,13 +113,16 @@ alias tm='tmux'
 # -------------------------------------------------------------------
 # BINDING KEYS
 # -------------------------------------------------------------------
-bindkey -v
+
+# emacs keymap
+bindkey -e
 #bindkey '^p'	history-beginning-search-backward
 #bindkey '^n'	history-beginning-search-forward
 
 # -------------------------------------------------------------------
 # 補完システムを利用: 補完の挙動が分かりやすくなる2つの設定のみを記述
 # -------------------------------------------------------------------
+
 zstyle ':completion:*' format '%BCompleting %d%b'
 zstyle ':completion:*' group-name ''
 
@@ -279,6 +283,7 @@ export PATH="~/.local/bin:$PATH"
 # export PATH="~/.cabal/bin:$PATH"
 # ghcup
 # export PATH="~/.ghcup/bin:$PATH"
+
 # -------------------------------------------------------------------
 # APPLICATION CUSTOMIZATIONS
 # -------------------------------------------------------------------
@@ -428,3 +433,21 @@ fi
 [ -f "/Users/nis/.ghcup/env" ] && source "/Users/nis/.ghcup/env" # ghcup-env
 
 # source ~/.iterm2_shell_integration.zsh
+
+# >>> Terminalの現在行をエディタで編集して実行する >>>
+# Reference: rasukarasan.com/entry/2020/04/20/083000
+
+edit_current_line() {
+        local tmpfile=$(mktemp)
+        echo "$BUFFER" > $tmpfile
+        vim $tmpfile -c "normal $" -c "set filetype=zsh"
+        BUFFER="$(cat $tmpfile)"
+        CURSOR=${#BUFFER}
+        rm $tmpfile
+        zle reset-prompt
+}
+zle -N edit_current_line
+# Ctrl w -> vim open
+bindkey '^w' edit_current_line
+
+# <<< Terminalの現在行をエディタで編集して実行する <<<
