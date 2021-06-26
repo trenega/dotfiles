@@ -300,130 +300,308 @@ _has() {
 _color() {
   return $( [ -z "$INSIDE_EMACS" -a -z "$VIMRUNTIME" ] )
 }
-# <<< .zshrc by Ian Langworth <<<
+        # <<< .zshrc by Ian Langworth <<<
 
-# GNU grep
-if _color; then
-  export GREP_COLOR='1;32'
-fi
+        # GNU grep
+        if _color; then
+          export GREP_COLOR='1;32'
+        fi
 
-# Ack is better than grep
-if ! _color; then
-  alias ack='ack --nocolor'
-fi
+        # Ack is better than grep
+        if ! _color; then
+          alias ack='ack --nocolor'
+        fi
 
-# GNU and BSD ls colorization.
-if _color; then
-  export LS_COLORS='no=00:fi=00:di=01;34:ln=01;36:pi=33:so=01;35:bd=33;01:cd=33;01:or=01;05;37;41:mi=01;37;41:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arj=01;31:*.taz=01;31:*.lzh=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.gz=01;31:*.bz2=01;31:*.bz=01;31:*.tz=01;31:*.rpm=01;31:*.cpio=01;31:*.jpg=01;35:*.gif=01;35:*.bmp=01;35:*.xbm=01;35:*.xpm=01;35:*.png=01;35:*.tif=01;35:'
-  export LSCOLORS='ExGxFxdxCxDxDxcxcxxCxc'
-  export CLICOLOR=1
-fi
+        # GNU and BSD ls colorization.
+        if _color; then
+          export LS_COLORS='no=00:fi=00:di=01;34:ln=01;36:pi=33:so=01;35:bd=33;01:cd=33;01:or=01;05;37;41:mi=01;37;41:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arj=01;31:*.taz=01;31:*.lzh=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.gz=01;31:*.bz2=01;31:*.bz=01;31:*.tz=01;31:*.rpm=01;31:*.cpio=01;31:*.jpg=01;35:*.gif=01;35:*.bmp=01;35:*.xbm=01;35:*.xpm=01;35:*.png=01;35:*.tif=01;35:'
+          export LSCOLORS='ExGxFxdxCxDxDxcxcxxCxc'
+          export CLICOLOR=1
+        fi
 
-# fzf via Homebrew
-if [ -e /usr/local/opt/fzf/shell/completion.zsh ]; then
-        source /usr/local/opt/fzf/shell/key-bindings.zsh
-        source /usr/local/opt/fzf/shell/completion.zsh
-fi
+        # fzf via Homebrew
+        if [ -e /usr/local/opt/fzf/shell/completion.zsh ]; then
+                source /usr/local/opt/fzf/shell/key-bindings.zsh
+                source /usr/local/opt/fzf/shell/completion.zsh
+        fi
 
-# fzf via local installation
-if [ -e ~/.fzf ]; then
-        _append_to_path ~/.fzf/bin
-        source ~/.fzf/shell/key-bindings.zsh
-        source ~/.fzf/shell/completion.zsh
-fi
+        # fzf via local installation
+        if [ -e ~/.fzf ]; then
+                _append_to_path ~/.fzf/bin
+                source ~/.fzf/shell/key-bindings.zsh
+                source ~/.fzf/shell/completion.zsh
+        fi
 
-# fzf + ag configuration
-if _has fzf && _has ag; then
-        export FZF_DEFAULT_COMMAND='ag --nocolor -g ""'
-        export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-        export FZF_ALT_C_COMMAND="$FZF_DEFAULT_COMMAND"
-        export FZF_DEFAULT_OPTS='
-        --color fg:242,bg:236,hl:65,fg+:15,bg+:239,hl+:108
-        --color info:108,prompt:109,spinner:108,pointer:168,marker:168
-'
-fi
-# <<< .zshrc by Ian Langworth <<<
+        # fzf + ag configuration
+        if _has fzf && _has ag; then
+                export FZF_DEFAULT_COMMAND='ag --nocolor -g ""'
+                export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+                export FZF_ALT_C_COMMAND="$FZF_DEFAULT_COMMAND"
+                export FZF_DEFAULT_OPTS='
+                --color fg:242,bg:236,hl:65,fg+:15,bg+:239,hl+:108
+                --color info:108,prompt:109,spinner:108,pointer:168,marker:168
+        '
+        fi
+        # <<< .zshrc by Ian Langworth <<<
 
-# >>> tmux making session >>>
-# Reference: ターミナル（黒い画面）を分割して使うtmux超入門
-# セッションなかったら作る
-# https://girigiribauer.com/tech/20200427/
+        # >>> tmux making session >>>
+        # Reference: ターミナル（黒い画面）を分割して使うtmux超入門
+        # セッションなかったら作る
+        # https://girigiribauer.com/tech/20200427/
 
-if ! $(tmux has-session -t main 2> /dev/null)
-then
-  tmux new -s main
-fi
+        # if ! $(tmux has-session -t main 2> /dev/null)
+        # then
+        #   tmux new -s main
+        # fi
 
-# tmux からの起動じゃなかったら tmux attach
-if [ -z "$TMUX" ]
-then
-  tmux attach -t main
-fi
+        # # tmux からの起動じゃなかったら tmux attach
+        # if [ -z "$TMUX" ]
+        # then
+        #   tmux attach -t main
+        # fi
 
-# <<< tmux making session <<<
+        # <<< tmux making session <<<
 
-# >>> tcl-tk initialize >>>
-# Reference:
-# https://qiita.com/skyloken/items/a5f839eba1bd79cd5ef9
-# @skyloken 2019/11/02
-# pyenvのpythonでtkinterを使用する方法
-# qiita.com
-# pyenv install doesn't work with homebrew installed tcl-tk · Issue #1375 · pyenv/pyenv · GitHub
-export PATH="/usr/local/opt/tcl-tk/bin:$PATH"
-export LDFLAGS="-L/usr/local/opt/tcl-tk/lib"
-export CPPFLAGS="-I/usr/local/opt/tcl-tk/include"
-export PKG_CONFIG_PATH="/usr/local/opt/tcl-tk/lib/pkgconfig"
-export PYTHON_CONFIGURE_OPTS="--with-tcltk-includes='-I/usr/local/opt/tcl-tk/include' --with-tcltk-libs='-L/usr/local/opt/tcl-tk/lib -ltcl8.6 -ltk8.6'"
-# <<< tcl-tk initialize <<<
+        # >>> tcl-tk initialize >>>
+        # Reference:
+        # https://qiita.com/skyloken/items/a5f839eba1bd79cd5ef9
+        # @skyloken 2019/11/02
+        # pyenvのpythonでtkinterを使用する方法
+        # qiita.com
+        # pyenv install doesn't work with homebrew installed tcl-tk · Issue #1375 · pyenv/pyenv · GitHub
+        export PATH="/usr/local/opt/tcl-tk/bin:$PATH"
+        export LDFLAGS="-L/usr/local/opt/tcl-tk/lib"
+        export CPPFLAGS="-I/usr/local/opt/tcl-tk/include"
+        export PKG_CONFIG_PATH="/usr/local/opt/tcl-tk/lib/pkgconfig"
+        export PYTHON_CONFIGURE_OPTS="--with-tcltk-includes='-I/usr/local/opt/tcl-tk/include' --with-tcltk-libs='-L/usr/local/opt/tcl-tk/lib -ltcl8.6 -ltk8.6'"
+        # <<< tcl-tk initialize <<<
 
-# 簡易エディタ zed 利用のための準備
-autoload zed
+        # 簡易エディタ zed 利用のための準備
+        autoload zed
 
-# mathfuncモジュールをロードする
-zmodload zsh/mathfunc
+        # mathfuncモジュールをロードする
+        zmodload zsh/mathfunc
 
-# >>> Ctrl-Zを使ってVimにスイッチバックする >>>
-# Reference: Vimの生産性を高める12の方法
-# How to boost your Vim productivity
-# (2014-03-21)
-# by Adam Stankiewicz
-# https://postd.cc/how-to-boost-your-vim-productivity/
-fancy-ctrl-z () {
-  if [[ $#BUFFER -eq 0 ]]; then
-    BUFFER="fg"
-    zle accept-line
-  else
-    zle push-input
-    zle clear-screen
-  fi
+        # >>> Ctrl-Zを使ってVimにスイッチバックする >>>
+        # Reference: Vimの生産性を高める12の方法
+        # How to boost your Vim productivity
+        # (2014-03-21)
+        # by Adam Stankiewicz
+        # https://postd.cc/how-to-boost-your-vim-productivity/
+        fancy-ctrl-z () {
+          if [[ $#BUFFER -eq 0 ]]; then
+            BUFFER="fg"
+            zle accept-line
+          else
+            zle push-input
+            zle clear-screen
+          fi
+        }
+        zle -N fancy-ctrl-z
+        bindkey '^Z' fancy-ctrl-z
+        # <<< Ctrl-Zを使ってVimにスイッチバックする <<<
+
+        # >>> sindresorhus/pure >>>
+        # Pretty, minimal and fast ZSH prompt
+
+        autoload -U promptinit; promptinit
+
+        # turn on git stash status
+        zstyle :prompt:pure:git:stash show yes
+
+        # change the color for both `prompt:success` and `prompt:error`
+        zstyle ':prompt:pure:prompt:*' color cyan
+
+        prompt pure
+        # <<< sindresorhus/pure <<<
+
+        # >>> zsh-users/zsh-syntax-highlightling >>>
+        # Fish shell like syntax highlightling for Zsh.
+
+        if [ -f /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]; then source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+        fi
+
+        # <<< zsh-users/zsh-syntax-highlightling <<<
+
+        # Don't end with errors.
+        # true
+        [ -f "/Users/nis/.ghcup/env" ] && source "/Users/nis/.ghcup/env" # ghcup-env
+
+        # >>> https://raw.githubusercontent.com/b4b4r07/zle-vimode/master/zle-vimode.zsh >>>
+
+        # Use vi mode
+        # bindkey -v
+
+        # Require modules
+        autoload -Uz colors; colors
+        autoload -Uz add-zsh-hook
+        autoload -Uz terminfo
+        autoload -Uz is-at-least
+
+        terminfo_down_sc=$terminfo[cud1]$terminfo[cuu1]$terminfo[sc]$terminfo[cud1]
+        left_down_prompt_preexec() {
+            print -rn -- $terminfo[el]
+        }
+        add-zsh-hook preexec left_down_prompt_preexec
+
+        function zle-keymap-select zle-line-init zle-line-finish
+        {
+            case $KEYMAP in
+                main|viins)
+                    PROMPT_2="$fg[cyan]-- INSERT --$reset_color"
+                    ;;
+                vicmd)
+                    PROMPT_2="$fg[white]-- NORMAL --$reset_color"
+                    ;;
+                vivis|vivli)
+                    PROMPT_2="$fg[yellow]-- VISUAL --$reset_color"
+                    ;;
+            esac
+
+            # PROMPT="%{$terminfo_down_sc$PROMPT_2$terminfo[rc]%}%(?.%{${fg[reen]}%}.%{${fg[red]}%})${MY_PROMPT:-[%n]}%{${reset_color}%}%# "
+            PROMPT="%{$terminfo_down_sc$PROMPT_2$terminfo[rc]%}%(?.%{${fg[reen]}%}.%{${fg[red]}%})${MY_PROMPT:-}%{${reset_color}%}%# "
+            zle reset-prompt
+        }
+
+        zle -N zle-line-init
+        zle -N zle-line-finish
+        zle -N zle-keymap-select
+        zle -N edit-command-line
+
+        # Helper function
+        # use 'zle -la' option
+        # zsh -la option returns true if the widget exists
+        has_widgets() {
+            if [[ -z $1 ]]; then
+                return 1
+            fi
+            zle -la "$1"
+            return $?
+        }
+
+        # Helper function
+        # use bindkey -l
+        has_keymap() {
+            if [[ -z $1 ]]; then
+                return 1
+            fi
+            bindkey -l "$1" >/dev/null 2>&1
+    return $?
 }
-zle -N fancy-ctrl-z
-bindkey '^Z' fancy-ctrl-z
-# <<< Ctrl-Zを使ってVimにスイッチバックする <<<
 
-# >>> sindresorhus/pure >>>
-# Pretty, minimal and fast ZSH prompt
+# Easy to escape
+bindkey -M viins 'jj'  vi-cmd-mode
+has_keymap "vivis" && bindkey -M vivis 'jj' vi-visual-exit
 
-autoload -U promptinit; promptinit
+# Merge emacs mode to viins mode
+bindkey -M viins '\er' history-incremental-pattern-search-forward
+bindkey -M viins '^?'  backward-delete-char
+bindkey -M viins '^A'  beginning-of-line
+bindkey -M viins '^B'  backward-char
+bindkey -M viins '^D'  delete-char-or-list
+bindkey -M viins '^E'  end-of-line
+bindkey -M viins '^F'  forward-char
+bindkey -M viins '^G'  send-break
+bindkey -M viins '^H'  backward-delete-char
+bindkey -M viins '^K'  kill-line
+bindkey -M viins '^N'  down-line-or-history
+bindkey -M viins '^P'  up-line-or-history
+bindkey -M viins '^R'  history-incremental-pattern-search-backward
+bindkey -M viins '^U'  backward-kill-line
+bindkey -M viins '^W'  backward-kill-word
+bindkey -M viins '^Y'  yank
 
-# turn on git stash status
-zstyle :prompt:pure:git:stash show yes
+# Make more vim-like behaviors
+bindkey -M vicmd 'gg' beginning-of-line
+bindkey -M vicmd 'G'  end-of-line
 
-# change the color for both `prompt:success` and `prompt:error`
-zstyle ':prompt:pure:prompt:*' color cyan
+# User-defined widgets
+peco-select-history()
+{
+    # Check if peco is installed
+    if type "peco" >/dev/null 2>&1; then
+        # BUFFER is editing buffer contents string
+        BUFFER=$(history 1 | sort -k1,1nr | perl -ne 'BEGIN { my @lines = (); } s/^\s*\d+\s*//; $in=$_; if (!(grep {$in eq $_} @lines)) { push(@lines, $in); print $in; }' | peco --query "$LBUFFER")
+        # CURSOR is your key cursor position integer
+        CURSOR=${#BUFFER}
 
-prompt pure
-# <<< sindresorhus/pure <<<
+        # just run
+        zle accept-line
+        # clear displat
+        zle clear-screen
+    else
+        if is-at-least 4.3.9; then
+            # Check if history-incremental-pattern-search-forward is available
+            has_widgets "history-incremental-pattern-search-backward" && bindkey "^r" history-incremental-pattern-search-backward
+        else
+            history-incremental-search-backward
+        fi
+    fi
+}
+# Regist shell function as widget
+zle -N peco-select-history
+# Assign keybind
+bindkey '^r' peco-select-history
 
-# >>> zsh-users/zsh-syntax-highlightling >>>
-# Fish shell like syntax highlightling for Zsh.
+# Enter
+do-enter() {
+    if [ -n "$BUFFER" ]; then
+        zle accept-line
+        return
+    fi
 
-if [ -f /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]; then source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+    /bin/ls -F
+    zle reset-prompt
+}
+zle -N do-enter
+bindkey '^m' do-enter
+
+# https://github.com/zsh-users/zsh-history-substring-search
+has_widgets 'history-substring-search-up' &&
+    bindkey -M emacs '^P' history-substring-search-up
+has_widgets 'history-substring-search-down' &&
+    bindkey -M emacs '^N' history-substring-search-down
+
+has_widgets 'history-substring-search-up' &&
+    bindkey -M viins '^P' history-substring-search-up
+has_widgets 'history-substring-search-down' &&
+    bindkey -M viins '^N' history-substring-search-down
+
+has_widgets 'history-substring-search-up' &&
+    bindkey -M vicmd 'k' history-substring-search-up
+has_widgets 'history-substring-search-down' &&
+    bindkey -M vicmd 'j' history-substring-search-down
+
+if is-at-least 5.0.8; then
+    autoload -Uz surround
+    zle -N delete-surround surround
+    zle -N change-surround surround
+    zle -N add-surround surround
+
+    bindkey -a cs change-surround
+    bindkey -a ds delete-surround
+    bindkey -a ys add-surround
+    bindkey -a S add-surround
+
+    # if you want to use
+    #
+    #autoload -U select-bracketed
+    #zle -N select-bracketed
+    #for m in vivis viopp; do
+    #    for c in {a,i}${(s..)^:-'()[]{}<>bB'}; do
+    #        bindkey -M $m $c select-bracketed
+    #    done
+    #done
+
+    #autoload -U select-quoted
+    #zle -N select-quoted
+    #for m in vivis viopp; do
+    #    for c in {a,i}{\',\",\`}; do
+    #        bindkey -M $m $c select-quoted
+    #    done
+    #done
 fi
 
-# <<< zsh-users/zsh-syntax-highlightling <<<
+# <<< https://raw.githubusercontent.com/b4b4r07/zle-vimode/master/zle-vimode.zsh <<<
 
-# Don't end with errors.
-true
-#[ -f "/Users/nis/.ghcup/env" ] && source "/Users/nis/.ghcup/env" # ghcup-env
-[ -f "/Users/nis/.ghcup/env" ] && source "/Users/nis/.ghcup/env" # ghcup-env
+# source ~/.iterm2_shell_integration.zsh
