@@ -276,6 +276,18 @@ nnoremap <Leader>sw :<C-u>SweepTrail<CR>
 " undotree
 " The undo history visualizer for VIM
 nnoremap <Leader>ut :<C-u>UndotreeToggle<CR>
+
+" >>> vim-fugitive >>>
+" Reference: https://code-log.hatenablog.com/entry/2018/12/08/101732
+nnoremap <Leader>ga :Git add %:p<CR><CR>
+nnoremap <Leader>gc :Gcommit<CR><CR>
+nnoremap <Leader>gs :Gstatus<CR>
+nnoremap <Leader>gp :Gpush<CR>
+nnoremap <Leader>gd :Gdiff<CR>
+nnoremap <Leader>gl :Glog<CR>
+nnoremap <Leader>gb :Gblame<CR>
+" <<< vim-fugitive <<<
+
 " <<< Leader key setting <<<
 
 " >>> HOT KEYS >>>
@@ -375,7 +387,7 @@ function! s:search_by_google()
     endif
 endfunction
 command! SearchByGoogle call s:search_by_google()
-nnoremap <silent> <Space>g :SearchByGoogle<CR>
+nnoremap <silent> <Space>gg :SearchByGoogle<CR>
 " <<< Search by Google on the cursor word <<<
 
 " ----------------------------------------------------------------------------
@@ -418,6 +430,32 @@ function! s:Repl()
 endfunction
 vmap <silent> <expr> p <sid>Repl()
 " <<< Vimの生産性を高める12の方法 <<<
+
+" >>> limelight.vim Options >>>
+" Color name (:help cterm-colors) or ANSI code
+let g:limelight_conceal_ctermfg = 'gray'
+let g:limelight_conceal_ctermfg = 240
+
+" Color name (:help gui-colors) or RGB color
+let g:limelight_conceal_guifg = 'DarkGray'
+let g:limelight_conceal_guifg = '#777777'
+
+" Default: 0.5
+let g:limelight_default_coefficient = 0.7
+
+" Number of preceding/following paragraphs to include (default: 0)
+let g:limelight_paragraph_span = 1
+
+" Beginning/end of paragraph
+"   When there's no empty line between the paragraphs
+"   and each paragraph starts with indentation
+let g:limelight_bop = '^\s'
+let g:limelight_eop = '\ze\n^\s'
+
+" Highlighting priority (default: 10)
+"   Set it to -1 not to overrule hlsearch
+let g:limelight_priority = -1
+" <<< limelight.vim Options <<<
 
 " ----------------------------------------------------------------------------
 " END OF FILE: init.vim
