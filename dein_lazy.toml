@@ -123,14 +123,5 @@ hook_add = '''
         nnoremap <silent> <space>gy :Goyo<CR>
 '''
 
-# limelight.vim
-# All the world's indeed a stage and we are merely players
-# [[plugins]]
-# repo = 'junegunn/limelight.vim'
-
-# hook_add = '''
-#         nnoremap <silent> <space>ll :Limelight<CR>
-# '''
-
 # END OF FILE: dein_lazy.toml
 
