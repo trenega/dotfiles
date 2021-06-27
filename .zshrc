@@ -456,10 +456,12 @@ zle -N edit_current_line
 # Ctrl w -> vim open
 bindkey '^w' edit_current_line
 
-# <<< Terminalの現在行をエディタで編集して実行する <<<
+# >>> Terminalの現在行をエディタで編集して実行する >>>
 
 # Complie .zshrc file
 # Reference: https://qiita.com/vintersnow/items/7343b9bf60ea468a4180
 if [ ~/.zshrc -nt ~/.zshrc.zwc ]; then
         zcompile ~/.zshrc
 fi
+# <<< Terminalの現在行をエディタで編集して実行する <<<
+
