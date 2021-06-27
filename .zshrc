@@ -52,7 +52,11 @@ alias fullreset='echo "\ec\ec"'
 h () 		{history $* | less}
 alias ja='LANG=ja_JP.eucJP XMODIFIERS=@im=kinput2'
 alias fl='fc -l'
-alias ls='ls -F --color=auto' la='ls -a --color=auto' ll='ls -la --color=auto'
+alias ls='ls -F --color=auto' la='ls -a --color=auto' ll='ls -alF --color=auto'
+alias d='cd ~/dotfiles'
+alias ..='cd ..'
+alias ..2='cd ../..'
+alias ..3='cd ../../..'
 mdcd ()		{mkdir -p "$@" && cd "$*[-1]"}
 mdpu ()		{mkdir -p "$@" && pushd "$*[-1]"}
 alias psd=pushd ppd=popd ds='dirs -v'
@@ -63,6 +67,8 @@ alias vi=nvim
 alias vv='nvim -R'
 # Use Vim instead of v
 alias v=/usr/local/bin/vim
+# Edit .zshrc
+alias zshrc='nvim ~/dotfiles/.zshrc'
 # alias of script/note.py
 alias note=/Users/nis/script/note.py
 # pylint
@@ -451,3 +457,9 @@ zle -N edit_current_line
 bindkey '^w' edit_current_line
 
 # <<< Terminalの現在行をエディタで編集して実行する <<<
+
+# Complie .zshrc file
+# Reference: https://qiita.com/vintersnow/items/7343b9bf60ea468a4180
+if [ ~/.zshrc -nt ~/.zshrc.zwc ]; then
+        zcompile ~/.zshrc
+fi
