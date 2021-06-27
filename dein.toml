@@ -80,14 +80,14 @@ repo = 'vim-jp/vimdoc-ja'
 # <<< Color scheme setting <<<
 
 # lightline.vim
-[[plugins]]
-repo = 'itchyny/lightline.vim'
-hook_add = '''
-        let g:lightline = {
-                \ 'colorscheme': 'jellybeans'
-                \ }
-        set laststatus=2
-'''
+# [[plugins]]
+# repo = 'itchyny/lightline.vim'
+# hook_add = '''
+#         let g:lightline = {
+#                 \ 'colorscheme': 'jellybeans'
+#                 \ }
+#         set laststatus=2
+# '''
 
 # vim-unimpaired
 [[plugins]]
