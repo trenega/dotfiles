@@ -231,13 +231,15 @@ autocmd FileType defx call s:defx_my_settings()
 repo = 'simeji/winresizer'
 
 # vim-gitgutter
+# A Vim plugin which shows git diff markers in the sign column and
+# stages/previews/undoes hunks and prtial hunks.
 [[plugins]]
 repo = 'airblade/vim-gitgutter'
 
 # vim-fugitive
+# Fugitive is the premier Vim plugin for Git.
 [[plugins]]
 repo = 'tpope/vim-fugitive'
-
 
 # END OF FILE: dein.toml
 
