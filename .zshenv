@@ -10,6 +10,7 @@
 # Reference:
 # http://www.gentei.org/~yuuji/support/zsh/files/zshenv
 # zshの本 HIROSE Yuuji p.34
+
 # Core file for max size
 limit coredumpsize 0
 # Setup command search path
