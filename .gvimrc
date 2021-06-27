@@ -10,8 +10,6 @@ set background=dark
 let g:hybrid_custom_term_colors = 1
 colorscheme hybrid
 
-"colorscheme iceberg
-
 " Window size setting
 set lines=42
 set columns=100
