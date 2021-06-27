@@ -237,7 +237,7 @@ nnoremap <Leader> <Nop>
 " <Space>e を押して新しいファイルを開く
 nnoremap <Leader>e :edit<Space>
 " <Space>w を押してファイルを保存する
-nnoremap <Leader>w :<C-u>write<CR>
+nnoremap <silent><Leader>w :<C-u>write<CR>
 " <<< Vimの生産性を高める12の方法 <<<
 
 " >>> Leader key setting >>>
