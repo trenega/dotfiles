@@ -1,6 +1,18 @@
 [user]
 	name = trenega
 	email = takashiniijima213@gmail.com
+[core]
+	excludesFile = /Users/nis/.gitignore_global
+        editor = nvim
+[push]
+	default = simple
+[color]
+        status = auto
+        diff = auto
+        branch = auto
+        interactive = auto
+        grep = auto
+        ui = auto
 [gui]
 	recentrepo = /Users/nis/pl/git/LearnGitMoL/ch05/newrepo
 	fontui = -family \"Ricty Diminished Discord\" -size 18 -weight normal -slant roman -underline 0 -overstrike 0
@@ -10,6 +22,7 @@
 	recentrepo = /Users/nis/pl/git/LearnGitMoL/06/math
 	recentrepo = /Users/nis/pl/git/LearnGitMoL/05/newrepo
 [alias]
+        a = "!git status --short | peco | awk '{print $2}' | xargs git add"
         d = diff
         co = checkout
         ci = commit
@@ -27,11 +40,9 @@
         loo = log --oneline
         open = "!hub browse"
 
-[push]
-	default = simple
-[core]
-	excludesFile = /Users/nis/.gitignore_global
-        editor = nvim
+[hub]
+        protocol = https
+
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
 	path =
