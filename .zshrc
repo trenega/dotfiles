@@ -465,7 +465,19 @@ fi
 # <<< Terminalの現在行をエディタで編集して実行する <<<
 
 # Stert 'ssh-agent' on background
-eval "$(ssh-agent -s)"
+# eval "$(ssh-agent -s)"
+
+# >>> Setup ssh-agent >>>
+# Reference: https://h2plus.biz/hiromitsu/entry/791
+if [ -f ~/.ssh-agent ]; then
+    . ~/.ssh-agent
+fi
+if [ -z "$SSH_AGENT_PID" ] || ! kill -0 $SSH_AGENT_PID; then
+    ssh-agent > ~/.ssh-agent
+    . ~/.ssh-agent
+fi
+ssh-add -l >& /dev/null || ssh-add
+# <<< Setup ssh-agent <<<
 
 # Don't end with errors.
 # true
