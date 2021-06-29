@@ -435,8 +435,6 @@ fi
 
 # <<< zsh-users/zsh-syntax-highlightling <<<
 
-# Don't end with errors.
-# true
 [ -f "/Users/nis/.ghcup/env" ] && source "/Users/nis/.ghcup/env" # ghcup-env
 
 # source ~/.iterm2_shell_integration.zsh
@@ -466,3 +464,8 @@ if [ ~/.zshrc -nt ~/.zshrc.zwc ]; then
 fi
 # <<< Terminalの現在行をエディタで編集して実行する <<<
 
+# Stert 'ssh-agent' on background
+eval "$(ssh-agent -s)"
+
+# Don't end with errors.
+# true
