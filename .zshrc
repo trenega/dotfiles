@@ -464,9 +464,6 @@ if [ ~/.zshrc -nt ~/.zshrc.zwc ]; then
 fi
 # <<< Terminalの現在行をエディタで編集して実行する <<<
 
-# Stert 'ssh-agent' on background
-# eval "$(ssh-agent -s)"
-
 # >>> Setup ssh-agent >>>
 # Reference: https://h2plus.biz/hiromitsu/entry/791
 if [ -f ~/.ssh-agent ]; then
