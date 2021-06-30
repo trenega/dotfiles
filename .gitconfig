@@ -4,6 +4,7 @@
 [core]
 	excludesFile = /Users/nis/.gitignore_global
         editor = nvim
+	autocrlf = input
 [push]
 	default = simple
 [color]
