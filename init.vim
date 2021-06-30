@@ -326,8 +326,11 @@ inoremap [[ []
 inoremap ' ''<Left>
 inoremap " ""<Left>
 
-
 " <<< INSERT MODE KEYMAPS <<<
+
+" >>> ファイルを編集したあと、sudoでそのファイルを保存する
+" Reference: https://laboradian.com/save-buffer-using-sudo-in-vim/
+cmap w!! w !sudo tee > /dev/null %
 
 " >>> Python codes execute on Terminal >>>
 autocmd Filetype python nnoremap <buffer> <F5> :w<CR>:terminal python3 "%"<CR>
