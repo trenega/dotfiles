@@ -316,15 +316,15 @@ inoremap <silent> zk <C-o>z<CR>
 inoremap <silent> zj <C-o>z-
 
 " Bracket Completion
-inoremap ( ()<Left>
-inoremap { {}<Left>
-inoremap [ []<Left>
-inoremap (( ()
-inoremap {{ {}
-inoremap [[ []
-" Quotation Completion
-inoremap ' ''<Left>
-inoremap " ""<Left>
+" inoremap ( ()<Left>
+" inoremap { {}<Left>
+" inoremap [ []<Left>
+" inoremap (( ()
+" inoremap {{ {}
+" inoremap [[ []
+" " Quotation Completion
+" inoremap ' ''<Left>
+" inoremap " ""<Left>
 
 " <<< INSERT MODE KEYMAPS <<<
 
