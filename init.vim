@@ -107,10 +107,8 @@ set infercase
 " Move cursor by mouse
 set mouse=a
 set nocp incsearch
-" relative number
-" set relativenumber
-" number
-" set number
+" number + relative number
+set number relativenumber
 " 大文字/小文字の区別を予測してくれる
 set smartcase
 set smartindent
