@@ -476,5 +476,8 @@ fi
 ssh-add -l >& /dev/null || ssh-add
 # <<< Setup ssh-agent <<<
 
+# Use <C-q> push-line (zsh emacs keymap)
+stty start undef
+
 # Don't end with errors.
 # true
