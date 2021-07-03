@@ -354,6 +354,11 @@ if _has fzf && _has ag; then
         --color info:108,prompt:109,spinner:108,pointer:168,marker:168
 '
 fi
+
+# fzf + tmux configuration
+# Ctrl-r -> fzf-tmux
+export FZF_TMUX=1
+
 # <<< .zshrc by Ian Langworth <<<
 
 # >>> tmux making session >>>
