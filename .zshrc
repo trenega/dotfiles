@@ -123,8 +123,8 @@ alias tm='tmux'
 
 # emacs keymap
 bindkey -e
-#bindkey '^p'	history-beginning-search-backward
-#bindkey '^n'	history-beginning-search-forward
+bindkey '^p'	history-beginning-search-backward
+bindkey '^n'	history-beginning-search-forward
 
 # -------------------------------------------------------------------
 # 補完システムを利用: 補完の挙動が分かりやすくなる2つの設定のみを記述
