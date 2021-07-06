@@ -23,6 +23,7 @@
 	recentrepo = /Users/nis/pl/git/LearnGitMoL/06/math
 	recentrepo = /Users/nis/pl/git/LearnGitMoL/05/newrepo
 [alias]
+        a = add
         d = diff
         co = checkout
         ci = commit
