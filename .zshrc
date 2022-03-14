@@ -108,6 +108,8 @@ alias runghc='stack runghc --'
 alias g='git'
 # tmux
 alias tm='tmux'
+# newrm (by Dave Taylor "Wicked Cool Shell Scripts" 2004)
+alias rm='~/script/newrm'
 
 # -------------------------------------------------------------------
 # Suffix aliases(起動コマンドは環境によって変更する)
