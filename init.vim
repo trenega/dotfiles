@@ -113,13 +113,13 @@ set number relativenumber
 set smartcase
 set smartindent
 " Number of spaces to shift for autoindent or >,<
-set shiftwidth=8
+set shiftwidth=2
 " Hilight matching braces/parens/etc.
 set showmatch
 " Spaces 'feel' like tabs
-set softtabstop=8
+set softtabstop=2
 " The One True Tab
-set tabstop=8
+set tabstop=2
 " Show possible completions on command line
 set wildmenu
 " List all options and complete
@@ -255,13 +255,13 @@ nnoremap <Leader>wv :resize -10<CR>
 
 " Windows間の移動
 " 上のWindowへ移動する
-nnoremap <Leader>wk <C-w>k
+nnoremap <Leader>jk <C-w>k
 " 下のWindowへ移動する
-nnoremap <Leader>wj <C-w>j
+nnoremap <Leader>jj <C-w>j
 " 左のWindowへ移動する
-nnoremap <Leader>wh <C-w>h
+nnoremap <Leader>jh <C-w>h
 " 右のWindowへ移動する
-nnoremap <Leader>wl <C-w>l
+nnoremap <Leader>jl <C-w>l
 
 " Hot key for open init.vim file
 nnoremap <Leader>. :<C-u>edit $MYVIMRC<CR>
