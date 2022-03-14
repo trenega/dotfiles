@@ -110,7 +110,8 @@ alias g='git'
 alias tm='tmux'
 # newrm (by Dave Taylor "Wicked Cool Shell Scripts" 2004)
 alias rm='~/script/newrm'
-
+# formatdir (by Dave Taylor "Wicked Cool Shell Scripts" 2004)
+alias fdir='~/script/formatdir'
 # -------------------------------------------------------------------
 # Suffix aliases(起動コマンドは環境によって変更する)
 # -------------------------------------------------------------------
