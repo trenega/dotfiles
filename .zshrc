@@ -52,7 +52,7 @@ alias fullreset='echo "\ec\ec"'
 h () 		{history $* | less}
 alias ja='LANG=ja_JP.eucJP XMODIFIERS=@im=kinput2'
 alias fl='fc -l'
-alias ls='ls -F --color=auto' la='ls -a --color=auto' ll='ls -alF --color=auto' lr='ls -lR --color=auto' l1='ls -1 --color=auto'
+alias ls='ls -F --color=auto' la='ls -a --color=auto' ll='ls -alF --color=auto' lr='ls -lR --color=auto' l1='ls -1a --color=auto'
 alias d='cd ~/dotfiles'
 alias t='cd ~/pl/test'
 alias ..='cd ..'
