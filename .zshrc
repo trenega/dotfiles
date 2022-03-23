@@ -64,7 +64,7 @@ alias psd=pushd ppd=popd ds='dirs -v'
 # Use Neovim instead of Vim
 alias vim=nvim
 alias vi=nvim
-# set view mode 'vv' is "vim view"
+# set view mode 'vv' is "Vim View"
 alias vv='nvim -R'
 # Use Vim instead of v
 alias v=/usr/local/bin/vim
