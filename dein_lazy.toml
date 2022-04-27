@@ -126,5 +126,9 @@ hook_add = '''
         nnoremap <silent> <space>gy :Goyo<CR>
 '''
 
+# Ruby coding auto insert "end" keyword
+[[plugins]]
+repo = 'tpope/vim-endwise'
+
 # END OF FILE: dein_lazy.toml
 
