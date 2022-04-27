@@ -112,6 +112,10 @@ alias tm='tmux'
 alias rm='~/script/newrm'
 # formatdir (by Dave Taylor "Wicked Cool Shell Scripts" 2004)
 alias fdir='~/script/formatdir'
+# irb simple prompt
+alias irbs='irb --simple-prompt'
+alias ruby='ruby -w'
+alias gcc='gcc -fno-pic -fomit-frame-pointer'
 # -------------------------------------------------------------------
 # Suffix aliases(起動コマンドは環境によって変更する)
 # -------------------------------------------------------------------
@@ -293,6 +297,9 @@ export PATH="~/.local/bin:$PATH"
 # export PATH="~/.cabal/bin:$PATH"
 # ghcup
 # export PATH="~/.ghcup/bin:$PATH"
+
+# gnu-tar PATH
+export PATH="/usr/local/opt/gnu-tar/libexec/gnubin:$PATH"
 
 # -------------------------------------------------------------------
 # APPLICATION CUSTOMIZATIONS
