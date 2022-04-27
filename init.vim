@@ -236,6 +236,8 @@ nnoremap <Leader> <Nop>
 nnoremap <Leader>e :edit<Space>
 " <Space>w を押してファイルを保存する
 nnoremap <silent><Leader>w :<C-u>write<CR>
+
+
 " <<< Vimの生産性を高める12の方法 <<<
 
 " >>> Leader key setting >>>
@@ -285,6 +287,11 @@ nnoremap <Leader>gd :Gdiff<CR>
 nnoremap <Leader>gl :Glog<CR>
 nnoremap <Leader>gb :Gblame<CR>
 " <<< vim-fugitive <<<
+
+" <Space>h を押して行頭へカーソルを移動させる
+nnoremap <Leader>h <Home>
+" <Space>l を押して行末へカーソルを移動させる
+nnoremap <Leader>l <End>
 
 " <<< Leader key setting <<<
 
