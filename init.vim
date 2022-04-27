@@ -113,13 +113,13 @@ set number relativenumber
 set smartcase
 set smartindent
 " Number of spaces to shift for autoindent or >,<
-set shiftwidth=2
+set shiftwidth=8
 " Hilight matching braces/parens/etc.
 set showmatch
 " Spaces 'feel' like tabs
-set softtabstop=2
+set softtabstop=8
 " The One True Tab
-set tabstop=2
+set tabstop=8
 " Show possible completions on command line
 set wildmenu
 " List all options and complete
@@ -301,10 +301,12 @@ nnoremap # #zz
 nnoremap g* g*zz
 nnoremap g# g#zz
 
+" 'verymagic'
+nnoremap / /\v
+
 " >>> INSERT MODE KEYMAPS >>>
 " Change INSERT mode to NORMAL mode
 inoremap <silent> fd <Esc>
-
 " File Save
 inoremap <silent> fs <C-o>:write<CR>
 
