@@ -307,6 +307,7 @@ nnoremap / /\v
 " >>> INSERT MODE KEYMAPS >>>
 " Change INSERT mode to NORMAL mode
 inoremap <silent> fd <Esc>
+inoremap <silent> jj <Esc>
 " File Save
 inoremap <silent> fs <C-o>:write<CR>
 
@@ -404,14 +405,18 @@ endif
 
 " >>> hybrid setting >>>
 " Reference: https://qastack.jp/vi/3576/trouble-using-color-scheme-in-neovim
-let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-set termguicolors
+" let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+" set termguicolors
 " Reference: https://github.com/w0ng/vim-hybrid
 " Set color for iTerm2
-let g:hybrid_custom_term_colors = 1
-set background=dark
-colorscheme hybrid
+" let g:hybrid_custom_term_colors = 1
+" set background=dark
+" colorscheme hybrid
 " <<< hybrid setting <<<
+
+" >>> iceberg colorscheme setting >>>
+colorscheme iceberg
+" <<< iceberg colorscheme setting <<<
 
 " ----------------------------------------------------------------------------
 " OTHER
