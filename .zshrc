@@ -133,9 +133,9 @@ alias gcc='gcc -fno-pic -fomit-frame-pointer'
 # bindkey '^p'	history-beginning-search-backward
 # bindkey '^n'	history-beginning-search-forward
 
-# vi keymap
-bindkey -v      # viinsキーマップを選択
-# https://qiita.com/b4b4r07/items/8db0257d2e6f6b19ecb9
+# viins keymap
+bindkey -v
+# viins (like emacs-mode)
 bindkey -M viins '\er' history-incremental-pattern-search-forward
 bindkey -M viins '^?'  backward-delete-char
 bindkey -M viins '^A'  beginning-of-line
@@ -152,6 +152,14 @@ bindkey -M viins '^R'  history-incremental-pattern-search-backward
 bindkey -M viins '^U'  backward-kill-line
 bindkey -M viins '^W'  backward-kill-word
 bindkey -M viins '^Y'  yank
+
+# zplug
+export ZPLUG_HOME=/usr/local/opt/zplug
+source $ZPLUG_HOME/init.zsh
+
+# zsh-vimode-visual
+zplug "b4b4r07/zsh-vimode-visual"
+
 # -------------------------------------------------------------------
 # 補完システムを利用: 補完の挙動が分かりやすくなる2つの設定のみを記述
 # -------------------------------------------------------------------
@@ -471,7 +479,7 @@ fi
 
 [ -f "/Users/nis/.ghcup/env" ] && source "/Users/nis/.ghcup/env" # ghcup-env
 
-# source ~/.iterm2_shell_integration.zsh
+source ~/.iterm2_shell_integration.zsh
 
 # >>> Terminalの現在行をエディタで編集して実行する >>>
 # Reference: rasukarasan.com/entry/2020/04/20/083000
@@ -510,48 +518,6 @@ ssh-add -l >& /dev/null || ssh-add
 
 # Use <C-q> push-line (zsh emacs keymap)
 stty start undef
-
-# zplug
-export ZPLUG_HOME=/usr/local/opt/zplug
-source $ZPLUG_HOME/init.zsh
-# zsh-vimode-visual
-zplug "b4b4r07/zsh-vimode-visual"
-
-# >>> Disply prompt vimode 'INSERT', 'NORMAL', 'VISUAL' >>>
-# https://qiita.com/b4b4r07/items/8db0257d2e6f6b19ecb9
-# autoload -Uz colors; colors
-# autoload -Uz add-zsh-hook
-# autoload -Uz terminfo
-
-# terminfo_down_sc=$terminfo[cud1]$terminfo[cuu1]$terminfo[sc]$terminfo[cud1]
-# left_down_prompt_preexec() {
-#     print -rn -- $terminfo[el]
-# }
-# add-zsh-hook preexec left_down_prompt_preexec
-
-# function zle-keymap-select zle-line-init zle-line-finish
-# {
-#     case $KEYMAP in
-#         main|viins)
-#             PROMPT_2="$fg[cyan]-- INSERT --$reset_color"
-#             ;;
-#         vicmd)
-#             PROMPT_2="$fg[white]-- NORMAL --$reset_color"
-#             ;;
-#         vivis|vivli)
-#             PROMPT_2="$fg[yellow]-- VISUAL --$reset_color"
-#             ;;
-#     esac
-
-#     PROMPT="%{$terminfo_down_sc$PROMPT_2$terminfo[rc]%}[%(?.%{${fg[green]}%}.%{${fg[red]}%})%n%{${reset_color}%}]%# "
-#     zle reset-prompt
-# }
-
-# zle -N zle-line-init
-# zle -N zle-line-finish
-# zle -N zle-keymap-select
-# zle -N edit-command-line
-# <<< Disply prompt vimode 'INSERT', 'NORMAL', 'VISUAL' <<<
 
 # Don't end with errors.
 # true
