@@ -232,10 +232,12 @@ let mapleader = "\<Space>"
 " Reference: https://thinca.hatenablog.com/entry/q-as-prefix-key-in-vim
 nnoremap <Leader> <Nop>
 
-" <Space>e を押して新しいファイルを開く
+" <Space>e を押してカーソルの後ろに，新しいファイルを開く
 nnoremap <Leader>e :edit<Space>
 " <Space>w を押してファイルを保存する
 nnoremap <silent><Leader>w :<C-u>write<CR>
+" <Space>r を押してカーソルの後ろに，ファイルを挿入する
+nnoremap <Leader>r :read<Space>
 
 
 " <<< Vimの生産性を高める12の方法 <<<
@@ -270,7 +272,7 @@ nnoremap <Leader>. :<C-u>edit $MYVIMRC<CR>
 " Check for marks
 nnoremap <Leader>mm :<C-u>marks<CR>
 " Check for registers
-nnoremap <Leader>r :<C-u>registers<CR>
+" nnoremap <Leader>r :<C-u>registers<CR>
 " sweep_trail.vim
 nnoremap <Leader>sw :<C-u>SweepTrail<CR>
 " undotree
