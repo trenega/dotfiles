@@ -126,6 +126,12 @@ hook_add = '''
         nnoremap <silent> <space>gy :Goyo<CR>
 '''
 
+# Hyperfocus-writing in Vim
+[[plugins]]
+repo = 'junegunn/limelight.vim'
+hook_add = '''
+        nnoremap <silent> <space>ll :Limelight<CR>
+'''
 # Ruby coding auto insert "end" keyword
 [[plugins]]
 repo = 'tpope/vim-endwise'
