@@ -129,10 +129,29 @@ alias gcc='gcc -fno-pic -fomit-frame-pointer'
 # -------------------------------------------------------------------
 
 # emacs keymap
-bindkey -e
-bindkey '^p'	history-beginning-search-backward
-bindkey '^n'	history-beginning-search-forward
+# bindkey -e
+# bindkey '^p'	history-beginning-search-backward
+# bindkey '^n'	history-beginning-search-forward
 
+# vi keymap
+bindkey -v      # viinsキーマップを選択
+# https://qiita.com/b4b4r07/items/8db0257d2e6f6b19ecb9
+bindkey -M viins '\er' history-incremental-pattern-search-forward
+bindkey -M viins '^?'  backward-delete-char
+bindkey -M viins '^A'  beginning-of-line
+bindkey -M viins '^B'  backward-char
+bindkey -M viins '^D'  delete-char-or-list
+bindkey -M viins '^E'  end-of-line
+bindkey -M viins '^F'  forward-char
+bindkey -M viins '^G'  send-break
+bindkey -M viins '^H'  backward-delete-char
+bindkey -M viins '^K'  kill-line
+bindkey -M viins '^N'  down-line-or-history
+bindkey -M viins '^P'  up-line-or-history
+bindkey -M viins '^R'  history-incremental-pattern-search-backward
+bindkey -M viins '^U'  backward-kill-line
+bindkey -M viins '^W'  backward-kill-word
+bindkey -M viins '^Y'  yank
 # -------------------------------------------------------------------
 # 補完システムを利用: 補完の挙動が分かりやすくなる2つの設定のみを記述
 # -------------------------------------------------------------------
