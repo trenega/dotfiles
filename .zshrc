@@ -136,6 +136,7 @@ alias gcc='gcc -fno-pic -fomit-frame-pointer'
 # viins keymap
 bindkey -v
 # viins (like emacs-mode)
+# https://qiita.com/b4b4r07/items/8db0257d2e6f6b19ecb9
 bindkey -M viins '\er' history-incremental-pattern-search-forward
 bindkey -M viins '^?'  backward-delete-char
 bindkey -M viins '^A'  beginning-of-line
