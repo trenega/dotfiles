@@ -151,7 +151,7 @@ bindkey -M viins '^N'  down-line-or-history
 bindkey -M viins '^P'  up-line-or-history
 bindkey -M viins '^R'  history-incremental-pattern-search-backward
 bindkey -M viins '^U'  backward-kill-line
-bindkey -M viins '^W'  backward-kill-word
+# bindkey -M viins '^W'  backward-kill-word
 bindkey -M viins '^Y'  yank
 
 # zplug
