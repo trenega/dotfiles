@@ -295,6 +295,22 @@ nnoremap <Leader>h <Home>
 " <Space>l を押して行末へカーソルを移動させる
 nnoremap <Leader>l <End>
 
+" >>> fzf.vim >>>
+" https://wonderwall.hatenablog.com/entry/2017/10/07/220000
+" Mapping selecting mappings
+" :Maps
+nmap <leader><tab> <plug>(fzf-maps-n)
+xmap <leader><tab> <plug>(fzf-maps-x)
+omap <leader><tab> <plug>(fzf-maps-o)
+" Insert mode completion
+" INSERT modeでファイル名や行を補完する
+" <C-x><C-l>
+imap <c-x><c-k> <plug>(fzf-complete-word)
+imap <c-x><c-f> <plug>(fzf-complete-path)
+imap <c-x><c-j> <plug>(fzf-complete-file-ag)
+imap <c-x><c-l> <plug>(fzf-complete-line)
+" <<< fzf.vim <<<
+
 " <<< Leader key setting <<<
 
 " >>> HOT KEYS >>>
