@@ -396,6 +396,8 @@ fi
 # fzf + tmux configuration
 # Ctrl-r -> fzf-tmux
 export FZF_TMUX=1
+export FZF_TMUX_HEIGHT=20
+
 
 # <<< .zshrc by Ian Langworth <<<
 
