@@ -116,6 +116,9 @@ alias fd='~/script/formatdir'
 alias irbs='irb --simple-prompt'
 alias ruby='ruby -w'
 alias gcc='gcc -fno-pic -fomit-frame-pointer'
+# vim current file complement
+alias vimf='vim -o `fzf`'
+
 # -------------------------------------------------------------------
 # Suffix aliases(起動コマンドは環境によって変更する)
 # -------------------------------------------------------------------
