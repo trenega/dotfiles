@@ -54,7 +54,7 @@ alias ja='LANG=ja_JP.eucJP XMODIFIERS=@im=kinput2'
 alias fl='fc -l'
 alias ls='ls -F --color=auto' la='ls -a --color=auto' ll='ls -alF --color=auto' lr='ls -lR --color=auto' l1='ls -1a --color=auto'
 alias d='cd ~/dotfiles'
-alias t='cd ~/pl/test'
+# alias t='cd ~/pl/test'
 alias ..='cd ..'
 alias ..2='cd ../..'
 alias ..3='cd ../../..'
@@ -118,6 +118,8 @@ alias ruby='ruby -w'
 alias gcc='gcc -fno-pic -fomit-frame-pointer'
 # vim current file complement
 alias vimf='vim -o `fzf`'
+alias t='tmux'
+alias r='ruby -w'
 
 # -------------------------------------------------------------------
 # Suffix aliases(起動コマンドは環境によって変更する)
