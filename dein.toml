@@ -245,9 +245,8 @@ repo = 'tpope/vim-fugitive'
 [[plugins]]
 repo = 'Yggdroot/indentLine'
 hook_add = '''
-let g:indentLine_color_term = 111
-let g:indentLine_color_gui = '#708090'
-let g:indentLine_char = '|'
+let g:indentLine_color_term = 239
+let g:indentLine_char =  '┊'
 '''
 
 # END OF FILE: dein.toml
