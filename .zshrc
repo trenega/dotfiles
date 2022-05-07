@@ -107,7 +107,7 @@ alias runghc='stack runghc --'
 # Git
 alias g='git'
 # tmux
-alias tm='tmux'
+alias t='tmux'
 # newrm (by Dave Taylor "Wicked Cool Shell Scripts" 2004)
 alias rm='~/script/newrm'
 # formatdir (by Dave Taylor "Wicked Cool Shell Scripts" 2004)
@@ -115,10 +115,10 @@ alias fd='~/script/formatdir'
 # irb simple prompt
 alias irbs='irb --simple-prompt'
 alias ruby='ruby -w'
+alias ru='ruby -w'
 alias gcc='gcc -fno-pic -fomit-frame-pointer'
 # vim current file complement
 alias vimf='vim -o `fzf`'
-alias t='tmux'
 
 # -------------------------------------------------------------------
 # Suffix aliases(起動コマンドは環境によって変更する)
