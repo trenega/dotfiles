@@ -39,7 +39,7 @@
         llog = log --graph --name-status --pretty=format:\"%C(red)%h %C(reset)(%cd) %C(green)%an %Creset%s %C(yellow)%d%Creset\" --date=relative
 	lol = log --graph --decorate --pretty=oneline --all --abbrev-commit
         loo = log --oneline
-        open = "!hub browse"
+        ; open = "!hub browse"
 
 [hub]
         protocol = https
