@@ -83,9 +83,6 @@ repo = 'vim-jp/vimdoc-ja'
 [[plugins]]
 repo = 'itchyny/lightline.vim'
 hook_add = '''
-        let g:lightline = {
-              \ 'colorscheme': 'jellybeans'
-              \}
         set laststatus=2
         set noshowmode
 '''
@@ -248,5 +245,9 @@ hook_add = '''
 let g:indentLine_color_term = 239
 let g:indentLine_char =  '┊'
 '''
+
+# essk.vim
+[[plugins]]
+repo = 'vim-skk/eskk.vim'
 
 # END OF FILE: dein.toml
