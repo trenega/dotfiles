@@ -329,6 +329,10 @@ nnoremap g# g#zz
 " 'verymagic'
 nnoremap / /\v
 
+" eskk
+" imap jk <Plug>(eskk:toggle)
+" cmap jk <Plug>(eskk:toggle)
+
 " >>> INSERT MODE KEYMAPS >>>
 " Change INSERT mode to NORMAL mode
 inoremap <silent> fd <Esc>
@@ -489,6 +493,37 @@ vmap <silent> <expr> p <sid>Repl()
 " "   Set it to -1 not to overrule hlsearch
 " let g:limelight_priority = -1
 " " <<< limelight.vim Options <<<
+
+" >>> eskk setting >>>
+" eskk dictionary autoload
+if !filereadable(expand('~/.config/eskk/SKK-JISYO.L'))
+  call mkdir('~/.config/eskk', 'p')
+  call system('cd ~/.config/eskk/ && wget http://openlab.jp/skk/dic/SKK-JISYO.L.gz && gzip -d SKK-JISYO.L.gz')
+endif
+
+" eskk read dictionary
+let g:eskk#directory = "~/.config/eskk"
+let g:eskk#dictionary = { 'path': "~/.config/eskk/my_jisyo", 'sorted': 1, 'encoding': 'utf-8',}
+let g:eskk#large_dictionary = {'path': "~/.config/eskk/SKK-JISYO.L", 'sorted': 1, 'encoding': 'euc-jp',}
+
+" StatusLine dispy change mode
+function L_eskk_get_mode()
+    if (mode() == 'i') && eskk#is_enabled()
+        return g:eskk#statusline_mode_strings[eskk#get_mode()]
+    else
+        return ''
+    endif
+endfunction
+
+let g:lightline = {
+\   'active': {
+\     'left': [ ['mode', 'paste'], ['readonly', 'filename', 'eskk', 'modified'] ]
+\   },
+\   'component_function': {
+\     'eskk': 'L_eskk_get_mode'
+\   },
+\ }
+" <<< eskk setting <<<
 
 " ----------------------------------------------------------------------------
 " END OF FILE: init.vim
