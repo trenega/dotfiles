@@ -250,4 +250,8 @@ let g:indentLine_char =  '┊'
 [[plugins]]
 repo = 'vim-skk/eskk.vim'
 
+# Auto close parentheses and repeat by dot dot dot...
+[[plugins]]
+repo = 'cohama/lexima.vim'
+
 # END OF FILE: dein.toml
