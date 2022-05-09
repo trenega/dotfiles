@@ -335,10 +335,9 @@ nnoremap / /\v
 
 " >>> INSERT MODE KEYMAPS >>>
 " Change INSERT mode to NORMAL mode
-inoremap <silent> fd <Esc>
 inoremap <silent> jj <Esc>
 " File Save
-inoremap <silent> fs <C-o>:write<CR>
+inoremap <silent> js <C-o>:write<CR>
 
 " Scroll to center line
 inoremap <silent> zz <C-o>zz
@@ -523,6 +522,36 @@ let g:lightline = {
 \     'eskk': 'L_eskk_get_mode'
 \   },
 \ }
+
+" https://zenn.dev/kouta/articles/87947515bff4da
+" Basic setting
+let g:eskk#kakutei_when_unique_candidate = 1 "漢字変換した時に候補が1つの場合、自動的に確定する
+let g:eskk#enable_completion = 0             "neocompleteを入れないと、1にすると動作しなくなるため0推奨
+let g:eskk#keep_state = 0                    "ノーマルモードに戻るとeskkモードを初期値にする
+let g:eskk#egg_like_newline = 1              "漢字変換を確定しても改行しない。
+
+"表示文字を変更(オレ サンカクデ ハンダン デキナイ)
+let g:eskk#marker_henkan = "[変換]"
+let g:eskk#marker_henkan_select = "[選択]"
+let g:eskk#marker_okuri = "[送り]"
+let g:eskk#marker_jisyo_touroku = "[辞書]"
+
+" Sticky Shift
+autocmd User eskk-initialize-post call s:eskk_initial_pre()
+function! s:eskk_initial_pre() abort
+  EskkUnmap -type=sticky Q
+  EskkMap -type=sticky ;
+endfunction
+
+" 'l' input -> eskk mode break through
+augroup vimrc_eskk
+  autocmd!
+  autocmd User eskk-enable-post lmap <buffer> l <Plug>(eskk:disable)
+augroup END
+
+imap jk <Plug>(eskk:toggle)
+cmap jk <Plug>(eskk:toggle)
+
 " <<< eskk setting <<<
 
 " ----------------------------------------------------------------------------
