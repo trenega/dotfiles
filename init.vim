@@ -531,10 +531,10 @@ let g:eskk#keep_state = 0                    "ノーマルモードに戻るとe
 let g:eskk#egg_like_newline = 1              "漢字変換を確定しても改行しない。
 
 "表示文字を変更(オレ サンカクデ ハンダン デキナイ)
-let g:eskk#marker_henkan = "[変換]"
-let g:eskk#marker_henkan_select = "[選択]"
-let g:eskk#marker_okuri = "[送り]"
-let g:eskk#marker_jisyo_touroku = "[辞書]"
+" let g:eskk#marker_henkan = "`c`"
+" let g:eskk#marker_henkan_select = "`o`"
+" let g:eskk#marker_okuri = "`s`"
+let g:eskk#marker_jisyo_touroku = "`d`"
 
 " Sticky Shift
 autocmd User eskk-initialize-post call s:eskk_initial_pre()
@@ -543,7 +543,7 @@ function! s:eskk_initial_pre() abort
   EskkMap -type=sticky ;
 endfunction
 
-" 'l' input -> eskk mode break through
+" 'l' inputed -> eskk mode break through
 augroup vimrc_eskk
   autocmd!
   autocmd User eskk-enable-post lmap <buffer> l <Plug>(eskk:disable)
