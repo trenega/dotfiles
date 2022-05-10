@@ -2,7 +2,7 @@
 " |
 " File name     :  ~/.config/nvim/init.vim
 " Copyright     :  nis
-" Modified      :  2021/06/27 20:33
+" Modified      :  2022/05/10 22:23
 " ----------------------------------------------------------------------------
 
 
@@ -53,7 +53,7 @@ if len(dein#check_clean()) != 0
   call map(dein#check_clean(), "delete(v:val, 'rf')")
   call dein#recache_runtimepath()
 endif
-" <<< dein.vim settings <<<
+" <<< dein.vim settings END <<<
 
 " ----------------------------------------------------------------------------
 " PATH SETTINGS
@@ -73,8 +73,6 @@ set runtimepath+=~/src/vim-polyglot
 " OPTIONS
 " ----------------------------------------------------------------------------
 
-" Essential for syntax
-syntax enable
 " Essential for filetype plugins.
 filetype plugin indent on
 
@@ -158,7 +156,7 @@ inoremap <C-e> <End>
 " 一文字削除
 cnoremap <C-d> <Del>
 inoremap <C-d> <Del>
-" <<< インサートモードから出ずにVimを使いこなす <<<
+" <<< インサートモードから出ずにVimを使いこなす END <<<
 
 " >>> Practical Vim, Drew Neil >>>
 " アクティブなファイルが含まれているディレクトリを手早く展開する
@@ -190,12 +188,10 @@ endfunction
 " nnoremap <silent> ]b :bnext<CR>
 " nnoremap <silent> [B :bfirst<CR>
 " nnoremap <silent> ]B :blast<CR>
-
-" <<< Practical Vim, Drew Neil <<<
+" <<< Practical Vim, Drew Neil END <<<
 
 " >>> 俺的にはずせない[Vim]こだわりmap(説明付き) >>>
-" Reference:
-" https://qiita.com/itmammoth/items/312246b4b7688875d023
+" Reference: https://qiita.com/itmammoth/items/312246b4b7688875d023
 " カーソル下の単語をハイライトする
 nnoremap <silent> <Space><Space> "zyiw:let @/ = '\<' . @z . '\>'<CR>:set hlsearch<CR>
 
@@ -206,24 +202,22 @@ nnoremap <silent> <Space><Space> "zyiw:let @/ = '\<' . @z . '\>'<CR>:set hlsearc
 " きちんと理解した上で再マップを利用するのはアリです。
 nnoremap ` <Nop>
 nmap ` <Space><Space>:%s/<C-r>///gc<Left><Left><Left>
-
 " ハイライトを消去する
 nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
-
 " 挿入モードでのDelete, Backspace
 inoremap <C-d> <Del>
 imap <C-h> <BS>
-
 " CTRL + ] で右にエスケープする
 inoremap <C-]> <Esc><Right>
-" <<< 俺的にはずせない[Vim]こだわりmap(説明付き) <<<
+" <<< 俺的にはずせない[Vim]こだわりmap(説明付き) END <<<
 
+" >>> Leader key setting >>>
 " >>> Vimの生産性を高める12の方法 >>>
 " Reference:
 " How to boost your Vim productivity (2014-03-21) by Adam Stankiewicz
 " https://postd.cc/how-to-boost-your-vim-productivity/
-
 let mapleader = "\<Space>"
+" <<< Vimの生産性を高める12の方法 END <<<
 
 " スペースキーを prefix にする例
 " スペースキー単体では何も起きないようにする
@@ -238,12 +232,6 @@ nnoremap <Leader>e :edit<Space>
 nnoremap <silent><Leader>w :<C-u>write<CR>
 " <Space>r を押してカーソルの後ろに，ファイルを挿入する
 nnoremap <Leader>r :read<Space>
-
-
-" <<< Vimの生産性を高める12の方法 <<<
-
-" >>> Leader key setting >>>
-
 " 現在のウィンドウを水平に分割する
 nnoremap <Leader>sp :split<CR>
 " 現在のウィンドウを垂直に分割する
@@ -257,7 +245,7 @@ nnoremap <Leader>wr :resize<CR>
 " ウィンドウの高さを10行分低くする。To Window Low size
 nnoremap <Leader>wv :resize -10<CR>
 
-" Windows間の移動
+" >>> move to current Window >>>
 " 上のWindowへ移動する
 nnoremap <Leader>jk <C-w>k
 " 下のWindowへ移動する
@@ -266,6 +254,7 @@ nnoremap <Leader>jj <C-w>j
 nnoremap <Leader>jh <C-w>h
 " 右のWindowへ移動する
 nnoremap <Leader>jl <C-w>l
+" <<< move to current Window END <<<
 
 " Hot key for open init.vim file
 nnoremap <Leader>. :<C-u>edit $MYVIMRC<CR>
@@ -288,12 +277,13 @@ nnoremap <Leader>gp :Gpush<CR>
 nnoremap <Leader>gd :Gdiff<CR>
 nnoremap <Leader>gl :Glog<CR>
 nnoremap <Leader>gb :Gblame<CR>
-" <<< vim-fugitive <<<
+" <<< vim-fugitive END <<<
 
 " <Space>h を押して行頭へカーソルを移動させる
 nnoremap <Leader>h <Home>
 " <Space>l を押して行末へカーソルを移動させる
 nnoremap <Leader>l <End>
+" <<< Leader key setting END <<<
 
 " >>> fzf.vim >>>
 " https://wonderwall.hatenablog.com/entry/2017/10/07/220000
@@ -309,14 +299,10 @@ imap <c-x><c-k> <plug>(fzf-complete-word)
 imap <c-x><c-f> <plug>(fzf-complete-path)
 imap <c-x><c-j> <plug>(fzf-complete-file-ag)
 imap <c-x><c-l> <plug>(fzf-complete-line)
-" <<< fzf.vim <<<
+" <<< fzf.vim END <<<
 
-" <<< Leader key setting <<<
-
-" >>> HOT KEYS >>>
 " :helpを3倍の速度で引く
 nnoremap <C-h> :<C-u>help<Space>
-" <<< HOT KEYS <<<
 
 " 検索後にジャンプした際に検索単語を画面中央に持ってくる
 nnoremap n nzz
@@ -329,15 +315,12 @@ nnoremap g# g#zz
 " 'verymagic'
 nnoremap / /\v
 
-" eskk
-" imap jk <Plug>(eskk:toggle)
-" cmap jk <Plug>(eskk:toggle)
-
 " >>> INSERT MODE KEYMAPS >>>
 " Change INSERT mode to NORMAL mode
 inoremap <silent> jj <Esc>
 " File Save
 inoremap <silent> js <C-o>:write<CR>
+inoremap <silent> fs <C-o>:write<CR>
 
 " Scroll to center line
 inoremap <silent> zz <C-o>zz
@@ -345,19 +328,7 @@ inoremap <silent> zz <C-o>zz
 inoremap <silent> zk <C-o>z<CR>
 " Scroll to bottom line
 inoremap <silent> zj <C-o>z-
-
-" Bracket Completion
-" inoremap ( ()<Left>
-" inoremap { {}<Left>
-" inoremap [ []<Left>
-" inoremap (( ()
-" inoremap {{ {}
-" inoremap [[ []
-" " Quotation Completion
-" inoremap ' ''<Left>
-" inoremap " ""<Left>
-
-" <<< INSERT MODE KEYMAPS <<<
+" <<< INSERT MODE KEYMAPS END <<<
 
 " >>> ファイルを編集したあと、sudoでそのファイルを保存する
 " Reference: https://laboradian.com/save-buffer-using-sudo-in-vim/
@@ -368,7 +339,7 @@ autocmd Filetype python nnoremap <buffer> <F5> :w<CR>:terminal python3 "%"<CR>
 " Python codes execute on Terminal (Vertical windows)
 " Please the new window close, then to codes window.
 "autocmd Filetype python nnoremap <buffer> <F6> :w<CR>:vert terminal python3 "%"<CR>
-" <<< Python codes execute on Terminal >>>
+" <<< Python codes execute on Terminal END >>>
 
 " >>> Restore last position of the cursor>>>
 if has("autocmd")
@@ -377,7 +348,7 @@ if has("autocmd")
         \   exe "normal! g'\"" |
         \ endif
 endif
-" <<< Restore last position of the cursor <<<
+" <<< Restore last position of the cursor END <<<
 
 " >>> Undoの永続化 >>>
 " Reference:
@@ -390,7 +361,7 @@ if has('persistent_undo')
         exe 'set undodir=' .. undo_path
         set undofile
 endif
-" <<< Undoの永続化 <<<
+" <<< Undoの永続化 END <<<
 
 " >>> Persistent undo >>>
 " Reference:
@@ -405,7 +376,7 @@ endif
 "                autocmd BufReadPre ~/* setlocal undofile
 "        augroup END
 "endif
-" <<< Persistent undo <<<
+" <<< Persistent undo END <<<
 
 " >>> Search by Google on the cursor word >>>
 " Reference: https://www.rasukarusan.com/entry/2019/03/09/011630
@@ -420,7 +391,7 @@ function! s:search_by_google()
 endfunction
 command! SearchByGoogle call s:search_by_google()
 nnoremap <silent> <Space>gg :SearchByGoogle<CR>
-" <<< Search by Google on the cursor word <<<
+" <<< Search by Google on the cursor word END <<<
 
 " ----------------------------------------------------------------------------
 " COLORS
@@ -440,11 +411,11 @@ endif
 " let g:hybrid_custom_term_colors = 1
 " set background=dark
 " colorscheme hybrid
-" <<< hybrid setting <<<
+" <<< hybrid setting END <<<
 
 " >>> iceberg colorscheme setting >>>
 colorscheme iceberg
-" <<< iceberg colorscheme setting <<<
+" <<< iceberg colorscheme setting END <<<
 
 " ----------------------------------------------------------------------------
 " OTHER
@@ -465,7 +436,7 @@ function! s:Repl()
   return "p@=RestoreRegister()\<cr>"
 endfunction
 vmap <silent> <expr> p <sid>Repl()
-" <<< Vimの生産性を高める12の方法 <<<
+" <<< Vimの生産性を高める12の方法 END <<<
 
 " " >>> limelight.vim Options >>>
 " " Color name (:help cterm-colors) or ANSI code
@@ -491,9 +462,10 @@ vmap <silent> <expr> p <sid>Repl()
 " " Highlighting priority (default: 10)
 " "   Set it to -1 not to overrule hlsearch
 " let g:limelight_priority = -1
-" " <<< limelight.vim Options <<<
+" " <<< limelight.vim Options END <<<
 
 " >>> eskk setting >>>
+" Reference: https://zenn.dev/kato_k/articles/753b36262b3213
 " eskk dictionary autoload
 if !filereadable(expand('~/.config/eskk/SKK-JISYO.L'))
   call mkdir('~/.config/eskk', 'p')
@@ -523,12 +495,12 @@ let g:lightline = {
 \   },
 \ }
 
-" https://zenn.dev/kouta/articles/87947515bff4da
 " Basic setting
-let g:eskk#kakutei_when_unique_candidate = 1 "漢字変換した時に候補が1つの場合、自動的に確定する
-let g:eskk#enable_completion = 0             "neocompleteを入れないと、1にすると動作しなくなるため0推奨
-let g:eskk#keep_state = 0                    "ノーマルモードに戻るとeskkモードを初期値にする
-let g:eskk#egg_like_newline = 1              "漢字変換を確定しても改行しない。
+" https://zenn.dev/kouta/articles/87947515bff4da
+let g:eskk#kakutei_when_unique_candidate = 1 " 漢字変換した時に候補が1つの場合、自動的に確定する
+let g:eskk#enable_completion = 0             " neocompleteを入れないと、1にすると動作しなくなるため0推奨
+let g:eskk#keep_state = 0                    " ノーマルモードに戻るとeskkモードを初期値にする
+let g:eskk#egg_like_newline = 1              " 漢字変換を確定しても改行しない。
 
 "表示文字を変更(オレ サンカクデ ハンダン デキナイ)
 " let g:eskk#marker_henkan = "`c`"
@@ -549,10 +521,13 @@ augroup vimrc_eskk
   autocmd User eskk-enable-post lmap <buffer> l <Plug>(eskk:disable)
 augroup END
 
+" eskk mode on keymapping
 imap jk <Plug>(eskk:toggle)
 cmap jk <Plug>(eskk:toggle)
+" <<< eskk setting END <<<
 
-" <<< eskk setting <<<
+" Essential for syntax
+syntax enable
 
 " ----------------------------------------------------------------------------
 " END OF FILE: init.vim
