@@ -398,6 +398,7 @@ if _has fzf && _has ag; then
         --height 40%
         --reverse
         --border
+        --inline-info
 '
 fi
 
