@@ -526,6 +526,26 @@ imap jk <Plug>(eskk:toggle)
 cmap jk <Plug>(eskk:toggle)
 " <<< eskk setting END <<<
 
+" >>> neoterm setting >>>
+" Wrapper of some vim/neovim's :terminal functions.
+let g:neoterm_default_mod='belowright'
+let g:neoterm_size=10
+" Command done -> dispay result
+let g:neoterm_autoscroll=1
+" TERMINAL(insert-mode) -> vim(NORMAL)
+tnoremap <silent> <C-w> <C-\><C-n><C-w>
+" 3<leader>tl will clear neoterm-3.
+nnoremap <leader>tl :<c-u>exec v:count.'Tclear'<cr>
+" RUN REPL
+"       use: C-n
+nnoremap <silent> <C-n> :TREPLSendLine<CR>j0
+vnoremap <silent> <C-n> V:TREPLSendSelection<CR>'>j0
+" <<< neoterm setting END <<<
+
+" vim-easymotion
+" Default bindings <Leader>s
+map <Leader> <Plug>(easymotion-prefix)
+
 " Essential for syntax
 syntax enable
 

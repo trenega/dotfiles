@@ -254,4 +254,12 @@ repo = 'vim-skk/eskk.vim'
 [[plugins]]
 repo = 'cohama/lexima.vim'
 
+# Wrapper of some vim/neovim's :terminal functions.
+[[plugins]]
+repo = 'kassio/neoterm'
+
+# vim-easymotion
+[[plugins]]
+repo = 'easymotion/vim-easymotion'
+
 # END OF FILE: dein.toml
