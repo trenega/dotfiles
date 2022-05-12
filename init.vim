@@ -569,6 +569,9 @@ syntax enable
 " ----------------------------------------------------------------------------
 " abbreviation
 " ----------------------------------------------------------------------------
+" Save in VISUAL mode -> smooth save
+" https://zenn.dev/monaqa/articles/2020-12-22-vim-abbrev
+cabbrev <expr> w (getcmdtype() ==# ":" && getcmdline() ==# "'<,'>w") ? "\<C-u>w" : "w"
 iabbrev sheb #!/usr/bin/ruby
 iabbrev EC # -*- coding: utf-8 -*-
 
