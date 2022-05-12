@@ -572,8 +572,8 @@ syntax enable
 " Save in VISUAL mode -> smooth save
 " https://zenn.dev/monaqa/articles/2020-12-22-vim-abbrev
 cabbrev <expr> w (getcmdtype() ==# ":" && getcmdline() ==# "'<,'>w") ? "\<C-u>w" : "w"
-iabbrev sheb #!/usr/bin/ruby
-iabbrev EC # -*- coding: utf-8 -*-
+iabbrev .s #!/usr/bin/ruby
+iabbrev .e # -*- coding: utf-8 -*-
 
 " ----------------------------------------------------------------------------
 " END OF FILE: init.vim
