@@ -287,6 +287,8 @@ nnoremap <Leader>l <End>
 
 " >>> fzf.vim >>>
 " https://wonderwall.hatenablog.com/entry/2017/10/07/220000
+" dispay new window
+let g:fzf_layout = { 'window': 'enew' }
 " Mapping selecting mappings
 " :Maps
 nmap <leader><tab> <plug>(fzf-maps-n)
