@@ -266,4 +266,12 @@ repo = 'easymotion/vim-easymotion'
 [[plugins]]
 repo = 'tpope/vim-endwise'
 
+# Vim plugin that allows you to visually select increasingly larger regions of text using the same key combination.
+# https://postd.cc/how-to-boost-your-vim-productivity/
+[[plugins]]
+repo = 'terryma/vim-expand-region'
+hook_add = '''
+        vmap v <Plug>(expand_region_expand)
+        vmap <C-v> <Plug>(expand_region_shrink)
+'''
 # END OF FILE: dein.toml
