@@ -193,8 +193,8 @@ endfunction
 " >>> 俺的にはずせない[Vim]こだわりmap(説明付き) >>>
 " Reference: https://qiita.com/itmammoth/items/312246b4b7688875d023
 " カーソル下の単語をハイライトする
-nnoremap <silent> <Space><Space> "zyiw:let @/ = '\<' . @z . '\>'<CR>:set hlsearch<CR>
-
+" レジスタを使用しない簡易版
+nnoremap <silent> <Space><Space> :let @/ = '\<' . expand('<cword>') . '\>'<CR>:set hlsearch<CR>
 " カーソル下の単語をハイライトしてから置換する
 " nmapについてですが、こいつはnnoremapと違い、右辺の再マップを行います。
 " つまり右辺最初の<Space><Space>によって上のハイライトmapを発動させるということです。
