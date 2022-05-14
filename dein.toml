@@ -95,7 +95,7 @@ repo = 'tpope/vim-unimpaired'
 [[plugins]]
 repo = 'junegunn/fzf.vim'
 hook_add = '''
-        nnoremap ; :Buffers<CR>
+        nnoremap s :Buffers<CR>
         nnoremap t :Files<CR>
 '''
 
