@@ -262,4 +262,8 @@ repo = 'kassio/neoterm'
 [[plugins]]
 repo = 'easymotion/vim-easymotion'
 
+# Ruby coding auto insert "end" keyword
+[[plugins]]
+repo = 'tpope/vim-endwise'
+
 # END OF FILE: dein.toml
