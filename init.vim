@@ -261,7 +261,7 @@ nnoremap <Leader>. :<C-u>edit $MYVIMRC<CR>
 " Check for marks
 nnoremap <Leader>mm :<C-u>marks<CR>
 " Check for registers
-" nnoremap <Leader>r :<C-u>registers<CR>
+nnoremap <Leader>re :<C-u>registers<CR>
 " sweep_trail.vim
 nnoremap <Leader>sw :<C-u>SweepTrail<CR>
 " undotree
@@ -291,10 +291,12 @@ nnoremap <Leader>l <End>
 let g:fzf_layout = { 'window': 'enew' }
 " Mapping selecting mappings
 " :Maps
+" https://github.com/junegunn/fzf.vim
 nmap <leader><tab> <plug>(fzf-maps-n)
 xmap <leader><tab> <plug>(fzf-maps-x)
 omap <leader><tab> <plug>(fzf-maps-o)
 " Insert mode completion
+" https://github.com/junegunn/fzf.vim
 " INSERT modeでファイル名や行を補完する
 " <C-x><C-l>
 imap <c-x><c-k> <plug>(fzf-complete-word)
@@ -572,8 +574,14 @@ syntax enable
 " Save in VISUAL mode -> smooth save
 " https://zenn.dev/monaqa/articles/2020-12-22-vim-abbrev
 cabbrev <expr> w (getcmdtype() ==# ":" && getcmdline() ==# "'<,'>w") ? "\<C-u>w" : "w"
-iabbrev .s #!/usr/bin/ruby
-iabbrev .e # -*- coding: utf-8 -*-
+
+iabbrev .b #!/bin/bash
+iabbrev .r #!/usr/bin/ruby
+iabbrev EC # -*- coding: utf-8 -*-
+iabbrev .e niijimatakashi993@icloud.com
+iabbrev .g niijimatakashi993@gmail.com
+iabbrev .t takashiniijima213@gmail.com
+iabbrev .y takashiniijima213@yahoo.co.jp
 
 " ----------------------------------------------------------------------------
 " END OF FILE: init.vim
