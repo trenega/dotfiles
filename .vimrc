@@ -293,13 +293,13 @@ nnoremap <Leader>wv :resize -10<CR>
 
 " Windows間の移動 --------------------------------------------
 " 上のWindowへ移動する
-nnoremap <Leader>wk <C-w>k
+nnoremap <Leader>jk <C-w>k
 " 下のWindowへ移動する
-nnoremap <Leader>wj <C-w>j
+nnoremap <Leader>jj <C-w>j
 " 左のWindowへ移動する
-nnoremap <Leader>wh <C-w>h
+nnoremap <Leader>jh <C-w>h
 " 右のWindowへ移動する
-nnoremap <Leader>wl <C-w>l
+nnoremap <Leader>jl <C-w>l
 
 " HOT KEYS ---------------------------------------------------
 " Hot key for open init.vim file
@@ -307,7 +307,7 @@ nnoremap <Leader>wl <C-w>l
 " Check for marks
 nnoremap <Leader>m :<C-u>marks
 " Check for registers
-nnoremap <Leader>r :<C-u>registers
+nnoremap <Leader>re :<C-u>registers
 " :helpを3倍の速度で引く
 nnoremap <C-h>  :<C-u>help<Space>
 
