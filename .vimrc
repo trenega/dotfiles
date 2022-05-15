@@ -2,7 +2,7 @@
 " |
 " File name     :  .vimrc
 " Copyright     :  nis
-" Modified      :  2021/06/27 22:49
+" Modified      :  2022/05/15 16:19
 "-----------------------------------------------------------------------------
 
 set nocompatible
@@ -132,6 +132,9 @@ NeoBundle 'tomasr/molokai'
 " Solarized install
 NeoBundle 'altercation/vim-colors-solarized'
 
+" iceberg.vim
+NeoBundle 'cocopon/iceberg.vim'
+
 " ステータスラインの表示内容強化
 NeoBundle 'itchyny/lightline.vim'
 
@@ -165,21 +168,23 @@ NeoBundleCheck
 "syntax enable
 
 " Solarized settings -----------------------------------------
-syntax enable
-set background=dark
-colorscheme solarized
-let g:solarized_termcolors=256
+"syntax enable
+"set background=dark
+"colorscheme solarized
+"let g:solarized_termcolors=256
 
 " lightline setting
-let g:lightline = {
-        \ 'colorscheme': 'wombat'
-        \ }
+"let g:lightline = {
+"        \ 'colorscheme': 'wombat'
+"        \ }
+
+" iceberg.vim settings -----------------------------------------
+syntax enable
+colorscheme iceberg
 
 " ステータスラインの設定 -------------------------------------
 set laststatus=2
-set showmode
-set showcmd
-set ruler
+set noshowmode
 
 " ----------------------------------------------------------------------------
 " KEYMAPS AND CUSTOM COMMANDS, FUNCTIONS
@@ -317,14 +322,9 @@ nnoremap g# g#zz
 " >>> INSERT MODE KEYMAPS >>>
 
 " Change INSERT mode to NORMAL mode
-"inoremap <silent> jj <Esc>
-"inoremap <silent> fd <Esc>
-" fとdの同時押しでINSERTモードから抜ける
-inoremap <silent> fd  <Esc>
-inoremap <silent> df <Esc>
-
+inoremap <silent> jj <Esc>
 " File Save
-inoremap <silent> fs <C-o>:write<CR>
+inoremap <silent> js <C-o>:write<CR>
 " Scroll to center line
 inoremap <silent> zz <C-o>zz
 " Scroll to top line
@@ -403,7 +403,7 @@ set rtp+=/usr/local/opt/fzf
 set runtimepath+=~/src/vim-polyglot
 
 " ~/.exrc ファイルを読み込む
-source ~/.exrc
+" source ~/.exrc
 
 " set vim-commentary commentstring
  autocmd FileType python setlocal commentstring=#\ %s
