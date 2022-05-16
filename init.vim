@@ -567,8 +567,6 @@ map  <Leader>wd <Plug>(easymotion-bd-w)
 nmap <Leader>wd <Plug>(easymotion-overwin-w)
 " <<< vim-easymotion END <<<
 
-" Essential for syntax
-syntax enable
 
 " ----------------------------------------------------------------------------
 " abbreviation
@@ -584,6 +582,21 @@ iabbrev .e niijimatakashi993@icloud.com
 iabbrev .g niijimatakashi993@gmail.com
 iabbrev .t takashiniijima213@gmail.com
 iabbrev .y takashiniijima213@yahoo.co.jp
+
+" vp doesn't replace paste buffer
+" https://postd.cc/how-to-boost-your-vim-productivity/
+function! RestoreRegister()
+  let @" = s:restore_reg
+  return ''
+endfunction
+function! s:Repl()
+  let s:restore_reg = @"
+  return "p@=RestoreRegister()\<cr>"
+endfunction
+vmap <silent> <expr> p <sid>Repl()
+
+" Essential for syntax
+syntax enable
 
 " ----------------------------------------------------------------------------
 " END OF FILE: init.vim
