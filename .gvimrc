@@ -12,5 +12,6 @@ set background=dark
 colorscheme iceberg
 
 " Window size setting
-set lines=42
+set lines=43
 set columns=100
+
