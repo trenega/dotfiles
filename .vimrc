@@ -150,6 +150,9 @@ NeoBundle 'vim-jp/vim-sweep_trail'
 " fzf.vim
 NeoBundle 'junegunn/fzf.vim'
 
+" eskk.vim
+NeoBundle 'vim-skk/eskk.vim'
+
 "-------------------------------------------------------------
 call neobundle#end()
 
@@ -187,12 +190,14 @@ set laststatus=2
 set noshowmode
 
 " ----------------------------------------------------------------------------
-" KEYMAPS AND CUSTOM COMMANDS, FUNCTIONS
+" CUSTOM COMMANDS AND FUNCTIONS
 " ----------------------------------------------------------------------------
 
 " >>> インサートモードから出ずにVimを使いこなす >>>
 " Reference:
 " https://woodyzootopia.github.io/2019/11/インサートモードから出ずにVimを使いこなす
+" cnoremap mode: command line
+" inoremap mode: insert
 
 " 左へ移動
 cnoremap <C-b> <Left>
@@ -215,19 +220,14 @@ inoremap <C-e> <End>
 " 一文字削除
 cnoremap <C-d> <Del>
 inoremap <C-d> <Del>
-" 保存
-inoremap <C-l> <Esc>:update<CR>a
-" <<< インサートモードから出ずにVimを使いこなす <<<
+" <<< インサートモードから出ずにVimを使いこなす END <<<
 
-" Practical Vim, Drew Neil -----------------------------------
-" <C-p>, <C-n>でも、コマンド履歴のフィルタリングまで行う
-cnoremap <C-p> <Up>
-cnoremap <C-n> <Down>
-
+" >>> Practical Vim, Drew Neil >>>
 " アクティブなファイルが含まれているディレクトリを手早く展開する
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 
 " Vimに同梱されているmatchitプラグインを有効化する (cf. p.176)
+filetype plugin on
 runtime macros/matchit.vim
 
 " 「&」コマンドの修正 (cf. p.293)
@@ -240,58 +240,76 @@ xnoremap & :&&<CR>
 " 個々のファイル名を引数リストに設定してくれる。(cf. p.302)
 command! -nargs=0 -bar Qargs execute 'args' QuickfixFilenames()
 function! QuickfixFilenames()
-  let buffer_numbers = {}
-  for quickfix_item in getqflist()
-    let buffer_numbers[quickfix_item['bufnr']] = bufname(quickfix_item['bufnr'])
-  endfor
-  return join(map(values(buffer_numbers), 'fnameescape(v:val)'))
+          let buffer_numbers = {}
+          for quickfix_item in getqflist()
+                    let buffer_numbers[quickfix_item['bufnr']] = bufname(quickfix_item['bufnr'])
+          endfor
+          return join(map(values(buffer_numbers), 'fnameescape(v:val)'))
 endfunction
 
-" End of Practical Vim, Drew Neil ----------------------------
+" Vimのリストをサクサク移動するためのキーマッピング p.116
+" nnoremap <silent> [b :bprevious<CR>
+" nnoremap <silent> ]b :bnext<CR>
+" nnoremap <silent> [B :bfirst<CR>
+" nnoremap <silent> ]B :blast<CR>
+" <<< Practical Vim, Drew Neil END <<<
 
+" >>> 俺的にはずせない[Vim]こだわりmap(説明付き) >>>
+" Reference: https://qiita.com/itmammoth/items/312246b4b7688875d023
 " カーソル下の単語をハイライトする
-nnoremap <silent> <Space><Space> "zyiw:let @/ = '\<' . @z . '\>'<CR>:set hlsearch<CR>
-
+" レジスタを使用しない簡易版
+nnoremap <silent> <Space><Space> :let @/ = '\<' . expand('<cword>') . '\>'<CR>:set hlsearch<CR>
 " カーソル下の単語をハイライトしてから置換する
-nnoremap # <Space><Space>:%s/<C-r>///gc<Left><Left><Left>
-
+" nmapについてですが、こいつはnnoremapと違い、右辺の再マップを行います。
+" つまり右辺最初の<Space><Space>によって上のハイライトmapを発動させるということです。
+" 通常mapはnoreを付けて再マップ無しでmapすることが一般的ですが、
+" きちんと理解した上で再マップを利用するのはアリです。
+nnoremap ` <Nop>
+nmap ` <Space><Space>:%s/<C-r>///gc<Left><Left><Left>
 " ハイライトを消去する
 nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
-
-" Delete, Backspace
+" 挿入モードでのDelete, Backspace
 inoremap <C-d> <Del>
 imap <C-h> <BS>
+" CTRL + ] で右にエスケープする
+inoremap <C-]> <Esc><Right>
+" <<< 俺的にはずせない[Vim]こだわりmap(説明付き) END <<<
 
-" fzf(command-line fuzzy finder) mapping ---------------------
-nnoremap s :Buffers<CR>
-nnoremap t :Files<CR>
-
-" Leader key setting -----------------------------------------
+" >>> Leader key setting >>>
+" >>> Vimの生産性を高める12の方法 >>>
+" Reference:
+" How to boost your Vim productivity (2014-03-21) by Adam Stankiewicz
+" https://postd.cc/how-to-boost-your-vim-productivity/
 let mapleader = "\<Space>"
+" <<< Vimの生産性を高める12の方法 END <<<
 
 " スペースキーを prefix にする例
 " スペースキー単体では何も起きないようにする
 " これをしておかないと、うっかり <Space> + 割り当ててないキーを
 " 押すと <Space> の元の機能が発動する
-" thinca (id:thinca)
+" Reference: https://thinca.hatenablog.com/entry/q-as-prefix-key-in-vim
 nnoremap <Leader> <Nop>
 
-nnoremap <Leader>e :edit
-nnoremap <Leader>w :<C-u>write<CR>
+" <Space>e を押してカーソルの後ろに，新しいファイルを開く
+nnoremap <Leader>e :edit<Space>
+" <Space>w を押してファイルを保存する
+nnoremap <silent><Leader>w :<C-u>write<CR>
+" <Space>r を押してカーソルの後ろに，ファイルを挿入する
+nnoremap <Leader>r :read<Space>
+" 現在のウィンドウを水平に分割する
 nnoremap <Leader>sp :split<CR>
+" 現在のウィンドウを垂直に分割する
 nnoremap <Leader>vs :vsplit<CR>
 " 新しいタブページを開く
 nnoremap <Leader>te :tabedit
-nnoremap <Leader>x :xit<CR>
 " ウィンドウを閉じる
 nnoremap <silent> <Leader>q :<C-u>quit<CR>
-
 " ウィンドウの高さをできるだけ高くする。To Window Hight size
 nnoremap <Leader>wr :resize<CR>
 " ウィンドウの高さを10行分低くする。To Window Low size
 nnoremap <Leader>wv :resize -10<CR>
 
-" Windows間の移動 --------------------------------------------
+" >>> move to current Window >>>
 " 上のWindowへ移動する
 nnoremap <Leader>jk <C-w>k
 " 下のWindowへ移動する
@@ -300,16 +318,63 @@ nnoremap <Leader>jj <C-w>j
 nnoremap <Leader>jh <C-w>h
 " 右のWindowへ移動する
 nnoremap <Leader>jl <C-w>l
+" <<< move to current Window END <<<
 
-" HOT KEYS ---------------------------------------------------
 " Hot key for open init.vim file
-" nnoremap <Leader>. :<C-u>edit $MYVIMRC<CR>
+nnoremap <Leader>. :<C-u>edit $MYVIMRC<CR>
 " Check for marks
-nnoremap <Leader>m :<C-u>marks
+nnoremap <Leader>mm :<C-u>marks<CR>
 " Check for registers
-nnoremap <Leader>re :<C-u>registers
+nnoremap <Leader>re :<C-u>registers<CR>
+" sweep_trail.vim
+nnoremap <Leader>sw :<C-u>SweepTrail<CR>
+" undotree
+" The undo history visualizer for VIM
+nnoremap <Leader>ut :<C-u>UndotreeToggle<CR>
+
+" >>> vim-fugitive >>>
+" Reference: https://code-log.hatenablog.com/entry/2018/12/08/101732
+nnoremap <Leader>ga :Git add %:p<CR><CR>
+nnoremap <Leader>gc :Gcommit<CR><CR>
+nnoremap <Leader>gs :Gstatus<CR>
+nnoremap <Leader>gp :Gpush<CR>
+nnoremap <Leader>gd :Gdiff<CR>
+nnoremap <Leader>gl :Glog<CR>
+nnoremap <Leader>gb :Gblame<CR>
+" <<< vim-fugitive END <<<
+
+" <Space>h を押して行頭へカーソルを移動させる
+nnoremap <Leader>h <Home>
+" <Space>l を押して行末へカーソルを移動させる
+nnoremap <Leader>l <End>
+" <<< Leader key setting END <<<
+
+" >>> fzf.vim >>>
+" https://wonderwall.hatenablog.com/entry/2017/10/07/220000
+" dispay new window
+let g:fzf_layout = { 'window': 'enew' }
+" Mapping selecting mappings
+" :Maps
+nnoremap s <Nop>
+nnoremap s :Buffers<CR>
+nnoremap t <Nop>
+nnoremap t :Files<CR>
+" https://github.com/junegunn/fzf.vim
+nmap <leader><tab> <plug>(fzf-maps-n)
+xmap <leader><tab> <plug>(fzf-maps-x)
+omap <leader><tab> <plug>(fzf-maps-o)
+" Insert mode completion
+" https://github.com/junegunn/fzf.vim
+" INSERT modeでファイル名や行を補完する
+" <C-x><C-l>
+imap <c-x><c-k> <plug>(fzf-complete-word)
+imap <c-x><c-f> <plug>(fzf-complete-path)
+imap <c-x><c-j> <plug>(fzf-complete-file-ag)
+imap <c-x><c-l> <plug>(fzf-complete-line)
+" <<< fzf.vim END <<<
+
 " :helpを3倍の速度で引く
-nnoremap <C-h>  :<C-u>help<Space>
+nnoremap <C-h> :<C-u>help<Space>
 
 " 検索後にジャンプした際に検索単語を画面中央に持ってくる
 nnoremap n nzz
@@ -319,19 +384,27 @@ nnoremap # #zz
 nnoremap g* g*zz
 nnoremap g# g#zz
 
-" >>> INSERT MODE KEYMAPS >>>
+" 'verymagic'
+nnoremap / /\v
 
+" >>> INSERT MODE KEYMAPS >>>
 " Change INSERT mode to NORMAL mode
 inoremap <silent> jj <Esc>
 " File Save
 inoremap <silent> js <C-o>:write<CR>
+inoremap <silent> fs <C-o>:write<CR>
+
 " Scroll to center line
 inoremap <silent> zz <C-o>zz
 " Scroll to top line
 inoremap <silent> zk <C-o>z<CR>
 " Scroll to bottom line
 inoremap <silent> zj <C-o>z-
-" <<< INSERT MODE KEYMAPS <<<
+" <<< INSERT MODE KEYMAPS END <<<
+
+" ----------------------------------------------------------------------------
+" OTHER
+" ----------------------------------------------------------------------------
 
 " ペースト設定 クリップボードからペーストする時だけ、インデントしない
 if &term =~ "xterm"
@@ -408,6 +481,68 @@ set runtimepath+=~/src/vim-polyglot
 " set vim-commentary commentstring
  autocmd FileType python setlocal commentstring=#\ %s
  autocmd FileType haskell setlocal commentstring=--\ %s
+
+" >>> eskk setting >>>
+" Reference: https://zenn.dev/kato_k/articles/753b36262b3213
+" eskk dictionary autoload
+if !filereadable(expand('~/.config/eskk/SKK-JISYO.L'))
+  call mkdir('~/.config/eskk', 'p')
+  call system('cd ~/.config/eskk/ && wget http://openlab.jp/skk/dic/SKK-JISYO.L.gz && gzip -d SKK-JISYO.L.gz')
+endif
+
+" eskk read dictionary
+let g:eskk#directory = "~/.config/eskk"
+let g:eskk#dictionary = { 'path': "~/.config/eskk/my_jisyo", 'sorted': 1, 'encoding': 'utf-8',}
+let g:eskk#large_dictionary = {'path': "~/.config/eskk/SKK-JISYO.L", 'sorted': 1, 'encoding': 'euc-jp',}
+
+" StatusLine dispy change mode
+function L_eskk_get_mode()
+    if (mode() == 'i') && eskk#is_enabled()
+        return g:eskk#statusline_mode_strings[eskk#get_mode()]
+    else
+        return ''
+    endif
+endfunction
+
+let g:lightline = {
+\   'active': {
+\     'left': [ ['mode', 'paste'], ['readonly', 'filename', 'eskk', 'modified'] ]
+\   },
+\   'component_function': {
+\     'eskk': 'L_eskk_get_mode'
+\   },
+\ }
+
+" Basic setting
+" https://zenn.dev/kouta/articles/87947515bff4da
+let g:eskk#kakutei_when_unique_candidate = 1 " 漢字変換した時に候補が1つの場合、自動的に確定する
+let g:eskk#enable_completion = 0             " neocompleteを入れないと、1にすると動作しなくなるため0推奨
+let g:eskk#keep_state = 0                    " ノーマルモードに戻るとeskkモードを初期値にする
+let g:eskk#egg_like_newline = 1              " 漢字変換を確定しても改行しない。
+
+"表示文字を変更(オレ サンカクデ ハンダン デキナイ)
+" let g:eskk#marker_henkan = "`c`"
+" let g:eskk#marker_henkan_select = "`o`"
+" let g:eskk#marker_okuri = "`s`"
+let g:eskk#marker_jisyo_touroku = "`d`"
+
+" Sticky Shift
+autocmd User eskk-initialize-post call s:eskk_initial_pre()
+function! s:eskk_initial_pre() abort
+  EskkUnmap -type=sticky Q
+  EskkMap -type=sticky ;
+endfunction
+
+" 'l' inputed -> eskk mode break through
+augroup vimrc_eskk
+  autocmd!
+  autocmd User eskk-enable-post lmap <buffer> l <Plug>(eskk:disable)
+augroup END
+
+" eskk mode on keymapping
+imap jk <Plug>(eskk:toggle)
+cmap jk <Plug>(eskk:toggle)
+" <<< eskk setting END <<<
 
 " ----------------------------------------------------------------------------
 " END OF FILE: .vimrc
