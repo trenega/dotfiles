@@ -120,6 +120,7 @@ alias ru='ruby -w'
 alias gcc='gcc -fno-pic -fomit-frame-pointer'
 # vim current file complement
 alias vimf='vim -o `fzf`'
+alias e='emacs'
 
 # -------------------------------------------------------------------
 # Suffix aliases(起動コマンドは環境によって変更する)
