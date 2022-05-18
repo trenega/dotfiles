@@ -10,24 +10,48 @@
 (set-keyboard-coding-system 'utf-8)
 (set-buffer-file-coding-system 'utf-8)
 
-;; バックアップファイルを作らないようにする                                                          
+;; バックアップファイルを作らないようにする
 (setq make-backup-files nil)
-;; 括弧の対応関係をハイライト表示                                                                    
+;; 括弧の対応関係をハイライト表示
 (show-paren-mode nil)
-;; スタートアップ画面を表示しないようにする                                                          
+;; スタートアップ画面を表示しないようにする
 (setq inhibit-startup-message t)
-;; ツールバーを表示しないようにする（Official Emacs の場合は 0）                                     
+;; ツールバーを表示しないようにする（Official Emacs の場合は 0）
 (tool-bar-mode 0)
-;; ツールバーを表示しないようにする（Official Emacs の場合は 0）                                     
-;; ウィンドウ（フレーム）のサイズ設定する                                                            
+;; ツールバーを表示しないようにする（Official Emacs の場合は 0）
+;; ウィンドウ（フレーム）のサイズ設定する
 (setq default-frame-alist '((width . 170) (height . 80)))
- 
-;;左側に行番号表示をする                                                                             
+
+;;左側に行番号表示をする
 (require 'linum)
 (global-linum-mode)
 
-;;C-h -> delete
+;; >>> UNIX POWER TOOLS 19.7 著者が勧める時間節約法 p.468 >>>
+;; CTRL-hが前の文字を削除するように定義する
+;; 通常このキーシーケンスは、ユーザを「ヘルプ」システムに案内する。
 (define-key global-map "\C-h" 'delete-backward-char)
+;; CTRL-hが検索でも確実に機能するようにする。
+(setq search-delete-char (string-to-char "\C-h"))
+;; 他の「ヘルプ」機能をバインドする (CTRL-_)。
+;; 注記：一部の端末ではCTRL-_は定義されていない。
+(define-key global-map "\C-_" 'help-command) ;; replacement
+(setq help-char (string-to-char "\C-_"))
+;; ESC-hが前の単語を削除するように定義する。
+;;(define-key global-map "\M-h" 'backword-kill-word)
+;; CTRL-x CTRL-uを「アンドウ」のコマンドにする。
+;; これはCtrlキーを離す必要がないので、「CTRL-x u」よりも便利。
+(define-key global-map "\C-x\C-u" 'undo)
+;; CTRL-zおよびESC-zで、画面を1行「上」または「下」にスクロールする。
+; (defun scroll-up-one ( ) "Scroll up 1 line." (interactive)
+;   (scroll-up (prefix-numeric-value current-prefix-arg)))
+; (defun scroll-down-one ( ) "Scroll down 1 line." (interactive)
+;   (scroll-dowon (prefix-numeric-value current-prefix-arg)))
+; (define-key global-map "\C-z" 'scroll-up-one)
+; (define-key global-map "\M-z" 'scroll-down-one)
+;; カレントファイルを画面に残しまま、CTRL-x CTRL-v
+;; を使って新しいファイルにアクセスする。
+(define-key global-map "\C-x\C-v" 'find-file-other-window)
+;; <<< END OF UNIX POWER TOOLS 19.7 著者が勧める時間節約法 p.468 <<<
 
 ;; 変数package-archivesを設定します。
 ;; https://github.com/skk-dev/ddskk/blob/master/READMEs/INSTALL.MELPA.md
