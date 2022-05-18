@@ -1,5 +1,8 @@
+;;
 ;; 基本設定
+;;
 
+;;http://www1.meijo-u.ac.jp/~kohara/cms/internal/emacs_setting
 ;;UTF-8の設定
 (set-language-environment "Japanese")
 (set-default-coding-systems 'utf-8)
@@ -7,50 +10,36 @@
 (set-keyboard-coding-system 'utf-8)
 (set-buffer-file-coding-system 'utf-8)
 
-;; バックアップファイルを作らないようにする
+;; バックアップファイルを作らないようにする                                                          
 (setq make-backup-files nil)
-;; 括弧の対応関係をハイライト表示
+;; 括弧の対応関係をハイライト表示                                                                    
 (show-paren-mode nil)
-;; スタートアップ画面を表示しないようにする
+;; スタートアップ画面を表示しないようにする                                                          
 (setq inhibit-startup-message t)
-;; ツールバーを表示しないようにする（Official Emacs の場合は 0）
+;; ツールバーを表示しないようにする（Official Emacs の場合は 0）                                     
 (tool-bar-mode 0)
-;; ツールバーを表示しないようにする（Official Emacs の場合は 0）
-;; ウィンドウ（フレーム）のサイズ設定する
-(setq default-frame-alist '((width . 100) (height . 60)))
-;;左側に行番号表示をする
+;; ツールバーを表示しないようにする（Official Emacs の場合は 0）                                     
+;; ウィンドウ（フレーム）のサイズ設定する                                                            
+(setq default-frame-alist '((width . 170) (height . 80)))
+ 
+;;左側に行番号表示をする                                                                             
 (require 'linum)
 (global-linum-mode)
-; ホームディレクトリを初期ディレクトリにする
-(cd "~/")
 
-;;ディスプレイ関係
-(if window-system (progn
-;; 文字の色を設定します。 
-(add-to-list 'default-frame-alist '(foreground-color . "white")) 
-;; 背景色を設定します。 
-(add-to-list 'default-frame-alist '(background-color . "navy")) 
-;; カーソルの色を設定します。 
-(add-to-list 'default-frame-alist '(cursor-color . "yellow")) 
-;; マウスポインタの色を設定します。 
-(add-to-list 'default-frame-alist '(mouse-color . "SlateBlue2")) 
-;; 選択中のリージョンの色を設定します。 
-(set-face-background 'region "deeppink1") 
-)
-)
-;; デフォルトの透明度を設定する (85%) 
-(add-to-list 'default-frame-alist '(alpha . 85))
-;; カレントウィンドウの透明度を変更する (85%) 
-(set-frame-parameter nil 'alpha 0.85) 
+;;C-h -> delete
+(define-key global-map "\C-h" 'delete-backward-char)
 
-;; package.elがパッケージをMELPAから取得できるように
 ;; 変数package-archivesを設定します。
 ;; https://github.com/skk-dev/ddskk/blob/master/READMEs/INSTALL.MELPA.md
 (when (require 'package nil t)
-  (add-to-list 'package-archives
-    '("melpa" . "https://melpa.org/packages/") t))
+   (add-to-list 'package-archives
+     '("melpa" . "https://melpa.org/packages/") t))
 
+
+;;
 ;; >>> DDSKK setting >>>
+;;
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -147,6 +136,7 @@
 ;; 場合は、skk-search-prog-list に指定された辞書もこの時点で読み込んで
 ;; 準備する。Emacs の起動は遅くなるが，SKK を使い始めるときのレスポンス
 ;; が軽快になる。
+;; <<< END OF DDSKK setting <<<
 
-;;; dot.emacs ends hereh
-;; <<< DDSKK setting <<<
+;;; ~/.emacs.d/init.el ends hereh
+
