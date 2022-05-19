@@ -1,2 +1,3 @@
 set exrc
+" hogehoge
 
