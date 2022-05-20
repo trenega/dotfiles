@@ -430,6 +430,10 @@ colorscheme iceberg
 " >>> Vimの生産性を高める12の方法 >>>
 " How to boost your Vim productivity (2014-03-21) by Adam Stankiewicz
 " Reference: https://postd.cc/how-to-boost-your-vim-productivity/
+" 12<Enter> を押して、12行目に移動する（ 12G だと手首が曲がってしまう）
+" Enterを押して、ファイルの末尾に移動する
+nnoremap <CR> <Nop>
+nnoremap <CR> G
 " 貼り付け時にペーストバッファが上書きされないようにする
 " vp doesn't replace paste buffer
 
