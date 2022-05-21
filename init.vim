@@ -556,21 +556,21 @@ vnoremap <silent> <C-n> V:TREPLSendSelection<CR>'>j0
 
 " >>> vim-easymotion >>>
 " Default bindings <Leader>s
-map <Leader> <Plug>(easymotion-prefix)
+" map <Leader> <Plug>(easymotion-prefix)
 " <Leader>f{char} to move to {char}
-map  <Leader>f <Plug>(easymotion-bd-f)
-nmap <Leader>f <Plug>(easymotion-overwin-f)
+" map  <Leader>f <Plug>(easymotion-bd-f)
+" nmap <Leader>f <Plug>(easymotion-overwin-f)
 
 " <Leader>S{char}{char} to move to {char}{char}
-nmap <Leader>S <Plug>(easymotion-overwin-f2)
+" nmap <Leader>S <Plug>(easymotion-overwin-f2)
 
 " Move to line
-map <Leader>L <Plug>(easymotion-bd-jk)
-nmap <Leader>L <Plug>(easymotion-overwin-line)
+" map <Leader>L <Plug>(easymotion-bd-jk)
+" nmap <Leader>L <Plug>(easymotion-overwin-line)
 
 " Move to word
-map  <Leader>wd <Plug>(easymotion-bd-w)
-nmap <Leader>wd <Plug>(easymotion-overwin-w)
+" map  <Leader>wd <Plug>(easymotion-bd-w)
+" nmap <Leader>wd <Plug>(easymotion-overwin-w)
 " <<< vim-easymotion END <<<
 
 " ----------------------------------------------------------------------------
