@@ -259,8 +259,8 @@ repo = 'cohama/lexima.vim'
 repo = 'kassio/neoterm'
 
 # vim-easymotion
-[[plugins]]
-repo = 'easymotion/vim-easymotion'
+# [[plugins]]
+# repo = 'easymotion/vim-easymotion'
 
 # Ruby coding auto insert "end" keyword
 [[plugins]]
@@ -274,4 +274,10 @@ hook_add = '''
         vmap v <Plug>(expand_region_expand)
         vmap <C-v> <Plug>(expand_region_shrink)
 '''
+
+# denops.vim
+# [[plugins]]
+# repo = 'vim-denops/denops.vim'
+# repo = 'vim-denops/denops-helloworld.vim'
+
 # END OF FILE: dein.toml
