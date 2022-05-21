@@ -532,5 +532,9 @@ ssh-add -l >& /dev/null || ssh-add
 # Use <C-q> push-line (zsh emacs keymap)
 stty start undef
 
+# Deno
+export DENO_INSTALL="/Users/nis/.deno"
+export PATH="$DENO_INSTALL/bin:$PATH"
+
 # Don't end with errors.
 # true
