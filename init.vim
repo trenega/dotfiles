@@ -124,6 +124,8 @@ set wildmenu
 set wildmode=full
 " No backup file
 set nobackup
+" Show gitgutter column always
+set signcolumn=yes
 
 " ----------------------------------------------------------------------------
 " CUSTOM COMMANDS AND FUNCTIONS
