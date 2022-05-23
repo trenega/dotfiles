@@ -124,14 +124,15 @@ on_i = 1
 repo = 'junegunn/goyo.vim'
 hook_add = '''
         nnoremap <silent> <space>gy :Goyo<CR>
+        let g:goyo_width = 60
 '''
 
 # Hyperfocus-writing in Vim
 [[plugins]]
 repo = 'junegunn/limelight.vim'
 hook_add = '''
-        nnoremap <silent> <space>ll :Limelight<CR>
-        nnoremap <silent> <space>lo :Limelight!<CR>
+        nnoremap <silent> <space>ll :Limelight!!<CR>
+        let g:limelight_default_coefficient = 0.7
 '''
 
 # END OF FILE: dein_lazy.toml
