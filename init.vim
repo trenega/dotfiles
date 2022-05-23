@@ -588,6 +588,10 @@ iabbrev .g niijimatakashi993@gmail.com
 iabbrev .t takashiniijima213@gmail.com
 iabbrev .y takashiniijima213@yahoo.co.jp
 
+" Goyo.vim integration
+autocmd! User GoyoEnter Limelight
+autocmd! User GoyoLeave Limelight!
+
 " Essential for syntax
 syntax enable
 
