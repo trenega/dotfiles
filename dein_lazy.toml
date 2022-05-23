@@ -131,6 +131,7 @@ hook_add = '''
 repo = 'junegunn/limelight.vim'
 hook_add = '''
         nnoremap <silent> <space>ll :Limelight<CR>
+        nnoremap <silent> <space>lo :Limelight!<CR>
 '''
 
 # END OF FILE: dein_lazy.toml
