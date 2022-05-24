@@ -328,8 +328,6 @@ nnoremap / /\v
 inoremap <silent> jj <Esc>
 " File Save
 inoremap <silent> js <C-o>:write<CR>
-inoremap <silent> fs <C-o>:write<CR>
-
 " Scroll to center line
 inoremap <silent> zz <C-o>zz
 " Scroll to top line
