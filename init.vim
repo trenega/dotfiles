@@ -571,12 +571,13 @@ vnoremap <silent> <C-n> V:TREPLSendSelection<CR>'>j0
 " nmap <Leader>wd <Plug>(easymotion-overwin-w)
 " <<< vim-easymotion END <<<
 
-" ----------------------------------------------------------------------------
-" abbreviation
-" ----------------------------------------------------------------------------
 " Save in VISUAL mode -> smooth save
 " https://zenn.dev/monaqa/articles/2020-12-22-vim-abbrev
 cabbrev <expr> w (getcmdtype() ==# ":" && getcmdline() ==# "'<,'>w") ? "\<C-u>w" : "w"
+
+" ----------------------------------------------------------------------------
+" abbreviation
+" ----------------------------------------------------------------------------
 
 iabbrev .b #!/bin/bash
 iabbrev .r #!/usr/bin/ruby
