@@ -118,12 +118,20 @@ NeoBundle 'kassio/neoterm'
 "Auto close parentheses and repeat by dot dot dot...
 NeoBundle 'cohama/lexima.vim'
 
+"indentLine
+NeoBundle 'Yggdroot/indentLine'
+
 "-------------------------------------------------------------
 call neobundle#end()
 
 " 未インストールのVimプラグインがある場合、
 " インストールするかどうかを尋ねてくれるようにする設定・・・③
 NeoBundleCheck
+
+"indentLine
+let g:indentLine_color_term = 239
+let g:indentLine_char =  '┊'
+
 
 " End of NeoBundle(Vimプラグインの管理) ----------------------
 
