@@ -87,39 +87,30 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 
 " カラースキームmolokai
 NeoBundle 'tomasr/molokai'
-
 " Solarized install
 NeoBundle 'altercation/vim-colors-solarized'
-
 " iceberg.vim
 NeoBundle 'cocopon/iceberg.vim'
-
 " ステータスラインの表示内容強化
 NeoBundle 'itchyny/lightline.vim'
-
 " 日本語ヘルプをインストールする
 NeoBundle 'vim-jp/vimdoc-ja'
-
 " goyo.vim setting
 NeoBundle 'junegunn/goyo.vim'
-
 " vim-sweep_trail
 NeoBundle 'vim-jp/vim-sweep_trail'
-
 " fzf.vim
 NeoBundle 'junegunn/fzf.vim'
-
 " eskk.vim
 NeoBundle 'vim-skk/eskk.vim'
-
 " neoterm
 NeoBundle 'kassio/neoterm'
-
 "Auto close parentheses and repeat by dot dot dot...
 NeoBundle 'cohama/lexima.vim'
-
 "indentLine
 NeoBundle 'Yggdroot/indentLine'
+" vim-expand-region
+NeoBundle 'terryma/vim-expand-region'
 
 "-------------------------------------------------------------
 call neobundle#end()
@@ -128,10 +119,12 @@ call neobundle#end()
 " インストールするかどうかを尋ねてくれるようにする設定・・・③
 NeoBundleCheck
 
-"indentLine
+" indentLine
 let g:indentLine_color_term = 239
 let g:indentLine_char =  '┊'
-
+" vim-expand-region
+vmap v <Plug>(expand_region_expand)
+vmap <C-v> <Plug>(expand_region_shrink)
 
 " End of NeoBundle(Vimプラグインの管理) ----------------------
 
@@ -543,6 +536,27 @@ nnoremap <leader>tl :<c-u>exec v:count.'Tclear'<cr>
 nnoremap <silent> <C-n> :TREPLSendLine<CR>j0
 vnoremap <silent> <C-n> V:TREPLSendSelection<CR>'>j0
 " <<< neoterm setting END <<<
+
+" >>> Vimの生産性を高める12の方法 >>>
+" How to boost your Vim productivity (2014-03-21) by Adam Stankiewicz
+" Reference: https://postd.cc/how-to-boost-your-vim-productivity/
+" 12<Enter> を押して、12行目に移動する（ 12G だと手首が曲がってしまう）
+" Enterを押して、ファイルの末尾に移動する
+nnoremap <CR> <Nop>
+nnoremap <CR> G
+" 貼り付け時にペーストバッファが上書きされないようにする
+" vp doesn't replace paste buffer
+
+function! RestoreRegister()
+  let @" = s:restore_reg
+  return ''
+endfunction
+function! s:Repl()
+  let s:restore_reg = @"
+  return "p@=RestoreRegister()\<cr>"
+endfunction
+vmap <silent> <expr> p <sid>Repl()
+" <<< Vimの生産性を高める12の方法 END <<<
 
 " ----------------------------------------------------------------------------
 " abbreviation
