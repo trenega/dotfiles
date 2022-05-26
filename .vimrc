@@ -112,6 +112,12 @@ NeoBundle 'junegunn/fzf.vim'
 " eskk.vim
 NeoBundle 'vim-skk/eskk.vim'
 
+" neoterm
+NeoBundle 'kassio/neoterm'
+
+"Auto close parentheses and repeat by dot dot dot...
+NeoBundle 'cohama/lexima.vim'
+
 "-------------------------------------------------------------
 call neobundle#end()
 
@@ -513,6 +519,35 @@ if has('vim_starting')
     " 置換モード時に非点滅の下線タイプのカーソル
     let &t_SR .= "\e[4 q"
     endif
+
+" >>> neoterm setting >>>
+" Wrapper of some vim/neovim's :terminal functions.
+let g:neoterm_default_mod='belowright'
+let g:neoterm_size=10
+" Command done -> dispay result
+let g:neoterm_autoscroll=1
+" TERMINAL(insert-mode) -> vim(NORMAL)
+tnoremap <silent> <C-w> <C-\><C-n><C-w>
+" 3<leader>tl will clear neoterm-3.
+nnoremap <leader>tl :<c-u>exec v:count.'Tclear'<cr>
+" RUN REPL
+"       use: C-n
+nnoremap <silent> <C-n> :TREPLSendLine<CR>j0
+vnoremap <silent> <C-n> V:TREPLSendSelection<CR>'>j0
+" <<< neoterm setting END <<<
+
+" ----------------------------------------------------------------------------
+" abbreviation
+" ----------------------------------------------------------------------------
+
+iabbrev .b #!/bin/bash
+iabbrev .r #!/usr/bin/ruby
+iabbrev EC # -*- coding: utf-8 -*-
+iabbrev .e niijimatakashi993@icloud.com
+iabbrev .g niijimatakashi993@gmail.com
+iabbrev .t takashiniijima213@gmail.com
+iabbrev .y takashiniijima213@yahoo.co.jp
+
 " ----------------------------------------------------------------------------
 " END OF FILE: .vimrc
 " ----------------------------------------------------------------------------
