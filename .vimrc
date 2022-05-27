@@ -58,6 +58,8 @@ set tabstop=8
 set wildmenu
 " List all options and complete
 set wildmode=full
+" Does not make backup file
+set nobackup
 
 " ----------------------------------------------------------------------------
 " PLUGIN SETTINGS
