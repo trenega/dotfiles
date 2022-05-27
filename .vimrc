@@ -109,8 +109,6 @@ NeoBundle 'vim-skk/eskk.vim'
 NeoBundle 'kassio/neoterm'
 "Auto close parentheses and repeat by dot dot dot...
 NeoBundle 'cohama/lexima.vim'
-"indentLine
-NeoBundle 'Yggdroot/indentLine'
 " vim-expand-region
 NeoBundle 'terryma/vim-expand-region'
 
@@ -121,9 +119,6 @@ call neobundle#end()
 " インストールするかどうかを尋ねてくれるようにする設定・・・③
 NeoBundleCheck
 
-" indentLine
-let g:indentLine_color_term = 239
-let g:indentLine_char =  '┊'
 " vim-expand-region
 vmap v <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)
