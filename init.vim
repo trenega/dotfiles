@@ -228,20 +228,20 @@ let mapleader = "\<Space>"
 " Reference: https://thinca.hatenablog.com/entry/q-as-prefix-key-in-vim
 nnoremap <Leader> <Nop>
 
-" <Space>e を押してカーソルの後ろに，新しいファイルを開く
+"新しいファイルを開く
 nnoremap <Leader>e :edit<Space>
-" <Space>w を押してファイルを保存する
-nnoremap <silent><Leader>w :<C-u>write<CR>
-" <Space>r を押してカーソルの後ろに，ファイルを挿入する
+" カーソルの後ろに，ファイルを挿入する
 nnoremap <Leader>r :read<Space>
+" ファイルを保存する
+nnoremap <silent><Leader>w :<C-u>write<CR>
+" カレントウィンドウを閉じる。最後の編集ウィンドウ |edit-window| で使うとVimを終了させる
+nnoremap <silent> <Leader>q :<C-u>quit<CR>
+" 新しいタブページを開く
+nnoremap <Leader>te :tabedit
 " 現在のウィンドウを水平に分割する
 nnoremap <Leader>sp :split<CR>
 " 現在のウィンドウを垂直に分割する
 nnoremap <Leader>vs :vsplit<CR>
-" 新しいタブページを開く
-nnoremap <Leader>te :tabedit
-" ウィンドウを閉じる
-nnoremap <silent> <Leader>q :<C-u>quit<CR>
 " ウィンドウの高さをできるだけ高くする。To Window Hight size
 nnoremap <Leader>wr :resize<CR>
 " ウィンドウの高さを5行分高くする。To Window Hight size
