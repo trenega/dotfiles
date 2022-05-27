@@ -97,6 +97,8 @@ NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'vim-jp/vimdoc-ja'
 " goyo.vim setting
 NeoBundle 'junegunn/goyo.vim'
+" limelight.vim
+NeoBundle 'junegunn/limelight.vim'
 " vim-sweep_trail
 NeoBundle 'vim-jp/vim-sweep_trail'
 " fzf.vim
@@ -125,6 +127,15 @@ let g:indentLine_char =  '┊'
 " vim-expand-region
 vmap v <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)
+
+" goyo + limelight (focus mode)
+nnoremap <silent> <space>gy :Goyo<CR>
+let g:goyo_width = 120
+nnoremap <silent> <space>ll :Limelight!!<CR>
+let g:limelight_default_coefficient = 0.7
+let g:limelight_paragraph_span = 1
+autocmd! User GoyoEnter Limelight
+autocmd! User GoyoLeave Limelight!
 
 " End of NeoBundle(Vimプラグインの管理) ----------------------
 
