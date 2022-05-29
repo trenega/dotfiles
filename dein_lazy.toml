@@ -133,7 +133,12 @@ repo = 'junegunn/limelight.vim'
 hook_add = '''
         nnoremap <silent> <space>ll :Limelight!!<CR>
         let g:limelight_default_coefficient = 0.7
-        let g:limelight_conceal_ctermfg = 240
+'''
+# quickrun.vim
+[[plugins]]
+repo = 'thinca/vim-quickrun'
+hook_add = '''
+        nnoremap <Leader>r:QuickRun<CR>
 '''
 
 # END OF FILE: dein_lazy.toml
