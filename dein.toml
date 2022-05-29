@@ -285,4 +285,12 @@ hook_add = '''
 [[plugins]]
 repo = 'tpope/vim-abolish'
 
+# quickrun.vim
+[[plugins]]
+repo = 'thinca/vim-quickrun'
+hook_add = '''
+        nnoremap ,r :QuickRun<Space>
+        let g:quickrun_config={'*': {'split': ''}}
+        set splitbelow
+'''
 # END OF FILE: dein.toml
