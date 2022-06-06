@@ -536,5 +536,10 @@ stty start undef
 export DENO_INSTALL="/Users/nis/.deno"
 export PATH="$DENO_INSTALL/bin:$PATH"
 
+# GEM PATHS
+export PATH="/usr/local/lib/ruby/gems/3.1.0:$PATH"
+export PATH="/Users/nis/.gem/ruby/3.1.0:$PATH"
+export PATH="/usr/local/Cellar/ruby/3.1.2/lib/ruby/gems/3.1.0:$PATH"
+
 # Don't end with errors.
 # true
