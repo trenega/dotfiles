@@ -565,12 +565,6 @@ iabbrev .y takashiniijima213@yahoo.co.jp
 autocmd! User GoyoEnter Limelight
 autocmd! User GoyoLeave Limelight!
 
-" smartchr
-inoremap <buffer> <expr> = smartchr#one_of(' = ', ' == ', ' === ', '=')
-inoremap <buffer> <expr> + smartchr#one_of(' + ', '+')
-inoremap <buffer> <expr> - smartchr#one_of(' - ', '-')
-inoremap <buffer> <expr> , smartchr#one_of(', ', ',')
-
 " Essential for syntax
 syntax enable
 
