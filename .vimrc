@@ -628,6 +628,12 @@ endfunction
 vmap <silent> <expr> p <sid>Repl()
 " <<< Vimの生産性を高める12の方法 END <<<
 
+"cpと打つと ペーストモードになる
+" https://kekaku.addisteria.com/wp/20170621231629
+nnoremap cp :set paste<CR>
+"挿入モードを抜けるとき、set nopaste を実行する。
+autocmd InsertLeave * set nopaste
+
 " ----------------------------------------------------------------------------
 " abbreviation
 " ----------------------------------------------------------------------------
