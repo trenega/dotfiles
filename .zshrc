@@ -541,5 +541,8 @@ export PATH="/usr/local/lib/ruby/gems/3.1.0:$PATH"
 export PATH="/Users/nis/.gem/ruby/3.1.0:$PATH"
 export PATH="/usr/local/Cellar/ruby/3.1.2/lib/ruby/gems/3.1.0:$PATH"
 
+# ddc-nextword
+export NEXTWORD_DATA_PATH="~/.vim/plugged/ddc-nextword"
+
 # Don't end with errors.
 # true
