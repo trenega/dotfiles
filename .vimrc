@@ -630,9 +630,13 @@ vmap <silent> <expr> p <sid>Repl()
 
 "cpと打つと ペーストモードになる
 " https://kekaku.addisteria.com/wp/20170621231629
-nnoremap cp :set paste<CR>
+nnoremap pa :set paste<CR>
 "挿入モードを抜けるとき、set nopaste を実行する。
 autocmd InsertLeave * set nopaste
+
+" NOMAL modeのカーソルを点滅させる
+" https://chanko.hatenadiary.jp/entry/2016/10/28/162648
+let &t_EI .= "\e[1 q"
 
 " ----------------------------------------------------------------------------
 " abbreviation
