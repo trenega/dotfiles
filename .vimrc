@@ -60,7 +60,8 @@ set wildmenu
 set wildmode=full
 " Does not make backup file
 set nobackup
-
+" lexima option
+set backspace=indent,eol,start
 " ----------------------------------------------------------------------------
 " PLUGIN SETTINGS
 " ----------------------------------------------------------------------------
@@ -167,23 +168,42 @@ set noshowmode
 " vim-plug
 " ----------------------------------------------------------------------------
 call plug#begin('~/.vim/plugged')
+" ddc.vim -----------------------------
 Plug 'Shougo/ddc.vim'
 Plug 'vim-denops/denops.vim'
-Plug 'vim-denops/denops-helloworld.vim'
+
+" Install your sources
 Plug 'Shougo/ddc-around'
+Plug 'Shougo/ddc-nextword'
+
+" Install your filters
 Plug 'Shougo/ddc-matcher_head'
 Plug 'Shougo/ddc-sorter_rank'
-Plug 'Shougo/ddc-nextword'
+" END OF ddc.vim -----------------------
 call plug#end()
 
 " >>> ddc.vim >>>
-call ddc#custom#patch_global('sources', ['around', 'nextword'])
+" https://github.com/Shougo/ddc.vim
+" Customize global settings
+" Use around source.
+" https://github.com/Shougo/ddc-around
+call ddc#custom#patch_global('sources', ['around'])
+
+" Use matcher_head and sorter_rank.
+" https://github.com/Shougo/ddc-matcher_head
+" https://github.com/Shougo/ddc-sorter_rank
 call ddc#custom#patch_global('sourceOptions', {
-      \ 'around': {'mark': 'A'},
-      \ 'nextword': {'mark': 'nextword'},
       \ '_': {
       \   'matchers': ['matcher_head'],
       \   'sorters': ['sorter_rank']},
+      \ })
+
+" Change source options
+call ddc#custom#patch_global('sourceOptions', {
+      \ 'around': {'mark': 'A'},
+      \ })
+call ddc#custom#patch_global('sourceParams', {
+      \ 'around': {'maxSize': 500},
       \ })
 
 " Mappings
