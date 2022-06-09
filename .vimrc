@@ -2,7 +2,7 @@
 " |
 " File name     :  .vimrc
 " Copyright     :  nis
-" Modified      :  2022/05/15 16:19
+" Modified      :  2022/06/09 11:42
 "-----------------------------------------------------------------------------
 
 set nocompatible
@@ -173,7 +173,7 @@ call plug#begin('~/.vim/plugged')
 " ddc.vim -----------------------------
 Plug 'Shougo/ddc.vim'
 Plug 'vim-denops/denops.vim'
-
+Plug 'Shougo/pum.vim'
 " Install your sources
 Plug 'Shougo/ddc-around'
 Plug 'Shougo/ddc-nextword'
@@ -181,6 +181,7 @@ Plug 'Shougo/ddc-nextword'
 " Install your filters
 Plug 'Shougo/ddc-matcher_head'
 Plug 'Shougo/ddc-sorter_rank'
+
 " END OF ddc.vim -----------------------
 " Mark change on vim
 Plug 'airblade/vim-gitgutter'
