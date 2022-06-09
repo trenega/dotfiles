@@ -182,7 +182,10 @@ Plug 'Shougo/ddc-nextword'
 Plug 'Shougo/ddc-matcher_head'
 Plug 'Shougo/ddc-sorter_rank'
 " END OF ddc.vim -----------------------
+" Mark change on vim
 Plug 'airblade/vim-gitgutter'
+" Git on vim
+Plug 'tpope/vim-fugitive'
 call plug#end()
 
 " >>> ddc.vim >>>
