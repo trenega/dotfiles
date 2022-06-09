@@ -62,6 +62,8 @@ set wildmode=full
 set nobackup
 " lexima option
 set backspace=indent,eol,start
+" Show gitgutter column always
+set signcolumn=yes
 " ----------------------------------------------------------------------------
 " PLUGIN SETTINGS
 " ----------------------------------------------------------------------------
@@ -180,6 +182,7 @@ Plug 'Shougo/ddc-nextword'
 Plug 'Shougo/ddc-matcher_head'
 Plug 'Shougo/ddc-sorter_rank'
 " END OF ddc.vim -----------------------
+Plug 'airblade/vim-gitgutter'
 call plug#end()
 
 " >>> ddc.vim >>>
@@ -428,8 +431,6 @@ nnoremap / /\v
 inoremap <silent> jj <Esc>
 " File Save
 inoremap <silent> js <C-o>:write<CR>
-inoremap <silent> fs <C-o>:write<CR>
-
 " Scroll to center line
 inoremap <silent> zz <C-o>zz
 " Scroll to top line
