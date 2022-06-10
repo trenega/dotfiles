@@ -197,35 +197,13 @@ Plug 'tpope/vim-fugitive'
 call plug#end()
 
 " >>> ddc.vim >>>
-" Customize global settings
-" Use around source.
-" https://github.com/Shougo/ddc-around
-call ddc#custom#patch_global('sources', ['around'])
 
-" Use matcher_head and sorter_rank.
-" https://github.com/Shougo/ddc-matcher_head
-" https://github.com/Shougo/ddc-sorter_rank
+call ddc#custom#patch_global('sources', ['around'])
 call ddc#custom#patch_global('sourceOptions', {
+      \ 'around': {'mark': 'A'},
       \ '_': {
       \   'matchers': ['matcher_head'],
       \   'sorters': ['sorter_rank']},
-      \ })
-
-" Change source options
-call ddc#custom#patch_global('sourceOptions', {
-      \ 'around': {'mark': 'A'},
-      \ })
-call ddc#custom#patch_global('sourceParams', {
-      \ 'around': {'maxSize': 500},
-      \ })
-
-" Customize settings on a filetype
-call ddc#custom#patch_filetype(['rb'], 'sources', ['around', 'clangd'])
-call ddc#custom#patch_filetype(['rb'], 'sourceOptions', {
-      \ 'clangd': {'mark': 'R'},
-      \ })
-call ddc#custom#patch_filetype('markdown', 'sourceParams', {
-      \ 'around': {'maxSize': 100},
       \ })
 
 " Mappings
@@ -241,6 +219,7 @@ inoremap <expr><S-TAB>  ddc#map#pum_visible() ? '<C-p>' : '<C-h>'
 
 " Use ddc.
 call ddc#enable()
+
 " <<< END OF ddc.vim <<<
 
 " ----------------------------------------------------------------------------
