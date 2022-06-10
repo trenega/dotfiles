@@ -174,6 +174,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'Shougo/ddc.vim'
 Plug 'vim-denops/denops.vim'
 Plug 'Shougo/pum.vim'
+
 " Install your sources
 Plug 'Shougo/ddc-around'
 Plug 'Shougo/ddc-nextword'
@@ -187,6 +188,7 @@ Plug 'LumaKernel/ddc-file'
 Plug 'Shougo/ddc-matcher_head'
 " 補完候補の重複を防ぐためのfilter
 Plug 'Shougo/ddc-converter_remove_overlap'
+
 Plug 'mattn/vim-lsp-settings'
 Plug 'prabirshrestha/vim-lsp'
 " END OF ddc.vim -----------------------
@@ -195,42 +197,54 @@ Plug 'airblade/vim-gitgutter'
 " Git on vim
 Plug 'tpope/vim-fugitive'
 call plug#end()
-
-" >>> ddc.vim >>>
-
-call ddc#custom#patch_global('sources', ['around'])
-call ddc#custom#patch_global('sourceOptions', {
-      \ 'around': {'mark': 'A'},
-      \ '_': {
-      \   'matchers': ['matcher_head'],
-      \   'sorters': ['sorter_rank']},
-      \ })
-
-" Mappings
-
-" <TAB>: completion.
-inoremap <silent><expr> <TAB>
-\ ddc#map#pum_visible() ? '<C-n>' :
-\ (col('.') <= 1 <Bar><Bar> getline('.')[col('.') - 2] =~# '\s') ?
-\ '<TAB>' : ddc#map#manual_complete()
-
-" <S-TAB>: completion back.
-inoremap <expr><S-TAB>  ddc#map#pum_visible() ? '<C-p>' : '<C-h>'
-
-" Use ddc.
-call ddc#enable()
-
-" <<< END OF ddc.vim <<<
-
 " ----------------------------------------------------------------------------
 " END OF vim-plug
 " ----------------------------------------------------------------------------
 
+" >>> ddc.vim >>>
+" https://note.com/dd_techblog/n/n97f2b6ca09d8
+call plug#('Shougo/ddc.vim')
+call plug#('vim-denops/denops.vim')
+call plug#('Shougo/pum.vim')
+call plug#('Shougo/ddc-around')
+call plug#('LumaKernel/ddc-file')
+call plug#('Shougo/ddc-matcher_head')
+call plug#('Shougo/ddc-sorter_rank')
+call plug#('Shougo/ddc-converter_remove_overlap')
+call plug#('prabirshrestha/vim-lsp')
+call plug#('mattn/vim-lsp-settings')
+
+call ddc#custom#patch_global('completionMenu', 'pum.vim')
+call ddc#custom#patch_global('sources', [
+ \ 'around',
+ \ 'file'
+ \ ])
+call ddc#custom#patch_global('sourceOptions', {
+ \ '_': {
+ \   'matchers': ['matcher_head'],
+ \   'sorters': ['sorter_rank'],
+ \   'converters': ['converter_remove_overlap'],
+ \ },
+ \ 'around': {'mark': 'Around'},
+ \ 'vim-lsp': {
+ \   'mark': 'LSP',
+ \   'mtchers': ['matcher_head'],
+ \   'forceCompletionPattern': '\.|:|->|"\w+/*'
+ \ },
+ \ 'file': {
+ \   'mark': 'file',
+ \   'isVolatile': v:true,
+ \   'forceCompletionPattern': '\S/\S*'
+ \ }})
+call ddc#enable()
+
+inoremap <Tab> <Cmd>call pum#map#insert_relative(+1)<CR>
+inoremap <S-Tab> <Cmd>call pum#map#insert_relative(-1)<CR>
+" <<< END OF ddc.vim <<<
+
 " ----------------------------------------------------------------------------
 " CUSTOM COMMANDS AND FUNCTIONS
 " ----------------------------------------------------------------------------
-
-" >>> インサートモードから出ずにVimを使いこなす >>>
 " Reference:
 " https://woodyzootopia.github.io/2019/11/インサートモードから出ずにVimを使いこなす
 " cnoremap mode: command line
