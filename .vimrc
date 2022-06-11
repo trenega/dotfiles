@@ -454,6 +454,7 @@ nnoremap g# g#zz
 
 " 'verymagic'
 nnoremap / /\v
+nnoremap ? ?\v
 
 " >>> INSERT MODE KEYMAPS >>>
 " Change INSERT mode to NORMAL mode
