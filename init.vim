@@ -141,6 +141,9 @@ nnoremap gk k
 inoremap <C-c> <ESC>
 " カーソル位置から末尾までをヤンクする
 nnoremap Y y$
+" 現在編集中のバッファパスを展開する
+cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
+
 " >>> インサートモードから出ずにVimを使いこなす >>>
 " Reference:
 " https://woodyzootopia.github.io/2019/11/インサートモードから出ずにVimを使いこなす
