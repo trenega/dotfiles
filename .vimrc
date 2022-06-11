@@ -253,6 +253,8 @@ nnoremap j gj
 nnoremap k gk
 nnoremap gj j
 nnoremap gk k
+" <C-c>を完全な<ESC>に
+inoremap <C-c> <ESC>
 
 " Reference:
 " https://woodyzootopia.github.io/2019/11/インサートモードから出ずにVimを使いこなす
