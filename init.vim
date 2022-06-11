@@ -139,7 +139,8 @@ nnoremap gj j
 nnoremap gk k
 " <C-c>を完全な<ESC>に
 inoremap <C-c> <ESC>
-
+" カーソル位置から末尾までをヤンクする
+nnoremap Y y$
 " >>> インサートモードから出ずにVimを使いこなす >>>
 " Reference:
 " https://woodyzootopia.github.io/2019/11/インサートモードから出ずにVimを使いこなす
