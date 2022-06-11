@@ -247,7 +247,7 @@ inoremap <S-Tab> <Cmd>call pum#map#insert_relative(-1)<CR>
 " ----------------------------------------------------------------------------
 
 " ------- basic keymapping -------- "
-
+" https://www.kickbase.net/entry/vim-basic-keymap03
 " 論理行移動と表示行移動を入れ替える
 nnoremap j gj
 nnoremap k gk
@@ -257,10 +257,12 @@ nnoremap gk k
 inoremap <C-c> <ESC>
 " カーソル位置から末尾までをヤンクする
 nnoremap Y y$
-" 現在編集中のバッファパスを展開する
+" プロンプトで%%を入力すると現在編集中のバッファパスを展開する
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
+" 現在編集しているファイルを他のエディタで開く
+map <f7> :!open -a /Applications/Sublime\ Text.app %<CR>
 
-" Reference:
+" >>> インサートモードから出ずにVimを使いこなす >>>
 " https://woodyzootopia.github.io/2019/11/インサートモードから出ずにVimを使いこなす
 " cnoremap mode: command line
 " inoremap mode: insert
