@@ -131,6 +131,13 @@ set signcolumn=yes
 " CUSTOM COMMANDS AND FUNCTIONS
 " ----------------------------------------------------------------------------
 
+" ------- basic keymapping -------- "
+" 論理行移動と表示行移動を入れ替える
+nnoremap j gj
+nnoremap k gk
+nnoremap gj j
+nnoremap gk k
+
 " >>> インサートモードから出ずにVimを使いこなす >>>
 " Reference:
 " https://woodyzootopia.github.io/2019/11/インサートモードから出ずにVimを使いこなす
