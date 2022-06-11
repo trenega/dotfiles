@@ -137,6 +137,8 @@ nnoremap j gj
 nnoremap k gk
 nnoremap gj j
 nnoremap gk k
+" <C-c>を完全な<ESC>に
+inoremap <C-c> <ESC>
 
 " >>> インサートモードから出ずにVimを使いこなす >>>
 " Reference:
