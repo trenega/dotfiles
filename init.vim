@@ -141,8 +141,10 @@ nnoremap gk k
 inoremap <C-c> <ESC>
 " カーソル位置から末尾までをヤンクする
 nnoremap Y y$
-" 現在編集中のバッファパスを展開する
+" プロンプトで%%を入力すると現在編集中のバッファパスを展開する
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
+" 現在編集しているファイルを他のエディタで開く
+map <f7> :!open -a /Applications/Sublime\ Text.app %<CR>
 
 " >>> インサートモードから出ずにVimを使いこなす >>>
 " Reference:
