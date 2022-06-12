@@ -175,6 +175,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'Shougo/ddc.vim'
 Plug 'vim-denops/denops.vim'
 Plug 'Shougo/pum.vim'
+Plug 'shun/ddc-vim-lsp'
 
 " Install your sources
 Plug 'Shougo/ddc-around'
@@ -218,6 +219,7 @@ call plug#('mattn/vim-lsp-settings')
 call ddc#custom#patch_global('completionMenu', 'pum.vim')
 call ddc#custom#patch_global('sources', [
  \ 'around',
+ \ 'vim-lsp',
  \ 'file'
  \ ])
 call ddc#custom#patch_global('sourceOptions', {
