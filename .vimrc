@@ -198,6 +198,11 @@ Plug 'prabirshrestha/vim-lsp'
 Plug 'airblade/vim-gitgutter'
 " Git on vim
 Plug 'tpope/vim-fugitive'
+" surround.vim: Delete/change/add parentheses/quotes/XML-tags/much more with ease
+Plug 'tpope/vim-surround'
+" repeat.vim: enable repeating supported plugin maps with "."
+Plug 'tpope/vim-repeat'
+
 call plug#end()
 " ----------------------------------------------------------------------------
 " END OF vim-plug
