@@ -62,9 +62,8 @@ set wildmode=full
 set nobackup
 " lexima option
 set backspace=indent,eol,start
-" 左端にdiagnosticsなどを表示するための領域を消す
-setlocal signcolumn=no
-
+" Show gitgutter column always
+set signcolumn=yes
 " ----------------------------------------------------------------------------
 " PLUGIN SETTINGS
 " ----------------------------------------------------------------------------
@@ -175,8 +174,6 @@ call plug#begin('~/.vim/plugged')
 Plug 'Shougo/ddc.vim'
 Plug 'vim-denops/denops.vim'
 Plug 'Shougo/pum.vim'
-Plug 'shun/ddc-vim-lsp'
-
 " Install your sources
 Plug 'Shougo/ddc-around'
 Plug 'Shougo/ddc-nextword'
@@ -184,138 +181,63 @@ Plug 'Shougo/ddc-nextword'
 " Install your filters
 Plug 'Shougo/ddc-matcher_head'
 Plug 'Shougo/ddc-sorter_rank'
-" ファイル名を補完するsource
-Plug 'LumaKernel/ddc-file'
-" 入力中の単語を補完の対象にするfilter
-Plug 'Shougo/ddc-matcher_head'
-" 補完候補の重複を防ぐためのfilter
-Plug 'Shougo/ddc-converter_remove_overlap'
 
-Plug 'mattn/vim-lsp-settings'
-Plug 'prabirshrestha/vim-lsp'
 " END OF ddc.vim -----------------------
 " Mark change on vim
 Plug 'airblade/vim-gitgutter'
 " Git on vim
 Plug 'tpope/vim-fugitive'
-" surround.vim: Delete/change/add parentheses/quotes/XML-tags/much more with ease
-Plug 'tpope/vim-surround'
-" repeat.vim: enable repeating supported plugin maps with "."
-Plug 'tpope/vim-repeat'
-
 call plug#end()
+
+" >>> ddc.vim >>>
+" https://github.com/Shougo/ddc.vim
+" Customize global settings
+" Use around source.
+" https://github.com/Shougo/ddc-around
+call ddc#custom#patch_global('sources', ['around'])
+
+" Use matcher_head and sorter_rank.
+" https://github.com/Shougo/ddc-matcher_head
+" https://github.com/Shougo/ddc-sorter_rank
+call ddc#custom#patch_global('sourceOptions', {
+      \ '_': {
+      \   'matchers': ['matcher_head'],
+      \   'sorters': ['sorter_rank']},
+      \ })
+
+" Change source options
+call ddc#custom#patch_global('sourceOptions', {
+      \ 'around': {'mark': 'A'},
+      \ })
+call ddc#custom#patch_global('sourceParams', {
+      \ 'around': {'maxSize': 500},
+      \ })
+
+" Mappings
+
+" <TAB>: completion.
+inoremap <silent><expr> <TAB>
+\ ddc#map#pum_visible() ? '<C-n>' :
+\ (col('.') <= 1 <Bar><Bar> getline('.')[col('.') - 2] =~# '\s') ?
+\ '<TAB>' : ddc#map#manual_complete()
+
+" <S-TAB>: completion back.
+inoremap <expr><S-TAB>  ddc#map#pum_visible() ? '<C-p>' : '<C-h>'
+
+" Use ddc.
+call ddc#enable()
+" <<< END OF ddc.vim <<<
+
 " ----------------------------------------------------------------------------
 " END OF vim-plug
 " ----------------------------------------------------------------------------
-
-" >>> vim-lsp >>>
-" https://github.com/prabirshrestha/vim-lsp/wiki/Servers-Ruby
-if executable('solargraph')
-    " gem install solargraph
-    au User lsp_setup call lsp#register_server({
-        \ 'name': 'solargraph',
-        \ 'cmd': {server_info->[&shell, &shellcmdflag, 'solargraph stdio']},
-        \ 'initialization_options': {"diagnostics": "true"},
-        \ 'whitelist': ['ruby'],
-        \ })
-endif
-
-function! s:on_lsp_buffer_enabled() abort
-    setlocal omnifunc=lsp#complete
-    setlocal signcolumn=no
-    if exists('+tagfunc') | setlocal tagfunc=lsp#tagfunc | endif
-    nmap <buffer> gd <plug>(lsp-definition)
-    nmap <buffer> gs <plug>(lsp-document-symbol-search)
-    nmap <buffer> gS <plug>(lsp-workspace-symbol-search)
-    nmap <buffer> gr <plug>(lsp-references)
-    nmap <buffer> gi <plug>(lsp-implementation)
-    nmap <buffer> gt <plug>(lsp-type-definition)
-    nmap <buffer> <leader>rn <plug>(lsp-rename)
-    nmap <buffer> [g <plug>(lsp-previous-diagnostic)
-    nmap <buffer> ]g <plug>(lsp-next-diagnostic)
-    nmap <buffer> K <plug>(lsp-hover)
-    nnoremap <buffer> <expr><c-f> lsp#scroll(+4)
-    nnoremap <buffer> <expr><c-d> lsp#scroll(-4)
-
-    let g:lsp_format_sync_timeout = 1000
-    autocmd! BufWritePre *.rs,*.go call execute('LspDocumentFormatSync')
-
-    " refer to doc to add more commands
-endfunction
-
-augroup lsp_install
-    au!
-    " call s:on_lsp_buffer_enabled only for languages that has the server registered.
-    autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
-augroup END
-
-" <<< END OF vim-lsp <<<
-
-" >>> ddc.vim >>>
-" https://note.com/dd_techblog/n/n97f2b6ca09d8
-call plug#('Shougo/ddc.vim')
-call plug#('vim-denops/denops.vim')
-call plug#('Shougo/pum.vim')
-call plug#('Shougo/ddc-around')
-call plug#('LumaKernel/ddc-file')
-call plug#('Shougo/ddc-matcher_head')
-call plug#('Shougo/ddc-sorter_rank')
-call plug#('Shougo/ddc-converter_remove_overlap')
-call plug#('prabirshrestha/vim-lsp')
-call plug#('mattn/vim-lsp-settings')
-
-call ddc#custom#patch_global('completionMenu', 'pum.vim')
-call ddc#custom#patch_global('sources', [
- \ 'around',
- \ 'vim-lsp',
- \ 'file'
- \ ])
-call ddc#custom#patch_global('sourceOptions', {
- \ '_': {
- \   'matchers': ['matcher_head'],
- \   'sorters': ['sorter_rank'],
- \   'converters': ['converter_remove_overlap'],
- \ },
- \ 'around': {'mark': 'Around'},
- \ 'vim-lsp': {
- \   'mark': 'LSP',
- \   'mtchers': ['matcher_head'],
- \   'forceCompletionPattern': '\.|:|->|"\w+/*'
- \ },
- \ 'file': {
- \   'mark': 'file',
- \   'isVolatile': v:true,
- \   'forceCompletionPattern': '\S/\S*'
- \ }})
-call ddc#enable()
-
-inoremap <Tab> <Cmd>call pum#map#insert_relative(+1)<CR>
-inoremap <S-Tab> <Cmd>call pum#map#insert_relative(-1)<CR>
-" <<< END OF ddc.vim <<<
-
-
 
 " ----------------------------------------------------------------------------
 " CUSTOM COMMANDS AND FUNCTIONS
 " ----------------------------------------------------------------------------
 
-" ------- basic keymapping -------- "
-" https://www.kickbase.net/entry/vim-basic-keymap03
-" 論理行移動と表示行移動を入れ替える
-nnoremap j gj
-nnoremap k gk
-nnoremap gj j
-nnoremap gk k
-" <C-c>を完全な<ESC>に
-inoremap <C-c> <ESC>
-" カーソル位置から末尾までをヤンクする
-nnoremap Y y$
-" プロンプトで%%を入力すると現在編集中のバッファパスを展開する
-cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
-" 現在編集しているファイルを他のエディタで開く
-map <f7> :!open -a /Applications/Sublime\ Text.app %<CR>
-
 " >>> インサートモードから出ずにVimを使いこなす >>>
+" Reference:
 " https://woodyzootopia.github.io/2019/11/インサートモードから出ずにVimを使いこなす
 " cnoremap mode: command line
 " inoremap mode: insert
@@ -507,7 +429,6 @@ nnoremap g# g#zz
 
 " 'verymagic'
 nnoremap / /\v
-nnoremap ? ?\v
 
 " >>> INSERT MODE KEYMAPS >>>
 " Change INSERT mode to NORMAL mode
