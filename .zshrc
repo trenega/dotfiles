@@ -121,6 +121,10 @@ alias gcc='gcc -fno-pic -fomit-frame-pointer'
 # vim current file complement
 alias vimf='vim -o `fzf`'
 alias e='emacs'
+# Rust cargo commands
+alias cb='cargo build'
+alias cr='cargo run'
+alias cc='cargo check'
 
 # -------------------------------------------------------------------
 # Suffix aliases(起動コマンドは環境によって変更する)
