@@ -47,13 +47,13 @@ set relativenumber
 set smartcase
 set smartindent
 " Number of spaces to shift for autoindent or >,<
-set shiftwidth=8
+set shiftwidth=4
 " Hilight matching braces/parens/etc.
 set showmatch
 " Spaces 'feel' like tabs
-set softtabstop=8
+set softtabstop=4
 " The One True Tab
-set tabstop=8
+set tabstop=4
 " Show possible completions on command line
 set wildmenu
 " List all options and complete
@@ -189,6 +189,10 @@ Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
+
+" Disply indent line
+Plug 'Yggdroot/indentLine'
+
 call plug#end()
 
 " >>> ddc.vim >>>
@@ -230,9 +234,16 @@ inoremap <expr><S-TAB>  ddc#map#pum_visible() ? '<C-p>' : '<C-h>'
 call ddc#enable()
 " <<< END OF ddc.vim <<<
 
+" indentLine
+let g:indentLine_color_term = 239
+let g:indentLine_char =  '┊'
+
 " ----------------------------------------------------------------------------
 " END OF vim-plug
 " ----------------------------------------------------------------------------
+
+" Use vim-polyglot
+set runtimepath+=~/src/vim-polyglot
 
 " ----------------------------------------------------------------------------
 " CUSTOM COMMANDS AND FUNCTIONS
