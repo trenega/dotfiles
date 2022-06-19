@@ -125,6 +125,7 @@ alias e='emacs'
 alias cb='cargo build'
 alias cr='cargo run'
 alias cc='cargo check'
+alias c='cargo'
 
 # -------------------------------------------------------------------
 # Suffix aliases(起動コマンドは環境によって変更する)
