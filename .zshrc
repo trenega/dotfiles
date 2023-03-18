@@ -2,7 +2,7 @@
 #
 #  File name     :  ~/.zshrc
 #  Copyright     :  nis
-#  Modified      :  2022/03/23 16:35
+#  Modified      :  2023/03/18 11:24
 #
 #  .zshrc file
 #  initial setup file for only interactive zsh
