@@ -535,7 +535,7 @@ let g:neoterm_autoscroll=1
 " TERMINAL(insert-mode) -> vim(NORMAL)
 tnoremap <silent> <C-w> <C-\><C-n><C-w>
 " 3<leader>tl will clear neoterm-3.
-nnoremap <leader>tl :<c-u>exec v:count.'Tclear'<cr>
+nnoremap <Leader>tl :<c-u>exec v:count.'Tclear'<cr>
 " RUN REPL
 "       use: C-n
 nnoremap <silent> <C-n> :TREPLSendLine<CR>j0
@@ -571,6 +571,7 @@ cabbrev <expr> w (getcmdtype() ==# ":" && getcmdline() ==# "'<,'>w") ? "\<C-u>w"
 
 iabbrev .b #!/bin/bash
 iabbrev .r #!/usr/bin/ruby
+iabbrev .p #!/usr/bin/perl
 iabbrev EC # -*- coding: utf-8 -*-
 iabbrev .e niijimatakashi993@icloud.com
 iabbrev .g niijimatakashi993@gmail.com
