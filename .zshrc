@@ -553,5 +553,8 @@ export NEXTWORD_DATA_PATH="~/.vim/plugged/ddc-nextword"
 export GOPATH=$(go env GOPATH)
 export PATH=$PATH:$(go env GOPATH)/bin
 
+# cpanm PATH
+export PATH="/Users/nis/bin:$PATH"
+
 # Don't end with errors.
 # true
