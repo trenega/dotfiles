@@ -556,5 +556,8 @@ export PATH=$PATH:$(go env GOPATH)/bin
 # cpanm PATH
 export PATH="/Users/nis/bin:$PATH"
 
+# local::lib PATH
+eval $(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib)
+
 # Don't end with errors.
 # true
