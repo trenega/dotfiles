@@ -499,6 +499,8 @@ fi
 
 [ -f "/Users/nis/.ghcup/env" ] && source "/Users/nis/.ghcup/env" # ghcup-env
 
+# Shell統合
+# https://www.rasukarusan.com/entry/2019/04/13/180443
 source ~/.iterm2_shell_integration.zsh
 
 # >>> Terminalの現在行をエディタで編集して実行する >>>
@@ -560,6 +562,21 @@ export PATH="/Users/nis/bin:$PATH"
 
 # local::lib PATH
 eval $(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib)
+
+# zsh-autosuggestions.zsh
+source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+# iTermil2のウィンドウとタブに自動的に名前をつける
+# https://qiita.com/junkoda/items/8c0c209edbbabfd27f29
+function precmd() {
+  # カレントディレクトリを $HOME を ~ として表示
+  local wname=`pwd | sed -e "s|$HOME|~|"`
+  # カレントディレクトリ名
+  local tname=`pwd | sed -e 's|^.*/||'`
+
+  echo -ne "\033]2;$wname\007" # window title
+  echo -ne "\033]1;$tname\007" # tab title
+}
 
 # Don't end with errors.
 # true
