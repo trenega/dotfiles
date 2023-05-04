@@ -40,8 +40,10 @@ setopt cdable_vars sh_word_split auto_param_keys pushd_ignore_dups
 setopt correct
 setopt PUSHD_IGNORE_DUPS
 # 便利だが副作用の強いものはコメントアウト
-#setopt auto_menu  correct rm_star_silent sun_keyboard_hack
-#setopt share_history inc_append_history
+#setopt auto_menu  correct rm_star_silent sun_keyboard_hack inc_append_history
+setopt share_history hist_reduce_blanks hist_ignore_all_dups
+
+
 
 # -------------------------------------------------------------------
 # ALIAS AND FUNCTIONS
