@@ -582,6 +582,21 @@ iabbrev .y takashiniijima213@yahoo.co.jp
 autocmd! User GoyoEnter Limelight
 autocmd! User GoyoLeave Limelight!
 
+" https://zenn.dev/eqs/scraps/694f16529cdd70
+lang en_US.UTF-8
+
+" Terminal
+" https://qiita.com/Lennon_x00x_/items/e8fa47d27aaab9635161
+" 新規タブでターミナルモードを起動
+nnoremap <silent> tt <cmd>terminal<CR>
+" 下分割でターミナルモードを起動
+nnoremap <silent> tx <cmd>belowright new<CR><cmd>terminal<CR>
+" ターミナルを開いたらに常にinsertモードに入る
+autocmd TermOpen * :startinsert
+" ターミナルモードで行番号を非表示
+autocmd TermOpen * setlocal norelativenumber
+autocmd TermOpen * setlocal nonumber
+
 " Essential for syntax
 syntax enable
 
