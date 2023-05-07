@@ -126,6 +126,8 @@ set wildmode=full
 set nobackup
 " Show gitgutter column always
 set signcolumn=yes
+" ノーマルモードで入力したコマンドが右下に表示される
+set background=dark
 
 " ----------------------------------------------------------------------------
 " CUSTOM COMMANDS AND FUNCTIONS
