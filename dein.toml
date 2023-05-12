@@ -292,4 +292,7 @@ hook_add = '''
         let g:quickrun_config={'*': {'split': ''}}
         set splitbelow
 '''
+# ryicoh/deepl.vim
+repo = 'ryicoh/deepl'
+
 # END OF FILE: dein.toml
