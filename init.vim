@@ -641,6 +641,11 @@ augroup defx_config
 augroup END
 " <<< TerminalからDefx.nvimを起動する END <<<
 
+" Defx.nvim 自動更新
+" https://qiita.com/arks22/items/9688ec7f4cb43444e9d9
+autocmd BufWritePost * call defx#redraw()
+autocmd BufEnter * call defx#redraw()
+
 " Essential for syntax
 syntax enable
 
