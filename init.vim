@@ -606,18 +606,6 @@ tnoremap <Esc> <C-\><C-n>
 " Essential for syntax
 syntax enable
 
-" >>> DeepL API >>>
-" フリー版のエンドポイントを指定
-let g:deepl#endpoint = "https://api-free.deepl.com/v2/translate"
-
-" 先ほどコピペしたAuthKeyを指定
-let g:deepl#auth_key = "027ec6a8-c7a9-627c-40d6-2a6b3824b210:fx"
-
-" キーマップを指定。t => CTRL+j で日本語変換、t => CTRL+e で英語変換するように設定します。
-vmap t<C-j> <Cmd>call deepl#v("JA")<CR>
-vmap t<C-e> <Cmd>call deepl#v("EN")<CR>
-" <<< DeepL API END <<<
-
 " ----------------------------------------------------------------------------
 " END OF FILE: init.vim
 " ----------------------------------------------------------------------------
