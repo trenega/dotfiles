@@ -599,6 +599,10 @@ autocmd TermOpen * :startinsert
 autocmd TermOpen * setlocal norelativenumber
 autocmd TermOpen * setlocal nonumber
 
+" Terminal-Job モードのマッピング（つまりシェルの入力中のキー操作）で <Esc> を <C-\><C-n> に割り当てる
+" https://qiita.com/delphinus/items/aea16e82de2145d2a6b7
+
+tnoremap <Esc> <C-\><C-n>
 " Essential for syntax
 syntax enable
 
