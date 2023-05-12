@@ -603,6 +603,44 @@ autocmd TermOpen * setlocal nonumber
 " https://qiita.com/delphinus/items/aea16e82de2145d2a6b7
 tnoremap <Esc> <C-\><C-n>
 
+" >>> TerminalからDefx.nvimを起動する >>>
+" https://qiita.com/penTech/items/54156f52b4ed6ce83630
+" use
+" > nvim 'directory'
+" or
+" > nvim .
+
+function! s:defx_my_settings() abort
+  " ... configure defx as per :help defx-examples ...
+endfunction
+
+function! s:open_defx_if_directory()
+  " This throws an error if the buffer name contains unusual characters like
+  " [[buffergator]]. Desired behavior in those scenarios is to consider the
+  " buffer not to be a directory.
+  try
+    let l:full_path = expand(expand('%:p'))
+  catch
+    return
+  endtry
+
+  " If the path is a directory, delete the (useless) buffer and open defx for
+  " that directory instead.
+  if isdirectory(l:full_path)
+    Defx `expand('%:p')`
+  endif
+endfunction
+
+augroup defx_config
+  autocmd!
+  autocmd FileType defx call s:defx_my_settings()
+
+  " It seems like BufReadPost should work for this, but for some reason, I can't
+  " get it to fire. BufEnter seems to be more reliable.
+  autocmd BufEnter * call s:open_defx_if_directory()
+augroup END
+" <<< TerminalからDefx.nvimを起動する END <<<
+
 " Essential for syntax
 syntax enable
 
