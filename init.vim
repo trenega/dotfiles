@@ -506,8 +506,9 @@ vmap <silent> <expr> p <sid>Repl()
 
 "End Vimの生産性を高める12の方法---------
 
-" >>> eskk setting >>>
+"eskk Setting-----------------------------
 " Reference: https://zenn.dev/kato_k/articles/753b36262b3213
+
 " eskk dictionary autoload
 if !filereadable(expand('~/.config/eskk/SKK-JISYO.L'))
   call mkdir('~/.config/eskk', 'p')
@@ -544,7 +545,7 @@ let g:eskk#enable_completion = 0             " neocompleteを入れないと、1
 let g:eskk#keep_state = 0                    " ノーマルモードに戻るとeskkモードを初期値にする
 let g:eskk#egg_like_newline = 1              " 漢字変換を確定しても改行しない。
 
-"表示文字を変更(オレ サンカクデ ハンダン デキナイ)
+" 表示文字を変更(オレ サンカクデ ハンダン デキナイ)
 " let g:eskk#marker_henkan = "`c`"
 " let g:eskk#marker_henkan_select = "`o`"
 " let g:eskk#marker_okuri = "`s`"
@@ -566,9 +567,10 @@ augroup END
 " eskk mode on keymapping
 imap jk <Plug>(eskk:toggle)
 cmap jk <Plug>(eskk:toggle)
-" <<< eskk setting END <<<
 
-" >>> neoterm setting >>>
+"End eskk Setting-------------------------
+
+"neoterm Setting--------------------------
 " Wrapper of some vim/neovim's :terminal functions.
 let g:neoterm_default_mod='belowright'
 let g:neoterm_size=10
@@ -582,9 +584,10 @@ nnoremap <Leader>tl :<c-u>exec v:count.'Tclear'<cr>
 "       use: C-n
 nnoremap <silent> <C-n> :TREPLSendLine<CR>j0
 vnoremap <silent> <C-n> V:TREPLSendSelection<CR>'>j0
-" <<< neoterm setting END <<<
 
-" >>> vim-easymotion >>>
+"End neoterm Setting----------------------
+
+"vim-easymotion---------------------------
 " Default bindings <Leader>s
 " map <Leader> <Plug>(easymotion-prefix)
 " <Leader>f{char} to move to {char}
@@ -601,7 +604,7 @@ vnoremap <silent> <C-n> V:TREPLSendSelection<CR>'>j0
 " Move to word
 " map  <Leader>wd <Plug>(easymotion-bd-w)
 " nmap <Leader>wd <Plug>(easymotion-overwin-w)
-" <<< vim-easymotion END <<<
+"End vim-easymotion-----------------------
 
 " Save in VISUAL mode -> smooth save
 " https://zenn.dev/monaqa/articles/2020-12-22-vim-abbrev
@@ -620,6 +623,10 @@ iabbrev .g niijimatakashi993@gmail.com
 iabbrev .t takashiniijima213@gmail.com
 iabbrev .y takashiniijima213@yahoo.co.jp
 
+" ----------------------------------------------------------------------------
+" End abbreviation
+" ----------------------------------------------------------------------------
+
 " Goyo.vim integration
 autocmd! User GoyoEnter Limelight
 autocmd! User GoyoLeave Limelight!
@@ -627,14 +634,17 @@ autocmd! User GoyoLeave Limelight!
 " https://zenn.dev/eqs/scraps/694f16529cdd70
 lang en_US.UTF-8
 
-" Terminal
+"Terminal---------------------------------
 " https://qiita.com/Lennon_x00x_/items/e8fa47d27aaab9635161
 " 新規タブでターミナルモードを起動
 nnoremap <silent> tt <cmd>terminal<CR>
+
 " 下分割でターミナルモードを起動
 nnoremap <silent> tx <cmd>belowright new<CR><cmd>terminal<CR>
+
 " ターミナルを開いたらに常にinsertモードに入る
 autocmd TermOpen * :startinsert
+
 " ターミナルモードで行番号を非表示
 autocmd TermOpen * setlocal norelativenumber
 autocmd TermOpen * setlocal nonumber
@@ -643,7 +653,9 @@ autocmd TermOpen * setlocal nonumber
 " https://qiita.com/delphinus/items/aea16e82de2145d2a6b7
 tnoremap <Esc> <C-\><C-n>
 
-" >>> TerminalからDefx.nvimを起動する >>>
+"End Terminal-----------------------------
+
+"TerminalからDefx.nvimを起動する----------
 " https://qiita.com/penTech/items/54156f52b4ed6ce83630
 " use
 " > nvim 'directory'
@@ -679,7 +691,8 @@ augroup defx_config
   " get it to fire. BufEnter seems to be more reliable.
   autocmd BufEnter * call s:open_defx_if_directory()
 augroup END
-" <<< TerminalからDefx.nvimを起動する END <<<
+
+"End TerminalからDefx.nvimを起動する------
 
 " Defx.nvim 自動更新
 " https://qiita.com/arks22/items/9688ec7f4cb43444e9d9
