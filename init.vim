@@ -2,7 +2,7 @@
 " |
 " File name     :  ~/.config/nvim/init.vim
 " Copyright     :  nis
-" Modified      :  2023/05/13
+" Modified      :  2023/05/13 14:49
 " ----------------------------------------------------------------------------
 
 
@@ -76,6 +76,10 @@ set rtp+=/usr/local/opt/fzf
 
 " Use vim-polyglot
 set runtimepath+=~/src/vim-polyglot
+
+" dein update Setting
+let g:dein#install_github_api_token = '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'
+call dein#check_update(v:true)
 
 " ----------------------------------------------------------------------------
 " OPTIONS
