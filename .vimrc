@@ -2,7 +2,7 @@
 " |
 " File name     :  .vimrc
 " Copyright     :  nis
-" Modified      :  2022/06/09 11:42
+" Modified      :  2023/05/13 21:30
 "-----------------------------------------------------------------------------
 
 set nocompatible
@@ -657,7 +657,7 @@ vmap <silent> <expr> p <sid>Repl()
 
 "cpと打つと ペーストモードになる
 " https://kekaku.addisteria.com/wp/20170621231629
-nnoremap pa :set paste<CR>
+nnoremap cp :set paste<CR>
 "挿入モードを抜けるとき、set nopaste を実行する。
 autocmd InsertLeave * set nopaste
 
