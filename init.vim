@@ -11,7 +11,7 @@
 " PLUGIN SETTINGS
 " ----------------------------------------------------------------------------
 
-"dein.vim Scripts------------------------
+"dein Scripts-----------------------------
 " Reference:
 " https://woodyzootopia.github.io/2018/12/自分のVimのプラグイン環境設定-Dein/Denite/Deoplete を動かすまで
 
@@ -61,7 +61,7 @@ if len(dein#check_clean()) != 0
   call dein#recache_runtimepath()
 endif
 
-"End dein Scripts------------------------
+"End dein Scripts-------------------------
 
 " ----------------------------------------------------------------------------
 " PATH SETTINGS
@@ -168,21 +168,27 @@ map <f7> :!open -a /Applications/Sublime\ Text.app %<CR>
 " 左へ移動
 cnoremap <C-b> <Left>
 inoremap <C-b> <Left>
+
 " 右へ移動
 cnoremap <C-f> <Right>
 inoremap <C-f> <Right>
+
 " 上へ移動
 cnoremap <C-p> <Up>
 inoremap <C-p> <Up>
+
 " 下へ移動
 cnoremap <C-n> <Down>
 inoremap <C-n> <Down>
+
 " 行頭へ移動
 cnoremap <C-a> <Home>
 inoremap <C-a> <Home>
+
 " 行末へ移動
 cnoremap <C-e> <End>
 inoremap <C-e> <End>
+
 " 一文字削除
 cnoremap <C-d> <Del>
 inoremap <C-d> <Del>
@@ -225,6 +231,7 @@ endfunction
 
 "俺的にはずせない[Vim]こだわりmap(説明付き)------------
 " Reference: https://qiita.com/itmammoth/items/312246b4b7688875d023
+
 " カーソル下の単語をハイライトする
 " レジスタを使用しない簡易版
 nnoremap <silent> <Space><Space> :let @/ = '\<' . expand('<cword>') . '\>'<CR>:set hlsearch<CR>
@@ -235,11 +242,14 @@ nnoremap <silent> <Space><Space> :let @/ = '\<' . expand('<cword>') . '\>'<CR>:s
 " きちんと理解した上で再マップを利用するのはアリです。
 nnoremap # <Nop>
 nmap # <Space><Space>:%s/<C-r>///gc<Left><Left><Left>
+
 " ハイライトを消去する
 nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
+
 " 挿入モードでのDelete, Backspace
 inoremap <C-d> <Del>
 imap <C-h> <BS>
+
 " CTRL + ] で右にエスケープする
 inoremap <C-]> <Esc><Right>
 
@@ -261,26 +271,35 @@ nnoremap <Leader> <Nop>
 
 "新しいファイルを開く
 nnoremap <Leader>e :edit<Space>
+
 " カーソルの後ろに，ファイルを挿入する
 nnoremap <Leader>r :read<Space>
+
 " ファイルを保存する
 nnoremap <silent><Leader>w :<C-u>write<CR>
+
 " カレントウィンドウを閉じる。最後の編集ウィンドウ |edit-window| で使うとVimを終了させる
 nnoremap <silent> <Leader>q :<C-u>quit<CR>
+
 " 新しいタブページを開く
 nnoremap <Leader>te :tabedit
+
 " 現在のウィンドウを水平に分割する
 nnoremap <Leader>sp :split<CR>
+
 " 現在のウィンドウを垂直に分割する
 nnoremap <Leader>vs :vsplit<CR>
+
 " ウィンドウの高さをできるだけ高くする。To Window Hight size
 nnoremap <Leader>wr :resize<CR>
+
 " ウィンドウの高さを5行分高くする。To Window Hight size
 nnoremap <Leader>wf :resize +5<CR>
+
 " ウィンドウの高さを5行分低くする。To Window Low size
 nnoremap <Leader>wv :resize -5<CR>
 
-" >>> move to current Window >>>
+"move to current Window-------------------
 " 上のWindowへ移動する
 nnoremap <Leader>jk <C-w>k
 " 下のWindowへ移動する
@@ -289,7 +308,6 @@ nnoremap <Leader>jj <C-w>j
 nnoremap <Leader>jh <C-w>h
 " 右のWindowへ移動する
 nnoremap <Leader>jl <C-w>l
-" <<< move to current Window END <<<
 
 " Hot key for open init.vim file
 nnoremap <Leader>. :<C-u>edit $MYVIMRC<CR>
@@ -376,23 +394,21 @@ inoremap <silent> zj <C-o>z-
 " Reference: https://laboradian.com/save-buffer-using-sudo-in-vim/
 cmap w!! w !sudo tee > /dev/null %
 
-" >>> Python codes execute on Terminal >>>
+"Python codes execute on Terminal-------------------
 autocmd Filetype python nnoremap <buffer> <F5> :w<CR>:terminal python3 "%"<CR>
 " Python codes execute on Terminal (Vertical windows)
 " Please the new window close, then to codes window.
 "autocmd Filetype python nnoremap <buffer> <F6> :w<CR>:vert terminal python3 "%"<CR>
-" <<< Python codes execute on Terminal END >>>
 
-" >>> Restore last position of the cursor>>>
+"Restore last position of the cursor Script---------
 if has("autocmd")
         autocmd BufReadPost *
         \ if line("'\"") > 0 && line ("'\"") <= line("$") |
         \   exe "normal! g'\"" |
         \ endif
 endif
-" <<< Restore last position of the cursor END <<<
 
-" >>> Undoの永続化 >>>
+"Undoの永続化 Script------------------
 " Reference:
 " Vimをカスタマイズしよう〜Vimはいいぞ！ゴリラと学ぶVim講座(6)
 " 2019.12.03
@@ -403,9 +419,8 @@ if has('persistent_undo')
         exe 'set undodir=' .. undo_path
         set undofile
 endif
-" <<< Undoの永続化 END <<<
 
-" >>> Persistent undo >>>
+"Persistent undo Script-------------------
 " Reference:
 " vim-users.jp
 " Hack #162: Vimを終了してもundo履歴を復元する
@@ -418,9 +433,8 @@ endif
 "                autocmd BufReadPre ~/* setlocal undofile
 "        augroup END
 "endif
-" <<< Persistent undo END <<<
 
-" >>> Search by Google on the cursor word >>>
+"Search by Google on the cursor word----------------
 " Reference: https://www.rasukarusan.com/entry/2019/03/09/011630
 function! s:search_by_google()
     let line = line(".")
@@ -433,13 +447,12 @@ function! s:search_by_google()
 endfunction
 command! SearchByGoogle call s:search_by_google()
 nnoremap <silent> <Space>gg :SearchByGoogle<CR>
-" <<< Search by Google on the cursor word END <<<
 
 " ----------------------------------------------------------------------------
 " COLORS
 " ----------------------------------------------------------------------------
 
-" lightline setting
+"lightline Script-------------------------
 if !has('gui_running')
   set t_Co=256
 endif
