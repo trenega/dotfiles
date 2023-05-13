@@ -11,7 +11,7 @@
 " PLUGIN SETTINGS
 " ----------------------------------------------------------------------------
 
-" >>> dein.vim settings >>>
+"dein.vim Scripts------------------------
 " Reference:
 " https://woodyzootopia.github.io/2018/12/自分のVimのプラグイン環境設定-Dein/Denite/Deoplete を動かすまで
 
@@ -60,7 +60,8 @@ if len(dein#check_clean()) != 0
   call map(dein#check_clean(), "delete(v:val, 'rf')")
   call dein#recache_runtimepath()
 endif
-" <<< dein.vim settings END <<<
+
+"End dein Scripts------------------------
 
 " ----------------------------------------------------------------------------
 " PATH SETTINGS
@@ -140,22 +141,25 @@ set background=dark
 " CUSTOM COMMANDS AND FUNCTIONS
 " ----------------------------------------------------------------------------
 
-" ------- basic keymapping -------- "
 " 論理行移動と表示行移動を入れ替える
 nnoremap j gj
 nnoremap k gk
 nnoremap gj j
 nnoremap gk k
+
 " <C-c>を完全な<ESC>に
 inoremap <C-c> <ESC>
+
 " カーソル位置から末尾までをヤンクする
 nnoremap Y y$
+
 " プロンプトで%%を入力すると現在編集中のバッファパスを展開する
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
+
 " 現在編集しているファイルを他のエディタで開く
 map <f7> :!open -a /Applications/Sublime\ Text.app %<CR>
 
-" >>> インサートモードから出ずにVimを使いこなす >>>
+"インサートモードから出ずにVimを使いこなす----------
 " Reference:
 " https://woodyzootopia.github.io/2019/11/インサートモードから出ずにVimを使いこなす
 " cnoremap mode: command line
@@ -182,9 +186,11 @@ inoremap <C-e> <End>
 " 一文字削除
 cnoremap <C-d> <Del>
 inoremap <C-d> <Del>
-" <<< インサートモードから出ずにVimを使いこなす END <<<
 
-" >>> Practical Vim, Drew Neil >>>
+
+"End インサートモードから出ずにVimを使いこなす-------
+
+"Practical Vim, Drew Neil----------------
 " アクティブなファイルが含まれているディレクトリを手早く展開する
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 
@@ -214,9 +220,10 @@ endfunction
 " nnoremap <silent> ]b :bnext<CR>
 " nnoremap <silent> [B :bfirst<CR>
 " nnoremap <silent> ]B :blast<CR>
-" <<< Practical Vim, Drew Neil END <<<
 
-" >>> 俺的にはずせない[Vim]こだわりmap(説明付き) >>>
+"End Practical Vim, Drew Neil-------------
+
+"俺的にはずせない[Vim]こだわりmap(説明付き)------------
 " Reference: https://qiita.com/itmammoth/items/312246b4b7688875d023
 " カーソル下の単語をハイライトする
 " レジスタを使用しない簡易版
@@ -235,15 +242,15 @@ inoremap <C-d> <Del>
 imap <C-h> <BS>
 " CTRL + ] で右にエスケープする
 inoremap <C-]> <Esc><Right>
-" <<< 俺的にはずせない[Vim]こだわりmap(説明付き) END <<<
 
-" >>> Leader key setting >>>
-" >>> Vimの生産性を高める12の方法 >>>
+"End 俺的にはずせない[Vim]こだわりmap(説明付き)---------
+
+"Leader Key-------------------------------
+"Vimの生産性を高める12の方法
 " Reference:
 " How to boost your Vim productivity (2014-03-21) by Adam Stankiewicz
 " https://postd.cc/how-to-boost-your-vim-productivity/
 let mapleader = "\<Space>"
-" <<< Vimの生産性を高める12の方法 END <<<
 
 " スペースキーを prefix にする例
 " スペースキー単体では何も起きないようにする
@@ -313,7 +320,9 @@ nnoremap <Leader>h <Home>
 nnoremap <Leader>l <End>
 " <<< Leader key setting END <<<
 
-" >>> fzf.vim >>>
+"End Leader Key---------------------------
+
+"fzf.vim----------------------------------
 " https://wonderwall.hatenablog.com/entry/2017/10/07/220000
 " dispay new window
 let g:fzf_layout = { 'window': 'enew' }
@@ -331,7 +340,8 @@ imap <c-x><c-k> <plug>(fzf-complete-word)
 imap <c-x><c-f> <plug>(fzf-complete-path)
 imap <c-x><c-j> <plug>(fzf-complete-file-ag)
 imap <c-x><c-l> <plug>(fzf-complete-line)
-" <<< fzf.vim END <<<
+
+"End fzf.vim------------------------------
 
 " :helpを3倍の速度で引く
 nnoremap <C-h> :<C-u>help<Space>
@@ -348,7 +358,7 @@ nnoremap g# g#zz
 nnoremap / /\v
 nnoremap ? ?\v
 
-" >>> INSERT MODE KEYMAPS >>>
+"INSERT MODE KEYMAPS----------------------
 " Change INSERT mode to NORMAL mode
 inoremap <silent> jj <Esc>
 " File Save
@@ -359,9 +369,10 @@ inoremap <silent> zz <C-o>zz
 inoremap <silent> zk <C-o>z<CR>
 " Scroll to bottom line
 inoremap <silent> zj <C-o>z-
-" <<< INSERT MODE KEYMAPS END <<<
 
-" >>> ファイルを編集したあと、sudoでそのファイルを保存する
+"End INSERT MODE KEYMAPS------------------
+
+" ファイルを編集したあと、sudoでそのファイルを保存する
 " Reference: https://laboradian.com/save-buffer-using-sudo-in-vim/
 cmap w!! w !sudo tee > /dev/null %
 
