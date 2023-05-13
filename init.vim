@@ -302,26 +302,33 @@ nnoremap <Leader>wv :resize -5<CR>
 "move to current Window-------------------
 " 上のWindowへ移動する
 nnoremap <Leader>jk <C-w>k
+
 " 下のWindowへ移動する
 nnoremap <Leader>jj <C-w>j
+
 " 左のWindowへ移動する
 nnoremap <Leader>jh <C-w>h
+
 " 右のWindowへ移動する
 nnoremap <Leader>jl <C-w>l
 
 " Hot key for open init.vim file
 nnoremap <Leader>. :<C-u>edit $MYVIMRC<CR>
+
 " Check for marks
 nnoremap <Leader>mm :<C-u>marks<CR>
+
 " Check for registers
 nnoremap <Leader>re :<C-u>registers<CR>
+
 " sweep_trail.vim
 nnoremap <Leader>sw :<C-u>SweepTrail<CR>
+
 " undotree
 " The undo history visualizer for VIM
 nnoremap <Leader>ut :<C-u>UndotreeToggle<CR>
 
-" >>> vim-fugitive >>>
+"vim-fugitive Mapping---------------------
 " Reference: https://code-log.hatenablog.com/entry/2018/12/08/101732
 nnoremap <Leader>ga :Git add %:p<CR><CR>
 nnoremap <Leader>gc :Gcommit<CR><CR>
@@ -330,15 +337,14 @@ nnoremap <Leader>gp :Gpush<CR>
 nnoremap <Leader>gd :Gdiff<CR>
 nnoremap <Leader>gl :Glog<CR>
 nnoremap <Leader>gb :Gblame<CR>
-" <<< vim-fugitive END <<<
 
 " <Space>h を押して行頭へカーソルを移動させる
 nnoremap <Leader>h <Home>
+
 " <Space>l を押して行末へカーソルを移動させる
 nnoremap <Leader>l <End>
-" <<< Leader key setting END <<<
 
-"End Leader Key---------------------------
+"End Leader Key Setting-------------------
 
 "fzf.vim----------------------------------
 " https://wonderwall.hatenablog.com/entry/2017/10/07/220000
@@ -457,7 +463,7 @@ if !has('gui_running')
   set t_Co=256
 endif
 
-" >>> hybrid setting >>>
+"hybrid Setting---------------------------
 " Reference: https://qastack.jp/vi/3576/trouble-using-color-scheme-in-neovim
 " let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 " set termguicolors
@@ -466,26 +472,28 @@ endif
 " let g:hybrid_custom_term_colors = 1
 " set background=dark
 " colorscheme hybrid
-" <<< hybrid setting END <<<
 
-" >>> iceberg colorscheme setting >>>
+"End hybrid Setting-----------------------
+
+"iceberg colorscheme Setting--------------
 colorscheme iceberg
-" <<< iceberg colorscheme setting END <<<
 
 " ----------------------------------------------------------------------------
 " OTHER
 " ----------------------------------------------------------------------------
 
-" >>> Vimの生産性を高める12の方法 >>>
+"Vimの生産性を高める12の方法-------------
 " How to boost your Vim productivity (2014-03-21) by Adam Stankiewicz
 " Reference: https://postd.cc/how-to-boost-your-vim-productivity/
+
 " 12<Enter> を押して、12行目に移動する（ 12G だと手首が曲がってしまう）
 " Enterを押して、ファイルの末尾に移動する
+" '^J'では不可
 nnoremap <CR> <Nop>
 nnoremap <CR> G
+
 " 貼り付け時にペーストバッファが上書きされないようにする
 " vp doesn't replace paste buffer
-
 function! RestoreRegister()
   let @" = s:restore_reg
   return ''
@@ -495,7 +503,8 @@ function! s:Repl()
   return "p@=RestoreRegister()\<cr>"
 endfunction
 vmap <silent> <expr> p <sid>Repl()
-" <<< Vimの生産性を高める12の方法 END <<<
+
+"End Vimの生産性を高める12の方法---------
 
 " >>> eskk setting >>>
 " Reference: https://zenn.dev/kato_k/articles/753b36262b3213
