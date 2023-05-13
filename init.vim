@@ -2,7 +2,7 @@
 " |
 " File name     :  ~/.config/nvim/init.vim
 " Copyright     :  nis
-" Modified      :  2022/05/29
+" Modified      :  2023/05/13
 " ----------------------------------------------------------------------------
 
 
@@ -21,8 +21,14 @@ endif
 
 " Use dein for plugin management. See update.sh in this directory.
 let s:cache_home = expand('~/.config/nvim')
+
+" dein.vimインストール時に指定したディレクトリをセット
 let s:dein_dir = s:cache_home . '/dein'
+
+" dein.vimの実体があるディレクトリをセット
 let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
+
+" dein.vimが存在していない場合はgithubからclone
 if !isdirectory(s:dein_repo_dir)
   call system('git clone https://github.com/Shougo/dein.vim ' . shellescape(s:dein_repo_dir))
 endif
@@ -44,6 +50,7 @@ if dein#load_state(s:dein_dir)
   call dein#save_state()
 endif
 
+" If you want to install not installed plugins on startup.
 if has('vim_starting') && dein#check_install()
   call dein#install()
 endif
