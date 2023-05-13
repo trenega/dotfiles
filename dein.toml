@@ -293,7 +293,4 @@ hook_add = '''
         set splitbelow
 '''
 
-[[plugins]]
-repo = 'skanehira/translate.vim'
-
 # END OF FILE: dein.toml
