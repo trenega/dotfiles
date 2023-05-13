@@ -116,7 +116,7 @@ NeoBundle 'kassio/neoterm'
 NeoBundle 'cohama/lexima.vim'
 " vim-expand-region
 NeoBundle 'terryma/vim-expand-region'
-" 'tpope/vim-commentary'
+" tpope/vim-commentary
 NeoBundle 'tpope/vim-commentary'
 "-------------------------------------------------------------
 call neobundle#end()
@@ -193,6 +193,9 @@ Plug 'tpope/vim-repeat'
 " Disply indent line
 Plug 'Yggdroot/indentLine'
 
+" translate.vim
+Plug 'skanehira/translate.vim'
+
 call plug#end()
 
 " >>> ddc.vim >>>
@@ -237,6 +240,12 @@ call ddc#enable()
 " indentLine
 let g:indentLine_color_term = 239
 let g:indentLine_char =  '┊'
+
+" translate
+let g:translate_source = "en"
+let g:translate_target = "ja"
+let g:translate_popup_window = 0 " if you want use popup window, set value 1
+" let g:translate_winsize = 10 " set buffer window height size if you doesn't use popup window
 
 " ----------------------------------------------------------------------------
 " END OF vim-plug
