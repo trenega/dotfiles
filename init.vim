@@ -78,7 +78,8 @@ set rtp+=/usr/local/opt/fzf
 set runtimepath+=~/src/vim-polyglot
 
 " dein update Setting
-let g:dein#install_github_api_token = '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'
+" https://thinca.hatenablog.com/entry/dein-vim-with-graphql-api
+let g:dein#install_github_api_token = '$TOKEN'
 call dein#check_update(v:true)
 
 " ----------------------------------------------------------------------------
