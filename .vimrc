@@ -2,7 +2,7 @@
 " |
 " File name     :  .vimrc
 " Copyright     :  nis
-" Modified      :  2023/05/13 21:30
+" Modified      :  2023/05/14 11:10
 "-----------------------------------------------------------------------------
 
 set nocompatible
@@ -13,62 +13,89 @@ set nocompatible
 
 " Essential for syntax
 syntax enable
+
 " Essential for filetype plugins.
 filetype plugin indent on
+
 " Carry over indenting from previous line
 set autoindent
+
 set clipboard+=unnamed
+
 " UTF-8 by default
 set encoding=utf-8
 scriptencoding utf-8
+
 " Change Tab'code to Space'code
 set expandtab
 set fileencodings=ucs-boms,utf-8,euc-jp,cp932
+
 " Prefer Unix
 set fileformats=unix,dos,mac
+
 " help language
 set helplang=ja,en
+
 " How many lines of history to save
 set history=5000
+
 " Hiligth searching
 set hlsearch
+
 " Case insensitive
 set ignorecase
+
 " Search as you type
 set incsearch
+
 " ignorecase optionの副作用を解除する(cf.Practical Vim, Drew Neil p.354)
 set infercase
+
 " Move cursor by mouse
 set mouse=a
+
 set nocp incsearch
+
 " relative number
 set relativenumber
+
 " 大文字/小文字の区別を予測してくれる
 set smartcase
+
 set smartindent
+
 " Number of spaces to shift for autoindent or >,<
 set shiftwidth=4
+
 " Hilight matching braces/parens/etc.
 set showmatch
+
 " Spaces 'feel' like tabs
 set softtabstop=4
+
 " The One True Tab
 set tabstop=4
+
 " Show possible completions on command line
 set wildmenu
+
 " List all options and complete
 set wildmode=full
+
 " Does not make backup file
 set nobackup
+
 " lexima option
 set backspace=indent,eol,start
+
 " Show gitgutter column always
 set signcolumn=yes
+
 " ----------------------------------------------------------------------------
 " PLUGIN SETTINGS
 " ----------------------------------------------------------------------------
 
-" NeoBundle(Vimプラグインの管理) -----------------------------
+"NeoBundle(Vimプラグインの管理) ----------------------
 if has('vim_starting')
 " 初回起動時のみruntimepathにNeoBundleのパスを指定する
         set runtimepath+=~/.vim/bundle/neobundle.vim/
@@ -92,32 +119,46 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 
 " カラースキームmolokai
 NeoBundle 'tomasr/molokai'
+
 " Solarized install
 NeoBundle 'altercation/vim-colors-solarized'
+
 " iceberg.vim
 NeoBundle 'cocopon/iceberg.vim'
+
 " ステータスラインの表示内容強化
 NeoBundle 'itchyny/lightline.vim'
+
 " 日本語ヘルプをインストールする
 NeoBundle 'vim-jp/vimdoc-ja'
+
 " goyo.vim setting
 NeoBundle 'junegunn/goyo.vim'
+
 " limelight.vim
 NeoBundle 'junegunn/limelight.vim'
+
 " vim-sweep_trail
 NeoBundle 'vim-jp/vim-sweep_trail'
+
 " fzf.vim
 NeoBundle 'junegunn/fzf.vim'
+
 " eskk.vim
 NeoBundle 'vim-skk/eskk.vim'
+
 " neoterm
 NeoBundle 'kassio/neoterm'
-"Auto close parentheses and repeat by dot dot dot...
+
+" Auto close parentheses and repeat by dot dot dot...
 NeoBundle 'cohama/lexima.vim'
+
 " vim-expand-region
 NeoBundle 'terryma/vim-expand-region'
+
 " tpope/vim-commentary
 NeoBundle 'tpope/vim-commentary'
+
 "-------------------------------------------------------------
 call neobundle#end()
 
@@ -129,7 +170,7 @@ NeoBundleCheck
 vmap v <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)
 
-" goyo + limelight (focus mode)
+"goyo + limelight (focus mode)------------
 nnoremap <silent> <space>gy :Goyo<CR>
 let g:goyo_width = 120
 nnoremap <silent> <space>ll :Limelight!!<CR>
@@ -137,10 +178,11 @@ let g:limelight_default_coefficient = 0.7
 " let g:limelight_paragraph_span = 1
 autocmd! User GoyoEnter Limelight
 autocmd! User GoyoLeave Limelight!
+"End goyo + limelight (focus mode)--------
 
-" End of NeoBundle(Vimプラグインの管理) ----------------------
+"End of NeoBundle(Vimプラグインの管理) -----------------------
 
-" molokaiの設定 ----------------------------------------------
+"molokai Scripts----------------------------------------------
 "if neobundle#is_installed('molokai')
 "        colorscheme molokai
 "endif
@@ -148,7 +190,9 @@ autocmd! User GoyoLeave Limelight!
 "set t_Co=256
 "syntax enable
 
-" Solarized settings -----------------------------------------
+"End molokai Scripts------------------------------------------
+
+"Solarized settings ------------------------------------------
 "syntax enable
 "set background=dark
 "colorscheme solarized
@@ -159,18 +203,22 @@ autocmd! User GoyoLeave Limelight!
 "        \ 'colorscheme': 'wombat'
 "        \ }
 
-" iceberg.vim settings -----------------------------------------
+"End Solarized Scripts ---------------------------------------
+
+"iceberg.vim
 colorscheme iceberg
 
-" ステータスラインの設定 -------------------------------------
+"status line
 set laststatus=2
 set noshowmode
 
 " ----------------------------------------------------------------------------
 " vim-plug
 " ----------------------------------------------------------------------------
+
 call plug#begin('~/.vim/plugged')
-" ddc.vim -----------------------------
+
+"ddc.vim ---------------------------------
 Plug 'Shougo/ddc.vim'
 Plug 'vim-denops/denops.vim'
 Plug 'Shougo/pum.vim'
@@ -182,9 +230,11 @@ Plug 'Shougo/ddc-nextword'
 Plug 'Shougo/ddc-matcher_head'
 Plug 'Shougo/ddc-sorter_rank'
 
-" END OF ddc.vim -----------------------
+"END OF ddc.vim --------------------------
+
 " Mark change on vim
 Plug 'airblade/vim-gitgutter'
+
 " Git on vim
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
@@ -199,18 +249,16 @@ Plug 'skanehira/translate.vim'
 " deepl.vim
 Plug 'ryicoh/deepl.vim'
 
+"-----------------------------------------
 call plug#end()
+"-----------------------------------------
 
 "deepl.vim--------------------------------
 " フリー版のエンドポイントを指定
 let g:deepl#endpoint = "https://api-free.deepl.com/v2/translate"
 
-" 先ほどコピペしたAuthKeyを指定
+" AuthKey
 let g:deepl#auth_key = "027ec6a8-c7a9-627c-40d6-2a6b3824b210:fx"
-
-" キーマップを指定。t => CTRL+j で日本語変換、t => CTRL+e で英語変換するように設定します。
-" vmap t<C-j> <Cmd>call deepl#v("JA")<CR>
-" vmap t<C-e> <Cmd>call deepl#v("EN")<CR>
 
 " replace a visual selection
 vmap ,e <Cmd>call deepl#v("EN")<CR>
@@ -222,7 +270,7 @@ nmap ,j yypV<Cmd>call deepl#v("JA")<CR>
 
 "End deepl.vim----------------------------
 
-" >>> ddc.vim >>>
+"ddc.vim----------------------------------
 " https://github.com/Shougo/ddc.vim
 " Customize global settings
 " Use around source.
@@ -259,18 +307,25 @@ inoremap <expr><S-TAB>  ddc#map#pum_visible() ? '<C-p>' : '<C-h>'
 
 " Use ddc.
 call ddc#enable()
-" <<< END OF ddc.vim <<<
+
+"End ddc.vim------------------------------
 
 " indentLine
 let g:indentLine_color_term = 239
 let g:indentLine_char =  '┊'
 
-" translate
+"translate.vim----------------------------
+" skanehira/translate
 let g:translate_source = "en"
 let g:translate_target = "ja"
 let g:translate_popup_window = 0 " if you want use popup window, set value 1
 " let g:translate_winsize = 10 " set buffer window height size if you doesn't use popup window
 
+" Key Mappings
+nmap gr <Plug>(Translate)
+vmap t <Plug>(VTranslate)
+
+"End translate.vim------------------------
 " ----------------------------------------------------------------------------
 " END OF vim-plug
 " ----------------------------------------------------------------------------
