@@ -209,8 +209,16 @@ let g:deepl#endpoint = "https://api-free.deepl.com/v2/translate"
 let g:deepl#auth_key = "027ec6a8-c7a9-627c-40d6-2a6b3824b210:fx"
 
 " キーマップを指定。t => CTRL+j で日本語変換、t => CTRL+e で英語変換するように設定します。
-vmap t<C-j> <Cmd>call deepl#v("JA")<CR>
-vmap t<C-e> <Cmd>call deepl#v("EN")<CR>
+" vmap t<C-j> <Cmd>call deepl#v("JA")<CR>
+" vmap t<C-e> <Cmd>call deepl#v("EN")<CR>
+
+" replace a visual selection
+vmap ,e <Cmd>call deepl#v("EN")<CR>
+vmap ,j <Cmd>call deepl#v("JA")<CR>
+
+" translate a current line and display on a new line
+nmap ,e yypV<Cmd>call deepl#v("EN")<CR>
+nmap ,j yypV<Cmd>call deepl#v("JA")<CR>
 
 "End deepl.vim----------------------------
 
