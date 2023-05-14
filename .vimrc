@@ -178,6 +178,7 @@ let g:limelight_default_coefficient = 0.7
 " let g:limelight_paragraph_span = 1
 autocmd! User GoyoEnter Limelight
 autocmd! User GoyoLeave Limelight!
+
 "End goyo + limelight (focus mode)--------
 
 "End of NeoBundle(Vimプラグインの管理) -----------------------
@@ -222,6 +223,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'Shougo/ddc.vim'
 Plug 'vim-denops/denops.vim'
 Plug 'Shougo/pum.vim'
+
 " Install your sources
 Plug 'Shougo/ddc-around'
 Plug 'Shougo/ddc-nextword'
@@ -348,24 +350,31 @@ set runtimepath+=~/src/vim-polyglot
 " 左へ移動
 cnoremap <C-b> <Left>
 inoremap <C-b> <Left>
+
 " 右へ移動
 cnoremap <C-f> <Right>
 inoremap <C-f> <Right>
+
 " 上へ移動
 cnoremap <C-p> <Up>
 inoremap <C-p> <Up>
+
 " 下へ移動
 cnoremap <C-n> <Down>
 inoremap <C-n> <Down>
+
 " 行頭へ移動
 cnoremap <C-a> <Home>
 inoremap <C-a> <Home>
+
 " 行末へ移動
 cnoremap <C-e> <End>
 inoremap <C-e> <End>
+
 " 一文字削除
 cnoremap <C-d> <Del>
 inoremap <C-d> <Del>
+
 "End インサートモードから出ずにVimを使いこなす---------------
 
 "Practical Vim, Drew Neil-----------------
@@ -418,6 +427,7 @@ nmap ` <Space><Space>:%s/<C-r>///gc<Left><Left><Left>
 
 " ハイライトを消去する
 nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
+
 " 挿入モードでのDelete, Backspace
 inoremap <C-d> <Del>
 imap <C-h> <BS>
@@ -755,7 +765,6 @@ nnoremap <silent> <C-n> :TREPLSendLine<CR>j0
 vnoremap <silent> <C-n> V:TREPLSendSelection<CR>'>j0
 
 "End neoterm Setting----------------------
-
 
 "Vimの生産性を高める12の方法--------------
 " How to boost your Vim productivity (2014-03-21) by Adam Stankiewicz
