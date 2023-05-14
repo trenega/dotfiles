@@ -132,7 +132,7 @@ NeoBundle 'itchyny/lightline.vim'
 " 日本語ヘルプをインストールする
 NeoBundle 'vim-jp/vimdoc-ja'
 
-" goyo.vim setting
+" goyo.vim Setting
 NeoBundle 'junegunn/goyo.vim'
 
 " limelight.vim
@@ -192,13 +192,13 @@ autocmd! User GoyoLeave Limelight!
 
 "End molokai Scripts------------------------------------------
 
-"Solarized settings ------------------------------------------
+"Solarized Settings ------------------------------------------
 "syntax enable
 "set background=dark
 "colorscheme solarized
 "let g:solarized_termcolors=256
 
-" lightline setting
+" lightline Setting
 "let g:lightline = {
 "        \ 'colorscheme': 'wombat'
 "        \ }
@@ -272,7 +272,7 @@ nmap ,j yypV<Cmd>call deepl#v("JA")<CR>
 
 "ddc.vim----------------------------------
 " https://github.com/Shougo/ddc.vim
-" Customize global settings
+" Customize global Settings
 " Use around source.
 " https://github.com/Shougo/ddc-around
 call ddc#custom#patch_global('sources', ['around'])
@@ -322,10 +322,12 @@ let g:translate_popup_window = 0 " if you want use popup window, set value 1
 " let g:translate_winsize = 10 " set buffer window height size if you doesn't use popup window
 
 " Key Mappings
+" Gorilla Translate
 nmap gt <Plug>(Translate)
 vmap t <Plug>(VTranslate)
 
 "End translate.vim------------------------
+
 " ----------------------------------------------------------------------------
 " END OF vim-plug
 " ----------------------------------------------------------------------------
@@ -337,7 +339,7 @@ set runtimepath+=~/src/vim-polyglot
 " CUSTOM COMMANDS AND FUNCTIONS
 " ----------------------------------------------------------------------------
 
-" >>> インサートモードから出ずにVimを使いこなす >>>
+"インサートモードから出ずにVimを使いこなす--------------------
 " Reference:
 " https://woodyzootopia.github.io/2019/11/インサートモードから出ずにVimを使いこなす
 " cnoremap mode: command line
@@ -364,9 +366,9 @@ inoremap <C-e> <End>
 " 一文字削除
 cnoremap <C-d> <Del>
 inoremap <C-d> <Del>
-" <<< インサートモードから出ずにVimを使いこなす END <<<
+"End インサートモードから出ずにVimを使いこなす---------------
 
-" >>> Practical Vim, Drew Neil >>>
+"Practical Vim, Drew Neil-----------------
 " アクティブなファイルが含まれているディレクトリを手早く展開する
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 
@@ -396,13 +398,16 @@ endfunction
 " nnoremap <silent> ]b :bnext<CR>
 " nnoremap <silent> [B :bfirst<CR>
 " nnoremap <silent> ]B :blast<CR>
-" <<< Practical Vim, Drew Neil END <<<
 
-" >>> 俺的にはずせない[Vim]こだわりmap(説明付き) >>>
+"End Practical Vim, Drew Neil-------------
+
+"俺的にはずせない[Vim]こだわりmap(説明付き)--------------
 " Reference: https://qiita.com/itmammoth/items/312246b4b7688875d023
+
 " カーソル下の単語をハイライトする
 " レジスタを使用しない簡易版
 nnoremap <silent> <Space><Space> :let @/ = '\<' . expand('<cword>') . '\>'<CR>:set hlsearch<CR>
+
 " カーソル下の単語をハイライトしてから置換する
 " nmapについてですが、こいつはnnoremapと違い、右辺の再マップを行います。
 " つまり右辺最初の<Space><Space>によって上のハイライトmapを発動させるということです。
@@ -410,22 +415,24 @@ nnoremap <silent> <Space><Space> :let @/ = '\<' . expand('<cword>') . '\>'<CR>:s
 " きちんと理解した上で再マップを利用するのはアリです。
 nnoremap ` <Nop>
 nmap ` <Space><Space>:%s/<C-r>///gc<Left><Left><Left>
+
 " ハイライトを消去する
 nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
 " 挿入モードでのDelete, Backspace
 inoremap <C-d> <Del>
 imap <C-h> <BS>
+
 " CTRL + ] で右にエスケープする
 inoremap <C-]> <Esc><Right>
-" <<< 俺的にはずせない[Vim]こだわりmap(説明付き) END <<<
 
-" >>> Leader key setting >>>
-" >>> Vimの生産性を高める12の方法 >>>
+"End 俺的にはずせない[Vim]こだわりmap(説明付き)----------
+
+"Leader key Mappings----------------------
+" Vimの生産性を高める12の方法
 " Reference:
 " How to boost your Vim productivity (2014-03-21) by Adam Stankiewicz
 " https://postd.cc/how-to-boost-your-vim-productivity/
 let mapleader = "\<Space>"
-" <<< Vimの生産性を高める12の方法 END <<<
 
 " スペースキーを prefix にする例
 " スペースキー単体では何も起きないようにする
@@ -436,47 +443,63 @@ nnoremap <Leader> <Nop>
 
 " <Space>e を押してカーソルの後ろに，新しいファイルを開く
 nnoremap <Leader>e :edit<Space>
+
 " <Space>w を押してファイルを保存する
 nnoremap <silent><Leader>w :<C-u>write<CR>
+
 " <Space>r を押してカーソルの後ろに，ファイルを挿入する
 nnoremap <Leader>r :read<Space>
+
 " 現在のウィンドウを水平に分割する
 nnoremap <Leader>sp :split<CR>
+
 " 現在のウィンドウを垂直に分割する
 nnoremap <Leader>vs :vsplit<CR>
+
 " 新しいタブページを開く
 nnoremap <Leader>te :tabedit
+
 " ウィンドウを閉じる
 nnoremap <silent> <Leader>q :<C-u>quit<CR>
+
 " ウィンドウの高さをできるだけ高くする。To Window Hight size
 nnoremap <Leader>wr :resize<CR>
+
 " ウィンドウの高さを10行分低くする。To Window Low size
 nnoremap <Leader>wv :resize -10<CR>
 
-" >>> move to current Window >>>
+
+" move to current Window
 " 上のWindowへ移動する
 nnoremap <Leader>jk <C-w>k
+
 " 下のWindowへ移動する
 nnoremap <Leader>jj <C-w>j
+
 " 左のWindowへ移動する
 nnoremap <Leader>jh <C-w>h
+
 " 右のWindowへ移動する
 nnoremap <Leader>jl <C-w>l
-" <<< move to current Window END <<<
+
 
 " Hot key for open init.vim file
 nnoremap <Leader>. :<C-u>edit $MYVIMRC<CR>
+
 " Check for marks
 nnoremap <Leader>mm :<C-u>marks<CR>
+
 " Check for registers
 nnoremap <Leader>re :<C-u>registers<CR>
+
 " sweep_trail.vim
 nnoremap <Leader>sw :<C-u>SweepTrail<CR>
+
 " undotree
 " The undo history visualizer for VIM
 nnoremap <Leader>ut :<C-u>UndotreeToggle<CR>
 
-" >>> vim-fugitive >>>
+"vim-fugitive----------------------------
 " Reference: https://code-log.hatenablog.com/entry/2018/12/08/101732
 nnoremap <Leader>ga :Git add %:p<CR><CR>
 nnoremap <Leader>gc :Gcommit<CR><CR>
@@ -485,28 +508,33 @@ nnoremap <Leader>gp :Gpush<CR>
 nnoremap <Leader>gd :Gdiff<CR>
 nnoremap <Leader>gl :Glog<CR>
 nnoremap <Leader>gb :Gblame<CR>
-" <<< vim-fugitive END <<<
+
+"End vim-fugitive-------------------------
 
 " <Space>h を押して行頭へカーソルを移動させる
 nnoremap <Leader>h <Home>
 " <Space>l を押して行末へカーソルを移動させる
 nnoremap <Leader>l <End>
-" <<< Leader key setting END <<<
 
-" >>> fzf.vim >>>
+"End Leader key Mappings------------------
+
+"fzf.vim----------------------------------
 " https://wonderwall.hatenablog.com/entry/2017/10/07/220000
 " dispay new window
 let g:fzf_layout = { 'window': 'enew' }
+
 " Mapping selecting mappings
 " :Maps
 nnoremap s <Nop>
 nnoremap s :Buffers<CR>
 nnoremap t <Nop>
 nnoremap t :Files<CR>
+
 " https://github.com/junegunn/fzf.vim
 nmap <leader><tab> <plug>(fzf-maps-n)
 xmap <leader><tab> <plug>(fzf-maps-x)
 omap <leader><tab> <plug>(fzf-maps-o)
+
 " Insert mode completion
 " https://github.com/junegunn/fzf.vim
 " INSERT modeでファイル名や行を補完する
@@ -515,7 +543,8 @@ imap <c-x><c-k> <plug>(fzf-complete-word)
 imap <c-x><c-f> <plug>(fzf-complete-path)
 imap <c-x><c-j> <plug>(fzf-complete-file-ag)
 imap <c-x><c-l> <plug>(fzf-complete-line)
-" <<< fzf.vim END <<<
+
+"End fzf.vim------------------------------
 
 " :helpを3倍の速度で引く
 nnoremap <C-h> :<C-u>help<Space>
@@ -531,18 +560,23 @@ nnoremap g# g#zz
 " 'verymagic'
 nnoremap / /\v
 
-" >>> INSERT MODE KEYMAPS >>>
+"Insert Mode Keymaps----------------------
 " Change INSERT mode to NORMAL mode
 inoremap <silent> jj <Esc>
+
 " File Save
 inoremap <silent> js <C-o>:write<CR>
+
 " Scroll to center line
 inoremap <silent> zz <C-o>zz
+
 " Scroll to top line
 inoremap <silent> zk <C-o>z<CR>
+
 " Scroll to bottom line
 inoremap <silent> zj <C-o>z-
-" <<< INSERT MODE KEYMAPS END <<<
+
+"End Insert Mode Keymaps------------------
 
 " ----------------------------------------------------------------------------
 " OTHER
@@ -593,10 +627,9 @@ endfunction
 command! SearchByGoogle call s:search_by_google()
 nnoremap <silent> <Space>g :SearchByGoogle<CR>
 
-" goyo.vim の散文モード --------------------------------------
+"goyo.vim の散文モード ---------------------------------------
 " Reference: https://postd.cc/vim3/
 " VIM AFTER 15 YEARS (2017-10-17) by Ian Langworth
-
 function! ProseMode()
         call goyo#execute(0, [])
         set nocopyindent nosmartindent noautoindent nolist noshowmode noshowcmd
@@ -609,9 +642,9 @@ function! ProseMode()
 endfunction
 command! ProseMode call ProseMode()
 nnoremap \p :ProseMode<CR>
-" End of goyo.vim の散文モード -------------------------------
+"End of goyo.vim の散文モード --------------------------------
 
-" fzf.vim setting
+" fzf.vim Setting
 set rtp+=/usr/local/opt/fzf
 
 " vim-polyglot runtimepath
@@ -624,7 +657,7 @@ set runtimepath+=~/src/vim-polyglot
 autocmd FileType python setlocal commentstring=#\ %s
 autocmd FileType haskell setlocal commentstring=--\ %s
 
-" >>> eskk setting >>>
+"eskk Settings----------------------------
 " Reference: https://zenn.dev/kato_k/articles/753b36262b3213
 " eskk dictionary autoload
 if !filereadable(expand('~/.config/eskk/SKK-JISYO.L'))
@@ -655,7 +688,7 @@ let g:lightline = {
 \   },
 \ }
 
-" Basic setting
+" Basic Setting
 " https://zenn.dev/kouta/articles/87947515bff4da
 let g:eskk#kakutei_when_unique_candidate = 1 " 漢字変換した時に候補が1つの場合、自動的に確定する
 let g:eskk#enable_completion = 0             " neocompleteを入れないと、1にすると動作しなくなるため0推奨
@@ -684,20 +717,29 @@ augroup END
 " eskk mode on keymapping
 imap jk <Plug>(eskk:toggle)
 cmap jk <Plug>(eskk:toggle)
-" <<< eskk setting END <<<
 
-" cursor change
+"End eskk Settings------------------------
+
+"cursor Change----------------------------
 " https://qiita.com/Linda_pp/items/9e0c94eb82b18071db34
 if has('vim_starting')
     " 挿入モード時に非点滅の縦棒タイプのカーソル
     let &t_SI .= "\e[6 q"
-    " ノーマルモード時に非点滅のブロックタイプのカーソル
-    let &t_EI .= "\e[2 q"
+
+    " ノーマルモード時に点滅のブロックタイプのカーソル
+    let &t_EI .= "\e[1 q"
+
     " 置換モード時に非点滅の下線タイプのカーソル
     let &t_SR .= "\e[4 q"
     endif
 
-" >>> neoterm setting >>>
+" NOMAL modeのカーソルを非点滅させる
+" https://chanko.hatenadiary.jp/entry/2016/10/28/162648
+" let &t_EI .= "\e[2 q"
+
+"End cursor Change------------------------
+
+"neoterm Setting--------------------------
 " Wrapper of some vim/neovim's :terminal functions.
 let g:neoterm_default_mod='belowright'
 let g:neoterm_size=10
@@ -711,9 +753,11 @@ nnoremap <leader>tl :<c-u>exec v:count.'Tclear'<cr>
 "       use: C-n
 nnoremap <silent> <C-n> :TREPLSendLine<CR>j0
 vnoremap <silent> <C-n> V:TREPLSendSelection<CR>'>j0
-" <<< neoterm setting END <<<
 
-" >>> Vimの生産性を高める12の方法 >>>
+"End neoterm Setting----------------------
+
+
+"Vimの生産性を高める12の方法--------------
 " How to boost your Vim productivity (2014-03-21) by Adam Stankiewicz
 " Reference: https://postd.cc/how-to-boost-your-vim-productivity/
 " 12<Enter> を押して、12行目に移動する（ 12G だと手首が曲がってしまう）
@@ -732,17 +776,16 @@ function! s:Repl()
   return "p@=RestoreRegister()\<cr>"
 endfunction
 vmap <silent> <expr> p <sid>Repl()
-" <<< Vimの生産性を高める12の方法 END <<<
+
+"End Vimの生産性を高める12の方法----------
 
 "cpと打つと ペーストモードになる
 " https://kekaku.addisteria.com/wp/20170621231629
 nnoremap cp :set paste<CR>
+
 "挿入モードを抜けるとき、set nopaste を実行する。
 autocmd InsertLeave * set nopaste
 
-" NOMAL modeのカーソルを点滅させる
-" https://chanko.hatenadiary.jp/entry/2016/10/28/162648
-let &t_EI .= "\e[1 q"
 
 " ----------------------------------------------------------------------------
 " abbreviation
