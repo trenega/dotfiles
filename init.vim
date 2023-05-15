@@ -280,8 +280,20 @@ nnoremap <Leader>e :edit<Space>
 " カーソルの後ろに，ファイルを挿入する
 nnoremap <Leader>r :read<Space>
 
+" <Space>o を押して新しいファイルを開く
+nnoremap <Leader>o :edit<Space>
+
 " ファイルを保存する
 nnoremap <silent><Leader>w :<C-u>write<CR>
+
+" <Space>p と <Space>y でシステムのクリップボードにコピー＆ペーストする
+" https://postd.cc/how-to-boost-your-vim-productivity/
+vmap <Leader>y "+y
+vmap <Leader>d "+d
+nmap <Leader>p "+p
+nmap <Leader>P "+P
+vmap <Leader>p "+p
+vmap <Leader>P "+P
 
 " カレントウィンドウを閉じる。最後の編集ウィンドウ |edit-window| で使うとVimを終了させる
 nnoremap <silent> <Leader>q :<C-u>quit<CR>
