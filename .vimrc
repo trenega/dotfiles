@@ -466,6 +466,8 @@ nnoremap <silent><Leader>w :<C-u>write<CR>
 nnoremap <Leader>r :read<Space>
 
 " <Space>p と <Space>y でシステムのクリップボードにコピー＆ペーストする
+nmap <Leader><Leader> V
+
 " https://postd.cc/how-to-boost-your-vim-productivity/
 vmap <Leader>y "+y
 vmap <Leader>d "+d
