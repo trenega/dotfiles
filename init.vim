@@ -286,6 +286,9 @@ nnoremap <Leader>r :read<Space>
 " ファイルを保存する
 nnoremap <silent><Leader>w :<C-u>write<CR>
 
+" <Space><Space> でビジュアルラインモードに切り替える
+nmap <Leader><Leader> V
+
 " <Space>p と <Space>y でシステムのクリップボードにコピー＆ペーストする
 " https://postd.cc/how-to-boost-your-vim-productivity/
 vmap <Leader>y "+y
