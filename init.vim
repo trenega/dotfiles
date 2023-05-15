@@ -719,12 +719,6 @@ augroup END
 autocmd BufWritePost * call defx#redraw()
 autocmd BufEnter * call defx#redraw()
 
-" テキスト検索オブジェクト
-" https://postd.cc/how-to-boost-your-vim-productivity/
-vnoremap <silent> s //e<C-r>=&selection=='exclusive'?'+1':''<CR><CR>
-    \:<C-u>call histdel('search',-1)<Bar>let @/=histget('search',-1)<CR>gv
-omap s :normal vs<CR>
-
 " Essential for syntax
 syntax enable
 
