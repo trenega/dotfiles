@@ -791,18 +791,6 @@ vnoremap <silent> <C-n> V:TREPLSendSelection<CR>'>j0
 " Enterを押して、ファイルの末尾に移動する
 nnoremap <CR> <Nop>
 nnoremap <CR> G
-" 貼り付け時にペーストバッファが上書きされないようにする
-" vp doesn't replace paste buffer
-
-function! RestoreRegister()
-  let @" = s:restore_reg
-  return ''
-endfunction
-function! s:Repl()
-  let s:restore_reg = @"
-  return "p@=RestoreRegister()\<cr>"
-endfunction
-vmap <silent> <expr> p <sid>Repl()
 
 "End Vimの生産性を高める12の方法----------
 
@@ -815,7 +803,7 @@ autocmd InsertLeave * set nopaste
 
 
 " ----------------------------------------------------------------------------
-" abbreviation
+" ABBREVIATION
 " ----------------------------------------------------------------------------
 
 iabbrev .b #!/bin/bash
@@ -825,6 +813,24 @@ iabbrev .e niijimatakashi993@icloud.com
 iabbrev .g niijimatakashi993@gmail.com
 iabbrev .t takashiniijima213@gmail.com
 iabbrev .y takashiniijima213@yahoo.co.jp
+
+" ----------------------------------------------------------------------------
+" End ABBREVIATION
+" ----------------------------------------------------------------------------
+
+" 貼り付け時にペーストバッファが上書きされないようにする
+" Reference: https://postd.cc/how-to-boost-your-vim-productivity/
+" コードを ~/.vimrc の末尾付近に置きます
+" vp doesn't replace paste buffer
+function! RestoreRegister()
+  let @" = s:restore_reg
+  return ''
+endfunction
+function! s:Repl()
+  let s:restore_reg = @"
+  return "p@=RestoreRegister()\<cr>"
+endfunction
+vmap <silent> <expr> p <sid>Repl()
 
 " ----------------------------------------------------------------------------
 " END OF FILE: .vimrc
