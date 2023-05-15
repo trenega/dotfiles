@@ -437,7 +437,9 @@ inoremap <C-]> <Esc><Right>
 
 "End 俺的にはずせない[Vim]こだわりmap(説明付き)----------
 
-"Leader key Mappings----------------------
+"-----------------------------------------------------------------------
+"Leader key Mappings
+"-----------------------------------------------------------------------
 " Vimの生産性を高める12の方法
 " Reference:
 " How to boost your Vim productivity (2014-03-21) by Adam Stankiewicz
@@ -454,11 +456,23 @@ nnoremap <Leader> <Nop>
 " <Space>e を押してカーソルの後ろに，新しいファイルを開く
 nnoremap <Leader>e :edit<Space>
 
+" <Space>o を押して新しいファイルを開く
+nnoremap <Leader>o :edit<Space>
+
 " <Space>w を押してファイルを保存する
 nnoremap <silent><Leader>w :<C-u>write<CR>
 
 " <Space>r を押してカーソルの後ろに，ファイルを挿入する
 nnoremap <Leader>r :read<Space>
+
+" <Space>p と <Space>y でシステムのクリップボードにコピー＆ペーストする
+" https://postd.cc/how-to-boost-your-vim-productivity/
+vmap <Leader>y "+y
+vmap <Leader>d "+d
+nmap <Leader>p "+p
+nmap <Leader>P "+P
+vmap <Leader>p "+p
+vmap <Leader>P "+P
 
 " 現在のウィンドウを水平に分割する
 nnoremap <Leader>sp :split<CR>
@@ -526,7 +540,9 @@ nnoremap <Leader>h <Home>
 " <Space>l を押して行末へカーソルを移動させる
 nnoremap <Leader>l <End>
 
-"End Leader key Mappings------------------
+"-----------------------------------------------------------------------
+"End Leader key Mappings
+"-----------------------------------------------------------------------
 
 "fzf.vim----------------------------------
 " https://wonderwall.hatenablog.com/entry/2017/10/07/220000
