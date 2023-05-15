@@ -274,14 +274,14 @@ let mapleader = "\<Space>"
 " Reference: https://thinca.hatenablog.com/entry/q-as-prefix-key-in-vim
 nnoremap <Leader> <Nop>
 
-"新しいファイルを開く
+" <Space>e を押して新しいファイルを開く
 nnoremap <Leader>e :edit<Space>
-
-" カーソルの後ろに，ファイルを挿入する
-nnoremap <Leader>r :read<Space>
 
 " <Space>o を押して新しいファイルを開く
 nnoremap <Leader>o :edit<Space>
+
+" カーソルの後ろに，ファイルを挿入する
+nnoremap <Leader>r :read<Space>
 
 " ファイルを保存する
 nnoremap <silent><Leader>w :<C-u>write<CR>
