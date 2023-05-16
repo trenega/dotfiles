@@ -296,4 +296,27 @@ hook_add = '''
 [[plugins]]
 repo = 'ryicoh/deepl.vim'
 
+#ddu-ui-filer Settings--------------------
+# ddu.vim
+[[plugins]]
+repo = 'Shougo/ddu.vim'
+
+# ddu-ui-filer
+[[plugins]]
+repo = 'Shougo/ddu-ui-filer'
+
+# ddu-source-file
+[[plugins]]
+repo = 'Shougo/ddu-source-file'
+
+# ddu-kind-file
+[[plugins]]
+repo = 'Shougo/ddu-kind-file'
+
+# ddu-column-filename
+[[plugins]]
+repo = 'Shougo/ddu-column-filename'
+
+#End ddu-ui-filer Settings----------------
+
 # END OF FILE: dein.toml
