@@ -506,6 +506,7 @@ endif
 
 "iceberg colorscheme Setting--------------
 colorscheme iceberg
+set termguicolors
 
 " ----------------------------------------------------------------------------
 " OTHER
