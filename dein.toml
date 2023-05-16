@@ -318,4 +318,25 @@ repo = 'Shougo/ddu-column-filename'
 
 #End ddu-ui-filer Settings----------------
 
+#ddu.vim Settings------------------------
+# [[plugins]]
+# repo = 'Shougo/ddu.vim'
+
+[[plugins]]
+repo = 'Shougo/ddu-ui-ff'
+
+[[plugins]]
+repo = 'Shougo/ddu-source-file_rec'
+
+[[plugins]]
+repo = 'shun/ddu-source-rg'
+
+[[plugins]]
+repo = 'Shougo/ddu-filter-matcher_substring'
+
+# [[plugins]]
+# repo = 'Shougo/ddu-kind-file'
+
+#End ddu.vim Settings------------------------
+
 # END OF FILE: dein.toml
