@@ -277,17 +277,20 @@ nnoremap <Leader> <Nop>
 " <Space>e を押して新しいファイルを開く
 nnoremap <Leader>e :edit<Space>
 
-" <Space>o を押して新しいファイルを開く
+" 新しいファイルを開く
 nnoremap <Leader>o :edit<Space>
 
-" カーソルの後ろに，ファイルを挿入する
+" ファイルを挿入する
 nnoremap <Leader>r :read<Space>
 
 " ファイルを保存する
 nnoremap <silent><Leader>w :<C-u>write<CR>
 
-" <Space>q を押してカレントウィンドウを閉じる
+" カレントウィンドウを閉じる
 nnoremap <Leader>q :quit
+
+" 現在のバッファに変更点があっても、書き込まずにVimを終了する
+nnoremap <Leader>q! :quit!
 
 " <Space><Space> でビジュアルラインモードに切り替える
 nmap <Leader><Leader> V
