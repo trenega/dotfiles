@@ -286,6 +286,9 @@ nnoremap <Leader>r :read<Space>
 " ファイルを保存する
 nnoremap <silent><Leader>w :<C-u>write<CR>
 
+" <Space>q を押してカレントウィンドウを閉じる
+nnoremap <Leader>q :quit
+
 " <Space><Space> でビジュアルラインモードに切り替える
 nmap <Leader><Leader> V
 
