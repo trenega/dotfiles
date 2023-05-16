@@ -632,7 +632,12 @@ iabbrev .y takashiniijima213@yahoo.co.jp
 " End abbreviation
 " ----------------------------------------------------------------------------
 
-" Goyo.vim integration
+"goyo + limelight (focus mode)------------
+nnoremap <silent> <space>gy :Goyo<CR>
+let g:goyo_width = 120
+nnoremap <silent> <space>ll :Limelight!!<CR>
+let g:limelight_default_coefficient = 0.7
+" let g:limelight_paragraph_span = 1
 autocmd! User GoyoEnter Limelight
 autocmd! User GoyoLeave Limelight!
 
