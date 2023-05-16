@@ -451,17 +451,23 @@ let mapleader = "\<Space>"
 " Reference: https://thinca.hatenablog.com/entry/q-as-prefix-key-in-vim
 nnoremap <Leader> <Nop>
 
-" <Space>e を押してカーソルの後ろに，新しいファイルを開く
+" 新しいファイルを開く
 nnoremap <Leader>e :edit<Space>
 
-" <Space>o を押して新しいファイルを開く
+" 新しいファイルを開く
 nnoremap <Leader>o :edit<Space>
 
-" <Space>w を押してファイルを保存する
+" ファイルを保存する
 nnoremap <silent><Leader>w :<C-u>write<CR>
 
-" <Space>r を押してカーソルの後ろに，ファイルを挿入する
+" ファイルを挿入する
 nnoremap <Leader>r :read<Space>
+
+" カレントウィンドウを閉じる
+nnoremap <Leader>q :quit
+
+" 現在のバッファに変更点があっても、書き込まずにVimを終了する
+nnoremap <Leader>q! :quit!<CR>
 
 " <Space>p と <Space>y でシステムのクリップボードにコピー＆ペーストする
 nmap <Leader><Leader> V
