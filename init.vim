@@ -376,12 +376,14 @@ nnoremap <Leader>l <End>
 " https://wonderwall.hatenablog.com/entry/2017/10/07/220000
 " dispay new window
 let g:fzf_layout = { 'window': 'enew' }
+
 " Mapping selecting mappings
 " :Maps
 " https://github.com/junegunn/fzf.vim
 nmap <leader><tab> <plug>(fzf-maps-n)
 xmap <leader><tab> <plug>(fzf-maps-x)
 omap <leader><tab> <plug>(fzf-maps-o)
+
 " Insert mode completion
 " https://github.com/junegunn/fzf.vim
 " INSERT modeでファイル名や行を補完する
