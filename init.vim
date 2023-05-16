@@ -706,6 +706,24 @@ autocmd BufEnter * call defx#redraw()
 nnoremap <CR> <Nop>
 nnoremap <CR> G
 
+"deepl.vim--------------------------------
+" Reference: https://github.com/ryicoh/deepl.vim
+" フリー版のエンドポイントを指定
+let g:deepl#endpoint = "https://api-free.deepl.com/v2/translate"
+
+" AuthKey
+let g:deepl#auth_key = "027ec6a8-c7a9-627c-40d6-2a6b3824b210:fx"
+
+" replace a visual selection
+vmap ,e <Cmd>call deepl#v("EN")<CR>
+vmap ,j <Cmd>call deepl#v("JA")<CR>
+
+" translate a current line and display on a new line
+nmap ,e yypV<Cmd>call deepl#v("EN")<CR>
+nmap ,j yypV<Cmd>call deepl#v("JA")<CR>
+
+"End deepl.vim----------------------------
+
 " 貼り付け時にペーストバッファが上書きされないようにする
 " コードを ~/.vimrc の末尾付近に置きます
 " vp doesn't replace paste buffer
