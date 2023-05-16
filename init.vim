@@ -290,7 +290,7 @@ nnoremap <silent><Leader>w :<C-u>write<CR>
 nnoremap <Leader>q :quit
 
 " 現在のバッファに変更点があっても、書き込まずにVimを終了する
-nnoremap <Leader>q! :quit!
+nnoremap <Leader>q! :quit!<CR>
 
 " <Space><Space> でビジュアルラインモードに切り替える
 nmap <Leader><Leader> V
