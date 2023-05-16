@@ -273,15 +273,15 @@ nmap ,j yypV<Cmd>call deepl#v("JA")<CR>
 "End deepl.vim----------------------------
 
 "ddc.vim----------------------------------
-" https://github.com/Shougo/ddc.vim
+" Reference: https://github.com/Shougo/ddc.vim
 " Customize global Settings
 " Use around source.
-" https://github.com/Shougo/ddc-around
+" Reference: https://github.com/Shougo/ddc-around
 call ddc#custom#patch_global('sources', ['around'])
 
 " Use matcher_head and sorter_rank.
-" https://github.com/Shougo/ddc-matcher_head
-" https://github.com/Shougo/ddc-sorter_rank
+" Reference: https://github.com/Shougo/ddc-matcher_head
+" Reference: https://github.com/Shougo/ddc-sorter_rank
 call ddc#custom#patch_global('sourceOptions', {
       \ '_': {
       \   'matchers': ['matcher_head'],
@@ -342,8 +342,7 @@ set runtimepath+=~/src/vim-polyglot
 " ----------------------------------------------------------------------------
 
 "インサートモードから出ずにVimを使いこなす--------------------
-" Reference:
-" https://woodyzootopia.github.io/2019/11/インサートモードから出ずにVimを使いこなす
+" Reference: https://woodyzootopia.github.io/2019/11/インサートモードから出ずにVimを使いこなす
 " cnoremap mode: command line
 " inoremap mode: insert
 
@@ -441,9 +440,8 @@ inoremap <C-]> <Esc><Right>
 "Leader key Mappings
 "-----------------------------------------------------------------------
 " Vimの生産性を高める12の方法
-" Reference:
 " How to boost your Vim productivity (2014-03-21) by Adam Stankiewicz
-" https://postd.cc/how-to-boost-your-vim-productivity/
+" Reference: https://postd.cc/how-to-boost-your-vim-productivity/
 let mapleader = "\<Space>"
 
 " スペースキーを prefix にする例
@@ -468,7 +466,7 @@ nnoremap <Leader>r :read<Space>
 " <Space>p と <Space>y でシステムのクリップボードにコピー＆ペーストする
 nmap <Leader><Leader> V
 
-" https://postd.cc/how-to-boost-your-vim-productivity/
+" Reference: https://postd.cc/how-to-boost-your-vim-productivity/
 vmap <Leader>y "+y
 vmap <Leader>d "+d
 nmap <Leader>p "+p
@@ -547,7 +545,7 @@ nnoremap <Leader>l <End>
 "-----------------------------------------------------------------------
 
 "fzf.vim----------------------------------
-" https://wonderwall.hatenablog.com/entry/2017/10/07/220000
+" Reference: https://wonderwall.hatenablog.com/entry/2017/10/07/220000
 " dispay new window
 let g:fzf_layout = { 'window': 'enew' }
 
@@ -558,13 +556,13 @@ nnoremap s :Buffers<CR>
 nnoremap t <Nop>
 nnoremap t :Files<CR>
 
-" https://github.com/junegunn/fzf.vim
+" Reference: https://github.com/junegunn/fzf.vim
 nmap <leader><tab> <plug>(fzf-maps-n)
 xmap <leader><tab> <plug>(fzf-maps-x)
 omap <leader><tab> <plug>(fzf-maps-o)
 
 " Insert mode completion
-" https://github.com/junegunn/fzf.vim
+" Reference: https://github.com/junegunn/fzf.vim
 " INSERT modeでファイル名や行を補完する
 " <C-x><C-l>
 imap <c-x><c-k> <plug>(fzf-complete-word)
@@ -717,7 +715,7 @@ let g:lightline = {
 \ }
 
 " Basic Setting
-" https://zenn.dev/kouta/articles/87947515bff4da
+" Reference: https://zenn.dev/kouta/articles/87947515bff4da
 let g:eskk#kakutei_when_unique_candidate = 1 " 漢字変換した時に候補が1つの場合、自動的に確定する
 let g:eskk#enable_completion = 0             " neocompleteを入れないと、1にすると動作しなくなるため0推奨
 let g:eskk#keep_state = 0                    " ノーマルモードに戻るとeskkモードを初期値にする
@@ -749,7 +747,7 @@ cmap jk <Plug>(eskk:toggle)
 "End eskk Settings------------------------
 
 "cursor Change----------------------------
-" https://qiita.com/Linda_pp/items/9e0c94eb82b18071db34
+" Reference: https://qiita.com/Linda_pp/items/9e0c94eb82b18071db34
 if has('vim_starting')
     " 挿入モード時に非点滅の縦棒タイプのカーソル
     let &t_SI .= "\e[6 q"
@@ -762,7 +760,7 @@ if has('vim_starting')
     endif
 
 " NOMAL modeのカーソルを非点滅させる
-" https://chanko.hatenadiary.jp/entry/2016/10/28/162648
+" Reference: https://chanko.hatenadiary.jp/entry/2016/10/28/162648
 " let &t_EI .= "\e[2 q"
 
 "End cursor Change------------------------
@@ -795,7 +793,7 @@ nnoremap <CR> G
 "End Vimの生産性を高める12の方法----------
 
 "cpと打つと ペーストモードになる
-" https://kekaku.addisteria.com/wp/20170621231629
+" Reference: https://kekaku.addisteria.com/wp/20170621231629
 nnoremap cp :set paste<CR>
 
 "挿入モードを抜けるとき、set nopaste を実行する。
