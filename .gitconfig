@@ -3,8 +3,7 @@
 	email = takashiniijima213@gmail.com
 [core]
 	excludesFile = /Users/nis/.gitignore_global
-        ; editor = nvim
-        editor = vim
+        editor = nvim
 	autocrlf = input
 [push]
 	default = simple
