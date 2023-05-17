@@ -208,6 +208,8 @@ autocmd! User GoyoLeave Limelight!
 
 "iceberg.vim
 colorscheme iceberg
+" True Color
+set termguicolors
 
 "status line
 set laststatus=2
