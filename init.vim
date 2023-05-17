@@ -917,26 +917,7 @@ nmap <silent> ;g <Cmd>call ddu#start({
 
 "ddu.vim Scripts--------------------------
 
-""Simple Statusline-------------------------------
-"" Reference: https://www.rasukarusan.com/entry/2022/09/04/230010
-"hi User1 guifg=#FFFFFF guibg=#000000
-"hi User2 guifg=#ffffff guibg=#333333
-
-"" ブランチ名
-"set statusline=%9*\ \ %2*%{matchstr(fugitive#statusline(),'(\zs.*\ze)')}
-
-"" ファイル名
-"set statusline+=%1*\ %{expand('%')}
-
-"" ここから右寄せ
-"set statusline+=%=
-
-"" 現在行 / 全体行 ファイル種別
-"set statusline+=%l/%L\ \%y
-
-""End Simple Statusline-------------------------------
-
-" 貼り付け時にペーストバッファが上書きされないようにする
+"貼り付け時にペーストバッファが上書きされないようにする-------
 " コードを ~/.vimrc の末尾付近に置きます
 " Reference: https://postd.cc/how-to-boost-your-vim-productivity/
 " vp doesn't replace paste buffer
@@ -950,6 +931,7 @@ function! s:Repl()
 endfunction
 vmap <silent> <expr> p <sid>Repl()
 
+"End 貼り付け時にペーストバッファが上書きされないようにする---
 
 " Essential for syntax
 syntax enable
