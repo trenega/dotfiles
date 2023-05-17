@@ -80,11 +80,11 @@ repo = 'vim-jp/vimdoc-ja'
 # <<< Color scheme setting <<<
 
 # lightline.vim
-[[plugins]]
-repo = 'itchyny/lightline.vim'
-hook_add = '''
-        set noshowmode
-'''
+# [[plugins]]
+# repo = 'itchyny/lightline.vim'
+# hook_add = '''
+#         set noshowmode
+# '''
 
 # vim-unimpaired
 [[plugins]]
