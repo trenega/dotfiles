@@ -278,8 +278,6 @@ nnoremap <Leader> <Nop>
 " <Space>e を押して新しいファイルを開く
 nnoremap <Leader>e :edit<Space>
 
-" 新しいファイルを開く
-nnoremap <Leader>o :edit<Space>
 
 " ファイルを挿入する
 nnoremap <Leader>r :read<Space>
@@ -289,6 +287,9 @@ nnoremap <silent><Leader>w :<C-u>write<CR>
 
 " カレントウィンドウを閉じる
 nnoremap <Leader>q :quit
+
+" カレントウィンドウをスクリーン上にある唯一のウィンドウにする
+nnoremap <Leader>o :only<CR>
 
 " 現在のバッファに変更点があっても、書き込まずにVimを終了する
 nnoremap <Leader>q! :quit!<CR>
@@ -506,7 +507,7 @@ endif
 
 "iceberg colorscheme Setting--------------
 colorscheme iceberg
-set termguicolors
+" set termguicolors
 
 " ----------------------------------------------------------------------------
 " OTHER
