@@ -126,9 +126,6 @@ NeoBundle 'altercation/vim-colors-solarized'
 " iceberg.vim
 NeoBundle 'cocopon/iceberg.vim'
 
-" ステータスラインの表示内容強化
-NeoBundle 'itchyny/lightline.vim'
-
 " 日本語ヘルプをインストールする
 NeoBundle 'vim-jp/vimdoc-ja'
 
