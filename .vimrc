@@ -166,6 +166,8 @@ call neobundle#end()
 " インストールするかどうかを尋ねてくれるようにする設定・・・③
 NeoBundleCheck
 
+"End of NeoBundle(Vimプラグインの管理) -----------------------
+
 " vim-expand-region
 vmap v <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)
@@ -181,7 +183,6 @@ autocmd! User GoyoLeave Limelight!
 
 "End goyo + limelight (focus mode)--------
 
-"End of NeoBundle(Vimプラグインの管理) -----------------------
 
 "molokai Scripts----------------------------------------------
 "if neobundle#is_installed('molokai')
@@ -441,6 +442,7 @@ inoremap <C-]> <Esc><Right>
 "-----------------------------------------------------------------------
 "Leader key Mappings
 "-----------------------------------------------------------------------
+
 " Vimの生産性を高める12の方法
 " How to boost your Vim productivity (2014-03-21) by Adam Stankiewicz
 " Reference: https://postd.cc/how-to-boost-your-vim-productivity/
@@ -545,6 +547,7 @@ nnoremap <Leader>gb :Gblame<CR>
 
 " <Space>h を押して行頭へカーソルを移動させる
 nnoremap <Leader>h <Home>
+
 " <Space>l を押して行末へカーソルを移動させる
 nnoremap <Leader>l <End>
 
@@ -648,7 +651,7 @@ endif
 "        set undofile
 "endif
 
-" カーソル下の単語をGoogleで検索する -------------------------
+"カーソル下の単語をGoogleで検索する -------------------------
 function! s:search_by_google()
     let line = line(".")
     let col  = col(".")
