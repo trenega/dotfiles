@@ -92,54 +92,76 @@ filetype plugin indent on
 
 " Carry over indenting from previous line
 set autoindent
+
 " IMPORTANT! Vimの無名レジスタとOSのクリップボードを連携させる
 set clipboard+=unnamed
+
 " UTF-8 by default
 set encoding=utf-8
 scriptencoding utf-8
+
 " Change Tab'code to Space'code
 set expandtab
 set fileencodings=ucs-boms,utf-8,euc-jp,cp932
+
 " Prefer Unix
 set fileformats=unix,dos,mac
+
 " help language
 set helplang=ja,en
+
 " How many lines of history to save
 set history=5000
+
 " Hiligth searching
 set hlsearch
+
 " Case insensitive
 set ignorecase
+
 " Search as you type
 set incsearch
+
 " ignorecase optionの副作用を解除する(cf.Practical Vim, Drew Neil p.354)
 set infercase
+
 " modifiable
 " set modifiable
 " Move cursor by mouse
 set mouse=a
 set nocp incsearch
+
 " number + relative number
 set number relativenumber
+
 " 大文字/小文字の区別を予測してくれる
 set smartcase
 set smartindent
+
 " Number of spaces to shift for autoindent or >,<
 set shiftwidth=8
+
 " Hilight matching braces/parens/etc.
 set showmatch
+
 " Spaces 'feel' like tabs
 set softtabstop=8
+
 " The One True Tab
 set tabstop=8
+
 " Show possible completions on command line
 set wildmenu
+
 " List all options and complete
 set wildmode=full
+
 " No backup file
 set nobackup
+
 " Show gitgutter column always
 set signcolumn=yes
+
 " ノーマルモードで入力したコマンドが右下に表示される
 set background=dark
 
