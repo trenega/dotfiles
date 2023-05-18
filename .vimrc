@@ -127,7 +127,7 @@ NeoBundle 'altercation/vim-colors-solarized'
 NeoBundle 'cocopon/iceberg.vim'
 
 " ステータスラインの表示内容強化
-NeoBundle 'itchyny/lightline.vim'
+" NeoBundle 'itchyny/lightline.vim'
 
 " 日本語ヘルプをインストールする
 NeoBundle 'vim-jp/vimdoc-ja'
@@ -213,8 +213,8 @@ colorscheme iceberg
 " set termguicolors
 
 "status line
-set laststatus=2
-set noshowmode
+" set laststatus=2
+" set noshowmode
 
 " ----------------------------------------------------------------------------
 " vim-plug
