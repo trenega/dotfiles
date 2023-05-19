@@ -424,8 +424,8 @@ nnoremap <silent> <Space><Space> :let @/ = '\<' . expand('<cword>') . '\>'<CR>:s
 " つまり右辺最初の<Space><Space>によって上のハイライトmapを発動させるということです。
 " 通常mapはnoreを付けて再マップ無しでmapすることが一般的ですが、
 " きちんと理解した上で再マップを利用するのはアリです。
-nnoremap ` <Nop>
-nmap ` <Space><Space>:%s/<C-r>///gc<Left><Left><Left>
+" nnoremap ` <Nop>
+" nmap ` <Space><Space>:%s/<C-r>///gc<Left><Left><Left>
 
 " ハイライトを消去する
 nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
