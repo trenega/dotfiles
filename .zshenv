@@ -39,9 +39,6 @@ export CPPFLAGS="-I/usr/local/opt/gettext/include"
 export LDFLAGS="-L/usr/local/opt/openssl@1.1/lib"
 export CPPFLAGS="-I/usr/local/opt/openssl@1.1/include"
 
-# dateコマンドの表示を英字表示にする
-export LANG=C
-
 # >>> Introduce Linux Commands >>>
 # Reference:
 # テキスト処理のための標準的なコマンド群のmacOSへの導入手順
