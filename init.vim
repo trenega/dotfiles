@@ -675,7 +675,7 @@ lang en_US.UTF-8
 "Terminal---------------------------------
 " https://qiita.com/Lennon_x00x_/items/e8fa47d27aaab9635161
 " 新規タブでターミナルモードを起動
-nnoremap <silent> tt <cmd>terminal<CR>
+" nnoremap <silent> tt <cmd>terminal<CR>
 
 " 下分割でターミナルモードを起動
 nnoremap <silent> tx <cmd>belowright new<CR><cmd>terminal<CR>
