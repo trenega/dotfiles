@@ -577,5 +577,10 @@ function precmd() {
   echo -ne "\033]1;$tname\007" # tab title
 }
 
+# 初回シェル時のみ tmux実行
+if [ $SHLVL = 1 ]; then
+  tmux a -t main
+fi
+
 # Don't end with errors.
 # true
