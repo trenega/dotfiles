@@ -565,6 +565,9 @@ export PATH="/Users/nis/bin:$PATH"
 # local::lib PATH
 eval $(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib)
 
+# git PATH
+export PATH="/usr/local/opt/git/bin:$PATH"
+
 # iTermil2のウィンドウとタブに自動的に名前をつける
 # https://qiita.com/junkoda/items/8c0c209edbbabfd27f29
 function precmd() {
