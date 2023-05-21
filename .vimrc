@@ -11,85 +11,63 @@ set nocompatible
 " OPTIONS
 " ----------------------------------------------------------------------------
 
-" Essential for syntax
-syntax enable
+syntax enable                                   " Essential for syntax
 
-" Essential for filetype plugins.
-filetype plugin indent on
+filetype plugin indent on                       " Essential for filetype plugins.
 
-" Carry over indenting from previous line
-set autoindent
+set autoindent                                  " Carry over indenting from previous line
 
 set clipboard+=unnamed
 
-" UTF-8 by default
-set encoding=utf-8
+set encoding=utf-8                              " UTF-8 by default
+
 scriptencoding utf-8
 
-" Change Tab'code to Space'code
-set expandtab
+set expandtab                                   " Change Tab'code to Space'code
+
 set fileencodings=ucs-boms,utf-8,euc-jp,cp932
 
-" Prefer Unix
-set fileformats=unix,dos,mac
+set fileformats=unix,dos,mac                    " Prefer Unix
 
-" help language
-set helplang=ja,en
+set helplang=ja,en                              " help language
 
-" How many lines of history to save
-set history=5000
+set history=5000                                " How many lines of history to save
 
-" Hiligth searching
-set hlsearch
+set hlsearch                                    " Hiligth searching
 
-" Case insensitive
-set ignorecase
+set ignorecase                                  " Case insensitive
 
-" Search as you type
-set incsearch
+set incsearch                                   " Search as you type
 
-" ignorecase optionの副作用を解除する(cf.Practical Vim, Drew Neil p.354)
-set infercase
+set infercase                                   " ignorecase optionの副作用を解除する(cf.Practical Vim, Drew Neil p.354)
 
-" Move cursor by mouse
-set mouse=a
+set mouse=a                                     " Move cursor by mouse
 
 set nocp incsearch
 
-" relative number
-set relativenumber
+set relativenumber                              " relative number
 
-" 大文字/小文字の区別を予測してくれる
-set smartcase
+set smartcase                                   " 大文字/小文字の区別を予測してくれる
 
 set smartindent
 
-" Number of spaces to shift for autoindent or >,<
-set shiftwidth=4
+set shiftwidth=4                                " Number of spaces to shift for autoindent or >,<
 
-" Hilight matching braces/parens/etc.
-set showmatch
+set showmatch                                   " Hilight matching braces/parens/etc.
 
-" Spaces 'feel' like tabs
-set softtabstop=4
+set softtabstop=4                               " Spaces 'feel' like tabs
 
-" The One True Tab
-set tabstop=4
+set tabstop=4                                   " The One True Tab
 
-" Show possible completions on command line
-set wildmenu
+set wildmenu                                    " Show possible completions on command line
 
-" List all options and complete
-set wildmode=full
+set wildmode=full                               " List all options and complete
 
-" Does not make backup file
-set nobackup
+set nobackup                                    " Does not make backup file
 
-" lexima option
-set backspace=indent,eol,start
+set backspace=indent,eol,start                  " lexima option
 
-" Show gitgutter column always
-set signcolumn=yes
+set signcolumn=yes                              " Show gitgutter column always
 
 " ----------------------------------------------------------------------------
 " PLUGIN SETTINGS
