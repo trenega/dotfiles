@@ -1,26 +1,27 @@
-#####################################################################
+# -------------------------------------------------------------------
 #
 #  File name     :  ~/.zshrc
 #  Copyright     :  nis
-#  Modified      :  2023/03/18 11:24
 #
 #  .zshrc file
 #  initial setup file for only interactive zsh
 #  This file is read after .zshenv file is read.
 #  Reference: http://www.gentei.org/~yuuji/support/zsh/files/zshrc
 #
-#####################################################################
+# -------------------------------------------------------------------
 
-# >>> テキスト処理のための標準的なコマンド群のmacOSへの導入手順 >>>
+# -------------------------------------------------------------------
+# テキスト処理のための標準的なコマンド群のmacOSへの導入手順
 # Reference:
 # @eumesy 2019/04/01
 # GNU/Linux Commands
 # https://qiita.com/eumesy/items/3bb39fc783c8d4863c5f
 # in ~/.zshenv, executed `unsetopt GLOBAL_RCS` and ignored /etc/zshrc
 [ -r /etc/zshrc ] && . /etc/zshrc
-# <<< テキスト処理のための標準的なコマンド群のmacOSへの導入手順 <<<
+# End of テキスト処理のための標準的なコマンド群のmacOSへの導入手順
+# -------------------------------------------------------------------
 
-# >>> Sample .zshrc file >>>
+# Sample .zshrc file
 # Reference: http://www.gentei.org/~yuuji/support/zsh/files/zshrc
 # -------------------------------------------------------------------
 # SET SHELL VARIABLE
@@ -115,6 +116,7 @@ alias gs='git status'
 alias ga='git add'
 alias gc='git commit'
 alias gp='git push'
+# End of Git
 # ------------------------------------------------------------
 
 # tmux
@@ -158,6 +160,7 @@ alias envi='environment'
 
 # viins keymap
 bindkey -v
+
 # viins (like emacs-mode)
 # https://qiita.com/b4b4r07/items/8db0257d2e6f6b19ecb9
 bindkey -M viins '\er' history-incremental-pattern-search-forward
@@ -191,14 +194,17 @@ zplug "b4b4r07/zsh-vimode-visual"
 zstyle ':completion:*' format '%BCompleting %d%b'
 zstyle ':completion:*' group-name ''
 
-# >>> Complement for git commands >>>
+# -------------------------------------------------------------------
+# Complement for git commands
 # Reference: https://blog.qnyp.com/2013/05/14/zsh-git-completion/
 fpath=($(brew --prefix)/share/zsh/site-functions $fpath)
 autoload -U compinit
 compinit -u
-# <<< Complement for git commands <<<
+# End of Complement for git commands
+# -------------------------------------------------------------------
 
-# <<< Sample .zshrc file <<<
+# End of Sample .zshrc file
+# -------------------------------------------------------------------
 
 # -------------------------------------------------------------------
 # PATH MODIFICATIONS
@@ -229,7 +235,8 @@ export PATH="/usr/local/opt/ruby/bin:$PATH"
 export LDFLAGS="-L/usr/local/opt/ruby/lib"
 export CPPFLAGS="-I/usr/local/opt/ruby/include"
 
-# >>> pyenv environment variable>>>
+# -------------------------------------------------------------------
+# pyenv environment variable
 #export PYENV_ROOT="$HOME/.pyenv"
 # idle3 change path
 # Reference:https://teratail.com/questions/211641
@@ -238,7 +245,8 @@ export CPPFLAGS="-I/usr/local/opt/ruby/include"
 if command -v pyenv 1>/dev/null 2>&1; then
         eval "$(pyenv init -)"
 fi
-# <<< pyenv environment variable <<<
+# End of pyenv environment variable
+# -------------------------------------------------------------------
 
 # python3.8/site-packages PATH
 # export PYTHONPATH="$PYENV_ROOT/versions/3.8.5/lib/python3.8/site-packages"
@@ -259,7 +267,8 @@ export LDFLAGS="-L/usr/local/opt/python@3.9/lib"
 export PKG_CONFIG_PATH="/usr/local/opt/python@3.9/lib/pkgconfig"
 # <<< python@3.9 path <<<
 
-# >>> pyenv pyenv-virtualenv settings >>>
+# -------------------------------------------------------------------
+# pyenv pyenv-virtualenv settings
 # HomebrewでmacOSにNeovimをインストールして、使えるように設定する方法
 # https://yu8mada.com/2018/08/03/how-to-install-neovim-on-macos-using-homebrew-and-set-it-up-to-make-it-able-to-be-used/
 eval "$(pyenv init -)"
@@ -270,9 +279,11 @@ eval "$(rbenv init -)"
 
 # nodenv
 eval "$(nodenv init -)"
-# <<< pyenv pyenv-virtualenv settings <<<
+# End of pyenv pyenv-virtualenv settings
+# -------------------------------------------------------------------
 
-# >>> brew nano initialize >>>
+# -------------------------------------------------------------------
+# brew nano initialize
 export PATH="/usr/local/opt/ncurses/bin:$PATH"
 #For compilers to find ncurses you may need to set:
 #export LDFLAGS="-L/usr/local/opt/ncurses/lib"
@@ -280,15 +291,19 @@ export PATH="/usr/local/opt/ncurses/bin:$PATH"
 
 #For pkg-config to find ncurses you may need to set:
 export PKG_CONFIG_PATH="/usr/local/opt/ncurses/lib/pkgconfig"
-# <<< brew nano initialize <<<
+# End of brew nano initialize
+# -------------------------------------------------------------------
 
-# >>> guile path >>>
+# -------------------------------------------------------------------
+# guile path
 export GUILE_LOAD_PATH="/usr/local/share/guile/site/3.0"
 export GUILE_LOAD_COMPILED_PATH="/usr/local/lib/guile/3.0/site-ccache"
 export GUILE_SYSTEM_EXTENSIONS_PATH="/usr/local/lib/guile/3.0/extensions"
-# <<< guile path <<<
+# End of guile path
+# -------------------------------------------------------------------
 
-# >>> ruby PATH >>>
+# -------------------------------------------------------------------
+# ruby PATH
 # If you need to have ruby first in your PATH run:
 export PATH="/usr/local/opt/ruby/bin:$PATH"
 
@@ -298,9 +313,11 @@ export CPPFLAGS="-I/usr/local/opt/ruby/include"
 
 # For pkg-config to find ruby you may need to set:
 export PKG_CONFIG_PATH="/usr/local/opt/ruby/lib/pkgconfig"
-# <<< ruby path <<<
+# End of ruby path
+# -------------------------------------------------------------------
 
-# >>> ruby-build >>>
+# -------------------------------------------------------------------
+#  ruby-build
 # ruby-build installs a non-Homebrew OpenSSL for each Ruby version installed
 # and these are never upgraded.
 
@@ -310,9 +327,11 @@ export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
 
 # Note: this may interfere with building old versions of Ruby (e.g <2.4) that use
 # OpenSSL <1.1.
-# <<< ruby-build <<<
+# End of ruby-build
+# -------------------------------------------------------------------
 
-# >>> openssl@1.1 path >>>
+# -------------------------------------------------------------------
+# openssl@1.1 path
 # If you need to have openssl@1.1 first in your PATH run:
 export PATH="/usr/local/opt/openssl@1.1/bin:$PATH"
 
@@ -322,14 +341,17 @@ export CPPFLAGS="-I/usr/local/opt/openssl@1.1/include"
 
 # For pkg-config to find openssl@1.1 you may need to set:
 export PKG_CONFIG_PATH="/usr/local/opt/openssl@1.1/lib/pkgconfig"
-# <<< openssl@1.1 path <<<
+# End of openssl@1.1 path
+# -------------------------------------------------------------------
 
-# >>> Upgrading grep 3.4 -> 3.5 >>>
+# -------------------------------------------------------------------
+# Upgrading grep 3.4 -> 3.5
 # All commands have been installed with the prefix "g".
 # If you need to use these commands with their normal names, you
 # can add a "gnubin" directory to your PATH from your bashrc like:
 export PATH="/usr/local/opt/grep/libexec/gnubin:$PATH"
-# <<< Upgrading grep 3.4 -> 3.5 <<<
+# End of Upgrading grep 3.4 -> 3.5
+# -------------------------------------------------------------------
 
 # Reference: https://yoshikiito.net/blog/archives/2048/
 export PATH="$HOME/.pyenv/shims:$PATH"
@@ -359,7 +381,8 @@ export PATH="/usr/local/opt/gnu-tar/libexec/gnubin:$PATH"
 # lightline color initialize
 export TERM=xterm-256color
 
-# >>> .zshrc by Ian Langworth >>>
+# -------------------------------------------------------------------
+# .zshrc by Ian Langworth
 # Reference: VIM AFTER 15 YEARS （2017-10-17） by Ian Langworth
 # INTERNAL UTILITY FUNCTIONS
 # https://postd.cc/vim3/
@@ -373,7 +396,8 @@ _has() {
 _color() {
   return $( [ -z "$INSIDE_EMACS" -a -z "$VIMRUNTIME" ] )
 }
-# <<< .zshrc by Ian Langworth <<<
+# End of .zshrc by Ian Langworth
+# -------------------------------------------------------------------
 
 # GNU grep
 if _color; then
@@ -426,27 +450,11 @@ export FZF_TMUX=1
 export FZF_TMUX_HEIGHT=20
 
 
-# <<< .zshrc by Ian Langworth <<<
+# End of .zshrc by Ian Langworth
+# -------------------------------------------------------------------
 
-# >>> tmux making session >>>
-# Reference: ターミナル（黒い画面）を分割して使うtmux超入門
-# セッションなかったら作る
-# https://girigiribauer.com/tech/20200427/
-
-# if ! $(tmux has-session -t main 2> /dev/null)
-# then
-#   tmux new -s main
-# fi
-
-# # tmux からの起動じゃなかったら tmux attach
-# if [ -z "$TMUX" ]
-# then
-#   tmux attach -t main
-# fi
-
-# <<< tmux making session <<<
-
-# >>> tcl-tk initialize >>>
+# -------------------------------------------------------------------
+# tcl-tk initialize
 # Reference:
 # https://qiita.com/skyloken/items/a5f839eba1bd79cd5ef9
 # @skyloken 2019/11/02
@@ -458,7 +466,8 @@ export LDFLAGS="-L/usr/local/opt/tcl-tk/lib"
 export CPPFLAGS="-I/usr/local/opt/tcl-tk/include"
 export PKG_CONFIG_PATH="/usr/local/opt/tcl-tk/lib/pkgconfig"
 export PYTHON_CONFIGURE_OPTS="--with-tcltk-includes='-I/usr/local/opt/tcl-tk/include' --with-tcltk-libs='-L/usr/local/opt/tcl-tk/lib -ltcl8.6 -ltk8.6'"
-# <<< tcl-tk initialize <<<
+# End of tcl-tk initialize
+# -------------------------------------------------------------------
 
 # 簡易エディタ zed 利用のための準備
 autoload zed
@@ -466,7 +475,8 @@ autoload zed
 # mathfuncモジュールをロードする
 zmodload zsh/mathfunc
 
-# >>> Ctrl-Zを使ってVimにスイッチバックする >>>
+# -------------------------------------------------------------------
+#  Ctrl-Zを使ってVimにスイッチバックする
 # Reference: Vimの生産性を高める12の方法
 # How to boost your Vim productivity
 # (2014-03-21)
@@ -483,9 +493,11 @@ fancy-ctrl-z () {
 }
 zle -N fancy-ctrl-z
 bindkey '^Z' fancy-ctrl-z
-# <<< Ctrl-Zを使ってVimにスイッチバックする <<<
+# End of Ctrl-Zを使ってVimにスイッチバックする
+# -------------------------------------------------------------------
 
-# >>> sindresorhus/pure >>>
+# -------------------------------------------------------------------
+# sindresorhus/pure
 # Pretty, minimal and fast ZSH prompt
 
 autoload -U promptinit; promptinit
@@ -497,23 +509,28 @@ zstyle :prompt:pure:git:stash show yes
 zstyle ':prompt:pure:prompt:*' color cyan
 
 prompt pure
-# <<< sindresorhus/pure <<<
+# End of sindresorhus/pure
+# -------------------------------------------------------------------
 
-# >>> zsh-users/zsh-syntax-highlightling >>>
+# -------------------------------------------------------------------
+# zsh-users/zsh-syntax-highlightling
 # Fish shell like syntax highlightling for Zsh.
 
 if [ -f /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]; then source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 fi
 
-# <<< zsh-users/zsh-syntax-highlightling <<<
+# End of zsh-users/zsh-syntax-highlightling
+# -------------------------------------------------------------------
 
-[ -f "/Users/nis/.ghcup/env" ] && source "/Users/nis/.ghcup/env" # ghcup-env
+# ghcup-env
+[ -f "/Users/nis/.ghcup/env" ] && source "/Users/nis/.ghcup/env"
 
 # Shell統合
 # https://www.rasukarusan.com/entry/2019/04/13/180443
 source ~/.iterm2_shell_integration.zsh
 
-# >>> Terminalの現在行をエディタで編集して実行する >>>
+# -------------------------------------------------------------------
+#  Terminalの現在行をエディタで編集して実行する
 # Reference: rasukarasan.com/entry/2020/04/20/083000
 
 edit_current_line() {
@@ -528,7 +545,8 @@ edit_current_line() {
 zle -N edit_current_line
 # Ctrl w -> vim open
 bindkey '^w' edit_current_line
-# <<< Terminalの現在行をエディタで編集して実行する <<<
+# End of Terminalの現在行をエディタで編集して実行する
+# -------------------------------------------------------------------
 
 # Complie .zshrc file
 # Reference: https://qiita.com/vintersnow/items/7343b9bf60ea468a4180
@@ -536,7 +554,8 @@ if [ ~/.zshrc -nt ~/.zshrc.zwc ]; then
         zcompile ~/.zshrc
 fi
 
-# >>> Setup ssh-agent >>>
+# -------------------------------------------------------------------
+# Setup ssh-agent
 # Reference: https://h2plus.biz/hiromitsu/entry/791
 if [ -f ~/.ssh-agent ]; then
     . ~/.ssh-agent
@@ -546,7 +565,8 @@ if [ -z "$SSH_AGENT_PID" ] || ! kill -0 $SSH_AGENT_PID; then
     . ~/.ssh-agent
 fi
 ssh-add -l >& /dev/null || ssh-add
-# <<< Setup ssh-agent <<<
+# End of Setup ssh-agent
+# -------------------------------------------------------------------
 
 # Use <C-q> push-line (zsh emacs keymap)
 stty start undef
@@ -576,6 +596,7 @@ eval $(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib)
 # git PATH
 export PATH="/usr/local/opt/git/bin:$PATH"
 
+# -------------------------------------------------------------------
 # iTermil2のウィンドウとタブに自動的に名前をつける
 # https://qiita.com/junkoda/items/8c0c209edbbabfd27f29
 function precmd() {
@@ -587,6 +608,31 @@ function precmd() {
   echo -ne "\033]2;$wname\007" # window title
   echo -ne "\033]1;$tname\007" # tab title
 }
+
+# End of iTermil2のウィンドウとタブに自動的に名前をつける
+# -------------------------------------------------------------------
+
+# -------------------------------------------------------------------
+# tmux making session
+# Reference: ターミナル（黒い画面）を分割して使うtmux超入門
+# セッションなかったら作る
+# https://girigiribauer.com/tech/20200427/
+
+# if ! $(tmux has-session -t main 2> /dev/null)
+# then
+#   tmux new -s main
+# fi
+
+# # tmux からの起動じゃなかったら tmux attach
+# if [ -z "$TMUX" ]
+# then
+#   tmux attach -t main
+# fi
+
+# End of tmux making session
+# -------------------------------------------------------------------
+
+
 
 # Don't end with errors.
 # true
