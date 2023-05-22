@@ -10,29 +10,24 @@
 #
 # -------------------------------------------------------------------
 
-# -------------------------------------------------------------------
-# テキスト処理のための標準的なコマンド群のmacOSへの導入手順
+#テキスト処理のための標準的なコマンド群のmacOSへの導入手順---
 # Reference:
 # @eumesy 2019/04/01
 # GNU/Linux Commands
 # https://qiita.com/eumesy/items/3bb39fc783c8d4863c5f
 # in ~/.zshenv, executed `unsetopt GLOBAL_RCS` and ignored /etc/zshrc
 [ -r /etc/zshrc ] && . /etc/zshrc
-# End of テキスト処理のための標準的なコマンド群のmacOSへの導入手順
-# -------------------------------------------------------------------
+#End テキスト処理のための標準的なコマンド群のmacOSへの導入手順---
 
+#SET SHELL VARIABLE-----------------------
 # Sample .zshrc file
 # Reference: http://www.gentei.org/~yuuji/support/zsh/files/zshrc
-# -------------------------------------------------------------------
-# SET SHELL VARIABLE
-# -------------------------------------------------------------------
 # WORDCHARS=$WORDCHARS:s,/,,
 HISTSIZE=200 HISTFILE=~/.zhistory SAVEHIST=180
 
-# -------------------------------------------------------------------
-# SET SHELL OPTIONS
-# -------------------------------------------------------------------
+#End SET SHELL VARIABLE-----------------------
 
+#SET SHELL OPTIONS------------------------
 # 有効にしてあるのは副作用の少ないもの
 setopt auto_cd auto_pushd auto_remove_slash auto_name_dirs
 setopt extended_history hist_ignore_dups hist_ignore_space prompt_subst
@@ -44,12 +39,11 @@ setopt PUSHD_IGNORE_DUPS
 #setopt auto_menu  correct rm_star_silent sun_keyboard_hack inc_append_history
 setopt share_history hist_reduce_blanks hist_ignore_all_dups
 
+#END SET SHELL OPTIONS------------------------
 
 
-# -------------------------------------------------------------------
-# ALIAS AND FUNCTIONS
-# -------------------------------------------------------------------
 
+#ALIAS AND FUNCTIONS----------------------
 alias copy='cp -ip' del='rm -i' move='mv -i'
 alias fullreset='echo "\ec\ec"'
 h () 		{history $* | less}
@@ -109,15 +103,12 @@ alias ghci='stack ghci'
 alias ghc='stack ghc --'
 alias runghc='stack runghc --'
 
-# ------------------------------------------------------------
 # Git
 alias g='git'
 alias gs='git status'
 alias ga='git add'
 alias gc='git commit'
 alias gp='git push'
-# End of Git
-# ------------------------------------------------------------
 
 # tmux
 alias t='tmux'
@@ -141,25 +132,26 @@ alias c='cargo'
 # script 'environment'
 alias envi='environment'
 
-# -------------------------------------------------------------------
-# Suffix aliases(起動コマンドは環境によって変更する)
-# -------------------------------------------------------------------
+#End ALIAS AND FUNCTIONS------------------
 
-# alias -s pdf=acroread dvi=xdvi
-# alias -s {odt,ods,odp,doc,xls,ppt}=soffice
-# alias -s {tgz,lzh,zip,arc}=file-roller
-
-# -------------------------------------------------------------------
-# BINDING KEYS
-# -------------------------------------------------------------------
+#BINDING KEYS-----------------------------
+# viins keymap
+bindkey -v
 
 # emacs keymap
 # bindkey -e
 # bindkey '^p'	history-beginning-search-backward
 # bindkey '^n'	history-beginning-search-forward
 
-# viins keymap
-bindkey -v
+#補完システムを利用:----------------------
+# 補完の挙動が分かりやすくなる2つの設定のみを記述
+zstyle ':completion:*' format '%BCompleting %d%b'
+zstyle ':completion:*' group-name ''
+autoload -U compinit && compinit
+
+#End 補完システムを利用:------------------
+
+#End Sample .zshrc file-------------------
 
 # viins (like emacs-mode)
 # https://qiita.com/b4b4r07/items/8db0257d2e6f6b19ecb9
@@ -180,6 +172,8 @@ bindkey -M viins '^U'  backward-kill-line
 # bindkey -M viins '^W'  backward-kill-word
 bindkey -M viins '^Y'  yank
 
+#End BINDING KEYS--------------------------
+
 # zplug
 export ZPLUG_HOME=/usr/local/opt/zplug
 source $ZPLUG_HOME/init.zsh
@@ -187,24 +181,17 @@ source $ZPLUG_HOME/init.zsh
 # zsh-vimode-visual
 zplug "b4b4r07/zsh-vimode-visual"
 
-# -------------------------------------------------------------------
-# 補完システムを利用: 補完の挙動が分かりやすくなる2つの設定のみを記述
-# -------------------------------------------------------------------
 
-zstyle ':completion:*' format '%BCompleting %d%b'
-zstyle ':completion:*' group-name ''
 
-# -------------------------------------------------------------------
-# Complement for git commands
+#Complement for git commands--------------
+# zshでgitのコマンドやブランチ名を補完できるようにする
 # Reference: https://blog.qnyp.com/2013/05/14/zsh-git-completion/
 fpath=($(brew --prefix)/share/zsh/site-functions $fpath)
 autoload -U compinit
 compinit -u
-# End of Complement for git commands
-# -------------------------------------------------------------------
 
-# End of Sample .zshrc file
-# -------------------------------------------------------------------
+#End Complement for git commands----------
+
 
 # -------------------------------------------------------------------
 # PATH MODIFICATIONS
