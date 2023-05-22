@@ -487,31 +487,6 @@ command! SearchByGoogle call s:search_by_google()
 nnoremap <silent> <Space>gg :SearchByGoogle<CR>
 
 " ----------------------------------------------------------------------------
-" COLORS
-" ----------------------------------------------------------------------------
-
-"lightline Script-------------------------
-if !has('gui_running')
-  set t_Co=256
-endif
-
-"hybrid Setting---------------------------
-" Reference: https://qastack.jp/vi/3576/trouble-using-color-scheme-in-neovim
-" let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-" set termguicolors
-" Reference: https://github.com/w0ng/vim-hybrid
-" Set color for iTerm2
-" let g:hybrid_custom_term_colors = 1
-" set background=dark
-" colorscheme hybrid
-
-"End hybrid Setting-----------------------
-
-"iceberg colorscheme Setting--------------
-colorscheme iceberg
-" set termguicolors
-
-" ----------------------------------------------------------------------------
 " OTHER
 " ----------------------------------------------------------------------------
 
@@ -934,6 +909,33 @@ endfunction
 vmap <silent> <expr> p <sid>Repl()
 
 "End 貼り付け時にペーストバッファが上書きされないようにする---
+
+" ----------------------------------------------------------------------------
+" COLORS
+" ----------------------------------------------------------------------------
+
+"lightline Script-------------------------
+if !has('gui_running')
+  set t_Co=256
+endif
+
+"hybrid Setting---------------------------
+" Reference: https://qastack.jp/vi/3576/trouble-using-color-scheme-in-neovim
+" let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+" set termguicolors
+" Reference: https://github.com/w0ng/vim-hybrid
+" Set color for iTerm2
+" let g:hybrid_custom_term_colors = 1
+" set background=dark
+" colorscheme hybrid
+
+"End hybrid Setting-----------------------
+
+"iceberg colorscheme Setting--------------
+colorscheme iceberg
+" set termguicolors
+
+
 
 " Essential for syntax
 syntax enable
