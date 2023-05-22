@@ -2,7 +2,6 @@
 " |
 " File name     :  ~/.config/nvim/init.vim
 " Copyright     :  nis
-" Modified      :  2023/05/17 09:16
 " ----------------------------------------------------------------------------
 
 
@@ -486,11 +485,6 @@ endfunction
 command! SearchByGoogle call s:search_by_google()
 nnoremap <silent> <Space>gg :SearchByGoogle<CR>
 
-" ----------------------------------------------------------------------------
-" OTHER
-" ----------------------------------------------------------------------------
-
-
 "eskk Setting-----------------------------
 " Reference: https://zenn.dev/kato_k/articles/753b36262b3213
 
@@ -595,22 +589,6 @@ vnoremap <silent> <C-n> V:TREPLSendSelection<CR>'>j0
 " https://zenn.dev/monaqa/articles/2020-12-22-vim-abbrev
 cabbrev <expr> w (getcmdtype() ==# ":" && getcmdline() ==# "'<,'>w") ? "\<C-u>w" : "w"
 
-" ----------------------------------------------------------------------------
-" abbreviation
-" ----------------------------------------------------------------------------
-
-iabbrev .b #!/bin/bash
-iabbrev .r #!/usr/bin/ruby
-iabbrev .p #!/usr/bin/perl
-iabbrev EC # -*- coding: utf-8 -*-
-iabbrev .e niijimatakashi993@icloud.com
-iabbrev .g niijimatakashi993@gmail.com
-iabbrev .t takashiniijima213@gmail.com
-iabbrev .y takashiniijima213@yahoo.co.jp
-
-" ----------------------------------------------------------------------------
-" End abbreviation
-" ----------------------------------------------------------------------------
 
 "goyo + limelight (focus mode)------------
 nnoremap <silent> <space>gy :Goyo<CR>
@@ -935,7 +913,22 @@ endif
 colorscheme iceberg
 " set termguicolors
 
+" ----------------------------------------------------------------------------
+" abbreviation
+" ----------------------------------------------------------------------------
 
+iabbrev .b #!/bin/bash
+iabbrev .r #!/usr/bin/ruby
+iabbrev .p #!/usr/bin/perl
+iabbrev EC # -*- coding: utf-8 -*-
+iabbrev .e niijimatakashi993@icloud.com
+iabbrev .g niijimatakashi993@gmail.com
+iabbrev .t takashiniijima213@gmail.com
+iabbrev .y takashiniijima213@yahoo.co.jp
+
+" ----------------------------------------------------------------------------
+" End abbreviation
+" ----------------------------------------------------------------------------
 
 " Essential for syntax
 syntax enable
