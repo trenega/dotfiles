@@ -374,6 +374,35 @@ export PATH="~/.local/bin:$PATH"
 # gnu-tar PATH
 export PATH="/usr/local/opt/gnu-tar/libexec/gnubin:$PATH"
 
+# Deno
+export DENO_INSTALL="/Users/nis/.deno"
+export PATH="$DENO_INSTALL/bin:$PATH"
+
+# GEM PATHS
+export PATH="/usr/local/lib/ruby/gems/3.1.0:$PATH"
+export PATH="/Users/nis/.gem/ruby/3.1.0:$PATH"
+export PATH="/usr/local/Cellar/ruby/3.1.2/lib/ruby/gems/3.1.0:$PATH"
+
+# ddc-nextword
+export NEXTWORD_DATA_PATH="~/.vim/plugged/ddc-nextword"
+
+# Go PATH
+export GOPATH=$(go env GOPATH)
+export PATH=$PATH:$(go env GOPATH)/bin
+
+# cpanm PATH
+export PATH="/Users/nis/bin:$PATH"
+
+# local::lib PATH
+eval $(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib)
+
+# git PATH
+export PATH="/usr/local/opt/git/bin:$PATH"
+
+# -------------------------------------------------------------------
+# End of PATH MODIFICATIONS
+# -------------------------------------------------------------------
+
 # -------------------------------------------------------------------
 # APPLICATION CUSTOMIZATIONS
 # -------------------------------------------------------------------
@@ -571,30 +600,8 @@ ssh-add -l >& /dev/null || ssh-add
 # Use <C-q> push-line (zsh emacs keymap)
 stty start undef
 
-# Deno
-export DENO_INSTALL="/Users/nis/.deno"
-export PATH="$DENO_INSTALL/bin:$PATH"
 
-# GEM PATHS
-export PATH="/usr/local/lib/ruby/gems/3.1.0:$PATH"
-export PATH="/Users/nis/.gem/ruby/3.1.0:$PATH"
-export PATH="/usr/local/Cellar/ruby/3.1.2/lib/ruby/gems/3.1.0:$PATH"
 
-# ddc-nextword
-export NEXTWORD_DATA_PATH="~/.vim/plugged/ddc-nextword"
-
-# Go PATH
-export GOPATH=$(go env GOPATH)
-export PATH=$PATH:$(go env GOPATH)/bin
-
-# cpanm PATH
-export PATH="/Users/nis/bin:$PATH"
-
-# local::lib PATH
-eval $(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib)
-
-# git PATH
-export PATH="/usr/local/opt/git/bin:$PATH"
 
 # -------------------------------------------------------------------
 # iTermil2のウィンドウとタブに自動的に名前をつける
