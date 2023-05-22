@@ -39,9 +39,7 @@ setopt PUSHD_IGNORE_DUPS
 #setopt auto_menu  correct rm_star_silent sun_keyboard_hack inc_append_history
 setopt share_history hist_reduce_blanks hist_ignore_all_dups
 
-#END SET SHELL OPTIONS------------------------
-
-
+#END SET SHELL OPTIONS--------------------
 
 #ALIAS AND FUNCTIONS----------------------
 alias copy='cp -ip' del='rm -i' move='mv -i'
@@ -52,52 +50,32 @@ alias fl='fc -l'
 alias ls='ls -F --color=auto' la='ls -a --color=auto' ll='ls -alF --color=auto' lr='ls -lR --color=auto' l1='ls -1a --color=auto'
 alias d='cd ~/dotfiles'
 alias tes='cd ~/pl/test'
-# alias t='cd ~/pl/test'
 alias ..='cd ..'
 alias ..2='cd ../..'
 alias ..3='cd ../../..'
 mdcd ()		{mkdir -p "$@" && cd "$*[-1]"}
 mdpu ()		{mkdir -p "$@" && pushd "$*[-1]"}
 alias psd=pushd ppd=popd ds='dirs -v'
-# Use Neovim instead of Vim
-alias vim=nvim
-alias vi=nvim
-# set view mode 'vv' is "Vim View"
-alias vv='nvim -R'
-# Use Vim instead of v
-alias v=/usr/local/bin/vim
-# Edit .zshrc
-alias zshrc='nvim ~/dotfiles/.zshrc'
-# alias of script/note.py
-alias note=/Users/nis/script/note.py
-# pylint
-alias pylint='pylint --max-line-length=79'
-# grep, fgrep, egrep color options
-# Reference: https://kaworu.jpn.org/linux/grepのGREP_OPTIONSは廃止されました
-alias grep='grep --color=auto'
-alias fgrep='fgrep --color=auto'
+alias vim=nvim                                  # Use Neovim instead of Vim
+alias vi=/usr/local/bin/vim
+alias vv='nvim -R'                              # set view mode 'vv' is "Vim View"
+alias note=/Users/nis/script/note.py            # alias of script/note.py
+alias pylint='pylint --max-line-length=79'      # pylint
+alias grep='grep --color=auto'                  # grep, fgrep, egrep color options
+alias fgrep='fgrep --color=auto'                # Reference: https://kaworu.jpn.org/linux/grepのGREP_OPTIONSは廃止されました
 alias egrep='egrep --color=auto'
-# mcb.pyw - Multi Clip Board.pyw alias
-# Reference: AUTOMATE THE BORING STUFF WITH PYTHON by Al Sweigart p.207
-alias mcb=mcb.pyw
-# pw.py - Passwords locker
-# Reference: AUTOMATE THE BORING STUFF WITH PYTHON by Al Sweigart p.144
-alias pw=pw.py
-alias pwu=pwu.py
-# mapIt.py - open map
-# Reference: AUTOMATE THE BORING STUFF WITH PYTHON by Al Sweigart p.260-263
-alias mapIt=mapIt.py
-# ggl.py - Google search
-# Reference: AUTOMATE THE BORING STUFF WITH PYTHON by Al Sweigart p.278
-alias ggl=ggl.py
-# note.pyの辞書をクリップボードにコピーする
-alias note=note.py
-# 雑記帳をVimで開く
-alias zak=zak.sh
-# edit ~/.config/nvim
-alias vimcf='nvim ~/.config/nvim'
-# Activate Sourcetree
-alias st='open -a Sourcetree'
+alias mcb=mcb.pyw                               # mcb.pyw - Multi Clip Board.pyw alias
+                                                # Reference: AUTOMATE THE BORING STUFF WITH PYTHON by Al Sweigart p.207
+alias pw=pw.py                                  # pw.py - Passwords locker
+alias pwu=pwu.py                                # Reference: AUTOMATE THE BORING STUFF WITH PYTHON by Al Sweigart p.144
+alias mapIt=mapIt.py                            # mapIt.py - open map
+                                                # Reference: AUTOMATE THE BORING STUFF WITH PYTHON by Al Sweigart p.260-263
+alias ggl=ggl.py                                # ggl.py - Google search
+                                                # Reference: AUTOMATE THE BORING STUFF WITH PYTHON by Al Sweigart p.278
+alias note=note.py                              # note.pyの辞書をクリップボードにコピーする
+alias zak=zak.sh                                # 雑記帳をVimで開く
+alias st='open -a Sourcetree'                   # Activate Sourcetree
+
 # ghc
 alias ghci='stack ghci'
 alias ghc='stack ghc --'
@@ -110,25 +88,24 @@ alias ga='git add'
 alias gc='git commit'
 alias gp='git push'
 
-# tmux
-alias t='tmux'
-# newrm (by Dave Taylor "Wicked Cool Shell Scripts" 2004)
-alias rm='~/script/newrm'
-# formatdir (by Dave Taylor "Wicked Cool Shell Scripts" 2004)
-alias fd='~/script/formatdir'
+alias t='tmux'                                  # tmux
+alias rm='~/script/newrm'                       # newrm (by Dave Taylor "Wicked Cool Shell Scripts" 2004)
+alias fd='~/script/formatdir'                   # formatdir (by Dave Taylor "Wicked Cool Shell Scripts" 2004)
+
 # irb simple prompt
 alias irbs='irb --simple-prompt'
 alias ruby='ruby -w'
 alias ru='ruby -w'
 alias gcc='gcc -fno-pic -fomit-frame-pointer'
-# vim current file complement
-alias vimf='vim -o `fzf`'
-alias e='emacs'
+
+alias vimf='vim -o `fzf`'                       # vim current file complement
+
 # Rust cargo commands
 alias cb='cargo build'
 alias cr='cargo run'
 alias cc='cargo check'
 alias c='cargo'
+
 # script 'environment'
 alias envi='environment'
 
@@ -243,7 +220,7 @@ export PYTHONPATH="/usr/local/var/pyenv/versions/3.8.5/lib/python3.8/site-packag
 # export SSL_CERT_FILE="$PYENV_ROOT/versions/3.8.5/lib/python3.8/site-packages/certifi/cacert.pem"
 export SSL_CERT_FILE="/usr/local/var/pyenv/versions/3.8.5/lib/python3.8/site-packages/certifi/cacert.pem"
 
-#python@3.9 PATH
+#python@3.9 PATH--------------------------
 # If you need to have python@3.9 first in your PATH run:
 export PATH="/usr/local/opt/python@3.9/bin:$PATH"
 
@@ -267,7 +244,7 @@ eval "$(rbenv init -)"
 eval "$(nodenv init -)"
 #End of pyenv pyenv-virtualenv settings---
 
-#brew nano initialize
+#brew nano initialize---------------------
 export PATH="/usr/local/opt/ncurses/bin:$PATH"
 #For compilers to find ncurses you may need to set:
 #export LDFLAGS="-L/usr/local/opt/ncurses/lib"
@@ -275,12 +252,14 @@ export PATH="/usr/local/opt/ncurses/bin:$PATH"
 
 #For pkg-config to find ncurses you may need to set:
 export PKG_CONFIG_PATH="/usr/local/opt/ncurses/lib/pkgconfig"
-#End brew nano initialize--------------
+
+#End brew nano initialize-----------------
 
 #guile path-------------------------------
 export GUILE_LOAD_PATH="/usr/local/share/guile/site/3.0"
 export GUILE_LOAD_COMPILED_PATH="/usr/local/lib/guile/3.0/site-ccache"
 export GUILE_SYSTEM_EXTENSIONS_PATH="/usr/local/lib/guile/3.0/extensions"
+
 #End of guile path------------------------
 
 #ruby PATH--------------------------------
@@ -327,8 +306,10 @@ export PKG_CONFIG_PATH="/usr/local/opt/openssl@1.1/lib/pkgconfig"
 # If you need to use these commands with their normal names, you
 # can add a "gnubin" directory to your PATH from your bashrc like:
 export PATH="/usr/local/opt/grep/libexec/gnubin:$PATH"
+
 #End Upgrading grep 3.4 -> 3.5------------
 
+# shims
 # Reference: https://yoshikiito.net/blog/archives/2048/
 export PATH="$HOME/.pyenv/shims:$PATH"
 
@@ -376,7 +357,7 @@ eval $(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib)
 export PATH="/usr/local/opt/git/bin:$PATH"
 
 # -------------------------------------------------------------------
-# End of PATH MODIFICATIONS
+#End PATH MODIFICATIONS
 # -------------------------------------------------------------------
 
 # -------------------------------------------------------------------
@@ -386,13 +367,11 @@ export PATH="/usr/local/opt/git/bin:$PATH"
 # lightline color initialize
 export TERM=xterm-256color
 
-# -------------------------------------------------------------------
-# .zshrc by Ian Langworth
-# Reference: VIM AFTER 15 YEARS （2017-10-17） by Ian Langworth
-# INTERNAL UTILITY FUNCTIONS
-# https://postd.cc/vim3/
+#INTERNAL UTILITY FUNCTIONS---------------
 # Returns whether the given command is executable or aliased.
-
+# Reference: VIM AFTER 15 YEARS （2017-10-17） by Ian Langworth
+# .zshrc by Ian Langworth
+# https://postd.cc/vim3/
 _has() {
   return $( whence $1 >/dev/null )
 }
@@ -401,8 +380,8 @@ _has() {
 _color() {
   return $( [ -z "$INSIDE_EMACS" -a -z "$VIMRUNTIME" ] )
 }
-# End of .zshrc by Ian Langworth
-# -------------------------------------------------------------------
+
+#End INTERNAL UTILITY FUNCTIONS---------------
 
 # GNU grep
 if _color; then
@@ -454,12 +433,7 @@ fi
 export FZF_TMUX=1
 export FZF_TMUX_HEIGHT=20
 
-
-# End of .zshrc by Ian Langworth
-# -------------------------------------------------------------------
-
-# -------------------------------------------------------------------
-# tcl-tk initialize
+#tcl-tk initialize------------------------
 # Reference:
 # https://qiita.com/skyloken/items/a5f839eba1bd79cd5ef9
 # @skyloken 2019/11/02
@@ -471,8 +445,8 @@ export LDFLAGS="-L/usr/local/opt/tcl-tk/lib"
 export CPPFLAGS="-I/usr/local/opt/tcl-tk/include"
 export PKG_CONFIG_PATH="/usr/local/opt/tcl-tk/lib/pkgconfig"
 export PYTHON_CONFIGURE_OPTS="--with-tcltk-includes='-I/usr/local/opt/tcl-tk/include' --with-tcltk-libs='-L/usr/local/opt/tcl-tk/lib -ltcl8.6 -ltk8.6'"
-# End of tcl-tk initialize
-# -------------------------------------------------------------------
+
+#End tcl-tk initialize
 
 # 簡易エディタ zed 利用のための準備
 autoload zed
@@ -480,8 +454,7 @@ autoload zed
 # mathfuncモジュールをロードする
 zmodload zsh/mathfunc
 
-# -------------------------------------------------------------------
-#  Ctrl-Zを使ってVimにスイッチバックする
+#Ctrl-Zを使ってVimにスイッチバックする----
 # Reference: Vimの生産性を高める12の方法
 # How to boost your Vim productivity
 # (2014-03-21)
@@ -498,10 +471,10 @@ fancy-ctrl-z () {
 }
 zle -N fancy-ctrl-z
 bindkey '^Z' fancy-ctrl-z
-# End of Ctrl-Zを使ってVimにスイッチバックする
-# -------------------------------------------------------------------
 
-# -------------------------------------------------------------------
+#End Ctrl-Zを使ってVimにスイッチバックする---
+
+#pure simple prompt-----------------------
 # sindresorhus/pure
 # Pretty, minimal and fast ZSH prompt
 
@@ -514,18 +487,16 @@ zstyle :prompt:pure:git:stash show yes
 zstyle ':prompt:pure:prompt:*' color cyan
 
 prompt pure
-# End of sindresorhus/pure
-# -------------------------------------------------------------------
 
-# -------------------------------------------------------------------
-# zsh-users/zsh-syntax-highlightling
+#End pure simple prompt-------------------
+
+#zsh-users/zsh-syntax-highlightling-------
 # Fish shell like syntax highlightling for Zsh.
 
 if [ -f /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]; then source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 fi
 
-# End of zsh-users/zsh-syntax-highlightling
-# -------------------------------------------------------------------
+#End zsh-users/zsh-syntax-highlightling---
 
 # ghcup-env
 [ -f "/Users/nis/.ghcup/env" ] && source "/Users/nis/.ghcup/env"
@@ -534,8 +505,7 @@ fi
 # https://www.rasukarusan.com/entry/2019/04/13/180443
 source ~/.iterm2_shell_integration.zsh
 
-# -------------------------------------------------------------------
-#  Terminalの現在行をエディタで編集して実行する
+#Terminalの現在行をエディタで編集して実行する---
 # Reference: rasukarasan.com/entry/2020/04/20/083000
 
 edit_current_line() {
@@ -550,17 +520,18 @@ edit_current_line() {
 zle -N edit_current_line
 # Ctrl w -> vim open
 bindkey '^w' edit_current_line
-# End of Terminalの現在行をエディタで編集して実行する
-# -------------------------------------------------------------------
 
-# Complie .zshrc file
+#End Terminalの現在行をエディタで編集して実行する---
+
+#Complie .zshrc file----------------------
 # Reference: https://qiita.com/vintersnow/items/7343b9bf60ea468a4180
 if [ ~/.zshrc -nt ~/.zshrc.zwc ]; then
         zcompile ~/.zshrc
 fi
 
-# -------------------------------------------------------------------
-# Setup ssh-agent
+#End Complie .zshrc file------------------
+
+#Setup ssh-agent--------------------------
 # Reference: https://h2plus.biz/hiromitsu/entry/791
 if [ -f ~/.ssh-agent ]; then
     . ~/.ssh-agent
@@ -570,17 +541,13 @@ if [ -z "$SSH_AGENT_PID" ] || ! kill -0 $SSH_AGENT_PID; then
     . ~/.ssh-agent
 fi
 ssh-add -l >& /dev/null || ssh-add
-# End of Setup ssh-agent
-# -------------------------------------------------------------------
+
+#End Setup ssh-agent----------------------
 
 # Use <C-q> push-line (zsh emacs keymap)
 stty start undef
 
-
-
-
-# -------------------------------------------------------------------
-# iTermil2のウィンドウとタブに自動的に名前をつける
+#iTermil2のウィンドウとタブに自動的に名前をつける---
 # https://qiita.com/junkoda/items/8c0c209edbbabfd27f29
 function precmd() {
   # カレントディレクトリを $HOME を ~ として表示
@@ -592,11 +559,9 @@ function precmd() {
   echo -ne "\033]1;$tname\007" # tab title
 }
 
-# End of iTermil2のウィンドウとタブに自動的に名前をつける
-# -------------------------------------------------------------------
+#End iTermil2のウィンドウとタブに自動的に名前をつける---
 
-# -------------------------------------------------------------------
-# tmux making session
+#tmux making session----------------------
 # Reference: ターミナル（黒い画面）を分割して使うtmux超入門
 # セッションなかったら作る
 # https://girigiribauer.com/tech/20200427/
@@ -612,8 +577,7 @@ function precmd() {
 #   tmux attach -t main
 # fi
 
-# End of tmux making session
-# -------------------------------------------------------------------
+#End tmux making session------------------
 
 
 

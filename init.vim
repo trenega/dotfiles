@@ -144,6 +144,7 @@ set background=dark                     " ノーマルモードで入力した�
 
 set cursorline                          " cursorline on
 
+set termguicolors                       " Ture Color
 " ----------------------------------------------------------------------------
 " CUSTOM COMMANDS AND FUNCTIONS
 " ----------------------------------------------------------------------------
