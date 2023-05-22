@@ -283,7 +283,16 @@ vmap t <Plug>(VTranslate)
 " END OF vim-plug
 " ----------------------------------------------------------------------------
 
+" ----------------------------------------------------------------------------
+"  PATH
+" ----------------------------------------------------------------------------
 " Use vim-polyglot
+set runtimepath+=~/src/vim-polyglot
+
+" fzf.vim Setting
+set rtp+=/usr/local/opt/fzf
+
+" vim-polyglot runtimepath
 set runtimepath+=~/src/vim-polyglot
 
 " ----------------------------------------------------------------------------
@@ -561,10 +570,6 @@ inoremap <silent> zj <C-o>z-
 
 "End Insert Mode Keymaps------------------
 
-" ----------------------------------------------------------------------------
-" OTHER
-" ----------------------------------------------------------------------------
-
 " ペースト設定 クリップボードからペーストする時だけ、インデントしない
 if &term =~ "xterm"
         let &t_SI        .= "\e[?2004h"
@@ -625,16 +630,7 @@ function! ProseMode()
 endfunction
 command! ProseMode call ProseMode()
 nnoremap \p :ProseMode<CR>
-"End of goyo.vim の散文モード --------------------------------
 
-" fzf.vim Setting
-set rtp+=/usr/local/opt/fzf
-
-" vim-polyglot runtimepath
-set runtimepath+=~/src/vim-polyglot
-
-" ~/.exrc ファイルを読み込む
-" source ~/.exrc
 
 " set vim-commentary commentstring
 autocmd FileType python setlocal commentstring=#\ %s
