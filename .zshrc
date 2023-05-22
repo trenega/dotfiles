@@ -107,6 +107,7 @@ alias st='open -a Sourcetree'
 alias ghci='stack ghci'
 alias ghc='stack ghc --'
 alias runghc='stack runghc --'
+
 # ------------------------------------------------------------
 # Git
 alias g='git'
@@ -115,6 +116,7 @@ alias ga='git add'
 alias gc='git commit'
 alias gp='git push'
 # ------------------------------------------------------------
+
 # tmux
 alias t='tmux'
 # newrm (by Dave Taylor "Wicked Cool Shell Scripts" 2004)
