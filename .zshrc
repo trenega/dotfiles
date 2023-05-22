@@ -181,8 +181,6 @@ source $ZPLUG_HOME/init.zsh
 # zsh-vimode-visual
 zplug "b4b4r07/zsh-vimode-visual"
 
-
-
 #Complement for git commands--------------
 # zshでgitのコマンドやブランチ名を補完できるようにする
 # Reference: https://blog.qnyp.com/2013/05/14/zsh-git-completion/
@@ -191,7 +189,6 @@ autoload -U compinit
 compinit -u
 
 #End Complement for git commands----------
-
 
 # -------------------------------------------------------------------
 # PATH MODIFICATIONS
@@ -208,12 +205,16 @@ _append_to_path() {
 # Homebrew PATH
 export PATH=$PATH:/usr/local/sbin
 export PATH="/usr/local/opt/gettext/bin:$PATH"
+
 # wget PATH
 export PATH="/usr/local/opt/openssl@1.1/bin:$PATH"
+
 # pip PATH
 export PATH=$PATH:/Users/nis/Library/Python/2.7/bin
+
 # tmux PATH
 export PATH=$PATH:/usr/local/Cellar/tmux/3.1b/bin/tmux
+
 # MacVim PATH
 export PATH=$PATH:/Applications/MacVim.app/Contents/bin
 
@@ -222,9 +223,8 @@ export PATH="/usr/local/opt/ruby/bin:$PATH"
 export LDFLAGS="-L/usr/local/opt/ruby/lib"
 export CPPFLAGS="-I/usr/local/opt/ruby/include"
 
-# -------------------------------------------------------------------
-# pyenv environment variable
-#export PYENV_ROOT="$HOME/.pyenv"
+#pyenv environment variable---------------
+# export PYENV_ROOT="$HOME/.pyenv"
 # idle3 change path
 # Reference:https://teratail.com/questions/211641
 # export PYENV_ROOT=/usr/local/var/pyenv
@@ -232,8 +232,8 @@ export CPPFLAGS="-I/usr/local/opt/ruby/include"
 if command -v pyenv 1>/dev/null 2>&1; then
         eval "$(pyenv init -)"
 fi
-# End of pyenv environment variable
-# -------------------------------------------------------------------
+
+#End of pyenv environment variable--------
 
 # python3.8/site-packages PATH
 # export PYTHONPATH="$PYENV_ROOT/versions/3.8.5/lib/python3.8/site-packages"
@@ -243,7 +243,7 @@ export PYTHONPATH="/usr/local/var/pyenv/versions/3.8.5/lib/python3.8/site-packag
 # export SSL_CERT_FILE="$PYENV_ROOT/versions/3.8.5/lib/python3.8/site-packages/certifi/cacert.pem"
 export SSL_CERT_FILE="/usr/local/var/pyenv/versions/3.8.5/lib/python3.8/site-packages/certifi/cacert.pem"
 
-# >>> python@3.9 PATH >>>
+#python@3.9 PATH
 # If you need to have python@3.9 first in your PATH run:
 export PATH="/usr/local/opt/python@3.9/bin:$PATH"
 
@@ -252,10 +252,9 @@ export LDFLAGS="-L/usr/local/opt/python@3.9/lib"
 
 # For pkg-config to find python@3.9 you may need to set:
 export PKG_CONFIG_PATH="/usr/local/opt/python@3.9/lib/pkgconfig"
-# <<< python@3.9 path <<<
+#End python@3.9 path----------------------
 
-# -------------------------------------------------------------------
-# pyenv pyenv-virtualenv settings
+#pyenv pyenv-virtualenv settings----------
 # HomebrewでmacOSにNeovimをインストールして、使えるように設定する方法
 # https://yu8mada.com/2018/08/03/how-to-install-neovim-on-macos-using-homebrew-and-set-it-up-to-make-it-able-to-be-used/
 eval "$(pyenv init -)"
@@ -266,11 +265,9 @@ eval "$(rbenv init -)"
 
 # nodenv
 eval "$(nodenv init -)"
-# End of pyenv pyenv-virtualenv settings
-# -------------------------------------------------------------------
+#End of pyenv pyenv-virtualenv settings---
 
-# -------------------------------------------------------------------
-# brew nano initialize
+#brew nano initialize
 export PATH="/usr/local/opt/ncurses/bin:$PATH"
 #For compilers to find ncurses you may need to set:
 #export LDFLAGS="-L/usr/local/opt/ncurses/lib"
@@ -278,19 +275,15 @@ export PATH="/usr/local/opt/ncurses/bin:$PATH"
 
 #For pkg-config to find ncurses you may need to set:
 export PKG_CONFIG_PATH="/usr/local/opt/ncurses/lib/pkgconfig"
-# End of brew nano initialize
-# -------------------------------------------------------------------
+#End brew nano initialize--------------
 
-# -------------------------------------------------------------------
-# guile path
+#guile path-------------------------------
 export GUILE_LOAD_PATH="/usr/local/share/guile/site/3.0"
 export GUILE_LOAD_COMPILED_PATH="/usr/local/lib/guile/3.0/site-ccache"
 export GUILE_SYSTEM_EXTENSIONS_PATH="/usr/local/lib/guile/3.0/extensions"
-# End of guile path
-# -------------------------------------------------------------------
+#End of guile path------------------------
 
-# -------------------------------------------------------------------
-# ruby PATH
+#ruby PATH--------------------------------
 # If you need to have ruby first in your PATH run:
 export PATH="/usr/local/opt/ruby/bin:$PATH"
 
@@ -300,11 +293,10 @@ export CPPFLAGS="-I/usr/local/opt/ruby/include"
 
 # For pkg-config to find ruby you may need to set:
 export PKG_CONFIG_PATH="/usr/local/opt/ruby/lib/pkgconfig"
-# End of ruby path
-# -------------------------------------------------------------------
 
-# -------------------------------------------------------------------
-#  ruby-build
+#End ruby path----------------------------
+
+#ruby-build-------------------------------
 # ruby-build installs a non-Homebrew OpenSSL for each Ruby version installed
 # and these are never upgraded.
 
@@ -314,11 +306,10 @@ export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
 
 # Note: this may interfere with building old versions of Ruby (e.g <2.4) that use
 # OpenSSL <1.1.
-# End of ruby-build
-# -------------------------------------------------------------------
 
-# -------------------------------------------------------------------
-# openssl@1.1 path
+# End ruby-build
+
+#openssl@1.1 path-------------------------
 # If you need to have openssl@1.1 first in your PATH run:
 export PATH="/usr/local/opt/openssl@1.1/bin:$PATH"
 
@@ -328,17 +319,15 @@ export CPPFLAGS="-I/usr/local/opt/openssl@1.1/include"
 
 # For pkg-config to find openssl@1.1 you may need to set:
 export PKG_CONFIG_PATH="/usr/local/opt/openssl@1.1/lib/pkgconfig"
-# End of openssl@1.1 path
-# -------------------------------------------------------------------
 
-# -------------------------------------------------------------------
-# Upgrading grep 3.4 -> 3.5
+#End openssl@1.1 path---------------------
+
+#Upgrading grep 3.4 -> 3.5----------------
 # All commands have been installed with the prefix "g".
 # If you need to use these commands with their normal names, you
 # can add a "gnubin" directory to your PATH from your bashrc like:
 export PATH="/usr/local/opt/grep/libexec/gnubin:$PATH"
-# End of Upgrading grep 3.4 -> 3.5
-# -------------------------------------------------------------------
+#End Upgrading grep 3.4 -> 3.5------------
 
 # Reference: https://yoshikiito.net/blog/archives/2048/
 export PATH="$HOME/.pyenv/shims:$PATH"
