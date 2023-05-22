@@ -2,7 +2,6 @@
 " |
 " File name     :  .vimrc
 " Copyright     :  nis
-" Modified      :  2023/05/14 11:10
 "-----------------------------------------------------------------------------
 
 set nocompatible
@@ -162,37 +161,6 @@ autocmd! User GoyoLeave Limelight!
 "End goyo + limelight (focus mode)--------
 
 
-"molokai Scripts----------------------------------------------
-"if neobundle#is_installed('molokai')
-"        colorscheme molokai
-"endif
-"
-"set t_Co=256
-"syntax enable
-
-"End molokai Scripts------------------------------------------
-
-"Solarized Settings ------------------------------------------
-"syntax enable
-"set background=dark
-"colorscheme solarized
-"let g:solarized_termcolors=256
-
-" lightline Setting
-"let g:lightline = {
-"        \ 'colorscheme': 'wombat'
-"        \ }
-
-"End Solarized Scripts ---------------------------------------
-
-"iceberg.vim
-colorscheme iceberg
-" True Color
-" set termguicolors
-
-"status line
-" set laststatus=2
-" set noshowmode
 
 " ----------------------------------------------------------------------------
 " vim-plug
@@ -804,6 +772,19 @@ iabbrev .y takashiniijima213@yahoo.co.jp
 " ----------------------------------------------------------------------------
 " End ABBREVIATION
 " ----------------------------------------------------------------------------
+
+" ----------------------------------------------------------------------------
+"  COLORS
+" ----------------------------------------------------------------------------
+"iceberg.vim
+colorscheme iceberg
+" True Color
+" set termguicolors
+
+"status line
+" set laststatus=2
+" set noshowmode
+
 
 " 貼り付け時にペーストバッファが上書きされないようにする
 " Reference: https://postd.cc/how-to-boost-your-vim-productivity/
