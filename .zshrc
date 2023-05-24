@@ -162,9 +162,9 @@ zplug "b4b4r07/zsh-vimode-visual"
 #Complement for git commands--------------
 # zshでgitのコマンドやブランチ名を補完できるようにする
 # Reference: https://blog.qnyp.com/2013/05/14/zsh-git-completion/
-fpath=($(brew --prefix)/share/zsh/site-functions $fpath)
-autoload -U compinit
-compinit -u
+# fpath=($(brew --prefix)/share/zsh/site-functions $fpath)
+# autoload -U compinit
+# compinit -u
 
 #End Complement for git commands----------
 
