@@ -54,3 +54,5 @@
 	trustExitCode = true
 [commit]
 	template = /Users/nis/.commit_template
+[pager]
+	branch = less -F -X
