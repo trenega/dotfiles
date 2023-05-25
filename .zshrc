@@ -56,8 +56,9 @@ alias ..3='cd ../../..'
 mdcd ()		{mkdir -p "$@" && cd "$*[-1]"}
 mdpu ()		{mkdir -p "$@" && pushd "$*[-1]"}
 alias psd=pushd ppd=popd ds='dirs -v'
-alias vim=nvim                                  # Use Neovim instead of Vim
-alias vi=/usr/local/bin/vim
+alias vim=nvim                                  # Use Neovim instead of vim
+alias vi=/usr/bin/vim
+alias vim=/usr/local/bin/nvim
 alias vv='nvim -R'                              # set view mode 'vv' is "Vim View"
 alias note=/Users/nis/script/note.py            # alias of script/note.py
 alias pylint='pylint --max-line-length=79'      # pylint
@@ -99,7 +100,7 @@ alias ruby='ruby -w'
 alias ru='ruby -w'
 alias gcc='gcc -fno-pic -fomit-frame-pointer'
 
-alias vimf='vim -o `fzf`'                       # vim current file complement
+alias vimf='nvim -o `fzf`'                       # vim current file complement
 
 # Rust cargo commands
 alias cb='cargo build'
