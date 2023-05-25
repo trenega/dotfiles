@@ -94,6 +94,7 @@ alias gl='git log --oneline --all'
 alias gls='git log --show-signature'
 alias gmt='git mergetool --tool=nvimdiff2'
 alias gp='git push'
+alias gpo='git push origin'
 alias gs='git status'
 alias gsw='git switch'
 
