@@ -84,8 +84,8 @@ alias runghc='stack runghc --'
 
 # Git
 alias g='git'
-alias ga='git add'
 alias gA='git add --all :/'
+alias ga='git add'
 alias gb='git branch'
 alias gc='git commit'
 alias gco='git checkout'
