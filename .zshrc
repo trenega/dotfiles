@@ -84,11 +84,16 @@ alias runghc='stack runghc --'
 
 # Git
 alias g='git'
-alias gs='git status'
 alias ga='git add'
+alias gA='git add --all :/'
+alias gb='git branch'
 alias gc='git commit'
+alias gco='git checkout'
+alias gd='git diff'
+alias gl='git log --oneline --all'
+alias gls='git log --show --signature'
 alias gp='git push'
-alias gl='git log --oneline'
+alias gs='git status'
 
 alias t='tmux'                                  # tmux
 alias rm='~/script/newrm'                       # newrm (by Dave Taylor "Wicked Cool Shell Scripts" 2004)

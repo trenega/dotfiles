@@ -25,18 +25,18 @@
 	recentrepo = /Users/nis/pl/git/LearnGitMoL/06/math
 	recentrepo = /Users/nis/pl/git/LearnGitMoL/05/newrepo
 [alias]
-        a = add
-        d = diff
-        co = checkout
-        ci = commit
-        ca = commit -a
-        ps = "!git push origin $(git rev-parse --abbrev-ref HEAD)"
-        pl = "!git pull origin $(git rev-parse --abbrev-ref HEAD)"
-        st = status
-        br = branch
-        ba = branch -a
-        bm = branch --merged
-        bn = branch --no-merged
+        ; a = add
+        ; d = diff
+        ; co = checkout
+        ; ci = commit
+        ; ca = commit -a
+        ; ps = "!git push origin $(git rev-parse --abbrev-ref HEAD)"
+        ; pl = "!git pull origin $(git rev-parse --abbrev-ref HEAD)"
+        ; st = status
+        ; br = branch
+        ; ba = branch -a
+        ; bm = branch --merged
+        ; bn = branch --no-merged
         hist = log --pretty=format:\"%Cgreen%h %Creset%cd %Cblue[%cn] %Creset%s%C(yellow)%d%C(reset)\" --graph --date=relative --decorate --all
         llog = log --graph --name-status --pretty=format:\"%C(red)%h %C(reset)(%cd) %C(green)%an %Creset%s %C(yellow)%d%Creset\" --date=relative
 	lol = log --graph --decorate --pretty=oneline --all --abbrev-commit
