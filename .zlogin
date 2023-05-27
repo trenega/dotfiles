@@ -1,4 +1,4 @@
-##################################################################
+# -------------------------------------------------------------------
 #
 #  .zlogin file
 #
@@ -9,7 +9,7 @@
 #  Reference:
 #  http://www.gentei.org/~yuuji/support/zsh/files/zlogin
 #
-##################################################################
+# -------------------------------------------------------------------
 
 # Global but interactive-use only variables
 manpath=(/usr/*/man(N-/) /usr/local/*/man(N-/) /var/*/man(N-/))
@@ -19,3 +19,7 @@ export MANPATH
 export JLESSCHARSET=japanese
 export LESSCHARSET=utf-8
 #export BLOCKSIZE=k
+
+# -------------------------------------------------------------------
+# END OF .zlogin file
+# -------------------------------------------------------------------
