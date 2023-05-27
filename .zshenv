@@ -1,12 +1,12 @@
-#####################################################################
+# -------------------------------------------------------------------
 #
 #  .zshenv file
 #
 #  initial setup file for both interactive and noninteractive zsh
 #
-#####################################################################
+# -------------------------------------------------------------------
 
-# >>> Sample .zshenv file >>>
+#Sample .zshenv file----------------------
 # Reference:
 # http://www.gentei.org/~yuuji/support/zsh/files/zshenv
 # zshの本 HIROSE Yuuji p.34
@@ -22,7 +22,8 @@ PATH=$PATH":/Users/nis/script"
 # リモートから起動するコマンド用の環境変数を設定（必要なら）
 # export RSYNC_RSH=ssh
 # export CVS_RSH=ssh
-# <<< Sample .zshenv file <<<
+
+#End Sample .zshenv file------------------
 
 # NeoVim environment variable
 export XDG_CONFIG_HOME=~/.config
@@ -39,7 +40,7 @@ export CPPFLAGS="-I/usr/local/opt/gettext/include"
 export LDFLAGS="-L/usr/local/opt/openssl@1.1/lib"
 export CPPFLAGS="-I/usr/local/opt/openssl@1.1/include"
 
-# >>> Introduce Linux Commands >>>
+#Introduce Linux Commands-----------------
 # Reference:
 # テキスト処理のための標準的なコマンド群のmacOSへの導入手順
 # GNU/Linux Commands
@@ -115,7 +116,8 @@ manpath=(
     /usr/local/opt/grep/libexec/gnuman(N-/) # grep
     ${manpath}
 )
-# <<< Introduce Linux Commands <<<
+
+#End Introduce Linux Commands-------------
 
 # END OF FILE .zshenv ------------------------------------------------
 
