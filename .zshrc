@@ -250,10 +250,6 @@ if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -
 # rbenv
 eval "$(rbenv init -)"
 
-# nodenv
-eval "$(nodenv init -)"
-#End of pyenv pyenv-virtualenv settings---
-
 #brew nano initialize---------------------
 export PATH="/usr/local/opt/ncurses/bin:$PATH"
 #For compilers to find ncurses you may need to set:
