@@ -366,6 +366,10 @@ eval $(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib)
 # git PATH
 export PATH="/usr/local/opt/git/bin:$PATH"
 
+# nodebrew PATH
+export PATH=$HOME/.nodebrew/current/bin:$PATH
+export NODEBREW_ROOT=/usr/local/var/nodebrew
+
 # -------------------------------------------------------------------
 #End PATH MODIFICATIONS
 # -------------------------------------------------------------------
