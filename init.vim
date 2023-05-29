@@ -889,6 +889,15 @@ vmap <silent> <expr> p <sid>Repl()
 
 "End 貼り付け時にペーストバッファが上書きされないようにする---
 
+"Node.js provider
+let g:loaded_node_provider = 0
+
+"Perl provider
+let g:loaded_perl_provider = 0
+
+"Ruby provider
+let g:loaded_ruby_provider = 0
+
 " ----------------------------------------------------------------------------
 " COLORS
 " ----------------------------------------------------------------------------
@@ -905,15 +914,6 @@ endif
 " Reference: https://github.com/w0ng/vim-hybrid
 " Set color for iTerm2
 " let g:hybrid_custom_term_colors = 1
-" set background=dark
-" colorscheme hybrid
-
-"End hybrid Setting-----------------------
-
-"iceberg colorscheme Setting--------------
-colorscheme iceberg
-" set termguicolors
-
 " ----------------------------------------------------------------------------
 " abbreviation
 " ----------------------------------------------------------------------------
