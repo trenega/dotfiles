@@ -1,5 +1,4 @@
 "-----------------------------------------------------------------------------
-" |
 " File name     :  .vimrc
 " Copyright     :  nis
 "-----------------------------------------------------------------------------
@@ -102,9 +101,6 @@ NeoBundle 'altercation/vim-colors-solarized'
 
 " iceberg.vim
 NeoBundle 'cocopon/iceberg.vim'
-
-" ステータスラインの表示内容強化
-" NeoBundle 'itchyny/lightline.vim'
 
 " 日本語ヘルプをインストールする
 NeoBundle 'vim-jp/vimdoc-ja'
@@ -284,6 +280,7 @@ vmap t <Plug>(VTranslate)
 " ----------------------------------------------------------------------------
 "  PATH
 " ----------------------------------------------------------------------------
+
 " Use vim-polyglot
 set runtimepath+=~/src/vim-polyglot
 
@@ -774,12 +771,8 @@ iabbrev .y takashiniijima213@yahoo.co.jp
 "iceberg.vim
 colorscheme iceberg
 " True Color
-" set termguicolors
-
-"status line
-" set laststatus=2
-" set noshowmode
-
+set termguicolors
+set cursorline                          " cursorline on
 
 " 貼り付け時にペーストバッファが上書きされないようにする
 " Reference: https://postd.cc/how-to-boost-your-vim-productivity/
