@@ -92,6 +92,7 @@ alias gd='git diff'
 alias gl='git log --oneline --all'
 alias glo='git lol'
 alias gls='git log --show-signature'
+alias gm='gitmoji -c'
 alias gmt='git mergetool --tool=nvimdiff2'
 alias gp='git push'
 alias gpo='git push origin'
@@ -375,7 +376,7 @@ export NODEBREW_ROOT=/usr/local/var/nodebrew
 # -------------------------------------------------------------------
 
 # lightline color initialize
-export TERM=xterm-256color
+# export TERM=xterm-256color
 
 #INTERNAL UTILITY FUNCTIONS---------------
 # Returns whether the given command is executable or aliased.
