@@ -56,10 +56,11 @@ alias ..3='cd ../../..'
 mdcd ()		{mkdir -p "$@" && cd "$*[-1]"}
 mdpu ()		{mkdir -p "$@" && pushd "$*[-1]"}
 alias psd=pushd ppd=popd ds='dirs -v'
-alias vim=nvim                                  # Use Neovim instead of vim
-alias vi=/usr/bin/vim
-alias vim=/usr/local/bin/nvim
-alias vv='nvim -R'                              # set view mode 'vv' is "Vim View"
+alias vi='vim -u NONE -N'                       # 設定ファイル や環境変数による初期化、
+                                                # .gvimrcによるGUIの初期化も含め、
+                                                # 全て省略される。プラグインも読み込まれない。
+                                                # 'nocompatible' (Vimの拡張を有効) にすることができる。
+alias vimv='vim -R'                             # set view mode
 alias note=/Users/nis/script/note.py            # alias of script/note.py
 alias pylint='pylint --max-line-length=79'      # pylint
 alias grep='grep --color=auto'                  # grep, fgrep, egrep color options
@@ -109,7 +110,8 @@ alias ruby='ruby -w'
 alias ru='ruby -w'
 alias gcc='gcc -fno-pic -fomit-frame-pointer'
 
-alias vimf='nvim -o `fzf`'                       # vim current file complement
+alias vimf='vim -o `fzf`'                       # vim current file complement
+alias nvimf='nvim -o `fzf`'                       # vim current file complement
 
 # Rust cargo commands
 alias cb='cargo build'
