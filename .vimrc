@@ -67,6 +67,9 @@ set backspace=indent,eol,start                  " lexima option
 
 set signcolumn=yes                              " Show gitgutter column always
 
+set termguicolors                               " True Color
+
+set cursorline                                  " cursorline on
 " ----------------------------------------------------------------------------
 " PLUGIN SETTINGS
 " ----------------------------------------------------------------------------
@@ -770,9 +773,6 @@ iabbrev .y takashiniijima213@yahoo.co.jp
 
 "iceberg.vim
 colorscheme iceberg
-" True Color
-set termguicolors
-set cursorline                          " cursorline on
 
 " 貼り付け時にペーストバッファが上書きされないようにする
 " Reference: https://postd.cc/how-to-boost-your-vim-productivity/
