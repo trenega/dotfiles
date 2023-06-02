@@ -44,7 +44,7 @@ setopt share_history hist_reduce_blanks hist_ignore_all_dups
 #ALIAS AND FUNCTIONS----------------------
 alias copy='cp -ip' del='rm -i' move='mv -i'
 alias fullreset='echo "\ec\ec"'
-h () 		{history $* | less}
+h () {history $* | less}
 alias ja='LANG=ja_JP.eucJP XMODIFIERS=@im=kinput2'
 alias fl='fc -l'
 alias ls='ls -F --color=auto' la='ls -a --color=auto' ll='ls -alF --color=auto' lr='ls -lR --color=auto' l1='ls -1a --color=auto'
@@ -53,8 +53,8 @@ alias tes='cd ~/pl/test'
 alias ..='cd ..'
 alias ..2='cd ../..'
 alias ..3='cd ../../..'
-mdcd ()		{mkdir -p "$@" && cd "$*[-1]"}
-mdpu ()		{mkdir -p "$@" && pushd "$*[-1]"}
+mdcd ()	{mkdir -p "$@" && cd "$*[-1]"}
+mdpu ()	{mkdir -p "$@" && pushd "$*[-1]"}
 alias psd=pushd ppd=popd ds='dirs -v'
 alias vi='vim -u NONE -N'                       # 設定ファイル や環境変数による初期化、
                                                 # .gvimrcによるGUIの初期化も含め、
@@ -100,7 +100,11 @@ alias gpo='git push origin'
 alias gs='git status'
 alias gsw='git switch'
 
+# tmux
 alias t='tmux'                                  # tmux
+alias ts='tmux choose-tree -s'                  # tmux sesssion window
+
+# Dave Taylor Shell Scripts
 alias rm='~/script/newrm'                       # newrm (by Dave Taylor "Wicked Cool Shell Scripts" 2004)
 alias fd='~/script/formatdir'                   # formatdir (by Dave Taylor "Wicked Cool Shell Scripts" 2004)
 
@@ -398,7 +402,7 @@ _color() {
 
 # GNU grep
 if _color; then
-  export GREP_COLOR='1;32'
+  export GREP_COLORS='mt=1;32'
 fi
 
 # Ack is better than grep
