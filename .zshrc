@@ -103,6 +103,7 @@ alias gsw='git switch'
 # tmux
 alias t='tmux'                                  # tmux
 alias ts='tmux choose-tree -s'                  # tmux sesssion window
+# alias ss='run-shell "tmux list-sessions -F \"[##{session_windows}] ##S\" | fzf-tmux | sed 's/^\[[0-9]*\] //' | xargs tmux switch -t"'
 
 # Dave Taylor Shell Scripts
 alias rm='~/script/newrm'                       # newrm (by Dave Taylor "Wicked Cool Shell Scripts" 2004)
@@ -136,6 +137,9 @@ bindkey -v
 # bindkey -e
 # bindkey '^p'	history-beginning-search-backward
 # bindkey '^n'	history-beginning-search-forward
+
+# Use <C-q> push-line (zsh emacs keymap)
+stty start undef
 
 #補完システムを利用:----------------------
 # 補完の挙動が分かりやすくなる2つの設定のみを記述
@@ -561,8 +565,6 @@ ssh-add -l >& /dev/null || ssh-add
 
 #End Setup ssh-agent----------------------
 
-# Use <C-q> push-line (zsh emacs keymap)
-stty start undef
 
 #iTermil2のウィンドウとタブに自動的に名前をつける---
 # https://qiita.com/junkoda/items/8c0c209edbbabfd27f29
@@ -577,24 +579,6 @@ function precmd() {
 }
 
 #End iTermil2のウィンドウとタブに自動的に名前をつける---
-
-#tmux making session----------------------
-# Reference: ターミナル（黒い画面）を分割して使うtmux超入門
-# セッションなかったら作る
-# https://girigiribauer.com/tech/20200427/
-
-# if ! $(tmux has-session -t main 2> /dev/null)
-# then
-#   tmux new -s main
-# fi
-
-# # tmux からの起動じゃなかったら tmux attach
-# if [ -z "$TMUX" ]
-# then
-#   tmux attach -t main
-# fi
-
-#End tmux making session------------------
 
 
 
