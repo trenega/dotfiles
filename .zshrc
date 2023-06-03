@@ -84,7 +84,7 @@ alias ghc='stack ghc --'
 alias runghc='stack runghc --'
 
 # Git
-# alias g='git'
+alias g='git'
 alias gA='git add --all :/'
 alias ga='git add'
 alias gb='git branch'
@@ -602,21 +602,7 @@ autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
 ### End of Zinit's installer chunk
 
-#zeno ------------------------------------
-# refs: https://qiita.com/obake_fe/items/da8f861eed607436b91c
-zinit ice lucid depth"1" blockf
-zinit light yuki-yano/zeno.zsh
 
-if [[ -n $ZENO_LOADED ]]; then
-  # ここに任意のZLEの記述を行う
-  bindkey ' '  zeno-auto-snippet
-  bindkey '^m' zeno-auto-snippet-and-accept-line
-  bindkey '^i' zeno-completion
-  bindkey '^g' zeno-ghq-cd
-  bindkey '^r' zeno-history-selection
-  bindkey '^x' zeno-insert-snippet
-fi
-#End of zeno -----------------------------
 # Don't end with errors.
 # true
 
