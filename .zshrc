@@ -602,6 +602,15 @@ autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
 ### End of Zinit's installer chunk
 
+# -------------------------------------------------------------------
+# Zinit Plugins
+# -------------------------------------------------------------------
+# zsh-completions
+zinit light zsh-users/zsh-completions
+
+# -------------------------------------------------------------------
+# End Zinit Plugins
+# -------------------------------------------------------------------
 
 # Don't end with errors.
 # true
