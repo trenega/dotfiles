@@ -102,8 +102,8 @@ alias gsw='git switch'
 
 # tmux
 alias t='tmux'                                  # tmux
+alias tl='tmux ls'                              # tmux ls
 alias ts='tmux choose-tree -s'                  # tmux sesssion window
-# alias ss='run-shell "tmux list-sessions -F \"[##{session_windows}] ##S\" | fzf-tmux | sed 's/^\[[0-9]*\] //' | xargs tmux switch -t"'
 
 # Dave Taylor Shell Scripts
 alias rm='~/script/newrm'                       # newrm (by Dave Taylor "Wicked Cool Shell Scripts" 2004)
