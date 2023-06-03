@@ -608,9 +608,27 @@ autoload -Uz _zinit
 # zsh-completions
 zinit light zsh-users/zsh-completions
 
+# anyframe
+zinit light mollifier/anyframe
+
 # -------------------------------------------------------------------
 # End Zinit Plugins
 # -------------------------------------------------------------------
+#
+#Zinitでターミナルをカスタマイズする------
+# refs: https://zenn.dev/nagan/articles/8168ba0ca407ad
+# ディレクトリの移動履歴を表示
+bindkey '^xb' anyframe-widget-cdr
+autoload -Uz chpwd_recent_dirs cdr add-zsh-hook
+add-zsh-hook chpwd chpwd_recent_dirs
+
+# put history
+bindkey '^xi' anyframe-widget-put-history
+
+# Git switch branch
+bindkey '^x^b' anyframe-widget-checkout-git-branch
+
+#End Zinitでターミナルをカスタマイズする--
 
 # Don't end with errors.
 # true
