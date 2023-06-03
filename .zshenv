@@ -119,8 +119,5 @@ manpath=(
 
 #End Introduce Linux Commands-------------
 
-# zeno
-export ZENO_HOME=~/.config/zeno
-
 # END OF FILE .zshenv ------------------------------------------------
 
