@@ -618,12 +618,12 @@ zinit light mollifier/anyframe
 #Zinitでターミナルをカスタマイズする------
 # refs: https://zenn.dev/nagan/articles/8168ba0ca407ad
 # ディレクトリの移動履歴を表示
-bindkey '^xb' anyframe-widget-cdr
+bindkey '^xd' anyframe-widget-cdr
 autoload -Uz chpwd_recent_dirs cdr add-zsh-hook
 add-zsh-hook chpwd chpwd_recent_dirs
 
 # put history
-bindkey '^xi' anyframe-widget-put-history
+bindkey '^xhi' anyframe-widget-put-history
 
 # Git switch branch
 bindkey '^x^b' anyframe-widget-checkout-git-branch
