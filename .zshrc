@@ -103,6 +103,7 @@ alias gpo='git push origin'
 alias gs='git status'
 alias gsw='git switch'
 
+alias gal='alias | grep git'
 # tmux
 alias t='tmux'                                  # tmux
 alias tl='tmux ls'                              # tmux ls
