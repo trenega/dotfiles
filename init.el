@@ -91,7 +91,7 @@
  ;; If there is more than one, they won't work right.
  '(default ((t (:inherit nil :stipple nil :background "White" :foreground "Black" :inverse-video nil :box nil :strike-through nil :extend nil :overline nil :underline nil :slant normal :weight normal :height 240 :width normal :foundry "nil" :family "UDEV Gothic 35NF")))))
 
-;; (global-set-key (kbd "C-x C-j") 'skk-mode)
+;;(global-set-key (kbd "C-x C-j") 'skk-mode)
 
 ;; https://github.com/skk-dev/ddskk/blob/master/etc/dot.emacs
 ;;; dot.emacs --- SKK related customization in ~/.emacs  -*- mode: emacs-lisp; coding: utf-8 -*-
@@ -174,6 +174,8 @@
 ;; 場合は、skk-search-prog-list に指定された辞書もこの時点で読み込んで
 ;; 準備する。Emacs の起動は遅くなるが，SKK を使い始めるときのレスポンス
 ;; が軽快になる。
+
+
 ;;End DDSKK setting-----------------------
 
 ;;; ~/.emacs.d/init.el ends hereh
