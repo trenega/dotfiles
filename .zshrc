@@ -558,7 +558,7 @@ fi
 #End Complie .zshrc file------------------
 
 #Setup ssh-agent--------------------------
-# Reference: https://h2plus.biz/hiromitsu/entry/791
+# refs: https://h2plus.biz/hiromitsu/entry/791
 if [ -f ~/.ssh-agent ]; then
     . ~/.ssh-agent
 fi
