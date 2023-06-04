@@ -56,11 +56,14 @@ alias ..3='cd ../../..'
 mdcd ()	{mkdir -p "$@" && cd "$*[-1]"}
 mdpu ()	{mkdir -p "$@" && pushd "$*[-1]"}
 alias psd=pushd ppd=popd ds='dirs -v'
+
+alias vimv='vim -R'                             # set view mode
+alias nvimv='nvim -R'                           # set view mode
 alias vi='vim -u NONE -N'                       # 設定ファイル や環境変数による初期化、
                                                 # .gvimrcによるGUIの初期化も含め、
                                                 # 全て省略される。プラグインも読み込まれない。
                                                 # 'nocompatible' (Vimの拡張を有効) にすることができる。
-alias vimv='vim -R'                             # set view mode
+
 alias note=/Users/nis/script/note.py            # alias of script/note.py
 alias pylint='pylint --max-line-length=79'      # pylint
 alias grep='grep --color=auto'                  # grep, fgrep, egrep color options
@@ -180,11 +183,12 @@ source $ZPLUG_HOME/init.zsh
 zplug "b4b4r07/zsh-vimode-visual"
 
 #Complement for git commands--------------
-# zshでgitのコマンドやブランチ名を補完できるようにする
-# Reference: https://blog.qnyp.com/2013/05/14/zsh-git-completion/
-# fpath=($(brew --prefix)/share/zsh/site-functions $fpath)
-# autoload -U compinit
-# compinit -u
+# Git git-completionでコマンドやブランチ名を補完する方法(zsh)
+# Refs: https://alpacat.com/blog/git-completion-zsh/
+# git-completion
+fpath=(~/.zsh/completion $fpath)
+autoload -U compinit
+compinit -u
 
 #End Complement for git commands----------
 
