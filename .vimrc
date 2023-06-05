@@ -774,6 +774,10 @@ iabbrev .y takashiniijima213@yahoo.co.jp
 "iceberg.vim
 colorscheme iceberg
 
+" ----------------------------------------------------------------------------
+"  SCRIPTS NEED PUT ON THE END OF .vimrc
+" ----------------------------------------------------------------------------
+
 " 貼り付け時にペーストバッファが上書きされないようにする
 " Reference: https://postd.cc/how-to-boost-your-vim-productivity/
 " コードを ~/.vimrc の末尾付近に置きます
