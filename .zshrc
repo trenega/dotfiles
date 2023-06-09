@@ -42,7 +42,7 @@ setopt share_history hist_reduce_blanks hist_ignore_all_dups
 #END SET SHELL OPTIONS--------------------
 
 #ALIAS AND FUNCTIONS----------------------
-alias copy='cp -ip' del='rm -i' move='mv -i'
+alias copy='cp -ip' move='mv -i'
 alias fullreset='echo "\ec\ec"'
 h () {history $* | less}
 alias ja='LANG=ja_JP.eucJP XMODIFIERS=@im=kinput2'
@@ -110,8 +110,11 @@ alias tl='tmux ls'                              # tmux ls
 alias ts='tmux choose-tree -s'                  # tmux sesssion window
 
 # Dave Taylor Shell Scripts
-alias rm='~/script/newrm'                       # newrm (by Dave Taylor "Wicked Cool Shell Scripts" 2004)
+# alias rm='~/script/newrm'                     # newrm (by Dave Taylor "Wicked Cool Shell Scripts" 2004)
 alias fd='~/script/formatdir'                   # formatdir (by Dave Taylor "Wicked Cool Shell Scripts" 2004)
+
+# trash
+alias rm=trash                                  # Move files and folders to the trash
 
 # irb simple prompt
 alias irbs='irb --simple-prompt'
@@ -120,7 +123,7 @@ alias ru='ruby -w'
 alias gcc='gcc -fno-pic -fomit-frame-pointer'
 
 alias vimf='vim -o `fzf`'                       # vim current file complement
-alias nvimf='nvim -o `fzf`'                       # vim current file complement
+alias nvimf='nvim -o `fzf`'                     # vim current file complement
 
 # Rust cargo commands
 alias cb='cargo build'
@@ -130,6 +133,9 @@ alias c='cargo'
 
 # script 'environment'
 alias envi='environment'
+
+# install-data
+alias install-ls='nvim ~/data/install/install-data'
 
 #End ALIAS AND FUNCTIONS------------------
 
