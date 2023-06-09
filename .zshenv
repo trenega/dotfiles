@@ -119,5 +119,11 @@ manpath=(
 
 #End Introduce Linux Commands-------------
 
+# cpanminus
+# for Perl
+# refs: https://www.d-wood.com/blog/2015/12/16_7734.html
+export PERL_CPANM_OPT="--local-lib=~/local/lib/perl5"
+export PERL5LIB=$HOME/local/lib/perl5/lib/perl5:$PERL5LIB;
+
 # END OF FILE .zshenv ------------------------------------------------
 
