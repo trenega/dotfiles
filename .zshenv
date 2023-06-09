@@ -13,22 +13,31 @@
 
 # Core file for max size
 limit coredumpsize 0
+
 # Setup command search path
 typeset -U path
+
 # (N-/) を付けることでことで存在しなければ無視してくれる
 Path=($path /usr/*/bin(N-/) /usr/local/*/bin(N-/) /var/*/bin(N-/))
+
 # $PATHに/Users/nis/scriptを追加する
 PATH=$PATH":/Users/nis/script"
+
+# trash
+PATH=$PATH":/usr/local/bin"
+
 # リモートから起動するコマンド用の環境変数を設定（必要なら）
 # export RSYNC_RSH=ssh
 # export CVS_RSH=ssh
 
 #End Sample .zshenv file------------------
 
-# NeoVim environment variable
+# NeoVim environment variab
 export XDG_CONFIG_HOME=~/.config
+
 # Use Neovim as "preferred editor"
 export VISUAL=nvim
+
 # Open init.vim file of setting
 export MYVIMRC=~/.config/nvim/init.vim
 
