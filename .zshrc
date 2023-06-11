@@ -66,7 +66,7 @@ alias vi='vim -u NONE -N'                       # 設定ファイル や環境�
 
 alias note=/Users/nis/script/note.py            # alias of script/note.py
 alias pylint='pylint --max-line-length=79'      # pylint
-alias grep='grep --color=auto'                  # grep, fgrep, egrep color options
+alias grep='ggrep -E --color=auto'              # ggrep, color options
 alias fgrep='fgrep --color=auto'                # Reference: https://kaworu.jpn.org/linux/grepのGREP_OPTIONSは廃止されました
 alias egrep='egrep --color=auto'
 alias mcb=mcb.pyw                               # mcb.pyw - Multi Clip Board.pyw alias
