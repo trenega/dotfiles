@@ -320,13 +320,13 @@ nnoremap <Leader>sp :split<CR>
 " 現在のウィンドウを垂直に分割する
 nnoremap <Leader>vs :vsplit<CR>
 
-" ウィンドウの高さをできるだけ高くする。To Window Hight size
+" ウィンドウの高さをできるだけ高くする。To Window maximum Hight size
 nnoremap <Leader>wr :resize<CR>
 
-" ウィンドウの高さを5行分高くする。To Window Hight size
+" ウィンドウの高さを5行分高くする。To Window Hight size for 5 lines
 nnoremap <Leader>wf :resize +5<CR>
 
-" ウィンドウの高さを5行分低くする。To Window Low size
+" ウィンドウの高さを5行分低くする。To Window Low size for 5 lines
 nnoremap <Leader>wv :resize -5<CR>
 
 "move to current Window-------------------
@@ -925,11 +925,12 @@ colorscheme iceberg
 iabbrev .b #!/bin/bash
 iabbrev .r #!/usr/bin/ruby
 iabbrev .p #!/usr/bin/perl
+iabbrev .a #!/usr/bin/awk -f
 iabbrev EC # -*- coding: utf-8 -*-
-iabbrev .e niijimatakashi993@icloud.com
-iabbrev .g niijimatakashi993@gmail.com
-iabbrev .t takashiniijima213@gmail.com
-iabbrev .y takashiniijima213@yahoo.co.jp
+" iabbrev .e niijimatakashi993@icloud.com
+" iabbrev .g niijimatakashi993@gmail.com
+" iabbrev .t takashiniijima213@gmail.com
+" iabbrev .y takashiniijima213@yahoo.co.jp
 
 " ----------------------------------------------------------------------------
 " End abbreviation
