@@ -56,6 +56,7 @@ alias ..3='cd ../../..'
 mdcd ()	{mkdir -p "$@" && cd "$*[-1]"}
 mdpu ()	{mkdir -p "$@" && pushd "$*[-1]"}
 alias psd=pushd ppd=popd ds='dirs -v'
+alias cle='clear'
 
 alias vimv='vim -R'                             # set view mode
 alias nvimv='nvim -R'                           # set view mode
