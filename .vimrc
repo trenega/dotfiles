@@ -197,6 +197,9 @@ Plug 'skanehira/translate.vim'
 " deepl.vim
 Plug 'ryicoh/deepl.vim'
 
+" vim-tmux-navigator
+Plug 'christoomey/vim-tmux-navigator'
+
 "-----------------------------------------
 call plug#end()
 "-----------------------------------------
