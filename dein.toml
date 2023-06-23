@@ -339,8 +339,4 @@ repo = 'Shougo/ddu-filter-matcher_substring'
 
 #End ddu.vim Settings------------------------
 
-# vim-tmux-navigator
-[[plugins]]
-repo = 'christoomey/vim-tmux-navigator'
-
 # END OF FILE: dein.toml
