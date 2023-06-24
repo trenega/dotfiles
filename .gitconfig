@@ -9,13 +9,43 @@
         quotepath = false
 [push]
 	default = simple
+; [color]
+        ; status = auto
+        ; diff = auto
+        ; branch = auto
+        ; interactive = auto
+        ; grep = auto
+        ; ui = auto
+
+;refs: https://github.com/mathiasbynens/dotfiles/blob/main/.gitconfig
 [color]
-        status = auto
-        diff = auto
-        branch = auto
+
+	# Use colors in Git commands that are capable of colored output when
+	# outputting to the terminal. (This is the default setting in Git ≥ 1.8.4.)
         interactive = auto
         grep = auto
-        ui = auto
+	ui = auto
+
+[color "branch"]
+
+	current = yellow reverse
+	local = yellow
+	remote = green
+
+[color "diff"]
+
+	meta = yellow bold
+	frag = magenta bold # line info
+	old = red # deletions
+	new = green # additions
+
+[color "status"]
+
+	added = yellow
+	changed = green
+	untracked = cyan
+;End refs: https://github.com/mathiasbynens/dotfiles/blob/main/.gitconfig
+
 [gui]
 	recentrepo = /Users/nis/pl/git/LearnGitMoL/ch05/newrepo
 	fontui = -family \"Ricty Diminished Discord\" -size 18 -weight normal -slant roman -underline 0 -overstrike 0
