@@ -15,7 +15,8 @@ filetype plugin indent on                       " Essential for filetype plugins
 
 set autoindent                                  " Carry over indenting from previous line
 
-set clipboard+=unnamed
+" set clipboard+=unnamed
+set clipboard=unnamedplus
 
 set encoding=utf-8                              " UTF-8 by default
 
@@ -202,6 +203,7 @@ Plug 'lambdalisue/fern.vim'
 Plug 'lambdalisue/nerdfont.vim'
 Plug 'lambdalisue/fern-renderer-nerdfont.vim'
 Plug 'lambdalisue/glyph-palette.vim'
+Plug 'lambdalisue/fern-git-status.vim'
 
 "-----------------------------------------
 call plug#end()
@@ -288,6 +290,7 @@ vmap t <Plug>(VTranslate)
 
 "fern.vim (filer)-------------------------
 nnoremap <silent><Space>f :Fern . -reveal=%<CR>
+let g:fern#default_hidden=1
 
   function! FernInit() abort
     nmap <buffer> v <Plug>(fern-action-open:side)
