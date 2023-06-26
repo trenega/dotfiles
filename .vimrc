@@ -204,6 +204,10 @@ Plug 'lambdalisue/fern-renderer-nerdfont.vim'
 Plug 'lambdalisue/glyph-palette.vim'
 Plug 'lambdalisue/fern-git-status.vim'
 
+" winresizer
+" Very simple vim plugin for easy resizing of your vim windows.
+Plug 'simeji/winresizer'
+
 "-----------------------------------------
 call plug#end()
 "-----------------------------------------
