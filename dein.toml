@@ -347,6 +347,7 @@ repo = 'lambdalisue/fern.vim'
 
 hook_add = '''
 nnoremap <silent><Space>f :Fern . -reveal=%<CR>
+let g:fern#default_hidden=1
 
   function! FernInit() abort
     nmap <buffer> v <Plug>(fern-action-open:side)
@@ -390,12 +391,14 @@ nnoremap <silent><Space>f :Fern . -reveal=%<CR>
 [[plugins]]
 repo = 'lambdalisue/nerdfont.vim'
 
+# aicon
 [[plugins]]
 repo = 'lambdalisue/fern-renderer-nerdfont.vim'
 hook_add = '''
   let g:fern#renderer = 'nerdfont'
 '''
 
+# aicon
 [[plugins]]
 repo = 'lambdalisue/glyph-palette.vim'
 hook_add = '''
@@ -405,6 +408,11 @@ hook_add = '''
     autocmd FileType nerdtree,startify call glyph_palette#apply()
   augroup END
 '''
+
+# Git status mark
+[[plugins]]
+repo = 'lambdalisue/fern-git-status.vim'
+
 #End fern.vim (filer)------------------------
 
 # END OF FILE: dein.toml
