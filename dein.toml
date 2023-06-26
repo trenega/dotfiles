@@ -339,4 +339,12 @@ repo = 'Shougo/ddu-filter-matcher_substring'
 
 #End ddu.vim Settings------------------------
 
+
+# ferm.vim (filer)
+[[plugins]]
+repo = 'lambdalisue/fern.vim'
+
+hook_add = '''
+nnoremap <silent><Space>f :Fern . -reveal=%<CR>
+'''
 # END OF FILE: dein.toml
