@@ -199,6 +199,9 @@ Plug 'ryicoh/deepl.vim'
 
 " fern.vim (filer)
 Plug 'lambdalisue/fern.vim'
+Plug 'lambdalisue/nerdfont.vim'
+Plug 'lambdalisue/fern-renderer-nerdfont.vim'
+Plug 'lambdalisue/glyph-palette.vim'
 
 "-----------------------------------------
 call plug#end()
@@ -283,7 +286,7 @@ vmap t <Plug>(VTranslate)
 
 "End translate.vim------------------------
 
-"fern.vim (filer)
+"fern.vim (filer)-------------------------
 nnoremap <silent><Space>f :Fern . -reveal=%<CR>
 
   function! FernInit() abort
@@ -323,7 +326,19 @@ nnoremap <silent><Space>f :Fern . -reveal=%<CR>
 
   let g:fern#disable_default_mappings = 1
 
-"End fern.vim (filer)
+" icon
+" fern-renderer-nerdfont.vim
+let g:fern#renderer = 'nerdfont'
+
+" icon
+" glyph-palette.vim
+  augroup my-glyph-palette
+    autocmd! *
+    autocmd FileType fern call glyph_palette#apply()
+    autocmd FileType nerdtree,startify call glyph_palette#apply()
+  augroup END
+
+"End fern.vim (filer)---------------------
 
 " ----------------------------------------------------------------------------
 "  PATH
