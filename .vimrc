@@ -208,6 +208,9 @@ Plug 'lambdalisue/fern-git-status.vim'
 " Very simple vim plugin for easy resizing of your vim windows.
 Plug 'simeji/winresizer'
 
+" minibufexpl.vim
+Plug 'fholgado/minibufexpl.vim'
+
 "-----------------------------------------
 call plug#end()
 "-----------------------------------------
@@ -335,6 +338,7 @@ let g:fern#default_hidden=1
 " icon
 " fern-renderer-nerdfont.vim
 let g:fern#renderer = 'nerdfont'
+let g:fern#renderer#nerdfont#indent_markers = 1
 
 " icon
 " glyph-palette.vim
@@ -345,6 +349,34 @@ let g:fern#renderer = 'nerdfont'
   augroup END
 
 "End fern.vim (filer)---------------------
+
+"minibufexpl.vim--------------------------
+map <silent><Space>b :MBEOpen<cr>
+map <silent><Space>bc :MBEClose<cr>
+map <silent><Space>bt :MBEToggle<cr>
+
+nnoremap <silent> bn :<C-u>:bnext<CR>
+nnoremap <silent> b1 :<C-u>:b1<CR>
+nnoremap <silent> b2 :<C-u>:b2<CR>
+nnoremap <silent> b3 :<C-u>:b3<CR>
+nnoremap <silent> b4 :<C-u>:b4<CR>
+nnoremap <silent> b5 :<C-u>:b5<CR>
+nnoremap <silent> b6 :<C-u>:b6<CR>
+nnoremap <silent> b7 :<C-u>:b7<CR>
+nnoremap <silent> b8 :<C-u>:b8<CR>
+nnoremap <silent> b9 :<C-u>:b9<CR>
+
+let g:miniBufExplMapWindowNavVim = 1
+let g:miniBufExplMapWindowNavArrows = 1
+
+" refs: https://uskey.hatenablog.com/entry/2015/08/16/080000
+" 無条件でバッファ一覧が開く
+" let g:miniBufExplorerMoreThanOne = 0
+
+" MiniBufExplorer 内を'hjkl'で移動
+" miniBufExplMapWindowNavVim = 1
+
+"End minibufexpl.vim----------------------
 
 " ----------------------------------------------------------------------------
 "  PATH
@@ -857,6 +889,14 @@ function! s:Repl()
   return "p@=RestoreRegister()\<cr>"
 endfunction
 vmap <silent> <expr> p <sid>Repl()
+
+
+"-----------------------------------------------------------------------------
+" 日付挿入
+"-----------------------------------------------------------------------------
+inoremap <Leader>date <C-R>=strftime('%Y/%m/%d (%a)')<CR>
+inoremap <Leader>time <C-R>=strftime('%H:%M')<CR>
+inoremap <Leader>w3cd <C-R>=strftime('%Y-%m-%dT%H:%M:%S+09:00')<CR>
 
 " ----------------------------------------------------------------------------
 " END OF FILE: .vimrc
