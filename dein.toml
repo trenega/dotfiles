@@ -392,10 +392,12 @@ let g:fern#default_hidden=1
 repo = 'lambdalisue/nerdfont.vim'
 
 # aicon
+# refs: https://twitter.com/lambdalisue/status/1582743420556087297?s=20&t=6qrwKqXushHTW8bGzsrgIQ
 [[plugins]]
 repo = 'lambdalisue/fern-renderer-nerdfont.vim'
 hook_add = '''
   let g:fern#renderer = 'nerdfont'
+  let g:fern#renderer#nerdfont#indent_markers = 1
 '''
 
 # aicon
@@ -415,7 +417,7 @@ repo = 'lambdalisue/fern-git-status.vim'
 
 #End fern.vim (filer)------------------------
 
-#minibufexpl.vim-----------------------
+#minibufexpl.vim-----------------------------
 [[plugins]]
 repo = 'fholgado/minibufexpl.vim'
 hook_add = '''
@@ -436,7 +438,6 @@ hook_add = '''
 
   let g:miniBufExplMapWindowNavVim = 1
   let g:miniBufExplMapWindowNavArrows = 1
-  let g:miniBufExplMapCTabSwitchBuffs = 1
 '''
 
 # refs: https://uskey.hatenablog.com/entry/2015/08/16/080000
@@ -446,6 +447,6 @@ hook_add = '''
 # MiniBufExplorer 内を'hjkl'で移動
 # miniBufExplMapWindowNavVim = 1
 
-#End minibufexpl.vim--------------------
+#End minibufexpl.vim-------------------------
 
 # END OF FILE: dein.toml
