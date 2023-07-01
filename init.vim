@@ -927,7 +927,11 @@ iabbrev .b #!/bin/bash
 iabbrev .r #!/usr/bin/ruby
 iabbrev .p #!/usr/bin/perl
 iabbrev .a #!/usr/bin/awk -f
+" iabbrev .l #!/usr/bin/env lua
+" iabbrev .l #!/usr/local/bin/lua
+iabbrev .l #!/usr/bin/env lua
 iabbrev EC # -*- coding: utf-8 -*-
+
 " iabbrev .e niijimatakashi993@icloud.com
 " iabbrev .g niijimatakashi993@gmail.com
 " iabbrev .t takashiniijima213@gmail.com
@@ -940,7 +944,8 @@ iabbrev EC # -*- coding: utf-8 -*-
 " ----------------------------------------------------------------------------
 " 日付挿入
 " ----------------------------------------------------------------------------
-inoremap <Leader>date <C-R>=strftime('%Y/%m/%d (%a)')<CR>
+" inoremap <Leader>date <C-R>=strftime('%Y/%m/%d (%a)')<CR>
+inoremap <Leader>date <C-R>=strftime('%Y%m%d')<CR>
 inoremap <Leader>time <C-R>=strftime('%H:%M')<CR>
 inoremap <Leader>w3cd <C-R>=strftime('%Y-%m-%dT%H:%M:%S+09:00')<CR>
 
