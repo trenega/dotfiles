@@ -41,6 +41,18 @@ setopt share_history hist_reduce_blanks hist_ignore_all_dups
 
 #END SET SHELL OPTIONS--------------------
 
+#colordiff
+# refs: https://qiita.com/catatsuy/items/8bafef2a60762a1c9f0f
+if [[ -x `which colordiff` ]]; then
+  alias diff='colordiff -u'
+else
+  alias diff='diff -u'
+fi
+
+export LESS='-R'
+
+#End colordiff
+
 #ALIAS AND FUNCTIONS----------------------
 alias copy='cp -ip' move='mv -i'
 alias fullreset='echo "\ec\ec"'
@@ -57,7 +69,7 @@ mdcd ()	{mkdir -p "$@" && cd "$*[-1]"}
 mdpu ()	{mkdir -p "$@" && pushd "$*[-1]"}
 alias psd=pushd ppd=popd ds='dirs -v'
 alias cle='clear'
-
+# alias diff='diff -y --suppress-common-lines --color=auto'
 alias vimv='vim -R'                             # set view mode
 alias nvimv='nvim -R'                           # set view mode
 alias vi='vim -u NONE -N'                       # 設定ファイル や環境変数による初期化、
