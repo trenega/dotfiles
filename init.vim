@@ -924,10 +924,10 @@ colorscheme iceberg
 " ----------------------------------------------------------------------------
 
 iabbrev .b #!/bin/bash
+iabbrev .z #!/bin/zsh
 iabbrev .r #!/usr/bin/ruby
 iabbrev .p #!/usr/bin/perl
 iabbrev .a #!/usr/bin/awk -f
-" iabbrev .l #!/usr/bin/env lua
 " iabbrev .l #!/usr/local/bin/lua
 iabbrev .l #!/usr/bin/env lua
 iabbrev EC # -*- coding: utf-8 -*-
