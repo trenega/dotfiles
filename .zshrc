@@ -139,10 +139,10 @@ alias vimf='vim -o `fzf`'                       # vim current file complement
 alias nvimf='nvim -o `fzf`'                     # vim current file complement
 
 # Rust cargo commands
-alias cb='cargo build'
-alias cr='cargo run'
-alias cc='cargo check'
-alias c='cargo'
+# alias cb='cargo build'
+# alias cr='cargo run'
+# alias cc='cargo check'
+# alias c='cargo'
 
 # script 'environment'
 alias envi='environment'
