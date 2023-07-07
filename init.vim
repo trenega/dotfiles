@@ -124,13 +124,13 @@ set number relativenumber               " number + relative number
 set smartcase                           " 大文字/小文字の区別を予測してくれる
 set smartindent
 
-set shiftwidth=8                        " Number of spaces to shift for autoindent or >,<
+set shiftwidth=4                        " Number of spaces to shift for autoindent or >,<
 
 set showmatch                           " Hilight matching braces/parens/etc.
 
-set softtabstop=8                       " Spaces 'feel' like tabs
+set softtabstop=4                       " Spaces 'feel' like tabs
 
-set tabstop=8                           " The One True Tab
+set tabstop=4                           " The One True Tab
 
 set wildmenu                            " Show possible completions on command line
 
