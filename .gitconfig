@@ -6,7 +6,8 @@
 	autocrlf = input
 	editor = nvim -c \"set fenc=utf-8\"
 	pager = less -F -X
-        quotepath = false
+    quotepath = false
+    ignorecase = false
 [push]
 	default = simple
 ; [color]
