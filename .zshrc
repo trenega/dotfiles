@@ -133,7 +133,7 @@ alias rm=trash                                  # Move files and folders to the 
 alias irbs='irb --simple-prompt'
 alias ruby='ruby -w'
 alias ru='ruby -w'
-alias gcc='gcc -fno-pic -fomit-frame-pointer'
+alias gcc='gcc -Wall -fno-pic -fomit-frame-pointer'
 
 alias vimf='vim -o `fzf`'                       # vim current file complement
 alias nvimf='nvim -o `fzf`'                     # vim current file complement
