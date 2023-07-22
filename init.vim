@@ -286,7 +286,7 @@ nnoremap <Leader> <Nop>
 
 " {motion} のテキストを大文字にする。
 " refs: ~/.config/nvim/dein/.cache/init.vim/.dein/doc/change.jax
-map! <C-F> <Esc>gUiw`]a
+map! <Leader>u <Esc>gUiw`]a
 
 " カレントファイルを開く。
 " これは Vim 外部でカレントファ イルに変更が加えられたとき、
