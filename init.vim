@@ -278,15 +278,23 @@ let mapleader = "\<Space>"
 " Reference: https://thinca.hatenablog.com/entry/q-as-prefix-key-in-vim
 nnoremap <Leader> <Nop>
 
-" <Space>e を押して新しいファイルを開く
-nnoremap <Leader>e :edit<Space>
+" カレントファイルを開く。
+" これは Vim 外部でカレントファ イルに変更が加えられたとき、
+" 開き直すのに便利である。
+nnoremap <Leader>e :e<Space>
 
+" 無名のバッファの編集を新規に開始する
+nnoremap <Leader>n :enew<CR>
 
 " ファイルを挿入する
-nnoremap <Leader>r :read<Space>
+nnoremap <Leader>r :r<Space>
 
 " ファイルを保存する
 nnoremap <silent><Leader>w :<C-u>write<CR>
+
+" {count} なしの場合、カレントウィンドウを閉じる。
+" もし {count} が与えられた場合、{count} ウィンドウを閉じる。
+nnoremap <Leader>cl :clo
 
 " カレントウィンドウを閉じる
 nnoremap <Leader>q :quit
@@ -332,16 +340,16 @@ nnoremap <Leader>wv :resize -5<CR>
 
 "move to current Window-------------------
 " 上のWindowへ移動する
-nnoremap <Leader>jk <C-w>k
+nnoremap <Leader>k <C-w>k
 
 " 下のWindowへ移動する
-nnoremap <Leader>jj <C-w>j
+nnoremap <Leader>j <C-w>j
 
 " 左のWindowへ移動する
-nnoremap <Leader>jh <C-w>h
+nnoremap <Leader>h <C-w>h
 
 " 右のWindowへ移動する
-nnoremap <Leader>jl <C-w>l
+nnoremap <Leader>l <C-w>l
 
 " Hot key for open init.vim file
 nnoremap <Leader>. :<C-u>edit $MYVIMRC<CR>
