@@ -499,12 +499,25 @@ inoremap <C-]> <Esc><Right>
 " Reference: https://postd.cc/how-to-boost-your-vim-productivity/
 let mapleader = "\<Space>"
 
+" Make a simple "search" text object.
+" refs:https://vim.fandom.com/wiki/Copy_or_change_search_hit
+" 検索を実行するには通常と同様に /something を使う
+" cgn を押し、最初の一致項目を置換して、 <Esc> を押す
+" n.n.n.n.n. と押して、全ての一致項目を確認しながら置換する
+vnoremap <silent> s //e<C-r>=&selection=='exclusive'?'+1':''<CR><CR>
+    \:<C-u>call histdel('search',-1)<Bar>let @/=histget('search',-1)<CR>gv
+omap s :normal vs<CR>
+
 " スペースキーを prefix にする例
 " スペースキー単体では何も起きないようにする
 " これをしておかないと、うっかり <Space> + 割り当ててないキーを
 " 押すと <Space> の元の機能が発動する
 " Reference: https://thinca.hatenablog.com/entry/q-as-prefix-key-in-vim
 nnoremap <Leader> <Nop>
+
+" {motion} のテキストを大文字にする。
+" refs: ~/.config/nvim/dein/.cache/init.vim/.dein/doc/change.jax
+map! <Leader>u <Esc>gUiw`]a
 
 " カレントファイルを開く。
 " これは Vim 外部でカレントファ イルに変更が加えられたとき、
