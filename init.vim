@@ -293,9 +293,18 @@ omap s :normal vs<CR>
 " Reference: https://thinca.hatenablog.com/entry/q-as-prefix-key-in-vim
 nnoremap <Leader> <Nop>
 
+" space 4で行末へ移動（shiftを押しながらの$は、手が遠いので）
+" refs: https://original-game.com/mini_howto/how-to-use-the-leader-key-in-vim/
+nnoremap <Leader>4 $
+
+" space 6で行頭へ移動（英字キーボードの場合、shiftを押しながらの^は、手が遠いので）
+nnoremap <Leader>6 ^
+
 " {motion} のテキストを大文字にする。
 " refs: ~/.config/nvim/dein/.cache/init.vim/.dein/doc/change.jax
-map! <Leader>u <Esc>gUiw`]a
+map! <Leader>U <Esc>gUiw`]a
+" {motion} のテキストを小文字にする。
+map! <Leader>u <Esc>guiw`]a
 
 " カレントファイルを開く。
 " これは Vim 外部でカレントファイルに変更が加えられたとき、
@@ -319,9 +328,6 @@ nnoremap <silent> <Leader>Q :<C-u>quit!<CR>
 " もし {count} が与えられた場合、{count} ウィンドウを閉じる。
 nnoremap <Leader>cl :close<CR>
 
-" カレントウィンドウを閉じる
-nnoremap <Leader>q :quit
-
 " カレントウィンドウをスクリーン上にある唯一のウィンドウにする
 nnoremap <Leader>on :only<CR>
 
@@ -339,9 +345,6 @@ nmap <Leader>p "+p
 nmap <Leader>P "+P
 vmap <Leader>p "+p
 vmap <Leader>P "+P
-
-" カレントウィンドウを閉じる。最後の編集ウィンドウ |edit-window| で使うとVimを終了させる
-nnoremap <silent> <Leader>q :<C-u>quit<CR>
 
 " 新しいタブページを開く
 nnoremap <Leader>te :tabedit
