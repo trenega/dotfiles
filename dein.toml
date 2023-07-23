@@ -16,11 +16,13 @@ hook_source = '''
   endif
 '''
 hook_add='''
-  nnoremap <silent> <space>fr :<C-u>Denite file_mru<CR>
-  nnoremap <silent> <space>fb :<C-u>Denite buffer<CR>
-  nnoremap <silent> <space>fy :<C-u>Denite neoyank<CR>
-  nnoremap <silent> <space>ff :<C-u>Denite file/rec<CR>
-  nnoremap <silent> <space>fu :<C-u>Denite outline<CR>
+  nnoremap [denite]     <Nop>
+  nmap     <Space>f [denite]
+  nnoremap <silent> [denite]r :<C-u>Denite file_mru<CR>
+  nnoremap <silent> [denite]b :<C-u>Denite buffer<CR>
+  nnoremap <silent> [denite]y :<C-u>Denite neoyank<CR>
+  nnoremap <silent> [denite]f :<C-u>Denite file/rec<CR>
+  nnoremap <silent> [denite]u :<C-u>Denite outline<CR>
 '''
 
 # unite-outline
@@ -346,7 +348,7 @@ repo = 'Shougo/ddu-filter-matcher_substring'
 repo = 'lambdalisue/fern.vim'
 
 hook_add = '''
-nnoremap <silent><Space>f :Fern . -reveal=%<CR>
+nnoremap <silent>,f :Fern . -reveal=%<CR>
 let g:fern#default_hidden=1
 
   function! FernInit() abort
