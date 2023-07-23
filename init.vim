@@ -150,6 +150,12 @@ set termguicolors                       " Ture Color
 " CUSTOM COMMANDS AND FUNCTIONS
 " ----------------------------------------------------------------------------
 
+" Vimのページスクロールの挙動をちょっと改善するマッピング
+"「<C-f>/<C-b>を入力すると<C-d>/<C-u>を2回実行する」マッピングを作りました。
+" refs: https://zenn.dev/kawarimidoll/articles/17dad86545cbb4
+nnoremap <C-f> <Cmd>set scroll=0<CR><Cmd>execute 'normal!' repeat("\<C-d>", v:count1 * 2)<CR>
+nnoremap <C-b> <Cmd>set scroll=0<CR><Cmd>execute 'normal!' repeat("\<C-u>", v:count1 * 2)<CR>
+
 " 論理行移動と表示行移動を入れ替える
 nnoremap j gj
 nnoremap k gk
@@ -292,7 +298,7 @@ nnoremap <Leader> <Nop>
 map! <Leader>u <Esc>gUiw`]a
 
 " カレントファイルを開く。
-" これは Vim 外部でカレントファ イルに変更が加えられたとき、
+" これは Vim 外部でカレントファイルに変更が加えられたとき、
 " 開き直すのに便利である。
 nnoremap <Leader>e :e<Space>
 
@@ -303,17 +309,17 @@ nnoremap <Leader>n :enew<CR>
 nnoremap <Leader>r :r<Space>
 
 " ファイルを保存する
-nnoremap <silent><Leader>w :<C-u>write<CR>
+nnoremap <Leader>w :<C-u>write<CR>
 
 " {count} なしの場合、カレントウィンドウを閉じる。
 " もし {count} が与えられた場合、{count} ウィンドウを閉じる。
-nnoremap <Leader>cl :clo
+nnoremap <Leader>cl :close<CR>
 
 " カレントウィンドウを閉じる
 nnoremap <Leader>q :quit
 
 " カレントウィンドウをスクリーン上にある唯一のウィンドウにする
-nnoremap <Leader>o :only<CR>
+nnoremap <Leader>on :only<CR>
 
 " 現在のバッファに変更点があっても、書き込まずにVimを終了する
 nnoremap <Leader>q! :quit!<CR>
