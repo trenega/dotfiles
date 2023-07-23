@@ -300,9 +300,14 @@ nnoremap <Leader>4 $
 " space 6で行頭へ移動（英字キーボードの場合、shiftを押しながらの^は、手が遠いので）
 nnoremap <Leader>6 ^
 
+" refs: https://deris.hatenablog.jp/entry/2013/05/02/192415
+noremap <Leader>h  ^
+noremap <Leader>l  $
+
 " {motion} のテキストを大文字にする。
 " refs: ~/.config/nvim/dein/.cache/init.vim/.dein/doc/change.jax
 map! <Leader>U <Esc>gUiw`]a
+
 " {motion} のテキストを小文字にする。
 map! <Leader>u <Esc>guiw`]a
 
