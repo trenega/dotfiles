@@ -418,27 +418,27 @@ repo = 'lambdalisue/fern-git-status.vim'
 #End fern.vim (filer)------------------------
 
 #minibufexpl.vim-----------------------------
-[[plugins]]
-repo = 'fholgado/minibufexpl.vim'
-hook_add = '''
-  map <silent><Space>b :MBEOpen<cr>
-  map <silent><Space>bc :MBEClose<cr>
-  map <silent><Space>bt :MBEToggle<cr>
+# [[plugins]]
+# repo = 'fholgado/minibufexpl.vim'
+# hook_add = '''
+#   map <silent><Space>b :MBEOpen<cr>
+#   map <silent><Space>bc :MBEClose<cr>
+#   map <silent><Space>bt :MBEToggle<cr>
 
-  nnoremap <silent> bn :<C-u>:bnext<CR>
-  nnoremap <silent> b1 :<C-u>:b1<CR>
-  nnoremap <silent> b2 :<C-u>:b2<CR>
-  nnoremap <silent> b3 :<C-u>:b3<CR>
-  nnoremap <silent> b4 :<C-u>:b4<CR>
-  nnoremap <silent> b5 :<C-u>:b5<CR>
-  nnoremap <silent> b6 :<C-u>:b6<CR>
-  nnoremap <silent> b7 :<C-u>:b7<CR>
-  nnoremap <silent> b8 :<C-u>:b8<CR>
-  nnoremap <silent> b9 :<C-u>:b9<CR>
+#   nnoremap <silent> bn :<C-u>:bnext<CR>
+#   nnoremap <silent> b1 :<C-u>:b1<CR>
+#   nnoremap <silent> b2 :<C-u>:b2<CR>
+#   nnoremap <silent> b3 :<C-u>:b3<CR>
+#   nnoremap <silent> b4 :<C-u>:b4<CR>
+#   nnoremap <silent> b5 :<C-u>:b5<CR>
+#   nnoremap <silent> b6 :<C-u>:b6<CR>
+#   nnoremap <silent> b7 :<C-u>:b7<CR>
+#   nnoremap <silent> b8 :<C-u>:b8<CR>
+#   nnoremap <silent> b9 :<C-u>:b9<CR>
 
-  let g:miniBufExplMapWindowNavVim = 1
-  let g:miniBufExplMapWindowNavArrows = 1
-'''
+#   let g:miniBufExplMapWindowNavVim = 1
+#   let g:miniBufExplMapWindowNavArrows = 1
+# '''
 
 # refs: https://uskey.hatenablog.com/entry/2015/08/16/080000
 # 無条件でバッファ一覧が開く
