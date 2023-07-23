@@ -309,7 +309,11 @@ nnoremap <Leader>n :enew<CR>
 nnoremap <Leader>r :r<Space>
 
 " ファイルを保存する
-nnoremap <Leader>w :<C-u>write<CR>
+" refs: thinca vimrc
+nnoremap <silent> <Leader>w :<C-u>update<CR>
+nnoremap <silent> <Leader>W :<C-u>update!<CR>
+nnoremap <silent> <Leader>q :<C-u>quit<CR>
+nnoremap <silent> <Leader>Q :<C-u>quit!<CR>
 
 " {count} なしの場合、カレントウィンドウを閉じる。
 " もし {count} が与えられた場合、{count} ウィンドウを閉じる。
