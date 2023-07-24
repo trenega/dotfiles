@@ -445,39 +445,6 @@ if _color; then
   export CLICOLOR=1
 fi
 
-# fzf via Homebrew
-if [ -e /usr/local/opt/fzf/shell/completion.zsh ]; then
-        source /usr/local/opt/fzf/shell/key-bindings.zsh
-        source /usr/local/opt/fzf/shell/completion.zsh
-fi
-
-# fzf via local installation
-if [ -e ~/.fzf ]; then
-        _append_to_path ~/.fzf/bin
-        source ~/.fzf/shell/key-bindings.zsh
-        source ~/.fzf/shell/completion.zsh
-fi
-
-# fzf + ag configuration
-if _has fzf && _has ag; then
-        export FZF_DEFAULT_COMMAND='ag --nocolor -g ""'
-        export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-        export FZF_ALT_C_COMMAND="$FZF_DEFAULT_COMMAND"
-        export FZF_DEFAULT_OPTS='
-        --color fg:242,bg:236,hl:65,fg+:15,bg+:239,hl+:108
-        --color info:108,prompt:109,spinner:108,pointer:168,marker:168
-        --height 40%
-        --reverse
-        --border
-        --inline-info
-'
-fi
-
-# fzf + tmux configuration
-# Ctrl-r -> fzf-tmux
-export FZF_TMUX=1
-export FZF_TMUX_HEIGHT=20
-
 #tcl-tk initialize------------------------
 # Reference:
 # https://qiita.com/skyloken/items/a5f839eba1bd79cd5ef9
@@ -659,6 +626,44 @@ bindkey '^x^b' anyframe-widget-checkout-git-branch
 
 #End Zinitでターミナルをカスタマイズする--
 
+# -------------------------------------------------------------------
+# fzf
+# -------------------------------------------------------------------
+
+# fzf via Homebrew
+if [ -e /usr/local/opt/fzf/shell/completion.zsh ]; then
+        source /usr/local/opt/fzf/shell/key-bindings.zsh
+        source /usr/local/opt/fzf/shell/completion.zsh
+fi
+
+# fzf via local installation
+if [ -e ~/.fzf ]; then
+        _append_to_path ~/.fzf/bin
+        source ~/.fzf/shell/key-bindings.zsh
+        source ~/.fzf/shell/completion.zsh
+fi
+
+# fzf + ag configuration
+if _has fzf && _has ag; then
+        export FZF_DEFAULT_COMMAND='ag --nocolor -g ""'
+        export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+        export FZF_ALT_C_COMMAND="$FZF_DEFAULT_COMMAND"
+        export FZF_DEFAULT_OPTS='
+        --color fg:242,bg:236,hl:65,fg+:15,bg+:239,hl+:108
+        --color info:108,prompt:109,spinner:108,pointer:168,marker:168
+        --height 40%
+        --reverse
+        --border
+        --inline-info
+'
+fi
+
+# fzf + tmux configuration
+# Ctrl-r -> fzf-tmux
+export FZF_TMUX=1
+export FZF_TMUX_HEIGHT=20
+
+
 #fzfを活用してTerminalの作業効率を高める------
 # fvim: ファイル名検索+Vimで開くファイルをカレントディレクトリからfzfで検索可能に
 # refs: https://yiskw713.hatenablog.com/entry/2022/01/12/200000
@@ -738,6 +743,10 @@ zle -N fzf-z-search
 bindkey '^f' fzf-z-search
 
 #End fzfを活用してTerminalの作業効率を高める------
+
+# -------------------------------------------------------------------
+# End fzf
+# -------------------------------------------------------------------
 
 # Don't end with errors.
 # true
