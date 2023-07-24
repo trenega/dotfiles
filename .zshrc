@@ -655,6 +655,7 @@ bindkey '^x^b' anyframe-widget-checkout-git-branch
 #End Zinitでターミナルをカスタマイズする--
 
 # fvim: ファイル名検索+Vimで開くファイルをカレントディレクトリからfzfで検索可能に
+# refs: https://yiskw713.hatenablog.com/entry/2022/01/12/200000
 # refs: https://momozo.tech/2021/03/10/fzf%E3%81%A7zsh%E3%82%BF%E3%83%BC%E3%83%9F%E3%83%8A%E3%83%AB%E4%BD%9C%E6%A5%AD%E3%82%92%E5%8A%B9%E7%8E%87%E5%8C%96/
 fvim() {
   local file
@@ -665,6 +666,33 @@ fvim() {
   nvim "$file"
 }
 alias fv="fvim"
+
+# かつていたことのあるディレクトリに移動する
+# refs: https://yiskw713.hatenablog.com/entry/2022/01/12/200000
+# refs: https://qiita.com/kamykn/items/aa9920f07487559c0c7e
+fzf-z-search() {
+    local res=$(z | sort -rn | cut -c 12- | fzf)
+    if [ -n "$res" ]; then
+        BUFFER+="cd $res"
+        zle accept-line
+    else
+        return 1
+    fi
+}
+
+zle -N fzf-z-search
+bindkey '^z' fzf-z-search
+
+# fbr
+# fbrコマンドで今ローカルに存在するbranchを選択して切り替えられる
+# refs: https://qiita.com/kamykn/items/aa9920f07487559c0c7e
+# fbr - checkout git branch
+fbr() {
+  local branches branch
+  branches=$(git branch -vv) &&
+  branch=$(echo "$branches" | fzf +m) &&
+  git checkout $(echo "$branch" | awk '{print $1}' | sed "s/.* //")
+}
 
 # Don't end with errors.
 # true
