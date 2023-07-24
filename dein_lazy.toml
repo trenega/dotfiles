@@ -143,6 +143,7 @@ hook_add = '''
 
 # vim-flog
 # Flog is a fast, beautiful, and powerful git branch viewer for Vim.
+# refs: https://izumisy.work/entry/2021/08/23/160738
 [[plugins]]
 repo = 'rbong/vim-flog'
 
