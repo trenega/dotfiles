@@ -654,6 +654,7 @@ bindkey '^x^b' anyframe-widget-checkout-git-branch
 
 #End Zinitでターミナルをカスタマイズする--
 
+#fzfを活用してTerminalの作業効率を高める------
 # fvim: ファイル名検索+Vimで開くファイルをカレントディレクトリからfzfで検索可能に
 # refs: https://yiskw713.hatenablog.com/entry/2022/01/12/200000
 # refs: https://momozo.tech/2021/03/10/fzf%E3%81%A7zsh%E3%82%BF%E3%83%BC%E3%83%9F%E3%83%8A%E3%83%AB%E4%BD%9C%E6%A5%AD%E3%82%92%E5%8A%B9%E7%8E%87%E5%8C%96/
@@ -705,6 +706,33 @@ fshow() {
                 {}
 FZF-EOF"
 }
+
+# fcd - cd to selected directory
+fcd() {
+  local dir
+  dir=$(find ${1:-.} -path '*/\.*' -prune \
+                  -o -type d -print 2> /dev/null | fzf +m) &&
+  cd "$dir"
+}
+
+# rupa/z
+. ~/z/z.sh
+
+# ｚの履歴をfzfで検索してからcdする
+fzf-z-search() {
+    local res=$(z | sort -rn | cut -c 12- | fzf)
+    if [ -n "$res" ]; then
+        BUFFER+="cd $res"
+        zle accept-line
+    else
+        return 1
+    fi
+}
+
+zle -N fzf-z-search
+bindkey '^f' fzf-z-search
+
+#End fzfを活用してTerminalの作業効率を高める------
 
 # Don't end with errors.
 # true
