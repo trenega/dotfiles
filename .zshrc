@@ -493,6 +493,11 @@ export PYTHON_CONFIGURE_OPTS="--with-tcltk-includes='-I/usr/local/opt/tcl-tk/inc
 
 #End tcl-tk initialize
 
+# GNU "tar" has been installed as "gtar".
+# If you need to use it as "tar", you can add a "gnubin" directory
+# to your PATH from your bashrc like:
+PATH="/usr/local/opt/gnu-tar/libexec/gnubin:$PATH"
+
 # 簡易エディタ zed 利用のための準備
 autoload zed
 
@@ -736,7 +741,6 @@ bindkey '^f' fzf-z-search
 
 # Don't end with errors.
 # true
-
 
 # -------------------------------------------------------------------
 # END OF FILE: .zshrc
