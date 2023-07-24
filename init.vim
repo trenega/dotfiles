@@ -146,6 +146,9 @@ set cursorline                          " cursorline on
 
 set termguicolors                       " Ture Color
 
+set statusline=%<%f\ %h%m%r%{FugitiveStatusline()}%=%-14.(%l,%c%V%)\ %P
+                                        " Disply statusline [Git(master)]
+
 " ----------------------------------------------------------------------------
 " CUSTOM COMMANDS AND FUNCTIONS
 " ----------------------------------------------------------------------------
@@ -249,14 +252,14 @@ endfunction
 
 " カーソル下の単語をハイライトする
 " レジスタを使用しない簡易版
-nnoremap <silent> <Space><Space> :let @/ = '\<' . expand('<cword>') . '\>'<CR>:set hlsearch<CR>
+" nnoremap <silent> <Space><Space> :let @/ = '\<' . expand('<cword>') . '\>'<CR>:set hlsearch<CR>
 " カーソル下の単語をハイライトしてから置換する
 " nmapについてですが、こいつはnnoremapと違い、右辺の再マップを行います。
 " つまり右辺最初の<Space><Space>によって上のハイライトmapを発動させるということです。
 " 通常mapはnoreを付けて再マップ無しでmapすることが一般的ですが、
 " きちんと理解した上で再マップを利用するのはアリです。
-nnoremap # <Nop>
-nmap # <Space><Space>:%s/<C-r>///gc<Left><Left><Left>
+" nnoremap # <Nop>
+" nmap # <Space><Space>:%s/<C-r>///gc<Left><Left><Left>
 
 " ハイライトを消去する
 nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
@@ -399,13 +402,11 @@ nnoremap <Leader>sw :<C-u>SweepTrail<CR>
 nnoremap <Leader>ut :<C-u>UndotreeToggle<CR>
 
 "vim-fugitive Mapping---------------------
-" Reference: https://code-log.hatenablog.com/entry/2018/12/08/101732
+" refs: https://code-log.hatenablog.com/entry/2018/12/08/101732
 nnoremap <Leader>ga :Git add %:p<CR><CR>
-nnoremap <Leader>gc :Gcommit<CR><CR>
 nnoremap <Leader>gs :Gstatus<CR>
-nnoremap <Leader>gp :Gpush<CR>
 nnoremap <Leader>gd :Gdiff<CR>
-nnoremap <Leader>gl :Glog<CR>
+nnoremap <Leader>gl :GlLog<CR>
 nnoremap <Leader>gb :Gblame<CR>
 
 " <Space>h を押して行頭へカーソルを移動させる
