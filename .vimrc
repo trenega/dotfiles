@@ -70,6 +70,11 @@ set signcolumn=yes                              " Show gitgutter column always
 set termguicolors                               " True Color
 
 set cursorline                                  " cursorline on
+
+set laststatus=2                                " Disply statuslines 2
+
+set statusline=%<%f\ %h%m%r%{FugitiveStatusline()}%=%-14.(%l,%c%V%)\ %P
+                                                " Disply statusline [Git(master)]
 " ----------------------------------------------------------------------------
 " PLUGIN SETTINGS
 " ----------------------------------------------------------------------------
@@ -605,11 +610,11 @@ nnoremap <Leader>ut :<C-u>UndotreeToggle<CR>
 "vim-fugitive----------------------------
 " Reference: https://code-log.hatenablog.com/entry/2018/12/08/101732
 nnoremap <Leader>ga :Git add %:p<CR><CR>
-nnoremap <Leader>gc :Gcommit<CR><CR>
+" nnoremap <Leader>gc :Gcommit<CR><CR>
 nnoremap <Leader>gs :Gstatus<CR>
-nnoremap <Leader>gp :Gpush<CR>
 nnoremap <Leader>gd :Gdiff<CR>
-nnoremap <Leader>gl :Glog<CR>
+nnoremap <Leader>gl :GLlog<CR>
+nnoremap <Leader>gb :Gblame<CR>
 nnoremap <Leader>gb :Gblame<CR>
 
 "End vim-fugitive-------------------------
