@@ -654,6 +654,18 @@ bindkey '^x^b' anyframe-widget-checkout-git-branch
 
 #End Zinitでターミナルをカスタマイズする--
 
+# fvim: ファイル名検索+Vimで開くファイルをカレントディレクトリからfzfで検索可能に
+# refs: https://momozo.tech/2021/03/10/fzf%E3%81%A7zsh%E3%82%BF%E3%83%BC%E3%83%9F%E3%83%8A%E3%83%AB%E4%BD%9C%E6%A5%AD%E3%82%92%E5%8A%B9%E7%8E%87%E5%8C%96/
+fvim() {
+  local file
+  file=$(
+         rg --files --hidden --follow --glob "!**/.git/*" | fzf \
+             --preview 'bat  --color=always --style=header,grid {}' --preview-window=right:60%
+     )
+  nvim "$file"
+}
+alias fv="fvim"
+
 # Don't end with errors.
 # true
 
