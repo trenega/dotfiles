@@ -20,6 +20,11 @@ export JLESSCHARSET=japanese
 export LESSCHARSET=utf-8
 #export BLOCKSIZE=k
 
+# man
+# bat can be used as a colorizing pager for man, by setting the MANPAGER environment variable:
+export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+man 2 select
+
 # -------------------------------------------------------------------
 # END OF .zlogin file
 # -------------------------------------------------------------------
