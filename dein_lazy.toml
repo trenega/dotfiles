@@ -141,5 +141,10 @@ hook_add = '''
         nnoremap <Leader>r:QuickRun<CR>
 '''
 
+# vim-flog
+# Flog is a fast, beautiful, and powerful git branch viewer for Vim.
+[[plugins]]
+repo = 'rbong/vim-flog'
+
 # END OF FILE: dein_lazy.toml
 
