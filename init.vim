@@ -71,7 +71,7 @@ endif
 let g:python_host_prog = $HOME . '/.pyenv/versions/neovim2/bin/python'
 let g:python3_host_prog = $HOME . '/.pyenv/versions/neovim3/bin/python'
 
-" Use fzf
+" Use j0fzf
 set rtp+=/usr/local/opt/fzf
 
 " Use vim-polyglot
@@ -429,9 +429,9 @@ let g:fzf_layout = { 'window': 'enew' }
 " Mapping selecting mappings
 " :Maps
 " https://github.com/junegunn/fzf.vim
-nmap <leader><tab> <plug>(fzf-maps-n)
-xmap <leader><tab> <plug>(fzf-maps-x)
-omap <leader><tab> <plug>(fzf-maps-o)
+nmap <Leader><tab> <plug>(fzf-maps-n)
+xmap <Leader><tab> <plug>(fzf-maps-x)
+omap <Leader><tab> <plug>(fzf-maps-o)
 
 " Insert mode completion
 " https://github.com/junegunn/fzf.vim
@@ -441,6 +441,14 @@ imap <c-x><c-k> <plug>(fzf-complete-word)
 imap <c-x><c-f> <plug>(fzf-complete-path)
 imap <c-x><c-j> <plug>(fzf-complete-file-ag)
 imap <c-x><c-l> <plug>(fzf-complete-line)
+
+" refs: https://qiita.com/yuucu/items/03baae12d40f9699ec59
+nnoremap <silent> <Leader>f :Files<CR>
+nnoremap <silent> <Leader>g :GFiles<CR>
+nnoremap <silent> <Leader>G :GFiles?<CR>
+nnoremap <silent> <Leader>b :Buffers<CR>
+nnoremap <silent> <Leader>h :History<CR>
+nnoremap <silent> <Leader>r :Rg<CR>
 
 "End fzf.vim------------------------------
 
@@ -999,4 +1007,5 @@ syntax enable
 " ----------------------------------------------------------------------------
 " END OF FILE: init.vim
 " ----------------------------------------------------------------------------
+
 
