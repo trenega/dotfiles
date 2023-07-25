@@ -644,9 +644,13 @@ if [ -e ~/.fzf ]; then
 fi
 
 # fzf + ag configuration
+# refs: https://qiita.com/kompiro/items/a09c0b44e7c741724c80
+# refs: https://qiita.com/yuucu/items/03baae12d40f9699ec59
 if _has fzf && _has ag; then
-        export FZF_DEFAULT_COMMAND='ag --nocolor -g ""'
-        export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+        # export FZF_DEFAULT_COMMAND='ag --nocolor -g ""'
+        export FZF_DEFAULT_COMMAND='rg --files --hidden --glob "!.git/**"'
+        export FZF_CTRL_T_COMMAND='rg --files --hidden --follow --glob "!.git/**"'
+        export FZF_CTRL_T_OPTS='--preview "bat  --color=always --style=header,grid --line-range :100 {}"'
         export FZF_ALT_C_COMMAND="$FZF_DEFAULT_COMMAND"
         export FZF_DEFAULT_OPTS='
         --color fg:242,bg:236,hl:65,fg+:15,bg+:239,hl+:108
@@ -668,7 +672,19 @@ export FZF_TMUX_HEIGHT=20
 # fvim: ファイル名検索+Vimで開くファイルをカレントディレクトリからfzfで検索可能に
 # refs: https://yiskw713.hatenablog.com/entry/2022/01/12/200000
 # refs: https://momozo.tech/2021/03/10/fzf%E3%81%A7zsh%E3%82%BF%E3%83%BC%E3%83%9F%E3%83%8A%E3%83%AB%E4%BD%9C%E6%A5%AD%E3%82%92%E5%8A%B9%E7%8E%87%E5%8C%96/
+# vim version
 fvim() {
+  local file
+  file=$(
+         rg --files --hidden --follow --glob "!**/.git/*" | fzf \
+             --preview 'bat  --color=always --style=header,grid {}' --preview-window=right:60%
+     )
+  vim "$file"
+}
+alias fv="fvim"
+
+# nvim version
+fnvim() {
   local file
   file=$(
          rg --files --hidden --follow --glob "!**/.git/*" | fzf \
@@ -676,7 +692,7 @@ fvim() {
      )
   nvim "$file"
 }
-alias fv="fvim"
+alias fn="fnvim"
 
 # かつていたことのあるディレクトリに移動する
 # refs: https://yiskw713.hatenablog.com/entry/2022/01/12/200000
@@ -743,6 +759,13 @@ zle -N fzf-z-search
 bindkey '^f' fzf-z-search
 
 #End fzfを活用してTerminalの作業効率を高める------
+
+#fzf（fuzzy finder）の便利な使い方をREADME, Wikiを読んで学ぶ------
+# refs: https://wonderwall.hatenablog.com/entry/2017/10/06/063000
+# Alt-cでディレクトリツリーを表示する
+# export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -200'"
+
+#End fzf（fuzzy finder）の便利な使い方をREADME, Wikiを読んで学ぶ--
 
 # -------------------------------------------------------------------
 # End fzf
