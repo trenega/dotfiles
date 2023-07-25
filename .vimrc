@@ -642,9 +642,9 @@ nnoremap t <Nop>
 nnoremap t :Files<CR>
 
 " Reference: https://github.com/junegunn/fzf.vim
-nmap <leader><tab> <plug>(fzf-maps-n)
-xmap <leader><tab> <plug>(fzf-maps-x)
-omap <leader><tab> <plug>(fzf-maps-o)
+nmap <Leader><tab> <plug>(fzf-maps-n)
+xmap <Leader><tab> <plug>(fzf-maps-x)
+omap <Leader><tab> <plug>(fzf-maps-o)
 
 " Insert mode completion
 " Reference: https://github.com/junegunn/fzf.vim
@@ -654,6 +654,14 @@ imap <c-x><c-k> <plug>(fzf-complete-word)
 imap <c-x><c-f> <plug>(fzf-complete-path)
 imap <c-x><c-j> <plug>(fzf-complete-file-ag)
 imap <c-x><c-l> <plug>(fzf-complete-line)
+
+" refs: https://qiita.com/yuucu/items/03baae12d40f9699ec59
+nnoremap <silent> <Leader>f :Files<CR>
+nnoremap <silent> <Leader>g :GFiles<CR>
+nnoremap <silent> <Leader>G :GFiles?<CR>
+nnoremap <silent> <Leader>b :Buffers<CR>
+nnoremap <silent> <Leader>h :History<CR>
+nnoremap <silent> <Leader>r :Rg<CR>
 
 "End fzf.vim------------------------------
 
@@ -732,7 +740,7 @@ function! s:search_by_google()
     endif
 endfunction
 command! SearchByGoogle call s:search_by_google()
-nnoremap <silent> <Space>g :SearchByGoogle<CR>
+nnoremap <silent> <Space>gg :SearchByGoogle<CR>
 
 "goyo.vim の散文モード ---------------------------------------
 " Reference: https://postd.cc/vim3/
