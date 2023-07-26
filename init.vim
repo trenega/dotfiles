@@ -303,10 +303,6 @@ nnoremap <Leader>4 $
 " space 6で行頭へ移動（英字キーボードの場合、shiftを押しながらの^は、手が遠いので）
 nnoremap <Leader>6 ^
 
-" refs: https://deris.hatenablog.jp/entry/2013/05/02/192415
-noremap <Leader>h  ^
-noremap <Leader>l  $
-
 " {motion} のテキストを大文字にする。
 " refs: ~/.config/nvim/dein/.cache/init.vim/.dein/doc/change.jax
 map! <Leader>U <Esc>gUiw`]a
@@ -408,12 +404,6 @@ nnoremap <Leader>gs :Gstatus<CR>
 nnoremap <Leader>gd :Gdiff<CR>
 nnoremap <Leader>gl :GlLog<CR>
 nnoremap <Leader>gb :Gblame<CR>
-
-" <Space>h を押して行頭へカーソルを移動させる
-nnoremap <Leader>h <Home>
-
-" <Space>l を押して行末へカーソルを移動させる
-nnoremap <Leader>l <End>
 
 " Reload init.vim without restarting neovim
 " refs: https://dev-to.translate.goog/reobin/reload-init-vim-without-restarting-neovim-1h82?_x_tr_sl=en&_x_tr_tl=ja&_x_tr_hl=ja&_x_tr_pto=sc
