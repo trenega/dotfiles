@@ -437,8 +437,8 @@ nnoremap <silent> <Leader>f :Files<CR>
 nnoremap <silent> <Leader>g :GFiles<CR>
 nnoremap <silent> <Leader>G :GFiles?<CR>
 nnoremap <silent> <Leader>b :Buffers<CR>
-" nnoremap <silent> <Leader>h :History<CR>
-" nnoremap <silent> <Leader>r :Rg<CR>
+nnoremap <silent> <Leader>H :History<CR>
+nnoremap <silent> <Leader>R :Rg<CR>
 
 "End fzf.vim------------------------------
 
