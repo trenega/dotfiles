@@ -447,13 +447,13 @@ nnoremap <silent> <Leader>f :Files<CR>
 nnoremap <silent> <Leader>g :GFiles<CR>
 nnoremap <silent> <Leader>G :GFiles?<CR>
 nnoremap <silent> <Leader>b :Buffers<CR>
-nnoremap <silent> <Leader>h :History<CR>
-nnoremap <silent> <Leader>r :Rg<CR>
+" nnoremap <silent> <Leader>h :History<CR>
+" nnoremap <silent> <Leader>r :Rg<CR>
 
 "End fzf.vim------------------------------
 
 " :helpを3倍の速度で引く
-nnoremap <C-h> :<C-u>help<Space>
+nnoremap ,h :<C-u>help<Space>
 
 " 検索後にジャンプした際に検索単語を画面中央に持ってくる
 nnoremap n nzz
