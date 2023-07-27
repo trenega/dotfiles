@@ -407,7 +407,7 @@ nnoremap <Leader>gb :Gblame<CR>
 
 " Reload init.vim without restarting neovim
 " refs: https://dev-to.translate.goog/reobin/reload-init-vim-without-restarting-neovim-1h82?_x_tr_sl=en&_x_tr_tl=ja&_x_tr_hl=ja&_x_tr_pto=sc
-nnoremap <silent> <Leader>r :source $MYVIMRC<CR>
+nnoremap <silent> <Leader>rl :source $MYVIMRC<CR>
 
 "End Leader Key Setting-------------------
 
