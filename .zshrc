@@ -95,9 +95,9 @@ alias zak=zak.sh                                # 雑記帳をVimで開く
 alias st='open -a Sourcetree'                   # Activate Sourcetree
 
 # ghc
-alias ghci='stack ghci'
-alias ghc='stack ghc --'
-alias runghc='stack runghc --'
+# alias ghci='stack ghci'
+# alias ghc='stack ghc --'
+# alias runghc='stack runghc --'
 
 # Git
 alias g='git'
