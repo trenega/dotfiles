@@ -354,10 +354,10 @@ vmap <Leader>P "+P
 nnoremap <Leader>te :tabedit
 
 " 現在のウィンドウを水平に分割する
-nnoremap <Leader>sp :split<CR>
+nnoremap <Leader>s :split<CR>
 
 " 現在のウィンドウを垂直に分割する
-nnoremap <Leader>vs :vsplit<CR>
+nnoremap <Leader>v :vsplit<CR>
 
 " ウィンドウの高さをできるだけ高くする。To Window maximum Hight size
 nnoremap <Leader>wr :resize<CR>
