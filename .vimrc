@@ -560,10 +560,10 @@ vmap <Leader>p "+p
 vmap <Leader>P "+P
 
 " 現在のウィンドウを水平に分割する
-nnoremap <Leader>sp :split<CR>
+nnoremap <Leader>s :split<CR>
 
 " 現在のウィンドウを垂直に分割する
-nnoremap <Leader>vs :vsplit<CR>
+nnoremap <Leader>v :vsplit<CR>
 
 " 新しいタブページを開く
 nnoremap <Leader>te :tabedit
