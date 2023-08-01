@@ -929,6 +929,11 @@ inoremap <Leader>date <C-R>=strftime('%Y/%m/%d (%a)')<CR>
 inoremap <Leader>time <C-R>=strftime('%H:%M')<CR>
 inoremap <Leader>w3cd <C-R>=strftime('%Y-%m-%dT%H:%M:%S+09:00')<CR>
 
+" 改行や新行作成時に自動的にコメントマーク「"」を行頭に挿入するのを抑制。
+" refs: https://www.tyksnet.com/blog/vim_sample
+autocmd BufEnter * setlocal formatoptions-=c formatoptions-=q formatoptions-=n formatoptions-=r formatoptions-=o formatoptions-=l
+
+
 " ----------------------------------------------------------------------------
 " END OF FILE: .vimrc
 " ----------------------------------------------------------------------------
