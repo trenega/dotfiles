@@ -75,6 +75,7 @@ let g:python3_host_prog = $HOME . '/.pyenv/versions/neovim3/bin/python'
 set rtp+=/usr/local/opt/fzf
 
 " Use vim-polyglot
+" refs: https://eh-career.com/engineerhub/entry/2019/01/28/103000
 set runtimepath+=~/src/vim-polyglot
 
 " dein update Setting
