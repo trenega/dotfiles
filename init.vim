@@ -360,14 +360,7 @@ nnoremap <Leader>s :split<CR>
 " 現在のウィンドウを垂直に分割する
 nnoremap <Leader>v :vsplit<CR>
 
-" ウィンドウの高さをできるだけ高くする。To Window maximum Hight size
-nnoremap <Leader>wr :resize<CR>
-
-" ウィンドウの高さを5行分高くする。To Window Hight size for 5 lines
-nnoremap <Leader>wf :resize +5<CR>
-
-" ウィンドウの高さを5行分低くする。To Window Low size for 5 lines
-nnoremap <Leader>wv :resize -5<CR>
+noremap <Leader>wv :resize -5<CR>
 
 "move to current Window-------------------
 " 上のWindowへ移動する
