@@ -571,12 +571,7 @@ nnoremap <Leader>te :tabedit
 " ウィンドウを閉じる
 nnoremap <silent> <Leader>q :<C-u>quit<CR>
 
-" ウィンドウの高さをできるだけ高くする。To Window Hight size
-nnoremap <Leader>wr :resize<CR>
-
-" ウィンドウの高さを10行分低くする。To Window Low size
-nnoremap <Leader>wv :resize -10<CR>
-
+noremap <Leader>wv :resize -10<CR>
 
 " move to current Window
 " 上のWindowへ移動する
