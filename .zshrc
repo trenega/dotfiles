@@ -401,6 +401,9 @@ export PATH="/usr/local/opt/git/bin:$PATH"
 export PATH=$HOME/.nodebrew/current/bin:$PATH
 export NODEBREW_ROOT=/usr/local/var/nodebrew
 
+# stack PATH
+export PATH=$PATH:/Users/nis/.local/bin
+
 # -------------------------------------------------------------------
 #End PATH MODIFICATIONS
 # -------------------------------------------------------------------
