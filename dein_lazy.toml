@@ -1,6 +1,6 @@
 # dein_lazy.toml
 
-# >>> 自分のVimのプラグイン環境設定-Dein/Denite/Deoplete を動かすまで >>>
+# 自分のVimのプラグイン環境設定-Dein/Denite/Deoplete を動かすまで
 # Reference:
 # https://woodyzootopia.github.io/2018/12/自分のVimのプラグイン環境設定-Dein/Denite/Deoplete を動かすまで
 
@@ -64,7 +64,7 @@ depends = ['neosnippet-snippets']
 [[plugins]]
 repo = 'Shougo/neosnippet-snippets'
 
-# <<< 自分のVimのプラグイン環境設定-Dein/Denite/Deoplete を動かすまで <<<
+# End 自分のVimのプラグイン環境設定-Dein/Denite/Deoplete を動かすまで
 
 #vim-sweep_trail
 [[plugins]]
