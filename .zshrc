@@ -148,7 +148,10 @@ alias nvimf='nvim -o `fzf`'                     # vim current file complement
 alias envi='environment'
 
 # install-data
-alias install-ls='nvim ~/data/install/install-data'
+alias install-ls='nvim ~/data/install/install-data.list'
+
+# edit memo
+alias memo='nvim ~/data/memo/memo'
 
 #End ALIAS AND FUNCTIONS------------------
 
