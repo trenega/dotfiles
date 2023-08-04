@@ -147,5 +147,9 @@ hook_add = '''
 [[plugins]]
 repo = 'rbong/vim-flog'
 
+# ReplaceWithRegister
+[[plugins]]
+repo = 'vim-scripts/ReplaceWithRegister'
+
 # END OF FILE: dein_lazy.toml
 
