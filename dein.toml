@@ -43,51 +43,6 @@ repo = 'Shougo/neoyank.vim'
 [[plugins]]
 repo = 'vim-jp/vimdoc-ja'
 
-# >>> Color scheme setting >>>
-
-#[[plugins]]
-# forest-night
-#repo = 'sainnhe/forest-night'
-#hook_add = '''
-#        " important!!
-#        set termguicolors
-#
-#        " the configuration options should be placed before `colorscheme forest-night`
-#        "let g:forest_night_enable_italic = 1
-#        let g:forest_night_disable_italic_comment = 1
-#
-#        colorscheme forest-night
-#'''
-
-#[[plugins]]
-# lightline for forest-night
-#repo = 'itchyny/lightline.vim'
-#hook_add = '''
-#        let g:lightline = {
-#                \ 'colorscheme': 'forest_night'
-#                \ }
-#        set laststatus=2
-#'''
-
-#[[plugins]]
-## lightline for gruvbox_material
-#repo = 'itchyny/lightline.vim'
-#hook_add = '''
-#        let g:lightline = {
-#                \ 'colorscheme': 'gruvbox_material'
-#                \ }
-#        set laststatus=2
-#'''
-
-# <<< Color scheme setting <<<
-
-# lightline.vim
-# [[plugins]]
-# repo = 'itchyny/lightline.vim'
-# hook_add = '''
-#         set noshowmode
-# '''
-
 # vim-unimpaired
 [[plugins]]
 repo = 'tpope/vim-unimpaired'
@@ -122,18 +77,6 @@ repo = 'tpope/vim-surround'
 # enable repeating supported plugin maps with "."
 [[plugins]]
 repo = 'tpope/vim-repeat'
-
-# memolist.vim
-# This is a vimscript for create and manage memo.
-[[plugins]]
-repo = 'glidenote/memolist.vim'
-hook_add = '''
-        let g:memolist_path = "$HOME/memo"
-        nnoremap <silent> <Space>mn :MemoNew<CR>
-        nnoremap <silent> <Space>ml :MemoList<CR>
-        nnoremap <silent> <Space>mg :MemoGrep<CR>
-
-'''
 
 # >>> defx.nvim setting >>>
 # The dark powered file explorer implementation
