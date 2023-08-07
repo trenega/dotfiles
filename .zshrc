@@ -153,6 +153,9 @@ alias install-ls='nvim ~/data/install/install-data.list'
 # edit memo
 alias memo='nvim ~/data/memo/memo'
 
+# Common Lisp: PEPL
+alias lispi='rlwrap ros run'
+
 #End ALIAS AND FUNCTIONS------------------
 
 #BINDING KEYS-----------------------------
