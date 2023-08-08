@@ -916,6 +916,8 @@ function! s:Repl()
 endfunction
 vmap <silent> <expr> p <sid>Repl()
 
+" SBCLにファイルを読み込んでREPLを起動するコマンドライン入力
+abbrev lil rlwrap ros -l <file> run
 
 "-----------------------------------------------------------------------------
 " 日付挿入
