@@ -4,6 +4,11 @@
 ;; 基本設定
 ;;
 
+;; refs: https://qiita.com/hayamiz/items/0f0b7a012ec730351678
+;; Alt key -> Meta key setting
+(when (eq system-type 'darwin)
+  (setq ns-command-modifier (quote meta)))
+
 ;;http://www1.meijo-u.ac.jp/~kohara/cms/internal/emacs_setting
 ;;UTF-8の設定
 (set-language-environment "Japanese")
@@ -35,7 +40,7 @@
 ;; refs: UNIX POWER TOOLS 19.7 著者が勧める時間節約法 p.468
 ;; CTRL-hが前の文字を削除するように定義する
 ;; 通常このキーシーケンスは、ユーザを「ヘルプ」システムに案内する。
-(define-key global-map "\C-h" 'delete-backward-char)
+;;(define-key global-map "\C-h" 'delete-backward-char)
 
 ;; CTRL-hが検索でも確実に機能するようにする。
 (setq search-delete-char (string-to-char "\C-h"))
