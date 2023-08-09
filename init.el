@@ -87,7 +87,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages '(ddskk))
+ '(package-selected-packages '(ac-slime ddskk))
  '(tool-bar-mode nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -184,7 +184,10 @@
 ;;End DDSKK setting-------------------
 
 ;;SLIME setting-----------------------
-
+;; refs: https://asukiaaa.blogspot.com/2017/12/emacsslimeroswell.html
+(require 'package)
+(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
+(package-initialize)
 ;;End SLIME setting-------------------
 
 ;;; ~/.emacs.d/init.el ends hereh
