@@ -1,5 +1,18 @@
 ;;; ~/.emacs.d/init.el
 
+;; refs: http://emacs.rubikitch.com/auto-complete/
+(package-initialize)
+(setq package-archives
+      '(("gnu" . "http://elpa.gnu.org/packages/")
+        ("melpa" . "http://melpa.org/packages/")
+        ("org" . "http://orgmode.org/elpa/")))
+
+;; refs: https://asukiaaa.blogspot.com/2017/12/emacsslimeroswell.html
+(require 'package)
+(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
+(package-initialize)
+
+(load (expand-file-name "~/.roswell/helper.el"))
 ;;
 ;; 基本設定
 ;;
@@ -195,12 +208,6 @@
 ;; SLIMEからの入力をUTF-8に設定
 (setq slime-net-coding-system 'utf-8-unix)
 
-;; refs: https://asukiaaa.blogspot.com/2017/12/emacsslimeroswell.html
-(require 'package)
-(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
-(package-initialize)
-
-(load (expand-file-name "~/.roswell/helper.el"))
 ;;End SLIME setting-------------------
 
 ;;; ~/.emacs.d/init.el ends hereh
