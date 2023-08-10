@@ -10,7 +10,6 @@
 ;; refs: https://asukiaaa.blogspot.com/2017/12/emacsslimeroswell.html
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
-(package-initialize)
 
 (load (expand-file-name "~/.roswell/helper.el"))
 ;;
