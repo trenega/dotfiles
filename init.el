@@ -184,10 +184,23 @@
 ;;End DDSKK setting-------------------
 
 ;;SLIME setting-----------------------
+;; refs: http://modern-cl.blogspot.com/2011/04/3-slime.html
+;; SBCL をデフォルトのCommon Lisp処理系に設定
+(setq inferior-lisp-program "sbcl")
+;; ~/.emacs.d/slimeをload-pathに追加
+(add-to-list 'load-path (expand-file-name "~/.emacs.d/slime"))
+;; SLIMEのロード
+(require 'slime)
+(slime-setup '(slime-repl slime-fancy slime-banner slime-indentation))
+;; SLIMEからの入力をUTF-8に設定
+(setq slime-net-coding-system 'utf-8-unix)
+
 ;; refs: https://asukiaaa.blogspot.com/2017/12/emacsslimeroswell.html
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
 (package-initialize)
+
+(load (expand-file-name "~/.roswell/helper.el"))
 ;;End SLIME setting-------------------
 
 ;;; ~/.emacs.d/init.el ends hereh
