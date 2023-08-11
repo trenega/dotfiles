@@ -1,5 +1,11 @@
 ;;; ~/.emacs.d/init.el
 
+;; 変数package-archivesを設定します。
+;; https://github.com/skk-dev/ddskk/blob/master/READMEs/INSTALL.MELPA.md
+(when (require 'package nil t)
+   (add-to-list 'package-archives
+     '("melpa" . "https://melpa.org/packages/") t))
+
 ;;
 ;; 基本設定
 ;;
@@ -71,11 +77,6 @@
 
 ;;End 著者が勧める時間節約法--------------
 
-;; 変数package-archivesを設定します。
-;; https://github.com/skk-dev/ddskk/blob/master/READMEs/INSTALL.MELPA.md
-(when (require 'package nil t)
-   (add-to-list 'package-archives
-     '("melpa" . "https://melpa.org/packages/") t))
 
 
 ;;
@@ -87,7 +88,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages '(ac-slime ddskk))
+ '(package-selected-packages '(company ac-slime ddskk))
  '(tool-bar-mode nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
