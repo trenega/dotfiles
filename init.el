@@ -204,5 +204,16 @@
 (load (expand-file-name "~/.roswell/helper.el"))
 ;;End SLIME setting-------------------
 
+;;company----------------------------
+;; refs: https://qiita.com/sune2/items/b73037f9e85962f5afb7
+(require 'company)
+; (global-company-mode t) ; 全バッファで有効にする
+(add-hook 'after-init-hook 'global-company-mode) ; refs: http://company-mode.github.io/
+(setq company-idle-delay 0) ; デフォルトは0.5
+(setq company-minimum-prefix-length 2) ; デフォルトは4
+(setq company-selection-wrap-around t) ; 候補の一番下でさらに下に行こうとすると一番上に戻る
+
+;;End company-------------------------
+
 ;;; ~/.emacs.d/init.el ends hereh
 
