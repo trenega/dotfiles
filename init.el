@@ -1,10 +1,5 @@
 ;;; ~/.emacs.d/init.el
 
-;; 変数package-archivesを設定します。
-;; https://github.com/skk-dev/ddskk/blob/master/READMEs/INSTALL.MELPA.md
-(when (require 'package nil t)
-   (add-to-list 'package-archives
-     '("melpa" . "https://melpa.org/packages/") t))
 
 ;;
 ;; 基本設定
@@ -213,14 +208,6 @@
 (setq company-minimum-prefix-length 2) ; デフォルトは4
 (setq company-selection-wrap-around t) ; 候補の一番下でさらに下に行こうとすると一番上に戻る
 
-;; ido-modeが起動時に有効にする
-(ido-mode t)
-(ido-everywhere 1)
-
-;; ido-vertical-mode
-(require 'ido-vertical-mode)
-(ido-vertical-mode 1)
-(setq ido-vertical-define-keys 'C-n-and-C-p-only)
 
 ;;End company-------------------------
 
