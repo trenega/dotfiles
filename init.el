@@ -88,7 +88,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages '(company ac-slime ddskk))
+ '(package-selected-packages '(ido-vertical-mode company ac-slime ddskk))
  '(tool-bar-mode nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -212,6 +212,15 @@
 (setq company-idle-delay 0) ; デフォルトは0.5
 (setq company-minimum-prefix-length 2) ; デフォルトは4
 (setq company-selection-wrap-around t) ; 候補の一番下でさらに下に行こうとすると一番上に戻る
+
+;; ido-modeが起動時に有効にする
+(ido-mode t)
+(ido-everywhere 1)
+
+;; ido-vertical-mode
+(require 'ido-vertical-mode)
+(ido-vertical-mode 1)
+(setq ido-vertical-define-keys 'C-n-and-C-p-only)
 
 ;;End company-------------------------
 
