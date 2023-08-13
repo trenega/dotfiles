@@ -1,4 +1,25 @@
 ;;; ~/.emacs.d/init.el
+;; el-get Initial settings-------------------------------
+; refs: https://tarao.hatenablog.com/entry/20150221/1424518030
+(when load-file-name
+  (setq user-emacs-directory (file-name-directory load-file-name)))
+
+(add-to-list 'load-path (locate-user-emacs-file "el-get/el-get"))
+(unless (require 'el-get nil 'noerror)
+  (with-current-buffer
+      (url-retrieve-synchronously
+       "https://raw.githubusercontent.com/dimitri/el-get/master/el-get-install.el")
+    (goto-char (point-max))
+    (eval-print-last-sexp)))
+
+;; el-get Initial settings-------------------------------
+
+;; el-get Install packages ------------------------------
+
+
+;; End el-get Install packages --------------------------
+
+
 
 
 ;;
@@ -83,7 +104,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages '(ido-vertical-mode company ac-slime ddskk))
+ '(package-selected-packages '(company ac-slime ddskk))
  '(tool-bar-mode nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
