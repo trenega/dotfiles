@@ -1,5 +1,7 @@
 ;;; ~/.emacs.d/init.el
-;; el-get Initial settings-------------------------------
+
+
+;; el-get Initial settings--------------------------------
 ; refs: https://tarao.hatenablog.com/entry/20150221/1424518030
 (when load-file-name
   (setq user-emacs-directory (file-name-directory load-file-name)))
@@ -12,17 +14,17 @@
     (goto-char (point-max))
     (eval-print-last-sexp)))
 
-;; End el-get Initial settings-------------------------------
+;; End el-get Initial settings----------------------------
 
-;; el-get Install packages-------------------------------
+;; el-get Install packages--------------------------------
 (el-get-bundle counsel)
 
 ; swiper のリポジトリを指定
 ; (el-get-bundle "abo-abo/swiper")
 
-;; End el-get Install packages---------------------------
+;; End el-get Install packages----------------------------
 
-;; ivy Setting-------------------------------------------
+;; ivy Setting--------------------------------------------
 ; refs: https://takaxp.github.io/articles/qiita-helm2ivy.html
 (when (require 'ivy nil t)
 
@@ -49,9 +51,9 @@
   ;; アクティベート
   (ivy-mode 1))
 
-;; End ivy Setting---------------------------------------
+;; End ivy Setting----------------------------------------
 
-;; counsel Setting---------------------------------------
+;; counsel Setting----------------------------------------
 (when (require 'counsel nil t)
 
   ;; キーバインドは一例です．好みに変えましょう．
@@ -65,15 +67,15 @@
   ;; アクティベート
   (counsel-mode 1))
 
-;; End counsel Setting-----------------------------------
+;; End counsel Setting------------------------------------
 
-;; swiper Setting----------------------------------------
+;; swiper Setting-----------------------------------------
 (when (require 'swiper nil t)
 
   ;; キーバインドは一例です．好みに変えましょう．
   (global-set-key (kbd "M-s M-s") 'swiper-thing-at-point))
 
-;; End swiper Setting------------------------------------
+;; End swiper Setting-------------------------------------
 
 ;;
 ;; 基本設定
@@ -111,7 +113,7 @@
 (require 'linum)
 (global-linum-mode)
 
-;;著者が勧める時間節約法------------------
+;;著者が勧める時間節約法----------------------------------
 ;; refs: UNIX POWER TOOLS 19.7 著者が勧める時間節約法 p.468
 ;; CTRL-hが前の文字を削除するように定義する
 ;; 通常このキーシーケンスは、ユーザを「ヘルプ」システムに案内する。
@@ -144,7 +146,7 @@
 ;; を使って新しいファイルにアクセスする。
 (define-key global-map "\C-x\C-v" 'find-file-other-window)
 
-;;End 著者が勧める時間節約法--------------
+;;End 著者が勧める時間節約法------------------------------
 
 
 
