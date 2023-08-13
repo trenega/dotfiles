@@ -14,10 +14,10 @@
 
 ;; el-get Initial settings-------------------------------
 
-;; el-get Install packages ------------------------------
+;; el-get Install packages-------------------------------
+(el-get-bundle counsel)
 
-
-;; End el-get Install packages --------------------------
+;; End el-get Install packages---------------------------
 
 
 
