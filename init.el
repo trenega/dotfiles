@@ -1,8 +1,11 @@
-;;; ~/.emacs.d/init.el
+;;;; ~/.emacs.d/init.el
 
+;;
+;; Package Settigs
+;;
 
 ;; el-get Initial settings--------------------------------
-; refs: https://tarao.hatenablog.com/entry/20150221/1424518030
+;; refs: https://tarao.hatenablog.com/entry/20150221/1424518030
 (when load-file-name
   (setq user-emacs-directory (file-name-directory load-file-name)))
 
@@ -19,13 +22,41 @@
 ;; el-get Install packages--------------------------------
 (el-get-bundle counsel)
 
-; swiper のリポジトリを指定
-; (el-get-bundle "abo-abo/swiper")
-
 ;; End el-get Install packages----------------------------
 
+;; SLIME setting------------------------------------------
+;; refs: http://modern-cl.blogspot.com/2011/04/3-slime.html
+;; SBCL をデフォルトのCommon Lisp処理系に設定
+(setq inferior-lisp-program "sbcl")
+;; ~/.emacs.d/slimeをload-pathに追加
+(add-to-list 'load-path (expand-file-name "~/.emacs.d/slime"))
+;; SLIMEのロード
+(require 'slime)
+(slime-setup '(slime-repl slime-fancy slime-banner slime-indentation))
+;; SLIMEからの入力をUTF-8に設定
+(setq slime-net-coding-system 'utf-8-unix)
+
+;; refs: https://asukiaaa.blogspot.com/2017/12/emacsslimeroswell.html
+(require 'package)
+(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
+; (package-initialize)
+
+(load (expand-file-name "~/.roswell/helper.el"))
+;; End SLIME setting-------------------
+
+;; company Setting----------------------------------------
+;; refs: https://qiita.com/sune2/items/b73037f9e85962f5afb7
+(require 'company)
+;; (global-company-mode t) ; 全バッファで有効にする
+(add-hook 'after-init-hook 'global-company-mode) ; refs: http://company-mode.github.io/
+(setq company-idle-delay 0) ; デフォルトは0.5
+(setq company-minimum-prefix-length 2) ; デフォルトは4
+(setq company-selection-wrap-around t) ; 候補の一番下でさらに下に行こうとすると一番上に戻る
+
+;; End company Setting------------------------------------
+
 ;; ivy Setting--------------------------------------------
-; refs: https://takaxp.github.io/articles/qiita-helm2ivy.html
+;; refs: https://takaxp.github.io/articles/qiita-helm2ivy.html
 (when (require 'ivy nil t)
 
   ;; M-o を ivy-hydra-read-action に割り当てる．
@@ -67,9 +98,9 @@
   ;; アクティベート
   (counsel-mode 1))
 
-; counsel-recentf 再定義
-; ファイルの表示を`~`から初める設定
-; refs: https://takaxp.github.io/articles/qiita-helm2ivy.html#org87d665a3
+;; counsel-recentf 再定義
+;; ファイルの表示を`~`から初める設定
+;; refs: https://takaxp.github.io/articles/qiita-helm2ivy.html#org87d665a3
 (defun ad:counsel-recentf ()
   "Find a file on `recentf-list'."
   (interactive)
@@ -95,6 +126,10 @@
   (global-set-key (kbd "M-s M-s") 'swiper-thing-at-point))
 
 ;; End swiper Setting-------------------------------------
+
+;;
+;; End Package Settigs
+;;
 
 ;;
 ;; 基本設定
@@ -128,11 +163,11 @@
 ;; ウィンドウ（フレーム）のサイズ設定する
 (setq default-frame-alist '((width . 84) (height . 38)))
 
-;;左側に行番号表示をする
+;; 左側に行番号表示をする
 (require 'linum)
 (global-linum-mode)
 
-;;著者が勧める時間節約法----------------------------------
+;; 著者が勧める時間節約法----------------------------------
 ;; refs: UNIX POWER TOOLS 19.7 著者が勧める時間節約法 p.468
 ;; CTRL-hが前の文字を削除するように定義する
 ;; 通常このキーシーケンスは、ユーザを「ヘルプ」システムに案内する。
@@ -165,9 +200,7 @@
 ;; を使って新しいファイルにアクセスする。
 (define-key global-map "\C-x\C-v" 'find-file-other-window)
 
-;;End 著者が勧める時間節約法------------------------------
-
-
+;; End 著者が勧める時間節約法------------------------------
 
 ;;
 ;; DDSKK setting
@@ -271,40 +304,7 @@
 ;; 準備する。Emacs の起動は遅くなるが，SKK を使い始めるときのレスポンス
 ;; が軽快になる。
 
+;; End DDSKK setting-------------------
 
-;;End DDSKK setting-------------------
-
-;;SLIME setting-----------------------
-;; refs: http://modern-cl.blogspot.com/2011/04/3-slime.html
-;; SBCL をデフォルトのCommon Lisp処理系に設定
-(setq inferior-lisp-program "sbcl")
-;; ~/.emacs.d/slimeをload-pathに追加
-(add-to-list 'load-path (expand-file-name "~/.emacs.d/slime"))
-;; SLIMEのロード
-(require 'slime)
-(slime-setup '(slime-repl slime-fancy slime-banner slime-indentation))
-;; SLIMEからの入力をUTF-8に設定
-(setq slime-net-coding-system 'utf-8-unix)
-
-;; refs: https://asukiaaa.blogspot.com/2017/12/emacsslimeroswell.html
-(require 'package)
-(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
-; (package-initialize)
-
-(load (expand-file-name "~/.roswell/helper.el"))
-;;End SLIME setting-------------------
-
-;;company----------------------------
-;; refs: https://qiita.com/sune2/items/b73037f9e85962f5afb7
-(require 'company)
-; (global-company-mode t) ; 全バッファで有効にする
-(add-hook 'after-init-hook 'global-company-mode) ; refs: http://company-mode.github.io/
-(setq company-idle-delay 0) ; デフォルトは0.5
-(setq company-minimum-prefix-length 2) ; デフォルトは4
-(setq company-selection-wrap-around t) ; 候補の一番下でさらに下に行こうとすると一番上に戻る
-
-
-;;End company-------------------------
-
-;;; ~/.emacs.d/init.el ends hereh
+;;;; ~/.emacs.d/init.el ends hereh
 
