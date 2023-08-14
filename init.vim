@@ -454,7 +454,8 @@ nnoremap ? ?\v
 "INSERT MODE KEYMAPS----------------------
 " Change INSERT mode to NORMAL mode
 " inoremap <silent> jj <Esc>
-inoremap <silent> fd <Esc>
+" inoremap <silent> fd <Esc>
+inoremap <silent> jj <Esc>
 " File Save
 inoremap <silent> js <C-o>:write<CR>
 " Scroll to center line
