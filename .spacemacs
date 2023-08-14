@@ -541,7 +541,7 @@ It should only modify the values of Spacemacs settings."
    dotspacemacs-byte-compile nil
 
    ;; Vimmer Setting
-   ;; https://qiita.com/sei40kr/items/f8f2d4dbae89c077b6b0 
+   ;; https://qiita.com/sei40kr/items/f8f2d4dbae89c077b6b0
    ;;  (dotspacemacs-remap-Y-to-y$ t)
    ))
 
@@ -584,7 +584,7 @@ before packages are loaded."
 ;;; personal key-bindings
 
   ;; Vimmer Settings
-  ;;refs: https://qiita.com/sei40kr/items/f8f2d4dbae89c077b6b0 
+  ;;refs: https://qiita.com/sei40kr/items/f8f2d4dbae89c077b6b0
   ;; delete-backward-char
   (bind-key "C-h" #'delete-backward-char)
   ;; delete word
@@ -592,6 +592,11 @@ before packages are loaded."
   (with-eval-atter-load 'company
     (bind-key "C-h" nil company-active-map)
     (bind-key "C-w" nil company-active-map))
+
+  ;; evil-surround を vim-surround 風にする
+  (evil-define-key 'visual evil-surround-mode-map "s" #'evil-substitute)
+  (evil-define-key 'visual evil-surround-mode-map "S" #'evil-surround-region)
+
 
   ;; C-x bで存在しないバッファを指定して新規バッファを開いたときには、デフォルトで
   ;; lisp-interaction-mode が起動する
@@ -601,15 +606,3 @@ before packages are loaded."
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
-dotspacemacs-default-font '("Source Code Pro"
-                            dotspacemacs-default-font '("Source Code Pro"
-                                                        dotspacemacs-default-font '("Source Code Pro"
-                               :size 10.0
-                               :weight normal
-                               :width normal)
-                               :size 10.0
-                               :weight normal
-                               :width normal)
-                               :size 10.0
-                               :weight normal
-                               :width normal)
