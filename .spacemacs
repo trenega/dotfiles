@@ -58,7 +58,7 @@ This function should only modify configuration layer settings."
 
    ;; List of additional packages that will be installed without being wrapped
    ;; in a layer (generally the packages are installed only and should still be
-   ;; loaded using load/require/use-package in the user-config section below in
+   ;; loaded using load/require/use-package in the ulser-config section below in
    ;; this file). If you need some configuration for these packages, then
    ;; consider creating a layer. You can also put the configuration in
    ;; `dotspacemacs/user-config'. To use a local version of a package, use the
@@ -572,6 +572,8 @@ This function is called at the very end of Spacemacs startup, after layer
 configuration.
 Put your configuration code here, except for variables that should be set
 before packages are loaded."
+;;; personal key-bindings
+  (bind-key "C-h" 'delete-backward-char)
   )
 
 
