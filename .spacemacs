@@ -424,7 +424,7 @@ It should only modify the values of Spacemacs settings."
    ;;   :size-limit-kb 1000)
    ;; When used in a plist, `visual' takes precedence over `relative'.
    ;; (default nil)
-   dotspacemacs-line-numbers nil
+   dotspacemacs-line-numbers 'relative
 
    ;; Code folding method. Possible values are `evil', `origami' and `vimish'.
    ;; (default 'evil)
@@ -538,7 +538,13 @@ It should only modify the values of Spacemacs settings."
    dotspacemacs-home-shorten-agenda-source nil
 
    ;; If non-nil then byte-compile some of Spacemacs files.
-   dotspacemacs-byte-compile nil))
+   dotspacemacs-byte-compile nil
+
+   ;; Vimmer Setting
+   ;; https://qiita.com/sei40kr/items/f8f2d4dbae89c077b6b0 
+   ;;  (dotspacemacs-remap-Y-to-y$ t)
+   ))
+
 
 (defun dotspacemacs/user-env ()
   "Environment variables setup.
@@ -555,6 +561,9 @@ This function is called immediately after `dotspacemacs/init', before layer
 configuration.
 It is mostly for variables that should be set before packages are loaded.
 If you are unsure, try setting them in `dotspacemacs/user-config' first."
+  (setq
+   evil-want-C-i-jump t
+   evil-want-C-u-scroll t)
   )
 
 
@@ -573,9 +582,22 @@ configuration.
 Put your configuration code here, except for variables that should be set
 before packages are loaded."
 ;;; personal key-bindings
-  (bind-key "C-h" 'delete-backward-char)
-  )
 
+  ;; Vimmer Settings
+  ;;refs: https://qiita.com/sei40kr/items/f8f2d4dbae89c077b6b0 
+  ;; delete-backward-char
+  (bind-key "C-h" #'delete-backward-char)
+  ;; delete word
+  (bind-key "C-w" #'backward-kill-word)
+  (with-eval-atter-load 'company
+    (bind-key "C-h" nil company-active-map)
+    (bind-key "C-w" nil company-active-map))
+
+  ;; C-x bで存在しないバッファを指定して新規バッファを開いたときには、デフォルトで
+  ;; lisp-interaction-mode が起動する
+  ;; refs: 「やさしいEmacs-Lisp講座」p.2
+  (setq default-major-mode 'lisp-interaction-mode)
+  )
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
