@@ -161,8 +161,8 @@
 (tool-bar-mode 0)
 
 ;; ウィンドウ（フレーム）のサイズ設定する
-(setq default-frame-alist '((width . 84) (height . 38)))
-
+;;(setq default-frame-alist '((width . 84) (height . 38)))
+(setq default-frame-alist '((width . 125) (height . 38)))
 ;; 左側に行番号表示をする
 (require 'linum)
 (global-linum-mode)
