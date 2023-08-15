@@ -229,19 +229,6 @@
 ;;(setq default-frame-alist '((width . 84) (height . 38)))
 (setq default-frame-alist '((width . 125) (height . 38)))
 
-;; relative numbering--------------------------------------
-;; refs: https://www.reddit.com/r/emacs/comments/l7f85b/how_to_toggle_absolute_and_relative_numbering_in/
-(defun my/display-set-relative ()
-  (setq display-line-numbers 'relative))    ; or 'visual
-
-(defun my/display-set-absolute ()
-  (setq display-line-numbers t))
-
-(add-hook 'evil-insert-state-entry-hook #'my/display-set-absolute)
-(add-hook 'evil-insert-state-exit-hook #'my/display-set-relative)
-
-;; End relative numbering----------------------------------
-
 ;; 著者が勧める時間節約法----------------------------------
 ;; refs: UNIX POWER TOOLS 19.7 著者が勧める時間節約法 p.468
 ;; CTRL-hが前の文字を削除するように定義する
@@ -277,7 +264,7 @@
 
 ;; End 著者が勧める時間節約法------------------------------
 
-;; C-hをBackspaceに変更、C-?にhelpをmapping
+;; C-hをBackspaceに変更、C-?にhelpをmapping---------------
 ;; refs: malkalech.com/emacs_c-h_backspac:
 ;; C-h -> delete-backward-char
 (define-key key-translation-map [?\C-h] [?\C-?])
@@ -286,6 +273,21 @@
 ;; C-? -> help
 ; (global-set-key (kbd "C-?") 'help-for-help)
 (bind-key* "C-?" 'help-for-help)
+
+;; End C-hをBackspaceに変更、C-?にhelpをmapping-----------
+
+;; relative numbering-----------------------------------
+;; refs: https://www.reddit.com/r/emacs/comments/l7f85b/how_to_toggle_absolute_and_relative_numbering_in/
+(defun my/display-set-relative ()
+  (setq display-line-numbers 'relative))    ; or 'visual
+
+(defun my/display-set-absolute ()
+  (setq display-line-numbers t))
+
+(add-hook 'evil-insert-state-entry-hook #'my/display-set-absolute)
+(add-hook 'evil-insert-state-exit-hook #'my/display-set-relative)
+
+;; End relative numbering-------------------------------
 
 ;;
 ;; DDSKK setting
