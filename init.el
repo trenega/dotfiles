@@ -199,8 +199,8 @@
   (setq ns-command-modifier (quote meta)))
 
 ;; "jj" to Esc
-;; https://stackoverflow.com/questions/10569165/how-to-map-jj-to-esc-in-emacs-evil-mode
 ;; Exit instert mode by pressing j and then j quickly
+;; https://stackoverflow.com/questions/10569165/how-to-map-jj-to-esc-in-emacs-evil-mode
 (setq key-chord-tow-keys-delay 0.5)
 (key-chord-define evil-insert-state-map "jj" 'evil-normal-state)
 (key-chord-mode 1)
