@@ -127,6 +127,28 @@
 
 ;; End swiper Setting-------------------------------------
 
+;; use-package, bind-key Setting--------------------------
+;; http://malkalech.com/emacs_c-h_backspace
+;; add MELPA and initialize
+;; use-package
+(when (require 'package nil t)
+  (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
+  ;; install use-package if not there
+  (unless (require 'use-package nil t)
+    (unless package-archive-contents (package-refresh-contents))
+    (package-install 'use-package)))
+
+;; bind-key
+(require 'package)
+(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
+(package-initialize)
+
+(unless (require 'bind-key nil t)
+  (package-refresh-contents)
+  (package-install 'bind-key))
+
+;; End use-package, bind-key Setting----------------------
+
 ;;
 ;; End Package Settigs
 ;;
@@ -171,10 +193,10 @@
 ;; refs: UNIX POWER TOOLS 19.7 著者が勧める時間節約法 p.468
 ;; CTRL-hが前の文字を削除するように定義する
 ;; 通常このキーシーケンスは、ユーザを「ヘルプ」システムに案内する。
-;;(define-key global-map "\C-h" 'delete-backward-char)
+       ;;(define-key global-map "\C-h" 'delete-backward-char)
 
 ;; CTRL-hが検索でも確実に機能するようにする。
-(setq search-delete-char (string-to-char "\C-h"))
+;;(setq search-delete-char (string-to-char "\C-h"))
 
 ;; 他の「ヘルプ」機能をバインドする (CTRL-_)。
 ;; 注記：一部の端末ではCTRL-_は定義されていない。
@@ -201,6 +223,16 @@
 (define-key global-map "\C-x\C-v" 'find-file-other-window)
 
 ;; End 著者が勧める時間節約法------------------------------
+
+;; C-hをBackspaceに変更、C-?にhelpをmapping
+;; refs: malkalech.com/emacs_c-h_backspac:
+;; C-h -> delete-backward-char
+(define-key key-translation-map [?\C-h] [?\C-?])
+;; C-h -> Backspace
+(bind-key* "C-h" 'delete-backward-char)
+;; C-? -> help
+; (global-set-key (kbd "C-?") 'help-for-help)
+(bind-key* "C-?" 'help-for-help)
 
 ;;
 ;; DDSKK setting
