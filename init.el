@@ -4,6 +4,33 @@
 ;; Package Settigs
 ;;
 
+;; Evil Settings------------------------------------------
+;; refs: https://tarao.hatenablog.com/entry/20130303/evil_intro
+;; Emacs directory
+(when load-file-name
+  (setq user-emacs-directory (file-name-directory load-file-name)))
+
+;; Package management
+(require 'package)
+(add-to-list 'package-archives
+             '("marmalade" . "http://marmalade-repo.org/packages/"))
+; (package-initialize)
+
+(defun package-install-with-refresh (package)
+  (unless (assq package package-alist)
+    (package-refresh-contents))
+  (unless (package-installed-p package)
+    (package-install package)))
+
+;; Install evil
+(package-install-with-refresh 'evil)
+
+;; Enable evil
+(require 'evil)
+(evil-mode 1)
+
+;; End Evil Settings--------------------------------------
+
 ;; el-get Initial settings--------------------------------
 ;; refs: https://tarao.hatenablog.com/entry/20150221/1424518030
 (when load-file-name
@@ -18,6 +45,7 @@
     (eval-print-last-sexp)))
 
 ;; End el-get Initial settings----------------------------
+
 
 ;; el-get Install packages--------------------------------
 (el-get-bundle counsel)
