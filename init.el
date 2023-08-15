@@ -201,9 +201,9 @@
 ;; "jj" to Esc
 ;; Exit instert mode by pressing j and then j quickly
 ;; https://stackoverflow.com/questions/10569165/how-to-map-jj-to-esc-in-emacs-evil-mode
-(setq key-chord-tow-keys-delay 0.5)
-(key-chord-define evil-insert-state-map "jj" 'evil-normal-state)
+; (setq key-chord-tow-keys-delay 0.5)
 (key-chord-mode 1)
+(key-chord-define evil-insert-state-map "jj" 'evil-normal-state)
 
 ;;http://www1.meijo-u.ac.jp/~kohara/cms/internal/emacs_setting
 ;;UTF-8の設定
