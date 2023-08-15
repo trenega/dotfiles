@@ -47,7 +47,7 @@
 
 ;; -------------------------------------------------------
 ;; -------------------------------------------------------
-;; Write el-get Install packages
+;; Write here! el-get Install packages
 
 ;; counsel.elはivyの骨格関数
 (el-get-bundle counsel)
@@ -55,7 +55,7 @@
 ;; Map pairs of simultaneously pressed keys to commands
 (el-get-bundle key-chord)
 
-;; End Write el-get Install packages
+;; End Write here! el-get Install packages
 ;; -------------------------------------------------------
 ;; -------------------------------------------------------
 
@@ -201,8 +201,8 @@
 ;; "jj" to Esc
 ;; Exit instert mode by pressing j and then j quickly
 ;; https://stackoverflow.com/questions/10569165/how-to-map-jj-to-esc-in-emacs-evil-mode
-; (setq key-chord-tow-keys-delay 0.5)
 (key-chord-mode 1)
+(setq key-chord-tow-keys-delay 0.5)
 (key-chord-define evil-insert-state-map "jj" 'evil-normal-state)
 
 ;;http://www1.meijo-u.ac.jp/~kohara/cms/internal/emacs_setting
@@ -228,9 +228,19 @@
 ;; ウィンドウ（フレーム）のサイズ設定する
 ;;(setq default-frame-alist '((width . 84) (height . 38)))
 (setq default-frame-alist '((width . 125) (height . 38)))
-;; 左側に行番号表示をする
-(require 'linum)
-(global-linum-mode)
+
+;; relative numbering--------------------------------------
+;; refs: https://www.reddit.com/r/emacs/comments/l7f85b/how_to_toggle_absolute_and_relative_numbering_in/
+(defun my/display-set-relative ()
+  (setq display-line-numbers 'relative))    ; or 'visual
+
+(defun my/display-set-absolute ()
+  (setq display-line-numbers t))
+
+(add-hook 'evil-insert-state-entry-hook #'my/display-set-absolute)
+(add-hook 'evil-insert-state-exit-hook #'my/display-set-relative)
+
+;; End relative numbering----------------------------------
 
 ;; 著者が勧める時間節約法----------------------------------
 ;; refs: UNIX POWER TOOLS 19.7 著者が勧める時間節約法 p.468
