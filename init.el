@@ -4,6 +4,10 @@
 ;; Package Settigs
 ;;
 
+;; user-emacs-directory Settings
+;; refs: https://myemacs.readthedocs.io/ja/latest/el-get.html
+(when load-file-name (setq user-emacs-directory (file-name-directory load-file-name)))
+
 ;; Evil Settings------------------------------------------
 ;; refs: https://tarao.hatenablog.com/entry/20130303/evil_intro
 ;; Emacs directory
@@ -32,25 +36,28 @@
 ;; End Evil Settings--------------------------------------
 
 ;; el-get Initial settings--------------------------------
-;; refs: https://tarao.hatenablog.com/entry/20150221/1424518030
-(when load-file-name
-  (setq user-emacs-directory (file-name-directory load-file-name)))
-
-(add-to-list 'load-path (locate-user-emacs-file "el-get/el-get"))
-(unless (require 'el-get nil 'noerror)
-  (with-current-buffer
-      (url-retrieve-synchronously
-       "https://raw.githubusercontent.com/dimitri/el-get/master/el-get-install.el")
-    (goto-char (point-max))
-    (eval-print-last-sexp)))
-
+;; refs: https://myemacs.readthedocs.io/ja/latest/el-get.html
+;; el-getのディレクトリをload-pathに追加
+(add-to-list 'load-path "~/.emacs.d/el-get/el-get")
+;; el-get.elを読み込ませる
+(require 'el-get)
+;; el-getでダンロードしたパッケージの保存先
+(setq el-get-dir "~/.emacs.d/elisp")
 ;; End el-get Initial settings----------------------------
 
+;; -------------------------------------------------------
+;; -------------------------------------------------------
+;; Write el-get Install packages
 
-;; el-get Install packages--------------------------------
+;; counsel.elはivyの骨格関数
 (el-get-bundle counsel)
 
-;; End el-get Install packages----------------------------
+;; Map pairs of simultaneously pressed keys to commands
+(el-get-bundle key-chord)
+
+;; End Write el-get Install packages
+;; -------------------------------------------------------
+;; -------------------------------------------------------
 
 ;; SLIME setting------------------------------------------
 ;; refs: http://modern-cl.blogspot.com/2011/04/3-slime.html
@@ -73,6 +80,7 @@
 ;; End SLIME setting-------------------
 
 ;; company Setting----------------------------------------
+;; 補完用パッケージ
 ;; refs: https://qiita.com/sune2/items/b73037f9e85962f5afb7
 (require 'company)
 ;; (global-company-mode t) ; 全バッファで有効にする
@@ -169,7 +177,7 @@
 ;; bind-key
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
-(package-initialize)
+; (package-initialize)
 
 (unless (require 'bind-key nil t)
   (package-refresh-contents)
@@ -189,6 +197,13 @@
 ;; Alt key -> Meta key setting
 (when (eq system-type 'darwin)
   (setq ns-command-modifier (quote meta)))
+
+;; "jj" to Esc
+;; https://stackoverflow.com/questions/10569165/how-to-map-jj-to-esc-in-emacs-evil-mode
+;; Exit instert mode by pressing j and then j quickly
+(setq key-chord-tow-keys-delay 0.5)
+(key-chord-define evil-insert-state-map "jj" 'evil-normal-state)
+(key-chord-mode 1)
 
 ;;http://www1.meijo-u.ac.jp/~kohara/cms/internal/emacs_setting
 ;;UTF-8の設定
