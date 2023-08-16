@@ -194,6 +194,13 @@
 (when (eq system-type 'darwin)
   (setq ns-command-modifier (quote meta)))
 
+;; 「状態を脱出する」コマンド
+;;	リージョン選択状態
+;;	ミニバッファでの入力状態
+;;	ウィンドウの分割状態
+;; http://dev.ariel-networks.com/articles/emacs/part4/
+(global-set-key (kbd "C-M-g") 'keyboard-escape-quit)
+
 ;; "jj" to Esc
 ;; Exit instert mode by pressing j and then j quickly
 ;; https://stackoverflow.com/questions/10569165/how-to-map-jj-to-esc-in-emacs-evil-mode
@@ -297,6 +304,19 @@
 (bind-key "C-c C-k" 'slime-compile-and-load-file)
 
 ;; End slime-compile Settings---------------------------
+
+;; 行の折り返し表示を切り替える
+;; refs: 「Emacs実践入門」大竹智也[著] p.81
+(require 'bind-key)
+(bind-key "C-c l" 'toggle-truncate-lines)
+
+;; clipboard Setting
+;; Emacsから他のエディターにAlt+vでペーストはできるが、その逆にEmacsへは
+;; ペーストできない。
+;; refs: saitodev.co/article/Emacsでクリップボードを使ってコピペしたい/
+(cond (window-system
+  (setq x-select-enable-clipboard t)))
+
 ;;
 ;; DDSKK setting
 ;;
