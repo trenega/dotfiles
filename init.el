@@ -59,7 +59,7 @@
 ;; -------------------------------------------------------
 ;; -------------------------------------------------------
 
-;; SLIME setting------------------------------------------
+;; SLIME settings-----------------------------------------
 ;; refs: http://modern-cl.blogspot.com/2011/04/3-slime.html
 ;; SBCL をデフォルトのCommon Lisp処理系に設定
 (setq inferior-lisp-program "sbcl")
@@ -77,7 +77,7 @@
 ; (package-initialize)
 
 (load (expand-file-name "~/.roswell/helper.el"))
-;; End SLIME setting-------------------
+;; End SLIME settings------------------
 
 ;; company Setting----------------------------------------
 ;; 補完用パッケージ
@@ -175,10 +175,6 @@
     (package-install 'use-package)))
 
 ;; bind-key
-(require 'package)
-(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
-; (package-initialize)
-
 (unless (require 'bind-key nil t)
   (package-refresh-contents)
   (package-install 'bind-key))
@@ -269,6 +265,7 @@
 ;; C-h -> delete-backward-char
 (define-key key-translation-map [?\C-h] [?\C-?])
 ;; C-h -> Backspace
+(require 'bind-key)
 (bind-key* "C-h" 'delete-backward-char)
 ;; C-? -> help
 ; (global-set-key (kbd "C-?") 'help-for-help)
@@ -289,6 +286,17 @@
 
 ;; End relative numbering-------------------------------
 
+;; Tab Setting
+;; Tab stop '8'
+;; refs: https://emacs.stackexchange.com/questions/27869/how-to-make-evil-mode-tab-key-indent-not-re-indent-based-on-context
+(define-key evil-insert-state-map (kbd "TAB") 'tab-to-tab-stop)
+
+;; slime-compile Settings-------------------------------
+(require 'bind-key)
+(bind-key "C-c C-c" 'slime-compile-defun)
+(bind-key "C-c C-k" 'slime-compile-and-load-file)
+
+;; End slime-compile Settings---------------------------
 ;;
 ;; DDSKK setting
 ;;
