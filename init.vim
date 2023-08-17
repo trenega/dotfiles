@@ -355,10 +355,10 @@ vmap <Leader>P "+P
 nnoremap <Leader>te :tabedit
 
 " 現在のウィンドウを水平に分割する
-nnoremap <Leader>s :split<CR>
+nnoremap <Leader>sp :split<CR>
 
 " 現在のウィンドウを垂直に分割する
-nnoremap <Leader>v :vsplit<CR>
+nnoremap <Leader>vs :vsplit<CR>
 
 noremap <Leader>wv :resize -5<CR>
 
