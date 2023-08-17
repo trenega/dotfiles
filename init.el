@@ -55,6 +55,20 @@
 ;; Map pairs of simultaneously pressed keys to commands
 (el-get-bundle key-chord)
 
+;; comment out
+(el-get-bundle comment-dwim-2)
+
+;; Evil Leader
+(global-evil-leader-mode)
+(evil-leader/set-leader "<SPC>")
+
+(evil-leader/set-key
+  "t" 'find-file
+  "s" 'switch-to-buffer
+  "k" 'kill-buffer
+  "w" 'save-buffer)
+
+
 ;; End Write here! el-get Install packages
 ;; -------------------------------------------------------
 ;; -------------------------------------------------------
@@ -280,6 +294,16 @@
 
 ;; End C-hをBackspaceに変更、C-?にhelpをmapping-----------
 
+;; find-file
+;; (bind-key "M-t" 'find-file)
+
+;; switch buffer
+;; (bind-key "M-s" 'switch-to-buffer)
+
+;; Evil Leader
+;;
+
+(global-evil-leader-mode)
 ;; relative numbering-----------------------------------
 ;; refs: https://www.reddit.com/r/emacs/comments/l7f85b/how_to_toggle_absolute_and_relative_numbering_in/
 (defun my/display-set-relative ()
@@ -310,6 +334,10 @@
 (require 'bind-key)
 (bind-key "C-c l" 'toggle-truncate-lines)
 
+;; comment out
+;; comment-dwim-2
+(bind-key "M-;" 'comment-dwim-2)
+
 ;; clipboard Setting
 ;; Emacsから他のエディターにAlt+vでペーストはできるが、その逆にEmacsへは
 ;; ペーストできない。
@@ -326,7 +354,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages '(company ac-slime ddskk))
+ '(package-selected-packages '(evil-leader queue company ac-slime ddskk))
  '(tool-bar-mode nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
