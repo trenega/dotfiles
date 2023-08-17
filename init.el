@@ -58,17 +58,6 @@
 ;; comment out
 (el-get-bundle comment-dwim-2)
 
-;; Evil Leader
-(global-evil-leader-mode)
-(evil-leader/set-leader "<SPC>")
-
-(evil-leader/set-key
-  "t" 'find-file
-  "s" 'switch-to-buffer
-  "k" 'kill-buffer
-  "w" 'save-buffer)
-
-
 ;; End Write here! el-get Install packages
 ;; -------------------------------------------------------
 ;; -------------------------------------------------------
