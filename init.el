@@ -301,9 +301,21 @@
 ;; (bind-key "M-s" 'switch-to-buffer)
 
 ;; Evil Leader
-;;
-
+;; Evil Leader provides the <leader> feature from Vim that
+;; provides an easy way to bind keys under a variable prefix key.
+;; For an experienced Emacs User it is nothing more than
+;; a convoluted key map, but for a Evil user coming from
+;; Vim it means an easier start.
+;; refs: https://github.com/cofi/evil-leader
 (global-evil-leader-mode)
+(evil-leader/set-leader "<SPC>")
+
+(evil-leader/set-key
+  "t" 'find-file
+  "s" 'switch-to-buffer
+  "k" 'kill-buffer
+  "w" 'save-buffer)
+
 ;; relative numbering-----------------------------------
 ;; refs: https://www.reddit.com/r/emacs/comments/l7f85b/how_to_toggle_absolute_and_relative_numbering_in/
 (defun my/display-set-relative ()
