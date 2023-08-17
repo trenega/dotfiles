@@ -1,4 +1,4 @@
-;;;; ~/.emacs.d/init.el
+;;;; ~/.EMACS.d/init.el
 
 ;;
 ;; Package Settigs
@@ -61,6 +61,8 @@
 ;; End Write here! el-get Install packages
 ;; -------------------------------------------------------
 ;; -------------------------------------------------------
+
+;; End el-get Initial settings----------------------------
 
 ;; SLIME settings-----------------------------------------
 ;; refs: http://modern-cl.blogspot.com/2011/04/3-slime.html
@@ -192,7 +194,19 @@
 ;; 基本設定
 ;;
 
+;; Evil: EmacsをVimのごとく使う-設定編-----------------------
+;; refs: https://tarao.hatenablog.com/entry/20130304/evil_config#emacs-evilize
+;; カスタマイズオプションで設定できる範囲で、できる限りVimに近づける
+(setq evil-want-C-d-scroll t
+      evil-search-module 'evil-search
+      evil-ex-search-vim-style-regexp t)
+
+;; バッファの終端を明示する
+(setq indicate-buffer-boundaries 'left)
+
+;; End Evil: EmacsをVimのごとく使う-設定編-------------------
 ;; refs: https://qiita.com/hayamiz/items/0f0b7a012ec730351678
+
 ;; Alt key -> Meta key setting
 (when (eq system-type 'darwin)
   (setq ns-command-modifier (quote meta)))
@@ -222,6 +236,7 @@
 ;; バックアップファイルを作らないようにする
 (setq make-backup-files nil)
 
+;; 
 ;; 括弧の対応関係をハイライト表示
 (show-paren-mode nil)
 
@@ -296,14 +311,26 @@
 ;; a convoluted key map, but for a Evil user coming from
 ;; Vim it means an easier start.
 ;; refs: https://github.com/cofi/evil-leader
+;;
+;; このevil-leaderのパッケージはel-getではなく、package.elでインストール
+;; する。(el-getでインストールできない)
 (global-evil-leader-mode)
 (evil-leader/set-leader "<SPC>")
 
 (evil-leader/set-key
-  "t" 'find-file
-  "s" 'switch-to-buffer
-  "k" 'kill-buffer
-  "w" 'save-buffer)
+  "t" 'find-file                    ; find file Table
+  "s" 'switch-to-buffer             ; Switch to buffer
+  "k" 'kill-buffer                  ; Kill buffer
+  "w" 'save-buffer                  ; Wrote <file>
+  "q" 'save-buffers-kill-emacs      ; Quit save buffers kill emacs
+  "e" 'eval-last-sexp               ; Eval last sexp
+  "c" 'slime-compile-defun          ; slime Compile defun
+  "l" 'slime-compile-and-load-file  ; slime compile and Load file
+  "x" 'other-window                 ; eXchange window
+  "2" 'split-window-vertically     ; SPlit window vertically
+  "3" 'split-window-horizontally   ; Vertically Split
+  "1" 'delete-other-windows       ; Delete Other Window
+  "0" 'delete-window)              ; Delete Window
 
 ;; relative numbering-----------------------------------
 ;; refs: https://www.reddit.com/r/emacs/comments/l7f85b/how_to_toggle_absolute_and_relative_numbering_in/
@@ -364,7 +391,7 @@
  ;; If there is more than one, they won't work right.
  '(default ((t (:inherit nil :stipple nil :background "White" :foreground "Black" :inverse-video nil :box nil :strike-through nil :extend nil :overline nil :underline nil :slant normal :weight normal :height 240 :width normal :foundry "nil" :family "UDEV Gothic 35NF")))))
 
-;;(global-set-key (kbd "C-x C-j") 'skk-mode)
+(global-set-key (kbd "C-x C-j") 'skk-mode)
 
 ;; https://github.com/skk-dev/ddskk/blob/master/etc/dot.emacs
 ;;; dot.emacs --- SKK related customization in ~/.emacs  -*- mode: emacs-lisp; coding: utf-8 -*-
