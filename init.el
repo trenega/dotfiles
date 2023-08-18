@@ -425,6 +425,8 @@
 ;; カラム番号も表示する
 (column-number-mode t)
 
+;; タイトルバーにファイルのフルパスを表示する
+(setq frame-title-format "%f")
 ;;; End「Emacs実践入門」大竹智也[著]-----------------------
 
 ;; comment out
