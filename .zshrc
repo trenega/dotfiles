@@ -156,6 +156,11 @@ alias memo='nvim ~/data/memo/memo'
 # Common Lisp: PEPL
 alias lispi='rlwrap ros run'
 
+# emacs
+alias e='emacs'
+# emacs debug
+alias ed='emacs --debug-init'
+
 #End ALIAS AND FUNCTIONS------------------
 
 #BINDING KEYS-----------------------------
