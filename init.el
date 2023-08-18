@@ -197,12 +197,18 @@
 ;; Evil: EmacsをVimのごとく使う-設定編-----------------------
 ;; refs: https://tarao.hatenablog.com/entry/20130304/evil_config#emacs-evilize
 ;; カスタマイズオプションで設定できる範囲で、できる限りVimに近づける
-(setq evil-want-C-d-scroll t
+(setq evil-want-C-u-scroll t
       evil-search-module 'evil-search
       evil-ex-search-vim-style-regexp t)
 
 ;; バッファの終端を明示する
 (setq indicate-buffer-boundaries 'left)
+
+;; バッファの終端に[EOF]を表示する
+;; end-mark.el
+(add-to-list 'load-path "~/.emacs.d/elisp/end-mark")
+(require 'end-mark)
+(global-end-mark-mode)
 
 ;; End Evil: EmacsをVimのごとく使う-設定編-------------------
 ;; refs: https://qiita.com/hayamiz/items/0f0b7a012ec730351678
@@ -477,5 +483,5 @@
 
 ;; End DDSKK setting-------------------
 
-;;;; ~/.emacs.d/init.el ends hereh
+;;;; ~/.emacs.d/init.el ends here
 
