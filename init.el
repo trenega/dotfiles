@@ -8,6 +8,33 @@
 ;; refs: https://myemacs.readthedocs.io/ja/latest/el-get.html
 (when load-file-name (setq user-emacs-directory (file-name-directory load-file-name)))
 
+;; load-pathを追加する関数を定義-----------------------------
+;; refs: 「Emacs実践入門」大竹智也 p.61
+(defun add-to-load-path (&rest paths)
+  (let (path)
+    (dolist (path paths paths)
+      (let ((default-directory
+	      (expand-file-name (concat user-emacs-directory path))))
+	(add-to-list 'load-path default-directory)
+	(if (fboundp 'normal-top-level-add-subdirs-to-load-path)
+	    (normal-top-level-add-subdirs-to-load-path))))))
+
+;; End load-pathを追加する関数を定義-------------------------
+
+;; 引数のディレクトリとそのサブディレクトリをload-pathに追加
+(add-to-load-path "conf" "public_repos")
+
+;; Emacsが自動的に書き込む設定をcustom.elに保存する
+;; カスタムファイルを別ファイルにする
+(setq custom-file (locate-user-emacs-file "custom.el"))
+;; カスタムファイルが存在しない場合は作成する
+(unless (file-exists-p custom-file)
+  (write-region "" nil custom-file))
+;; カスタムファイルを読み込む
+(load custom-file)
+
+
+
 ;; Evil Settings------------------------------------------
 ;; refs: https://tarao.hatenablog.com/entry/20130303/evil_intro
 ;; Emacs directory
@@ -224,6 +251,9 @@
       evil-search-module 'evil-search
       evil-ex-search-vim-style-regexp t)
 
+;; ファイル末尾で必ず改行する
+(setq require-final-newline t)
+
 ;; バッファの終端を明示する
 (setq indicate-buffer-boundaries 'left)
 
@@ -234,9 +264,9 @@
 ; (global-end-mark-mode)
 
 ;; End Evil: EmacsをVimのごとく使う-設定編-------------------
-;; refs: https://qiita.com/hayamiz/items/0f0b7a012ec730351678
 
 ;; Alt key -> Meta key setting
+;; refs: https://qiita.com/hayamiz/items/0f0b7a012ec730351678
 (when (eq system-type 'darwin)
   (setq ns-command-modifier (quote meta)))
 
@@ -327,13 +357,12 @@
 
 ;; End C-hをBackspaceに変更、C-?にhelpをmapping-----------
 
-;; find-file
-;; (bind-key "M-t" 'find-file)
+;; slime-compile Settings-------------------------------
+(require 'bind-key)
+(bind-key "C-c C-c" 'slime-compile-defun)
+(bind-key "C-c C-k" 'slime-compile-and-load-file)
 
-;; switch buffer
-;; (bind-key "M-s" 'switch-to-buffer)
-
-;; Evil Leader
+;; Evil Leader------------------------------------------
 ;; Evil Leader provides the <leader> feature from Vim that
 ;; provides an easy way to bind keys under a variable prefix key.
 ;; For an experienced Emacs User it is nothing more than
@@ -347,19 +376,21 @@
 (evil-leader/set-leader "<SPC>")
 
 (evil-leader/set-key
-  "t" 'find-file                    ; find file Table
   "s" 'switch-to-buffer             ; Switch to buffer
-  "k" 'kill-buffer                  ; Kill buffer
+  "t" 'find-file                    ; find file Table
   "w" 'save-buffer                  ; Wrote <file>
+  "k" 'kill-buffer                  ; Kill buffer
   "q" 'save-buffers-kill-emacs      ; Quit save buffers kill emacs
   "e" 'eval-last-sexp               ; Eval last sexp
   "c" 'slime-compile-defun          ; slime Compile defun
   "l" 'slime-compile-and-load-file  ; slime compile and Load file
   "x" 'other-window                 ; eXchange window
-  "2" 'split-window-vertically     ; SPlit window vertically
-  "3" 'split-window-horizontally   ; Vertically Split
-  "1" 'delete-other-windows       ; Delete Other Window
-  "0" 'delete-window)              ; Delete Window
+  "2" 'split-window-vertically      ; split window vertically
+  "3" 'split-window-horizontally    ; vertically split
+  "0" 'delete-window                ; delete window
+  "1" 'delete-other-windows)        ; delete other window "only one"
+
+;; End Evil Leader--------------------------------------
 
 ;; relative numbering-----------------------------------
 ;; refs: https://www.reddit.com/r/emacs/comments/l7f85b/how_to_toggle_absolute_and_relative_numbering_in/
@@ -379,10 +410,6 @@
 ;; refs: https://emacs.stackexchange.com/questions/27869/how-to-make-evil-mode-tab-key-indent-not-re-indent-based-on-context
 (define-key evil-insert-state-map (kbd "TAB") 'tab-to-tab-stop)
 
-;; slime-compile Settings-------------------------------
-(require 'bind-key)
-(bind-key "C-c C-c" 'slime-compile-defun)
-(bind-key "C-c C-k" 'slime-compile-and-load-file)
 
 ;; End slime-compile Settings---------------------------
 
@@ -498,7 +525,7 @@
     (add-hook hook function)))
 
 ;; Emacs 起動時に SKK を前もってロードする
-(setq skk-preload t)
+;; (setq skk-preload t)
 ;; 注) skk.el をロードするだけなら (require 'skk) でもよい。上記設定の
 ;; 場合は、skk-search-prog-list に指定された辞書もこの時点で読み込んで
 ;; 準備する。Emacs の起動は遅くなるが，SKK を使い始めるときのレスポンス
