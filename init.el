@@ -18,7 +18,7 @@
 (require 'package)
 (add-to-list 'package-archives
              '("marmalade" . "http://marmalade-repo.org/packages/"))
-; (package-initialize)
+;; (package-initialize)
 
 (defun package-install-with-refresh (package)
   (unless (assq package package-alist)
@@ -34,6 +34,29 @@
 (evil-mode 1)
 
 ;; End Evil Settings--------------------------------------
+
+;; package.elを使ったパッケージ管理--------------------------
+;;
+(setq package-archives
+      '(("melpa" . "https://melpa.org/packages/")
+	("org" . "https://orgmode.org/elpa/")
+	("gnu" . "https://elpa.gnu.org/packages/")))
+(package-initialize)
+
+;; パッケージ情報の更新
+(package-refresh-contents)
+
+;; インストールするパッケージ
+(defvar my/favorite-packages
+  '(
+    ))
+
+;; my/favarite-packagesからインストールしていないパッケージをインストール
+(dolist (package my/favorite-packages)
+  (unless (package-installed-p package)
+    (package-install package)))
+
+;; End package.elを使ったパッケージ管理----------------------
 
 ;; el-get Initial settings--------------------------------
 ;; refs: https://myemacs.readthedocs.io/ja/latest/el-get.html
