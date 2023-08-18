@@ -1,4 +1,4 @@
-;;;; ~/.EMACS.d/init.el
+;;;; ~/.emacs.d/init.el
 
 ;;
 ;; Package Settigs
@@ -8,7 +8,7 @@
 ;; refs: https://myemacs.readthedocs.io/ja/latest/el-get.html
 (when load-file-name (setq user-emacs-directory (file-name-directory load-file-name)))
 
-;; load-pathを追加する関数を定義-----------------------------
+;;; load-pathを追加する関数を定義----------------------------
 ;; refs: 「Emacs実践入門」大竹智也 p.61
 (defun add-to-load-path (&rest paths)
   (let (path)
@@ -19,8 +19,11 @@
 	(if (fboundp 'normal-top-level-add-subdirs-to-load-path)
 	    (normal-top-level-add-subdirs-to-load-path))))))
 
-;; End load-pathを追加する関数を定義-------------------------
+;;; End load-pathを追加する関数を定義------------------------
 
+;;; 設定を分割して管理する-----------------------------------
+;;; package.elを使ったパッケージ管理-------------------------
+;; refs: 「Emacs実践入門」大竹智也[著] p.81
 ;; 引数のディレクトリとそのサブディレクトリをload-pathに追加
 (add-to-load-path "conf" "public_repos")
 
@@ -33,9 +36,11 @@
 ;; カスタムファイルを読み込む
 (load custom-file)
 
+;;; End 設定を分割して管理する-------------------------------
 
 
-;; Evil Settings------------------------------------------
+
+;;; Evil Settings-----------------------------------------
 ;; refs: https://tarao.hatenablog.com/entry/20130303/evil_intro
 ;; Emacs directory
 (when load-file-name
@@ -60,9 +65,8 @@
 (require 'evil)
 (evil-mode 1)
 
-;; End Evil Settings--------------------------------------
+;;; End Evil Settings-------------------------------------
 
-;; package.elを使ったパッケージ管理--------------------------
 ;;
 (setq package-archives
       '(("melpa" . "https://melpa.org/packages/")
@@ -244,7 +248,7 @@
 ;; 基本設定
 ;;
 
-;; Evil: EmacsをVimのごとく使う-設定編-----------------------
+;;; Evil: EmacsをVimのごとく使う-設定編-----------------------
 ;; refs: https://tarao.hatenablog.com/entry/20130304/evil_config#emacs-evilize
 ;; カスタマイズオプションで設定できる範囲で、できる限りVimに近づける
 (setq evil-want-C-u-scroll t
@@ -263,7 +267,7 @@
 ; (require 'end-mark)
 ; (global-end-mark-mode)
 
-;; End Evil: EmacsをVimのごとく使う-設定編-------------------
+;;; End Evil: EmacsをVimのごとく使う-設定編-------------------
 
 ;; Alt key -> Meta key setting
 ;; refs: https://qiita.com/hayamiz/items/0f0b7a012ec730351678
@@ -295,7 +299,6 @@
 ;; バックアップファイルを作らないようにする
 (setq make-backup-files nil)
 
-;; 
 ;; 括弧の対応関係をハイライト表示
 (show-paren-mode nil)
 
@@ -309,7 +312,7 @@
 ;;(setq default-frame-alist '((width . 84) (height . 38)))
 (setq default-frame-alist '((width . 125) (height . 38)))
 
-;; 著者が勧める時間節約法----------------------------------
+;;; 著者が勧める時間節約法---------------------------------
 ;; refs: UNIX POWER TOOLS 19.7 著者が勧める時間節約法 p.468
 ;; CTRL-hが前の文字を削除するように定義する
 ;; 通常このキーシーケンスは、ユーザを「ヘルプ」システムに案内する。
@@ -413,10 +416,16 @@
 
 ;; End slime-compile Settings---------------------------
 
+;;;「Emacs実践入門」大竹智也[著]---------------------------
 ;; 行の折り返し表示を切り替える
 ;; refs: 「Emacs実践入門」大竹智也[著] p.81
 (require 'bind-key)
 (bind-key "C-c l" 'toggle-truncate-lines)
+
+;; カラム番号も表示する
+(column-number-mode t)
+
+;;; End「Emacs実践入門」大竹智也[著]-----------------------
 
 ;; comment out
 ;; comment-dwim-2
