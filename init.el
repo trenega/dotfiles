@@ -38,8 +38,6 @@
 
 ;;; End 設定を分割して管理する-------------------------------
 
-
-
 ;;; Evil Settings-----------------------------------------
 ;; refs: https://tarao.hatenablog.com/entry/20130303/evil_intro
 ;; Emacs directory
@@ -305,8 +303,16 @@
 ;; スタートアップ画面を表示しないようにする
 (setq inhibit-startup-message t)
 
-;; ツールバーを表示しないようにする（Official Emacs の場合は 0）
-(tool-bar-mode 0)
+;; ツールバーを表示しないようにする
+;; refs: glamenv-septzen.net/view/367
+(cond
+ ((eq window-system 'x)
+  ;; when running on X
+  (set-scroll-bar-mode t) ;; enable X scroll bar
+  (tool-bar-mode -1)      ;; disable tool bar
+  ))
+(setq visible-bell t)     ;; enable visual bell
+(menu-bar-mode -1)        ;; disable menu bar (on terminal or X)
 
 ;; ウィンドウ（フレーム）のサイズ設定する
 ;;(setq default-frame-alist '((width . 84) (height . 38)))
