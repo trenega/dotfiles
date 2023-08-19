@@ -444,6 +444,8 @@
 (setq hl-line-face 'my-hl-line-face)
 (global-hl-line-mode t)
 
+;; Flycheck 文法チェック
+(add-hook 'after-init-hook #' global-flycheck-mode)
 
 ;;; End「Emacs実践入門」大竹智也[著]-----------------------
 
