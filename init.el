@@ -437,7 +437,7 @@
   "hl-line's my face")
 (setq hl-line-face 'my-hl-line-face)
 (global-hl-line-mode t)
-    
+
 
 ;;; End「Emacs実践入門」大竹智也[著]-----------------------
 
