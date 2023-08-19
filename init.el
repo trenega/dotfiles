@@ -345,7 +345,7 @@
 ;; を使って新しいファイルにアクセスする。
 (define-key global-map "\C-x\C-v" 'find-file-other-window)
 
-;; End 著者が勧める時間節約法------------------------------
+;;; End 著者が勧める時間節約法-----------------------------
 
 ;; C-hをBackspaceに変更、C-?にhelpをmapping---------------
 ;; refs: malkalech.com/emacs_c-h_backspac:
@@ -365,7 +365,7 @@
 (bind-key "C-c C-c" 'slime-compile-defun)
 (bind-key "C-c C-k" 'slime-compile-and-load-file)
 
-;; Evil Leader------------------------------------------
+;;; Evil Leader-----------------------------------------
 ;; Evil Leader provides the <leader> feature from Vim that
 ;; provides an easy way to bind keys under a variable prefix key.
 ;; For an experienced Emacs User it is nothing more than
@@ -393,9 +393,9 @@
   "0" 'delete-window                ; delete window
   "1" 'delete-other-windows)        ; delete other window "only one"
 
-;; End Evil Leader--------------------------------------
+;;; End Evil Leader-------------------------------------
 
-;; relative numbering-----------------------------------
+;;; relative numbering----------------------------------
 ;; refs: https://www.reddit.com/r/emacs/comments/l7f85b/how_to_toggle_absolute_and_relative_numbering_in/
 (defun my/display-set-relative ()
   (setq display-line-numbers 'relative))    ; or 'visual
@@ -406,15 +406,12 @@
 (add-hook 'evil-insert-state-entry-hook #'my/display-set-absolute)
 (add-hook 'evil-insert-state-exit-hook #'my/display-set-relative)
 
-;; End relative numbering-------------------------------
+;;; End relative numbering------------------------------
 
 ;; Tab Setting
 ;; Tab stop '8'
 ;; refs: https://emacs.stackexchange.com/questions/27869/how-to-make-evil-mode-tab-key-indent-not-re-indent-based-on-context
 (define-key evil-insert-state-map (kbd "TAB") 'tab-to-tab-stop)
-
-
-;; End slime-compile Settings---------------------------
 
 ;;;「Emacs実践入門」大竹智也[著]---------------------------
 ;; 行の折り返し表示を切り替える
@@ -427,18 +424,35 @@
 
 ;; タイトルバーにファイルのフルパスを表示する
 (setq frame-title-format "%f")
+
+;; 現在行のハイライト
+(defface my-hl-line-face
+  ;; 背景がdarkならば背景色を紺にする
+  '((((class color) (background dark))
+     (:background "NavyBlue" t))
+    ;; 背景がlightならば背景色を青にする
+    (((class color) (background light))
+     (:background "LightSkyBlue" t))
+   (t (:bold t)))
+  "hl-line's my face")
+(setq hl-line-face 'my-hl-line-face)
+(global-hl-line-mode t)
+    
+
 ;;; End「Emacs実践入門」大竹智也[著]-----------------------
 
 ;; comment out
 ;; comment-dwim-2
 (bind-key "M-;" 'comment-dwim-2)
 
-;; clipboard Setting
+;;; clipboard Setting-----------------------------------
 ;; Emacsから他のエディターにAlt+vでペーストはできるが、その逆にEmacsへは
 ;; ペーストできない。
 ;; refs: saitodev.co/article/Emacsでクリップボードを使ってコピペしたい/
 (cond (window-system
   (setq x-select-enable-clipboard t)))
+
+;;; End clipboard Setting-------------------------------
 
 ;;
 ;; DDSKK setting
