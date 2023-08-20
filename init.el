@@ -463,19 +463,29 @@
 
 ;; Color------------------------------------------------
 ;; refs:http://osanai.org/17/ 
-(if window-system (progn
-    (set-background-color "Black")
-    (set-foreground-color "LightGray")
-    (set-cursor-color "Gray")
-    (set-frame-parameter nil 'alpha 50)  ;透明度
-    ))
+;; (if window-system (progn
+;;     (set-background-color "Black")
+;;     (set-foreground-color "LightGray")
+;;     (set-cursor-color "Gray")
+;;     (set-frame-parameter nil 'alpha 50)  ;透明度
+;;     ))
 
 ;; 透明度を変更するコマンド M-x set-alpha
 ;; refs: http://qiita.com/marcy@github/items/ba0d018a03381a964f24 
-(defun set-alpha (alpha-num)
-  "set frame parameter 'alpha"
-  (interactive "nAlpha: ")
-  (set-frame-parameter nil 'alpha (cons alpha-num '(50))))
+;; (defun set-alpha (alpha-num)
+;;   "set frame parameter 'alpha"
+;;   (interactive "nAlpha: ")
+;;   (set-frame-parameter nil 'alpha (cons alpha-num '(50))))
+
+(setq default-frame-alist
+      (append
+       (list
+	'(background-color . "Black")
+	'(foreground-color . "Lightgray")
+	'(cursor-color . "Gray")
+	)
+       default-frame-alist)
+      )
 
 ;; End Color--------------------------------------------
 
