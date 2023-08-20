@@ -238,13 +238,6 @@
 
 ;; End use-package, bind-key Setting----------------------
 
-;; iceberg-themeを利用する
-;; (load-theme 'iceberg t)
-;; スクリーンの背景色を黒に変更する
-;; (set-face-background 'default "#303030")
-;; zenburn-themeを利用する
-(load-theme 'zenburn t)
-
 ;;
 ;; End Package Settigs
 ;;
@@ -439,21 +432,19 @@
 (setq frame-title-format "%f")
 
 ;; 現在行のハイライト
-;; p.98
-;; (defface my-hl-line-face
-;;   ;; 背景がdarkならば背景色を紺にする
-;;   '((((class color) (background dark))
-;;      (:background "NavyBlue" t))
-;;     ;; 背景がlightならば背景色を青にする
-;;     (((class color) (background light))
-;;      (:background "LightSkyBlue" t))
-;;    (t (:bold t)))
-;;   "hl-line's my face")
-;; (setq hl-line-face 'my-hl-line-face)
-;; (global-hl-line-mode t)
+(defface my-hl-line-face
+  ;; 背景がdarkならば背景色を紺にする
+  '((((class color) (background dark))
+     (:background "NavyBlue" t))
+    ;; 背景がlightならば背景色を青にする
+    (((class color) (background light))
+     (:background "LightSkyBlue" t))
+   (t (:bold t)))
+  "hl-line's my face")
+(setq hl-line-face 'my-hl-line-face)
+(global-hl-line-mode t)
 
 ;; Flycheck 文法チェック
-;; p.173
 (add-hook 'after-init-hook #' global-flycheck-mode)
 
 ;;; End「Emacs実践入門」大竹智也[著]-----------------------
