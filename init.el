@@ -381,6 +381,7 @@
 ;;
 ;; このevil-leaderのパッケージはel-getではなく、package.elでインストール
 ;; する。(el-getでインストールできない)
+(require 'evil-leader)
 (global-evil-leader-mode)
 (evil-leader/set-leader "<SPC>")
 
@@ -432,20 +433,18 @@
 (setq frame-title-format "%f")
 
 ;; 現在行のハイライト
-(defface my-hl-line-face
-  ;; 背景がdarkならば背景色を紺にする
-  '((((class color) (background dark))
-     (:background "NavyBlue" t))
-    ;; 背景がlightならば背景色を青にする
-    (((class color) (background light))
-     (:background "LightSkyBlue" t))
-   (t (:bold t)))
-  "hl-line's my face")
-(setq hl-line-face 'my-hl-line-face)
-(global-hl-line-mode t)
+;; (defface my-hl-line-face
+;;   ;; 背景がdarkならば背景色を紺にする
+;;   '((((class color) (background dark))
+;;      (:background "NavyBlue" t))
+;;     ;; 背景がlightならば背景色を青にする
+;;     (((class color) (background light))
+;;      (:background "LightSkyBlue" t))
+;;    (t (:bold t)))
+;;   "hl-line's my face")
+;; (setq hl-line-face 'my-hl-line-face)
+;; (global-hl-line-mode t)
 
-;; Flycheck 文法チェック
-(add-hook 'after-init-hook #' global-flycheck-mode)
 
 ;;; End「Emacs実践入門」大竹智也[著]-----------------------
 
@@ -462,7 +461,21 @@
 
 ;;; End clipboard Setting-------------------------------
 
+;; Color
+(if window-system (progn
+    (set-background-color "Black")
+    (set-foreground-color "LightGray")
+    (set-cursor-color "Gray")
+    (set-frame-parameter nil 'alpha 50)  ;透明度
+    ))
+
+;; 透明度を変更するコマンド M-x set-alpha
 ;;
+(defun set-alpha (alpha-num)
+  "set frame parameter 'alpha"
+  (interactive "nAlpha: ")
+  (set-frame-parameter nil 'alpha (cons alpha-num '(50))))
+
 ;; DDSKK setting
 ;;
 
