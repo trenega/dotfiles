@@ -487,6 +487,9 @@
        default-frame-alist)
       )
 
+;; zenburn-theme
+(load-theme 'zenburn t)
+
 ;; End Color--------------------------------------------
 
 ;; DDSKK setting
