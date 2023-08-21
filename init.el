@@ -116,6 +116,36 @@
 
 ;; End el-get Initial settings----------------------------
 
+
+;; -------------------------------------------------------
+;; -------------------------------------------------------
+;; package-install settings
+;; -------------------------------------------------------
+
+;; Flycheck
+(require 'flycheck)
+(add-hook 'after-init-hook #'global-flycheck-mode)
+(require 'bind-key)
+(bind-key "M-n" 'flycheck-next-error)
+(bind-key "M-p" 'flycheck-previous-error)
+
+;; flycheck-pos-tip
+(with-eval-after-load 'flycheck
+  (flycheck-pos-tip-mode))
+
+;; git-gutter
+(when (require 'git-gutter nil t)
+  (global-git-gutter-mode t)
+  ;; linum-modeを使用している場合は次の設定も追加
+  (git-gutter:linum-setup))
+
+;;git-gutter-fringe+
+(require 'git-gutter-fringe+)
+;; -------------------------------------------------------
+;; End package-install settigs
+;; -------------------------------------------------------
+;; -------------------------------------------------------
+
 ;; SLIME settings-----------------------------------------
 ;; refs: http://modern-cl.blogspot.com/2011/04/3-slime.html
 ;; SBCL をデフォルトのCommon Lisp処理系に設定
@@ -470,6 +500,13 @@
 ;;     (set-frame-parameter nil 'alpha 50)  ;透明度
 ;;     ))
 
+;; Emacsの画面に透明度を設定する
+;; (defun set-transparency ()
+;;   "set frame transparency"
+;;   (set-frame-parameter nil 'alpha 50))  ;透明度
+    
+
+
 ;; 透明度を変更するコマンド M-x set-alpha
 ;; refs: http://qiita.com/marcy@github/items/ba0d018a03381a964f24 
 ;; (defun set-alpha (alpha-num)
@@ -477,6 +514,7 @@
 ;;   (interactive "nAlpha: ")
 ;;   (set-frame-parameter nil 'alpha (cons alpha-num '(50))))
 
+;; 画面を黒く設定する
 (setq default-frame-alist
       (append
        (list
@@ -488,6 +526,14 @@
       )
 
 ;; zenburn-theme
+;; To Customize just the lighter background colors,
+;; you could add to your init file:
+;; refs: github.com/bbatsov/zenburn-emacs
+(setq zenburn-override-colors-alist
+      '(("zenburn-bg+05" . "#282828")
+        ("zenburn-bg+1"  . "#2F2F2F")
+        ("zenburn-bg+2"  . "#3F3F3F")
+        ("zenburn-bg+3"  . "#4F4F4F")))
 (load-theme 'zenburn t)
 
 ;; End Color--------------------------------------------
