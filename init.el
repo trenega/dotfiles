@@ -134,13 +134,14 @@
   (flycheck-pos-tip-mode))
 
 ;; git-gutter
-(when (require 'git-gutter nil t)
-  (global-git-gutter-mode t)
-  ;; linum-modeを使用している場合は次の設定も追加
-  (git-gutter:linum-setup))
+;; (when (require 'git-gutter nil t)
+;;   (global-git-gutter-mode t)
+;;   ;; linum-modeを使用している場合は次の設定も追加
+;;   (git-gutter:linum-setup))
 
 ;;git-gutter-fringe+
 (require 'git-gutter-fringe+)
+
 ;; -------------------------------------------------------
 ;; End package-install settigs
 ;; -------------------------------------------------------
