@@ -309,12 +309,12 @@
 ;; http://dev.ariel-networks.com/articles/emacs/part4/
 (global-set-key (kbd "C-M-g") 'keyboard-escape-quit)
 
-;; "jj" to Esc
+;; "fd" to Esc
 ;; Exit instert mode by pressing j and then j quickly
 ;; https://stackoverflow.com/questions/10569165/how-to-map-jj-to-esc-in-emacs-evil-mode
 (key-chord-mode 1)
-(setq key-chord-tow-keys-delay 0.5)
-(key-chord-define evil-insert-state-map "jj" 'evil-normal-state)
+;; (setq key-chord-tow-keys-delay 0.5)
+(key-chord-define evil-insert-state-map "fd" 'evil-normal-state)
 
 ;;UTF-8の設定
 ;;http://www1.meijo-u.ac.jp/~kohara/cms/internal/emacs_setting
@@ -538,6 +538,10 @@
         ("zenburn-bg+2"  . "#3F3F3F")
         ("zenburn-bg+3"  . "#4F4F4F")))
 (load-theme 'zenburn t)
+
+;; visual modeの範囲指定を見易くする
+;; refs :https://cortyuming.hateblo.jp/entry/20140218/p1 
+(set-face-attribute 'highlight nil :foreground 'unspecified)
 
 ;; End Color--------------------------------------------
 
