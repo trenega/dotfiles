@@ -332,8 +332,8 @@
 ;; refs: 「Emacs実践入門」p.101
 (add-to-list 'backup-directory-alist
 	     (cons "." "~/.emacs.d/backups/"))
-(setq auto-save-file-name-transforms
-      '((".*" ,(expand-file-name "~/.emacs.d/backups/") t)))
+;; (setq auto-save-file-name-transforms
+;;       '((".*" ,(expand-file-name "~/.emacs.d/backups/") t)))
 
 ;; 括弧の対応関係をハイライト表示
 (show-paren-mode nil)
