@@ -36,7 +36,7 @@
 ;; カスタムファイルを読み込む
 (load custom-file)
 
-;;; End 設定を分割して管理する-------------------------------
+;;; End 設定を分割して管理する----------------------------
 
 ;;; Evil Settings-----------------------------------------
 ;; refs: https://tarao.hatenablog.com/entry/20130303/evil_intro
@@ -65,7 +65,7 @@
 
 ;;; End Evil Settings-------------------------------------
 
-;;; package.elを使ったパッケージ管理-------------------------
+;;; package.elを使ったパッケージ管理----------------------
 (setq package-archives
       '(("melpa" . "https://melpa.org/packages/")
 	("org" . "https://orgmode.org/elpa/")
@@ -85,7 +85,7 @@
   (unless (package-installed-p package)
     (package-install package)))
 
-;;; End package.elを使ったパッケージ管理---------------------
+;;; End package.elを使ったパッケージ管理------------------
 
 ;;; el-get Initial settings-------------------------------
 ;; refs: https://myemacs.readthedocs.io/ja/latest/el-get.html
@@ -140,9 +140,6 @@
 ;;git-gutter-fringe+
 (require 'git-gutter-fringe+)
 
-;;; ------------------------------------------------------
-;;; End package-install settigs
-;;; ------------------------------------------------------
 
 ;;; SLIME settings----------------------------------------
 ;; refs: http://modern-cl.blogspot.com/2011/04/3-slime.html
@@ -267,9 +264,9 @@
 
 ;;; End use-package, bind-key Setting---------------------
 
-;;;-------------------------------------------------------
-;; End Package Settigs
-;;;-------------------------------------------------------
+;;; ------------------------------------------------------
+;;; End package-install settigs
+;;; ------------------------------------------------------
 
 ;;;-------------------------------------------------------
 ;; 基本設定
@@ -279,7 +276,7 @@
 ;;(setq default-frame-alist '((width . 84) (height . 38)))
 (setq default-frame-alist '((width . 125) (height . 38)))
 
-;;; Evil: EmacsをVimのごとく使う-設定編-----------------------
+;;; Evil: EmacsをVimのごとく使う-設定編-------------------
 ;; refs: https://tarao.hatenablog.com/entry/20130304/evil_config#emacs-evilize
 ;; カスタマイズオプションで設定できる範囲で、できる限りVimに近づける
 (setq evil-want-C-u-scroll t
@@ -332,6 +329,7 @@
 ;; オートセーブファイルを作る
 (setq auto-save-default t)
 ;; バックアップファイルとオートセーブファイルを~/.emcs.d/backups/へ集める
+;; refs: 「Emacs実践入門」p.101
 (add-to-list 'backup-directory-alist
 	     (cons "." "~/.emacs.d/backups/"))
 (setq auto-save-file-name-transforms
@@ -435,8 +433,8 @@
   "2" 'split-window-vertically      ; split window vertically
   "3" 'split-window-horizontally    ; vertically split
   "0" 'delete-window                ; delete window
-  "1" 'delete-other-windows)        ; delete other window "only one"
-
+  "1" 'delete-other-windows         ; delete other window "only one"
+  "j" 'skk-mode)                    ; skk-mode
 ;;; End Evil Leader-------------------------------------
 
 ;;; relative numbering----------------------------------
@@ -499,7 +497,7 @@
 ;;; End clipboard Setting-------------------------------
 
 ;; Color------------------------------------------------
-;; refs: http://osanai.org/17/ 
+;; refs: http://osanai.org/17/
 ;; (if window-system (progn
 ;;     (set-background-color "Black")
 ;;     (set-foreground-color "LightGray")
@@ -513,7 +511,7 @@
 ;;   (set-frame-parameter nil 'alpha 50))  ;透明度
 
 ;; 透明度を変更するコマンド M-x set-alpha
-;; refs: http://qiita.com/marcy@github/items/ba0d018a03381a964f24 
+;; refs: http://qiita.com/marcy@github/items/ba0d018a03381a964f24
 ;; (defun set-alpha (alpha-num)
 ;;   "set frame parameter 'alpha"
 ;;   (interactive "nAlpha: ")
@@ -543,8 +541,9 @@
 
 ;; End Color--------------------------------------------
 
-;; DDSKK setting
-;;
+;;;-----------------------------------------------------
+;;; DDSKK setting
+;;;-----------------------------------------------------
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -644,7 +643,9 @@
 ;; 準備する。Emacs の起動は遅くなるが，SKK を使い始めるときのレスポンス
 ;; が軽快になる。
 
-;; End DDSKK setting-------------------
+;;;-----------------------------------------------------
+;;; End DDSKK setting
+;;;-----------------------------------------------------
 
 ;;;; ~/.emacs.d/init.el ends here
 
