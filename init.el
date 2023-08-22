@@ -398,9 +398,9 @@
 ;; End C-hをBackspaceに変更、C-?にhelpをmapping-----------
 
 ;; slime-compile Settings-------------------------------
-(require 'bind-key)
-(bind-key "C-c C-c" 'slime-compile-defun)
-(bind-key "C-c C-k" 'slime-compile-and-load-file)
+;; (require 'bind-key)
+;; (bind-key "C-c C-c" 'slime-compile-defun)
+;; (bind-key "C-c C-k" 'slime-compile-and-load-file)
 
 ;;; Evil Leader-----------------------------------------
 ;; Evil Leader provides the <leader> feature from Vim that
@@ -493,7 +493,7 @@
 ;;; End clipboard Setting-------------------------------
 
 ;; Color------------------------------------------------
-;; refs:http://osanai.org/17/ 
+;; refs: http://osanai.org/17/ 
 ;; (if window-system (progn
 ;;     (set-background-color "Black")
 ;;     (set-foreground-color "LightGray")
@@ -505,8 +505,6 @@
 ;; (defun set-transparency ()
 ;;   "set frame transparency"
 ;;   (set-frame-parameter nil 'alpha 50))  ;透明度
-    
-
 
 ;; 透明度を変更するコマンド M-x set-alpha
 ;; refs: http://qiita.com/marcy@github/items/ba0d018a03381a964f24 
