@@ -1,8 +1,8 @@
 ;;;; ~/.emacs.d/init.el
 
-;;
-;; Package Settigs
-;;
+;;;-------------------------------------------------------
+;;; Package Settigs
+;;;-------------------------------------------------------
 
 ;; user-emacs-directory Settings
 ;; refs: https://myemacs.readthedocs.io/ja/latest/el-get.html
@@ -65,7 +65,7 @@
 
 ;;; End Evil Settings-------------------------------------
 
-;;
+;;; package.elを使ったパッケージ管理-------------------------
 (setq package-archives
       '(("melpa" . "https://melpa.org/packages/")
 	("org" . "https://orgmode.org/elpa/")
@@ -85,9 +85,9 @@
   (unless (package-installed-p package)
     (package-install package)))
 
-;; End package.elを使ったパッケージ管理----------------------
+;;; End package.elを使ったパッケージ管理---------------------
 
-;; el-get Initial settings--------------------------------
+;;; el-get Initial settings-------------------------------
 ;; refs: https://myemacs.readthedocs.io/ja/latest/el-get.html
 ;; el-getのディレクトリをload-pathに追加
 (add-to-list 'load-path "~/.emacs.d/el-get/el-get")
@@ -95,7 +95,6 @@
 (require 'el-get)
 ;; el-getでダンロードしたパッケージの保存先
 (setq el-get-dir "~/.emacs.d/elisp")
-;; End el-get Initial settings----------------------------
 
 ;; -------------------------------------------------------
 ;; -------------------------------------------------------
@@ -114,13 +113,12 @@
 ;; -------------------------------------------------------
 ;; -------------------------------------------------------
 
-;; End el-get Initial settings----------------------------
+;;; End el-get Initial settings---------------------------
 
 
-;; -------------------------------------------------------
-;; -------------------------------------------------------
-;; package-install settings
-;; -------------------------------------------------------
+;;; ------------------------------------------------------
+;;; package-install settings
+;;; ------------------------------------------------------
 
 ;; Flycheck
 (require 'flycheck)
@@ -142,12 +140,11 @@
 ;;git-gutter-fringe+
 (require 'git-gutter-fringe+)
 
-;; -------------------------------------------------------
-;; End package-install settigs
-;; -------------------------------------------------------
-;; -------------------------------------------------------
+;;; ------------------------------------------------------
+;;; End package-install settigs
+;;; ------------------------------------------------------
 
-;; SLIME settings-----------------------------------------
+;;; SLIME settings----------------------------------------
 ;; refs: http://modern-cl.blogspot.com/2011/04/3-slime.html
 ;; SBCL をデフォルトのCommon Lisp処理系に設定
 (setq inferior-lisp-program "sbcl")
@@ -165,7 +162,8 @@
 ; (package-initialize)
 
 (load (expand-file-name "~/.roswell/helper.el"))
-;; End SLIME settings------------------
+
+;;; End SLIME settings------------------------------------
 
 ;; company Setting----------------------------------------
 ;; 補完用パッケージ
@@ -177,9 +175,9 @@
 (setq company-minimum-prefix-length 2) ; デフォルトは4
 (setq company-selection-wrap-around t) ; 候補の一番下でさらに下に行こうとすると一番上に戻る
 
-;; End company Setting------------------------------------
+;;; End company Setting-----------------------------------
 
-;; ivy Setting--------------------------------------------
+;;; ivy Setting-------------------------------------------
 ;; refs: https://takaxp.github.io/articles/qiita-helm2ivy.html
 (when (require 'ivy nil t)
 
@@ -206,9 +204,9 @@
   ;; アクティベート
   (ivy-mode 1))
 
-;; End ivy Setting----------------------------------------
+;;; End ivy Setting---------------------------------------
 
-;; counsel Setting----------------------------------------
+;;; counsel Setting---------------------------------------
 (when (require 'counsel nil t)
 
   ;; キーバインドは一例です．好みに変えましょう．
@@ -241,17 +239,17 @@
             :caller 'counsel-recentf))
 (advice-add 'counsel-recentf :override #'ad:counsel-recentf)
 
-;; End counsel Setting------------------------------------
+;;; End counsel Setting-----------------------------------
 
-;; swiper Setting-----------------------------------------
+;;; swiper Setting----------------------------------------
 (when (require 'swiper nil t)
 
   ;; キーバインドは一例です．好みに変えましょう．
   (global-set-key (kbd "M-s M-s") 'swiper-thing-at-point))
 
-;; End swiper Setting-------------------------------------
+;;; End swiper Setting------------------------------------
 
-;; use-package, bind-key Setting--------------------------
+;;; use-package, bind-key Setting-------------------------
 ;; http://malkalech.com/emacs_c-h_backspace
 ;; add MELPA and initialize
 ;; use-package
@@ -267,15 +265,19 @@
   (package-refresh-contents)
   (package-install 'bind-key))
 
-;; End use-package, bind-key Setting----------------------
+;;; End use-package, bind-key Setting---------------------
 
-;;
+;;;-------------------------------------------------------
 ;; End Package Settigs
-;;
+;;;-------------------------------------------------------
 
-;;
+;;;-------------------------------------------------------
 ;; 基本設定
-;;
+;;;-------------------------------------------------------
+
+;; ウィンドウ（フレーム）のサイズ設定する
+;;(setq default-frame-alist '((width . 84) (height . 38)))
+(setq default-frame-alist '((width . 125) (height . 38)))
 
 ;;; Evil: EmacsをVimのごとく使う-設定編-----------------------
 ;; refs: https://tarao.hatenablog.com/entry/20130304/evil_config#emacs-evilize
@@ -303,7 +305,7 @@
 (when (eq system-type 'darwin)
   (setq ns-command-modifier (quote meta)))
 
-;; 「状態を脱出する」コマンド
+;;; 「状態を脱出する」コマンド
 ;;	リージョン選択状態
 ;;	ミニバッファでの入力状態
 ;;	ウィンドウの分割状態
@@ -317,16 +319,23 @@
 (setq key-chord-tow-keys-delay 0.5)
 (key-chord-define evil-insert-state-map "jj" 'evil-normal-state)
 
-;;http://www1.meijo-u.ac.jp/~kohara/cms/internal/emacs_setting
 ;;UTF-8の設定
+;;http://www1.meijo-u.ac.jp/~kohara/cms/internal/emacs_setting
 (set-language-environment "Japanese")
 (set-default-coding-systems 'utf-8)
 (set-terminal-coding-system 'utf-8)
 (set-keyboard-coding-system 'utf-8)
 (set-buffer-file-coding-system 'utf-8)
 
-;; バックアップファイルを作らないようにする
-(setq make-backup-files nil)
+;; バックアップファイルを作る
+(setq make-backup-files t)
+;; オートセーブファイルを作る
+(setq auto-save-default t)
+;; バックアップファイルとオートセーブファイルを~/.emcs.d/backups/へ集める
+(add-to-list 'backup-directory-alist
+	     (cons "." "~/.emacs.d/backups/"))
+(setq auto-save-file-name-transforms
+      '((".*" ,(expand-file-name "~/.emacs.d/backups/") t)))
 
 ;; 括弧の対応関係をハイライト表示
 (show-paren-mode nil)
@@ -345,9 +354,6 @@
 (setq visible-bell t)     ;; enable visual bell
 (menu-bar-mode -1)        ;; disable menu bar (on terminal or X)
 
-;; ウィンドウ（フレーム）のサイズ設定する
-;;(setq default-frame-alist '((width . 84) (height . 38)))
-(setq default-frame-alist '((width . 125) (height . 38)))
 
 ;;; 著者が勧める時間節約法---------------------------------
 ;; refs: UNIX POWER TOOLS 19.7 著者が勧める時間節約法 p.468
