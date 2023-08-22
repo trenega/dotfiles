@@ -533,7 +533,12 @@ nnoremap <Leader>e :e<Space>
 nnoremap <Leader>n :enew<CR>
 
 " ファイルを保存する
-nnoremap <silent><Leader>w :<C-u>write<CR>
+" refs: thinca vimrc
+nnoremap <silent> <Leader>w :<C-u>update<CR>
+nnoremap <silent> <Leader>W :<C-u>update!<CR>
+" nvimを終了する
+nnoremap <silent> <Leader>q :<C-u>quit<CR>
+nnoremap <silent> <Leader>Q :<C-u>quit!<CR>
 
 " ファイルを挿入する
 nnoremap <Leader>r :r<Space>
@@ -541,12 +546,6 @@ nnoremap <Leader>r :r<Space>
 " {count} なしの場合、カレントウィンドウを閉じる。
 " もし {count} が与えられた場合、{count} ウィンドウを閉じる。
 nnoremap <Leader>cl :clo
-
-" カレントウィンドウを閉じる
-nnoremap <Leader>q :quit
-
-" 現在のバッファに変更点があっても、書き込まずにVimを終了する
-nnoremap <Leader>q! :quit!<CR>
 
 " <Space>p と <Space>y でシステムのクリップボードにコピー＆ペーストする
 nmap <Leader><Leader> V
@@ -614,12 +613,6 @@ nnoremap <Leader>gb :Gblame<CR>
 
 "End vim-fugitive-------------------------
 
-" <Space>h を押して行頭へカーソルを移動させる
-nnoremap <Leader>h <Home>
-
-" <Space>l を押して行末へカーソルを移動させる
-nnoremap <Leader>l <End>
-
 "-----------------------------------------------------------------------
 "End LEADER kEY MAPPINGS
 "-----------------------------------------------------------------------
@@ -676,7 +669,7 @@ nnoremap / /\v
 
 "Insert Mode Keymaps----------------------
 " Change INSERT mode to NORMAL mode
-inoremap <silent> jj <Esc>
+inoremap <silent> fd <Esc>
 
 " File Save
 inoremap <silent> js <C-o>:write<CR>
