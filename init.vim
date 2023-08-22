@@ -326,6 +326,7 @@ nnoremap <Leader>r :r<Space>
 " refs: thinca vimrc
 nnoremap <silent> <Leader>w :<C-u>update<CR>
 nnoremap <silent> <Leader>W :<C-u>update!<CR>
+" nvimを終了する
 nnoremap <silent> <Leader>q :<C-u>quit<CR>
 nnoremap <silent> <Leader>Q :<C-u>quit!<CR>
 
@@ -453,9 +454,7 @@ nnoremap ? ?\v
 
 "INSERT MODE KEYMAPS----------------------
 " Change INSERT mode to NORMAL mode
-" inoremap <silent> jj <Esc>
-" inoremap <silent> fd <Esc>
-inoremap <silent> jj <Esc>
+inoremap <silent> fd <Esc>
 " File Save
 inoremap <silent> js <C-o>:write<CR>
 " Scroll to center line
