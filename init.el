@@ -120,11 +120,12 @@
 ;;; package-install settings
 ;;; ------------------------------------------------------
 
-;; Flycheck
+;; Flycheck Settings--------------------------------------
 ;; MacOS $PATH環境変数を修正する
 ;; refs: https://www.flycheck.org/en/latest/
 (package-install 'exec-path-from-shell)
 (exec-path-from-shell-initialize)
+
 (require 'flycheck)
 (add-hook 'after-init-hook #'global-flycheck-mode)
 (require 'bind-key)
@@ -134,6 +135,17 @@
 ;; flycheck-pos-tip
 (with-eval-after-load 'flycheck
   (flycheck-pos-tip-mode))
+
+;; Disply Flycheck error list window
+;; refs: blog.3qe.us/entry/2022/09/29/124700
+(add-to-list 'display-buffer-alist
+	     `(,(rx bos "*Flycheck errors*" eos)
+              (display-buffer-reuse-window
+               display-buffer-in-side-window)
+              (side            . bottom)
+              (reusable-frames . visible)
+              (window-height   . 0.2)))
+;; End Flycheck Settings----------------------------------
 
 ;; git-gutter
 ;; (when (require 'git-gutter nil t)
@@ -495,7 +507,9 @@
   "3" 'split-window-horizontally    ; vertically split
   "0" 'delete-window                ; delete window
   "1" 'delete-other-windows         ; delete other window "only one"
-  "j" 'skk-mode)                    ; skk-mode
+  "j" 'skk-mode                     ; skk-mode
+  "!" 'flycheck-list-errors         ; pop-up errors list
+  )
 ;;; End Evil Leader-------------------------------------
 
 ;;; relative numbering----------------------------------
@@ -557,14 +571,25 @@
 
 ;;; End clipboard Setting-------------------------------
 
-;; Color------------------------------------------------
-;; refs: http://osanai.org/17/
-;; (if window-system (progn
-;;     (set-background-color "Black")
-;;     (set-foreground-color "LightGray")
-;;     (set-cursor-color "Gray")
-;;     (set-frame-parameter nil 'alpha 50)  ;透明度
-;;     ))
+;;; Custom Keybind--------------------------------------
+
+;; C-u -> scroll up
+;; org-modeと関連パッケージには、C-uに多くの機能が付属してます。
+;; refs: stackoverflow.com/questions/14302171/ctrlu-in-emacs-when-using-evil-key-bindings 
+(define-key evil-normal-state-map (kbd "C-u") 'evil-scroll-up)
+(define-key evil-visual-state-map (kbd "C-u") 'evil-scroll-up)
+(define-key evil-insert-state-map (kbd "C-u")
+	    (lambda ()
+	      (interactive)
+	      (evil-delete (point-at-bol) (point))))
+
+;;; End Custom Keybind----------------------------------
+
+;; Color------------------------------------------------ refs:
+;; http://osanai.org/17/ (if window-system (progn
+;; (set-background-color "Black") (set-foreground-color "LightGray")
+;; (set-cursor-color "Gray") (set-frame-parameter nil 'alpha 50))) ;透
+;; 明度
 
 ;; Emacsの画面に透明度を設定する
 ;; (defun set-transparency ()
@@ -579,6 +604,7 @@
 ;;   (set-frame-parameter nil 'alpha (cons alpha-num '(50))))
 
 ;; 画面を黒く設定する
+;; refs: kei10in.hatenablog.jp/entry/20101101/1288617632
 (setq default-frame-alist
       (append
        (list
@@ -586,8 +612,7 @@
 	'(foreground-color . "Lightgray")
 	'(cursor-color . "Gray")
 	)
-       default-frame-alist)
-      )
+       default-frame-alist))
 
 ;; zenburn-theme
 ;; To Customize just the lighter background colors,
