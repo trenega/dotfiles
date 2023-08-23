@@ -121,6 +121,10 @@
 ;;; ------------------------------------------------------
 
 ;; Flycheck
+;; MacOS $PATH環境変数を修正する
+;; refs: https://www.flycheck.org/en/latest/
+(package-install 'exec-path-from-shell)
+(exec-path-from-shell-initialize)
 (require 'flycheck)
 (add-hook 'after-init-hook #'global-flycheck-mode)
 (require 'bind-key)
