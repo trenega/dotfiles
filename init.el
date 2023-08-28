@@ -160,7 +160,12 @@
 ;;; SLIME settings----------------------------------------
 ;; refs: http://modern-cl.blogspot.com/2011/04/3-slime.html
 ;; SBCL をデフォルトのCommon Lisp処理系に設定
-(setq inferior-lisp-program "sbcl")
+;; (setq inferior-lisp-program "sbcl")
+(setq inferior-lisp-program "ccl")
+;; cclをload-pathに追加
+(add-to-list 'load-path (expand-file-name
+             "~/.roswell/impls/x86-64/darwin/ccl-bin/1.12.2/dx86cl64"))
+
 ;; ~/.emacs.d/slimeをload-pathに追加
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/slime"))
 ;; SLIMEのロード
@@ -508,7 +513,7 @@
   "0" 'delete-window                ; delete window
   "1" 'delete-other-windows         ; delete other window "only one"
   "j" 'skk-mode                     ; skk-mode
-  "f" 'flycheck-list-errors         ; pop-up errors list
+  "!" 'flycheck-list-errors         ; pop-up errors list
   )
 ;;; End Evil Leader-------------------------------------
 
