@@ -514,6 +514,8 @@
   "1" 'delete-other-windows         ; delete other window "only one"
   "j" 'skk-mode                     ; skk-mode
   "!" 'flycheck-list-errors         ; pop-up errors list
+  "a" 'beginning-of-line            ; go to beginning of line
+  ";" 'end-of-line                  ; got to end of line
   )
 ;;; End Evil Leader-------------------------------------
 
