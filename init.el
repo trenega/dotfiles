@@ -362,6 +362,8 @@
 ;;;-------------------------------------------------------
 
 ;; ウィンドウ（フレーム）のサイズ設定する
+;; [重要]: (height . 38) を (height . 39) に変更しないこと！！
+;; Emacs が立ち上がらなくなる！！
 ;;(setq default-frame-alist '((width . 84) (height . 38)))
 (setq default-frame-alist '((width . 125) (height . 38)))
 
