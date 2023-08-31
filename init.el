@@ -116,7 +116,7 @@
 ;; flycheck-pos-tip
 (el-get-bundle flycheck-pos-tip)
 
-;; git-gutter-finge+
+;; git-gutter-fringe+
 (el-get-bundle git-gutter-fringe+)
 
 ;; End Write here! el-get Install packages
@@ -167,7 +167,6 @@
 
 ;;git-gutter-fringe+
 (require 'git-gutter-fringe+)
-
 
 ;;; SLIME settings----------------------------------------
 ;; SBCL をデフォルトのCommon Lisp処理系に設定
