@@ -85,7 +85,7 @@
   (unless (package-installed-p package)
     (package-install package)))
 
-;;; End package.elを使ったパッケージ管理------------------
+;;; End package.elを使ったパッケージ管理---------------------
 
 ;;; el-get Initial settings-------------------------------
 ;; refs: https://myemacs.readthedocs.io/ja/latest/el-get.html
@@ -96,6 +96,7 @@
 ;; el-getでダンロードしたパッケージの保存先
 (setq el-get-dir "~/.emacs.d/elisp")
 
+;; el-getを使ったパッケージ管理------------------------------
 ;; -------------------------------------------------------
 ;; -------------------------------------------------------
 ;; Write here! el-get Install packages
@@ -109,12 +110,22 @@
 ;; comment out
 (el-get-bundle comment-dwim-2)
 
+;; flycheck
+(el-get-bundle flycheck)
+
+;; flycheck-pos-tip
+(el-get-bundle flycheck-pos-tip)
+
+;; git-gutter-finge+
+(el-get-bundle git-gutter-fringe+)
+
 ;; End Write here! el-get Install packages
 ;; -------------------------------------------------------
 ;; -------------------------------------------------------
 
-;;; End el-get Initial settings---------------------------
+;; End el-getを使ったパッケージ管理--------------------------
 
+;;; End el-get Initial settings---------------------------
 
 ;;; ------------------------------------------------------
 ;;; package-install settings
@@ -145,6 +156,7 @@
               (side            . bottom)
               (reusable-frames . visible)
               (window-height   . 0.2)))
+
 ;; End Flycheck Settings----------------------------------
 
 ;; git-gutter
@@ -158,10 +170,10 @@
 
 
 ;;; SLIME settings----------------------------------------
-;; refs: http://modern-cl.blogspot.com/2011/04/3-slime.html
 ;; SBCL をデフォルトのCommon Lisp処理系に設定
-;; (setq inferior-lisp-program "sbcl")
-(setq inferior-lisp-program "ccl")
+;; refs: http://modern-cl.blogspot.com/2011/04/3-slime.html
+;; (setq inferior-lisp-program "sbcl")  ;Steel Bank Comoon Lisp
+(setq inferior-lisp-program "ccl")      ;Clozure CL
 ;; cclをload-pathに追加
 (add-to-list 'load-path (expand-file-name
              "~/.roswell/impls/x86-64/darwin/ccl-bin/1.12.2/dx86cl64"))
