@@ -25,9 +25,10 @@
 ;;; package.elを使ったパッケージ管理-------------------------
 ;; refs: 「Emacs実践入門」大竹智也[著] p.81
 ;; 引数のディレクトリとそのサブディレクトリをload-pathに追加
+;; ~/.emacs.d/conf ~/.emacs.d/public_repos
 (add-to-load-path "conf" "public_repos")
 
-;; Emacsが自動的に書き込む設定をcustom.elに保存する
+;; Emacsが自動的に書き込む設定を~/.emacs.d/custom.elに保存する
 ;; カスタムファイルを別ファイルにする
 (setq custom-file (locate-user-emacs-file "custom.el"))
 ;; カスタムファイルが存在しない場合は作成する
@@ -66,6 +67,10 @@
 ;;; End Evil Settings-------------------------------------
 
 ;;; package.elを使ったパッケージ管理----------------------
+;; --- M-x eval-buffer を実行することで、インストールされていない
+;; --- パッケージをインストールすることができる。
+;; refs: emacs-jp.github.io/packages/package
+(require 'package)
 (setq package-archives
       '(("melpa" . "https://melpa.org/packages/")
 	("org" . "https://orgmode.org/elpa/")
@@ -78,6 +83,8 @@
 ;; インストールするパッケージ
 (defvar my/favorite-packages
   '(
+    ;;;; Write install packages
+    ;;;; End Write install packages
     ))
 
 ;; my/favarite-packagesからインストールしていないパッケージをインストール
@@ -562,20 +569,6 @@
 ;; タイトルバーにファイルのフルパスを表示する
 (setq frame-title-format "%f")
 
-;; 現在行のハイライト
-;; (defface my-hl-line-face
-;;   ;; 背景がdarkならば背景色を紺にする
-;;   '((((class color) (background dark))
-;;      (:background "NavyBlue" t))
-;;     ;; 背景がlightならば背景色を青にする
-;;     (((class color) (background light))
-;;      (:background "LightSkyBlue" t))
-;;    (t (:bold t)))
-;;   "hl-line's my face")
-;; (setq hl-line-face 'my-hl-line-face)
-;; (global-hl-line-mode t)
-
-
 ;;; End「Emacs実践入門」大竹智也[著]-----------------------
 
 ;; comment out
@@ -605,23 +598,7 @@
 
 ;;; End Custom Keybind----------------------------------
 
-;; Color------------------------------------------------ refs:
-;; http://osanai.org/17/ (if window-system (progn
-;; (set-background-color "Black") (set-foreground-color "LightGray")
-;; (set-cursor-color "Gray") (set-frame-parameter nil 'alpha 50))) ;透
-;; 明度
-
-;; Emacsの画面に透明度を設定する
-;; (defun set-transparency ()
-;;   "set frame transparency"
-;;   (set-frame-parameter nil 'alpha 50))  ;透明度
-
-;; 透明度を変更するコマンド M-x set-alpha
-;; refs: http://qiita.com/marcy@github/items/ba0d018a03381a964f24
-;; (defun set-alpha (alpha-num)
-;;   "set frame parameter 'alpha"
-;;   (interactive "nAlpha: ")
-;;   (set-frame-parameter nil 'alpha (cons alpha-num '(50))))
+;;; Color----------------------------------------------- 
 
 ;; 画面を黒く設定する
 ;; refs: kei10in.hatenablog.jp/entry/20101101/1288617632
@@ -645,11 +622,33 @@
         ("zenburn-bg+3"  . "#4F4F4F")))
 (load-theme 'zenburn t)
 
+;; Emacsで背景色の透明度を変更する-------------------------
+;; http://osanai.org/17/
+;; (if window-system (progn
+;;   (set-background-color "Black")
+;;   (set-foreground-color "LightGray")
+;;   (set-cursor-color "Gray")
+;;   (set-frame-parameter nil 'alpha 50))) ;透明度
+
+;; Emacsの画面に透明度を設定する
+(defun set-transparency ()
+  "set frame transparency"
+  (set-frame-parameter nil 'alpha 50))  ;透明度
+
+;; 透明度を変更するコマンド M-x set-alpha
+;; refs: http://qiita.com/marcy@github/items/ba0d018a03381a964f24
+(defun set-alpha (alpha-num)
+  "set frame parameter 'alpha"
+  (interactive "nAlpha: ")
+  (set-frame-parameter nil 'alpha (cons alpha-num '(50))))
+
+;; End Emacsで背景色の透明度を変更する---------------------
+
 ;; visual modeの範囲指定を見易くする
 ;; refs :https://cortyuming.hateblo.jp/entry/20140218/p1 
 (set-face-attribute 'highlight nil :foreground 'unspecified)
 
-;; End Color--------------------------------------------
+;;; End Color-------------------------------------------
 
 ;;;-----------------------------------------------------
 ;;; DDSKK setting
