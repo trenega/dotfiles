@@ -30,6 +30,23 @@
 ;; 現在行に色をつける
 (global-hl-line-mode 1)
 
+;; ミニバッファ履歴を次回Emacs起動時にも保存する
+(savehist-mode 1)
+
+;; GCを減らして軽くする
+(setq gc-cons-threshold (* 10 gc-cons-threshold))
+
+;; ログの記録行数を増やす
+(setq message-log-max 10000)
+
+;; 履歴をたくさん保存する
+(setq history-length 1000)
+
+;; メニューバーとツールバーとスクロールバーを消す
+(menu-bar-mode -1)
+(tool-bar-mode -1)
+(scroll-bar-mode -1)
+
 ;;; End 初期設定-------------------------------------------
 
 ;;;-------------------------------------------------------
@@ -122,7 +139,6 @@
     darkroom
 
     ;;;; End Write install packages-----------------------
-
     ))
 
 ;; my/favarite-packagesからインストールしていないパッケージをインストール
