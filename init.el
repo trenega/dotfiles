@@ -1,11 +1,41 @@
 ;;;; ~/.emacs.d/init.el
 
+;;; 初期設定-----------------------------------------------
+;; rers: emacs.rubikitch.com/sd1407/
+;; 右から左に読む言語に対応させないことで描写高速化
+(setq-default bidi-display-reordering nil)
+
+;; splash scrrenを無効にする
+(setq inhibit-splash-screen t)
+
+;; 同じ内容を履歴に記録しないようにする
+(setq history-delete-duplicates t)
+
+;; C-u C-SPC C-SPC ...でどんどん過去のマークを遡る
+(setq set-mark-command-repeat-pop t)
+
+;; 複数のディレクトリで同じファイル名のファイルを開いた時のバッファ名を調整する
+(require 'uniquify)  ;filename<dir> 形式のバッファ名にする
+(setq uniquify-buffer-name-style 'post-forward-angle-brackets)
+(setq uniquify-ignore-buffers-re "[^*]+")
+
+;; ファイルを開いた位置を保存する
+(require 'saveplace)
+(setq-default save-place t)
+(setq save-place-file (concat user-emacs-directory "places"))
+
+;; インデントにTabを使わないようにする
+(setq-default indent-tabs-mode nil)
+
+;; 現在行に色をつける
+(global-hl-line-mode 1)
+
+;;; End 初期設定-------------------------------------------
+
 ;;;-------------------------------------------------------
 ;;; Package Settigs
 ;;;-------------------------------------------------------
 
-;;; 右から左に読む言語に対応させないことで描写高速化
-(setq-default bidi-display-reordering nil)
 
 ;;; user-emacs-directory Settings
 ;; refs: https://myemacs.readthedocs.io/ja/latest/el-get.html
