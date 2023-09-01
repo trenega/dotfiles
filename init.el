@@ -11,7 +11,7 @@
 ;; 同じ内容を履歴に記録しないようにする
 (setq history-delete-duplicates t)
 
-;; C-u C-SPC C-SPC ...でどんどん過去のマークを遡る
+;; C-U C-SPC C-SPC ...でどんどん過去のマークを遡る
 (setq set-mark-command-repeat-pop t)
 
 ;; 複数のディレクトリで同じファイル名のファイルを開いた時のバッファ名を調整する
@@ -589,6 +589,7 @@
   "!" 'flycheck-list-errors         ; pop-up errors list
   "a" 'beginning-of-line            ; go to beginning of line
   ";" 'end-of-line                  ; got to end of line
+  "j" 'skk-mode                     ; skk
   )
 ;;; End Evil Leader-------------------------------------
 
@@ -707,103 +708,109 @@
 ;;; DDSKK setting
 ;;;-----------------------------------------------------
 
-;; (custom-set-variables
-;;  ;; custom-set-variables was added by Custom.
-;;  ;; If you edit it by hand, you could mess it up, so be careful.
-;;  ;; Your init file should contain only one such instance.
-;;  ;; If there is more than one, they won't work right.
-;;  '(package-selected-packages '(evil-leader queue company ac-slime ddskk))
-;;  '(tool-bar-mode nil))
-;; (custom-set-faces
-;;  ;; custom-set-faces was added by Custom.
-;;  ;; If you edit it by hand, you could mess it up, so be careful.
-;;  ;; Your init file should contain only one such instance.
-;;  ;; If there is more than one, they won't work right.
-;;  '(default ((t (:inherit nil :stipple nil :background "White" :foreground "Black" :inverse-video nil :box nil :strike-through nil :extend nil :overline nil :underline nil :slant normal :weight normal :height 240 :width normal :foundry "nil" :family "UDEV Gothic 35NF")))))
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages '(evil-leader queue company ac-slime ddskk))
+ '(tool-bar-mode nil))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(default ((t (:inherit nil :stipple nil :background "White" :foreground "Black" :inverse-video nil :box nil :strike-through nil :extend nil :overline nil :underline nil :slant normal :weight normal :height 240 :width normal :foundry "nil" :family "UDEV Gothic 35NF")))))
 
-;; (global-set-key (kbd "C-x C-j") 'skk-mode)
+(global-set-key (kbd "C-x C-j") 'skk-mode)
 
-;; ;; https://github.com/skk-dev/ddskk/blob/master/etc/dot.emacs
-;; ;;; dot.emacs --- SKK related customization in ~/.emacs  -*- mode: emacs-lisp; coding: utf-8 -*-
+;; https://github.com/skk-dev/ddskk/blob/master/etc/dot.emacs
+;;; dot.emacs --- SKK related customization in ~/.emacs  -*- mode: emacs-lisp; coding: utf-8 -*-
 
-;; ;;; Commentary:
+;;; Commentary:
 
-;; ;; ~/.emacs.d/init.el に追加するための設定例です。
+;; ~/.emacs.d/init.el に追加するための設定例です。
 
-;; ;;; 注意:
+;;; 注意:
 
-;; ;; SKK の設定は、~/.skk の方が優先されます。
-;; ;; 下記の設定は、特殊な事情があるため ~/.skk ではうまく機能しない設定を
-;; ;; 集めていますので、下記以外は ~/.skk で設定することをお勧めします。
+;; SKK の設定は、~/.skk の方が優先されます。
+;; 下記の設定は、特殊な事情があるため ~/.skk ではうまく機能しない設定を
+;; 集めていますので、下記以外は ~/.skk で設定することをお勧めします。
 
-;; ;;; Code:
+;;; Code:
 
-;; ;; @@ 基本の設定
-;; (unless window-system
-;;   frame-background-mode 'dark)		; or 'light
+;; @@ 基本の設定
+(unless window-system
+  frame-background-mode 'dark)		; or 'light
 
-;; ;; ~/.skk にいっぱい設定を書いているのでバイトコンパイルしたい
-;; (setq skk-byte-compile-init-file t)
-;; ;; 注) 異なる種類の Emacsen を使っている場合は nil にします
+;; ~/.skk にいっぱい設定を書いているのでバイトコンパイルしたい
+(setq skk-byte-compile-init-file t)
+;; 注) 異なる種類の Emacsen を使っている場合は nil にします
 
-;; ;; SKK を Emacs の input method として使用する
-;; ;;   `toggle-input-method' (C-\) で DDSKK が起動します
-;; (setq default-input-metod
-;;       "japanese-skk"			; (skk-mode 1)
-;; ;;    "japanese-skk-auto-fill"		; (skk-auto-fill-mode 1)
-;;       )
+;; SKK を Emacs の input method として使用する
+;;   `toggle-input-method' (C-\) で DDSKK が起動します
+(setq default-input-metod
+      "japanese-skk"			; (skk-mode 1)
+;;    "japanese-skk-auto-fill"		; (skk-auto-fill-mode 1)
+      )
 
-;; ;; SKK を起動していなくても、いつでも skk-isearch を使う
-;; (setq skk-isearch-mode-enable 'always)
+;; SKK を起動していなくても、いつでも skk-isearch を使う
+(setq skk-isearch-mode-enable 'always)
 
-;; ;; @@ 応用的な設定
+;; @@ 応用的な設定
 
-;; ;; ~/.skk* なファイルがたくさんあるので整理したい
-;; (setq skk-user-directory "~/.ddskk")
-;; ;; 注 1) 上記の設定をした場合、~/.skk や ~/.skk-jisyo の代わりに
-;; ;;       ~/.ddskk/init や ~/.ddskk/jisyo が使われます。ただし、
-;; ;;       これらのファイル名を個別に設定している場合はその設定が優先
-;; ;;       されるので注意してください。また、~/.skk や ~/.skk-jisyo を
-;; ;;       既にもっている場合は手動でコピーする必要があります。
-;; ;;       -- 影響を受ける変数の一覧 --
-;; ;;          skk-init-file, skk-jisyo, skk-backup-jisyo
-;; ;;          skk-emacs-id-file. skk-record-file,
-;; ;;          skk-study-file, skk-study-backup-file
-;; ;; 注 2) SKK の個人辞書は skkinput などのプログラムでも参照しますから、
-;; ;;       上記の設定をした場合はそれらのプログラムの設定ファイルも書き
-;; ;;       換える必要があります。
+;; ~/.skk* なファイルがたくさんあるので整理したい
+(setq skk-user-directory "~/.ddskk")
+;; 注 1) 上記の設定をした場合、~/.skk や ~/.skk-jisyo の代わりに
+;;       ~/.ddskk/init や ~/.ddskk/jisyo が使われます。ただし、
+;;       これらのファイル名を個別に設定している場合はその設定が優先
+;;       されるので注意してください。また、~/.skk や ~/.skk-jisyo を
+;;       既にもっている場合は手動でコピーする必要があります。
+;;       -- 影響を受ける変数の一覧 --
+;;          skk-init-file, skk-jisyo, skk-backup-jisyo
+;;          skk-emacs-id-file. skk-record-file,
+;;          skk-study-file, skk-study-backup-file
+;; 注 2) SKK の個人辞書は skkinput などのプログラムでも参照しますから、
+;;       上記の設定をした場合はそれらのプログラムの設定ファイルも書き
+;;       換える必要があります。
 
-;; ;; skk-jisyo は (path . coding) 形式のコンス・セルも受け付けます。
-;; ;;   $ mv jisyo jisyo.euc-jisx0213
-;; ;;   $ iconv -f euc-jisx0213 -t utf8 -o jisyo jisyo.euc-jisx0213
-;; ;;   同様に skk-study の学習結果ファイルも変換すること
-;; (setq skk-jisyo (cons (expand-file-name "jisyo" skk-user-directory) 'utf-8))
+;; skk-jisyo は (path . coding) 形式のコンス・セルも受け付けます。
+;;   $ mv jisyo jisyo.euc-jisx0213
+;;   $ iconv -f euc-jisx0213 -t utf8 -o jisyo jisyo.euc-jisx0213
+;;   同様に skk-study の学習結果ファイルも変換すること
+(setq skk-jisyo (cons (expand-file-name "jisyo" skk-user-directory) 'utf-8))
 
-;; ;; migemo を使うから skk-isearch にはおとなしくしていて欲しい
-;; (setq skk-isearch-start-mode 'latin)
+;; migemo を使うから skk-isearch にはおとなしくしていて欲しい
+(setq skk-isearch-start-mode 'latin)
 
-;; ;; YaTeX のときだけ句読点を変更したい
-;; (add-hook 'yatex-mode-hook
-;; 	  (lambda ()
-;; 	    (require 'skk)
-;; 	    (setq skk-kutouten-type 'en)))
+;; YaTeX のときだけ句読点を変更したい
+(add-hook 'yatex-mode-hook
+	  (lambda ()
+	    (require 'skk)
+	    (setq skk-kutouten-type 'en)))
 
-;; ;; 文章系のバッファを開いた時には自動的に英数モード(「SKK」モード)に入る
-;; (let ((function #'(lambda ()
-;; 		    (require 'skk)
-;; 		    (skk-latin-mode-on))))
-;;   (dolist (hook '(find-file-hooks
-;; 		  ;; ...
-;; 		  mail-setup-hook
-;; 		  message-setup-hook))
-;;     (add-hook hook function)))
+;; 文章系のバッファを開いた時には自動的に英数モード(「SKK」モード)に入る
+(let ((function #'(lambda ()
+		    (require 'skk)
+		    (skk-latin-mode-on))))
+  (dolist (hook '(find-file-hooks
+		  ;; ...
+		  mail-setup-hook
+		  message-setup-hook))
+    (add-hook hook function)))
 
-;; ;; Emacs 起動時に SKK を前もってロードする
-;; ;; (setq skk-preload t)
-;; ;; 注) skk.el をロードするだけなら (require 'skk) でもよい。上記設定の
-;; ;; 場合は、skk-search-prog-list に指定された辞書もこの時点で読み込んで
-;; ;; 準備する。Emacs の起動は遅くなるが，SKK を使い始めるときのレスポンス
-;; ;; が軽快になる。
+;; Emacs 起動時に SKK を前もってロードする
+;; (setq skk-preload t)
+;; 注) skk.el をロードするだけなら (require 'skk) でもよい。上記設定の
+;; 場合は、skk-search-prog-list に指定された辞書もこの時点で読み込んで
+;; 準備する。Emacs の起動は遅くなるが，SKK を使い始めるときのレスポンス
+;; が軽快になる。
+
+;; 文脈に応じた自動モード切り替え
+;; refs: ddskk.readthedocs.io/jp/latest/06_apps.html#id7
+(add-hook 'skk-load-hook
+          (lambda ()
+            (require 'context-skk)))
 
 ;; ;;;-----------------------------------------------------
 ;; ;;; End DDSKK setting
