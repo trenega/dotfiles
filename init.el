@@ -447,18 +447,18 @@
 ;; smartrep
 ;; プレフィクスキーを省略させる
 ;; ウィンドウ操作をひとまとめにする
-;; (require 'smartrep)
-;; (smartrep-define-key global-map "C-x"
-;;   '(("x" . (other-window))
-;;     ("0" . (delete-window))
-;;     ("1" . (delete-other-windows))
-;;     ("2" . (split-window-below))
-;;     ("3" . (split-window-right))
-;;     ("{" . (shrink-window-horizontally))
-;;     ("}" . (enlarge-window-horizontally))
-;;     ("+" . (balance-windows))
-;;     ("^" . (enlarge-window))
-;;     ("-" . (shrink-window))))
+(require 'smartrep)
+(smartrep-define-key global-map "C-x"
+  '(("x" . (other-window))
+    ("0" . (delete-window))
+    ("1" . (delete-other-windows))
+    ("2" . (split-window-below))
+    ("3" . (split-window-right))
+    ("{" . (shrink-window-horizontally))
+    ("}" . (enlarge-window-horizontally))
+    ("+" . (balance-windows))
+    ("^" . (enlarge-window))
+    ("-" . (shrink-window))))
 
 ;; ------------------------------------------------------
 ;;; End package-install settigs
@@ -632,6 +632,13 @@
   "3" 'split-window-horizontally    ; vertically split
   "0" 'delete-window                ; delete window
   "1" 'delete-other-windows         ; delete other window "only one"
+  ">" 'scroll-right                 ; window scroll to right
+  "<" 'scroll-left                  ; window scroll to left
+  "^" 'enlarge-window               ; window hight up one line
+  "-" 'shrink-window                ; window hight down one line
+  "}" 'enlarge-window-horizontally  ; window wide one enlargefd
+  "{" 'shrink-window-horizontally   ; window wide one shrink
+  "+" 'balance-windows              ; windows same size
   "!" 'flycheck-list-errors         ; pop-up errors list
   "a" 'beginning-of-line            ; go to beginning of line
   ";" 'end-of-line                  ; got to end of line
