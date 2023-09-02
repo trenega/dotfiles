@@ -28,7 +28,7 @@
 (setq-default indent-tabs-mode nil)
 
 ;; 現在行に色をつける
-(global-hl-line-mode 1)
+;; (global-hl-line-mode 1)
 
 ;; ミニバッファ履歴を次回Emacs起動時にも保存する
 (savehist-mode 1)
@@ -137,6 +137,9 @@
 
     ;;;; darkroom
     darkroom
+
+    ;;;; zop-to-char
+    zop-to-char
 
     ;;;; End Write install packages-----------------------
     ))
@@ -649,6 +652,14 @@
 	    (lambda ()
 	      (interactive)
 	      (evil-delete (point-at-bol) (point))))
+
+;; M-x zap-up-to-char -> M-z
+;; refs: emacs.rubikitch.com/sd1507-builtin/
+;; 指定した文字の直前までを削除する
+;; (require 'misc)
+;; (bind-key "M-z" 'zap-up-to-char)
+;; 削除対象をハイライトしてくれる
+(bind-key "M-z" 'zop-up-to-char)
 
 ;;; End Custom Keybind----------------------------------
 
