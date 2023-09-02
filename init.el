@@ -444,6 +444,48 @@
 (bind-key "M-x" 'smex)
 (bind-key "M-X" 'smex-major-mode-commands)
 
+;;; Evil Leader-----------------------------------------
+;; Evil Leader provides the <leader> feature from Vim that
+;; provides an easy way to bind keys under a variable prefix key.
+;; For an experienced Emacs User it is nothing more than
+;; a convoluted key map, but for a Evil user coming from
+;; Vim it means an easier start.
+;; refs: https://github.com/cofi/evil-leader
+;;
+;; このevil-leaderのパッケージはel-getではなく、package.elでインストール
+;; する。(el-getでインストールできない)
+(require 'evil-leader)
+(global-evil-leader-mode)
+(evil-leader/set-leader "<SPC>")
+
+(evil-leader/set-key
+  "s" 'switch-to-buffer             ; Switch to buffer
+  "t" 'find-file                    ; find file Table
+  "w" 'save-buffer                  ; Wrote <file>
+  "k" 'kill-buffer                  ; Kill buffer
+  "q" 'save-buffers-kill-emacs      ; Quit save buffers kill emacs
+  "e" 'eval-last-sexp               ; Eval last sexp
+  "c" 'slime-compile-defun          ; slime Compile defun
+  "l" 'slime-compile-and-load-file  ; slime compile and Load file
+  "x" 'other-window                 ; eXchange window
+  "2" 'split-window-vertically      ; split window vertically
+  "3" 'split-window-horizontally    ; vertically split
+  "0" 'delete-window                ; delete window
+  "1" 'delete-other-windows         ; delete other window "only one"
+  ">" 'scroll-right                 ; window scroll to right
+  "<" 'scroll-left                  ; window scroll to left
+  "^" 'enlarge-window               ; window hight up one line
+  "-" 'shrink-window                ; window hight down one line
+  "}" 'enlarge-window-horizontally  ; window wide one enlargefd
+  "{" 'shrink-window-horizontally   ; window wide one shrink
+  "+" 'balance-windows              ; windows same size
+  "!" 'flycheck-list-errors         ; pop-up errors list
+  "a" 'beginning-of-line            ; go to beginning of line
+  ";" 'end-of-line                  ; got to end of line
+  "j" 'skk-mode                     ; skk
+  )
+;;; End Evil Leader-------------------------------------
+
 ;; smartrep
 ;; プレフィクスキーを省略させる
 ;; ウィンドウ操作をひとまとめにする
@@ -460,9 +502,7 @@
     ("^" . (enlarge-window))
     ("-" . (shrink-window))))
 
-;; ------------------------------------------------------
-;;; End package-install settigs
-;;; ------------------------------------------------------
+;;; End package-install settigs---------------------------
 
 ;;;-------------------------------------------------------
 ;; 基本設定
@@ -551,6 +591,19 @@
 (menu-bar-mode -1)        ;; disable menu bar (on terminal or X)
 
 
+;; clipboard Setting-----------------------------------
+;; Emacsから他のエディターにAlt+vでペーストはできるが、その逆にEmacsへは
+;; ペーストできない。
+;; refs: saitodev.co/article/Emacsでクリップボードを使ってコピペしたい/
+(cond (window-system
+  (setq x-select-enable-clipboard t)))
+
+;;; End 基本設定-----------------------------------------
+
+;;;-----------------------------------------------------
+;;; Custom Keybind
+;;;-----------------------------------------------------
+
 ;;; 著者が勧める時間節約法---------------------------------
 ;; refs: UNIX POWER TOOLS 19.7 著者が勧める時間節約法 p.468
 ;; CTRL-hが前の文字を削除するように定義する
@@ -604,48 +657,6 @@
 ;; (bind-key "C-c C-c" 'slime-compile-defun)
 ;; (bind-key "C-c C-k" 'slime-compile-and-load-file)
 
-;;; Evil Leader-----------------------------------------
-;; Evil Leader provides the <leader> feature from Vim that
-;; provides an easy way to bind keys under a variable prefix key.
-;; For an experienced Emacs User it is nothing more than
-;; a convoluted key map, but for a Evil user coming from
-;; Vim it means an easier start.
-;; refs: https://github.com/cofi/evil-leader
-;;
-;; このevil-leaderのパッケージはel-getではなく、package.elでインストール
-;; する。(el-getでインストールできない)
-(require 'evil-leader)
-(global-evil-leader-mode)
-(evil-leader/set-leader "<SPC>")
-
-(evil-leader/set-key
-  "s" 'switch-to-buffer             ; Switch to buffer
-  "t" 'find-file                    ; find file Table
-  "w" 'save-buffer                  ; Wrote <file>
-  "k" 'kill-buffer                  ; Kill buffer
-  "q" 'save-buffers-kill-emacs      ; Quit save buffers kill emacs
-  "e" 'eval-last-sexp               ; Eval last sexp
-  "c" 'slime-compile-defun          ; slime Compile defun
-  "l" 'slime-compile-and-load-file  ; slime compile and Load file
-  "x" 'other-window                 ; eXchange window
-  "2" 'split-window-vertically      ; split window vertically
-  "3" 'split-window-horizontally    ; vertically split
-  "0" 'delete-window                ; delete window
-  "1" 'delete-other-windows         ; delete other window "only one"
-  ">" 'scroll-right                 ; window scroll to right
-  "<" 'scroll-left                  ; window scroll to left
-  "^" 'enlarge-window               ; window hight up one line
-  "-" 'shrink-window                ; window hight down one line
-  "}" 'enlarge-window-horizontally  ; window wide one enlargefd
-  "{" 'shrink-window-horizontally   ; window wide one shrink
-  "+" 'balance-windows              ; windows same size
-  "!" 'flycheck-list-errors         ; pop-up errors list
-  "a" 'beginning-of-line            ; go to beginning of line
-  ";" 'end-of-line                  ; got to end of line
-  "j" 'skk-mode                     ; skk
-  )
-;;; End Evil Leader-------------------------------------
-
 ;;; relative numbering----------------------------------
 ;; refs: https://www.reddit.com/r/emacs/comments/l7f85b/how_to_toggle_absolute_and_relative_numbering_in/
 (defun my/display-set-relative ()
@@ -683,17 +694,6 @@
 (require 'bind-key)
 (bind-key "M-;" 'comment-dwim-2)
 
-;;; clipboard Setting-----------------------------------
-;; Emacsから他のエディターにAlt+vでペーストはできるが、その逆にEmacsへは
-;; ペーストできない。
-;; refs: saitodev.co/article/Emacsでクリップボードを使ってコピペしたい/
-(cond (window-system
-  (setq x-select-enable-clipboard t)))
-
-;;; End clipboard Setting-------------------------------
-
-;;; Custom Keybind--------------------------------------
-
 ;; C-u -> scroll up
 ;; org-modeと関連パッケージには、C-uに多くの機能が付属してます。
 ;; refs: stackoverflow.com/questions/14302171/ctrlu-in-emacs-when-using-evil-key-bindings 
@@ -726,7 +726,9 @@
 
 ;;; End Custom Keybind----------------------------------
 
-;;; Color----------------------------------------------- 
+;;;-----------------------------------------------------
+;;; Color
+;;;-----------------------------------------------------
 
 ;; 画面を黒く設定する
 ;; refs: kei10in.hatenablog.jp/entry/20101101/1288617632
@@ -887,9 +889,7 @@
           (lambda ()
             (require 'context-skk)))
 
-;; ;;;-----------------------------------------------------
-;; ;;; End DDSKK setting
-;; ;;;-----------------------------------------------------
+;; ;;; End DDSKK setting-----------------------------------
 
 ;;;; ~/.emacs.d/init.el ends here
 
