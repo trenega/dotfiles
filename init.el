@@ -73,7 +73,7 @@
 
 ;;; 設定を分割して管理する-----------------------------------
 ;;; package.elを使ったパッケージ管理-------------------------
-;; refs: 「Emacs実践入門」大竹智也[著] p.81
+;; refs: 「Emacs実践入門」大竹智也[著] p.63
 ;; 引数のディレクトリとそのサブディレクトリをload-pathに追加
 ;; ~/.emacs.d/conf ~/.emacs.d/public_repos
 (add-to-load-path "conf" "public_repos")
@@ -140,6 +140,15 @@
 
     ;;;; zop-to-char
     zop-to-char
+
+    ;;;; ido-vertical-mode
+    ido-vertical-mode
+
+    ;;;; smex
+    smex
+    
+    ;;;; smartrep
+    smartrep
 
     ;;;; End Write install packages-----------------------
     ))
@@ -417,7 +426,41 @@
 
 ;;; End use-package, bind-key Setting---------------------
 
-;;; ------------------------------------------------------
+;; tempbuf
+;; automatically kill unnecessary buffers
+;; refs: shigemk2.com/entry/20120908/1347090453
+(require 'tempbuf)
+(add-hook 'find-file-hooks 'turn-on-tempbuf-mode)
+(add-hook 'dired-mode-hook 'turn-on-tempbuf-mode)
+
+;; smex
+;; M-x を超強化するsmexパッケージ
+(setq ido-max-window-height 0.75)
+(setq ido-enable-flex-matching t)
+(ido-vertical-mode 1)
+(setq ido-vertical-define-keys 'C-n-and-C-p-only)
+(smex-initialize)
+(require 'bind-key)
+(bind-key "M-x" 'smex)
+(bind-key "M-X" 'smex-major-mode-commands)
+
+;; smartrep
+;; プレフィクスキーを省略させる
+;; ウィンドウ操作をひとまとめにする
+;; (require 'smartrep)
+;; (smartrep-define-key global-map "C-x"
+;;   '(("x" . (other-window))
+;;     ("0" . (delete-window))
+;;     ("1" . (delete-other-windows))
+;;     ("2" . (split-window-below))
+;;     ("3" . (split-window-right))
+;;     ("{" . (shrink-window-horizontally))
+;;     ("}" . (enlarge-window-horizontally))
+;;     ("+" . (balance-windows))
+;;     ("^" . (enlarge-window))
+;;     ("-" . (shrink-window))))
+
+;; ------------------------------------------------------
 ;;; End package-install settigs
 ;;; ------------------------------------------------------
 
@@ -630,6 +673,7 @@
 
 ;; comment out
 ;; comment-dwim-2
+(require 'bind-key)
 (bind-key "M-;" 'comment-dwim-2)
 
 ;;; clipboard Setting-----------------------------------
@@ -659,7 +703,19 @@
 ;; (require 'misc)
 ;; (bind-key "M-z" 'zap-up-to-char)
 ;; 削除対象をハイライトしてくれる
+(require 'bind-key)
 (bind-key "M-z" 'zop-up-to-char)
+
+;; 単語移動の亜種
+;; refs: emacs.rubikitch.com/sd1507-builtin/
+(require 'misc)
+(require 'bind-key)
+(bind-key "M-f" 'forward-to-word)  ;移動先が先頭になる
+(bind-key "M-b" 'backward-to-word) ;移動先が末尾になる
+
+;; 設定ファイル用のメジャーモードの定義
+;; refs: emacs.rubikitch.com/sd1508-emacs-column/
+(require 'generic-x)
 
 ;;; End Custom Keybind----------------------------------
 
@@ -687,6 +743,10 @@
         ("zenburn-bg+3"  . "#4F4F4F")))
 (load-theme 'zenburn t)
 
+;; visual modeの範囲指定を見易くする
+;; refs :https://cortyuming.hateblo.jp/entry/20140218/p1 
+(set-face-attribute 'highlight nil :foreground 'unspecified)
+
 ;; Emacsで背景色の透明度を変更する-------------------------
 ;; http://osanai.org/17/
 ;; (if window-system (progn
@@ -709,9 +769,6 @@
 
 ;; End Emacsで背景色の透明度を変更する---------------------
 
-;; visual modeの範囲指定を見易くする
-;; refs :https://cortyuming.hateblo.jp/entry/20140218/p1 
-(set-face-attribute 'highlight nil :foreground 'unspecified)
 
 ;;; End Color-------------------------------------------
 
