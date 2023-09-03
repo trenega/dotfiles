@@ -1,6 +1,9 @@
 ;;;; ~/.emacs.d/init.el
 
-;;; 初期設定-----------------------------------------------
+;;;-------------------------------------------------------
+;;; 初期設定
+;;;-------------------------------------------------------
+
 ;; rers: emacs.rubikitch.com/sd1407/
 ;; 右から左に読む言語に対応させないことで描写高速化
 (setq-default bidi-display-reordering nil)
@@ -19,10 +22,11 @@
 (setq uniquify-buffer-name-style 'post-forward-angle-brackets)
 (setq uniquify-ignore-buffers-re "[^*]+")
 
-;; ファイルを開いた位置を保存する
-(require 'saveplace)
-(setq-default save-place t)
-(setq save-place-file (concat user-emacs-directory "places"))
+;; 以前開いたファイルを再度開いた時、元のカーソル位置を復元する
+;; refs: http://www.emacswiki.org/emacs/SavePlace
+;; refs: emacs.rubikitch.com/save-place-mode-emacs25/
+;; sakashita-net.jp/2017/08/emacs.html
+(save-place-mode 1)
 
 ;; インデントにTabを使わないようにする
 (setq-default indent-tabs-mode nil)
