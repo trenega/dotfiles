@@ -150,7 +150,7 @@
 
     ;;;; smex
     smex
-    
+
     ;;;; smartrep
     smartrep
 
@@ -203,6 +203,36 @@
 ;; End el-getを使ったパッケージ管理--------------------------
 
 ;;; End el-get Initial settings---------------------------
+
+;;; straight.el-------------------------------------------
+;;; Next-generation, purely functional package manager for the Emacs hacker.
+;;; refs: github.com/radian-software/straight.el
+(defvar bootstrap-version)
+(let ((bootstrap-file
+       (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
+      (bootstrap-version 6))
+  (unless (file-exists-p bootstrap-file)
+    (with-current-buffer
+        (url-retrieve-synchronously
+         "https://raw.githubusercontent.com/radian-software/straight.el/develop/install.el"
+         'silent 'inhibit-cookies)
+      (goto-char (point-max))
+      (eval-print-last-sexp)))
+  (load bootstrap-file nil 'nomessage))
+
+;; Emacs version 27 以上のユーザーは以下を追加
+(setq package-enable-at-startup nil)
+
+;; use-package との統合
+(straight-use-package 'use-package)
+
+;; To install a package Write Here!-----------------------
+
+;; (straight-use-package 'el-patch)
+
+;; End To install a package Write Here!-------------------
+
+;;; End straight.el---------------------------------------
 
 ;;; ------------------------------------------------------
 ;;; package-install settings
@@ -706,7 +736,7 @@
 
 ;; C-u -> scroll up
 ;; org-modeと関連パッケージには、C-uに多くの機能が付属してます。
-;; refs: stackoverflow.com/questions/14302171/ctrlu-in-emacs-when-using-evil-key-bindings 
+;; refs: stackoverflow.com/questions/14302171/ctrlu-in-emacs-when-using-evil-key-bindings
 (define-key evil-normal-state-map (kbd "C-u") 'evil-scroll-up)
 (define-key evil-visual-state-map (kbd "C-u") 'evil-scroll-up)
 (define-key evil-insert-state-map (kbd "C-u")
@@ -763,7 +793,7 @@
 (load-theme 'zenburn t)
 
 ;; visual modeの範囲指定を見易くする
-;; refs :https://cortyuming.hateblo.jp/entry/20140218/p1 
+;; refs :https://cortyuming.hateblo.jp/entry/20140218/p1
 (set-face-attribute 'highlight nil :foreground 'unspecified)
 
 ;; Emacsで背景色の透明度を変更する-------------------------
