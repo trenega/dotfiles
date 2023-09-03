@@ -537,6 +537,12 @@
 ; (require 'end-mark)
 ; (global-end-mark-mode)
 
+;; State Indicator
+;; refs: github.com/noctuid/evil-guide
+(setq evil-mode-line-format nil
+      evil-insert-state-cursor '(bar "white")
+      evil-visual-state-cursor '(box "#F86155"))
+
 ;;; End Evil: EmacsをVimのごとく使う-設定編-------------------
 
 ;; Alt key -> Meta key setting
