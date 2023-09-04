@@ -14,11 +14,8 @@
 ;; 引数のディレクトリとそのサブディレクトリをload-pathに追加
 ;; ~/.emacs.d/straight/repos/melpa/recipes
 (add-to-load-path "straight/repos/melpa/recipes")
-;;(add-to-load-path "straight")
 
 ;;; End load-pathを追加する関数を定義------------------------
-; (add-to-list 'load-path "~/.emacs.d/straight/repos/melpa/recipes")
-; (add-to-list 'load-path "~/.emacs.d/straight")
 
 
 ;;;-------------------------------------------------------
@@ -29,8 +26,13 @@
 ;; [重要]: (height . 38) を (height . 39) に変更しないこと！！
 ;; Emacs が立ち上がらなくなる！！
 ;;(setq default-frame-alist '((width . 84) (height . 38)))
-
 (setq default-frame-alist '((width . 125) (height . 38)))
+
+;; Alt key -> Meta key setting
+;; refs: https://qiita.com/hayamiz/items/0f0b7a012ec730351678
+(when (eq system-type 'darwin)
+  (setq ns-command-modifier (quote meta)))
+
 ;; rers: emacs.rubikitch.com/sd1407/
 ;; 右から左に読む言語に対応させないことで描写高速化
 (setq-default bidi-display-reordering nil)
@@ -77,19 +79,22 @@
 
 ;;; End 初期設定-------------------------------------------
 
-
+;;; custom-set--------------------------------------------
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(initial-frame-alist '((height . 38) (width . 125) (left . 0) (top . 0))))
+
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(default ((t (:family "UDEV Gothic 35NF" :foundry "nil" :slant normal :weight regular :height 240 :width normal)))))
+
+;;; End custom-set----------------------------------------
 
 ;;; straight.el-------------------------------------------
 ;;; Next-generation, purely functional package manager for the Emacs hacker.
@@ -115,7 +120,12 @@
 
 ;; To install a package Write Here!-----------------------
 
+;; zenburn-theme
 (straight-use-package 'zenburn-theme)
+
+;; Evil
+(straight-use-package 'evil)
+(evil-mode 1)
 
 ;; End To install a package Write Here!-------------------
 
