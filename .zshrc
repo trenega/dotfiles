@@ -78,9 +78,8 @@ alias vi='vim -u NONE -N'                       # 設定ファイル や環境�
                                                 # .gvimrcによるGUIの初期化も含め、
                                                 # 全て省略される。プラグインも読み込まれない。
                                                 # 'nocompatible' (Vimの拡張を有効) にすることができる。
-alias e='open -a emacs'                         # emacs.app
-alias em='emacs'                                # emacs on Shell
-alias emd='emacs --debug-init'                  # emacs debug on Shell
+alias em='emacs'                                # emacs
+alias emd='emacs --debug-init'                  # emacs debug
 alias note=/Users/nis/script/note.py            # alias of script/note.py
 alias pylint='pylint --max-line-length=79'      # pylint
 alias grep='ggrep -E --color=auto'              # ggrep, color options
