@@ -4,6 +4,12 @@
 ;;; 初期設定
 ;;;-------------------------------------------------------
 
+;; ウィンドウ（フレーム）のサイズ設定する
+;; [重要]: (height . 38) を (height . 39) に変更しないこと！！
+;; Emacs が立ち上がらなくなる！！
+;;(setq default-frame-alist '((width . 84) (height . 38)))
+
+(setq default-frame-alist '((width . 125) (height . 38)))
 ;; rers: emacs.rubikitch.com/sd1407/
 ;; 右から左に読む言語に対応させないことで描写高速化
 (setq-default bidi-display-reordering nil)
@@ -541,12 +547,6 @@
 ;;;-------------------------------------------------------
 ;; 基本設定
 ;;;-------------------------------------------------------
-
-;; ウィンドウ（フレーム）のサイズ設定する
-;; [重要]: (height . 38) を (height . 39) に変更しないこと！！
-;; Emacs が立ち上がらなくなる！！
-;;(setq default-frame-alist '((width . 84) (height . 38)))
-(setq default-frame-alist '((width . 125) (height . 38)))
 
 ;;; Evil: EmacsをVimのごとく使う-設定編-------------------
 ;; refs: https://tarao.hatenablog.com/entry/20130304/evil_config#emacs-evilize
