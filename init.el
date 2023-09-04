@@ -118,14 +118,37 @@
 ;; use-package との統合
 (straight-use-package 'use-package)
 
+;; el-patch
+;; Future-proof your Emacs Lisp customizations!
+;; Like the advice system, el-patch provides a way to customize
+;; the behavior of Emacs Lisp functions that do not provide
+;; enough variables and hooks to let you make them do what you
+;; want.
+(straight-use-package 'el-patch)
+
 ;; To install a package Write Here!-----------------------
 
 ;; zenburn-theme
 (straight-use-package 'zenburn-theme)
 
 ;; Evil
+;; Evil is an extensible vi layer for Emacs.
+;; Also see our page on EmacsWiki.
 (straight-use-package 'evil)
 (evil-mode 1)
+
+;; ivy
+;; Ivy - a generic completion frontend for Emacs,
+(straight-use-package 'ivy)
+
+;; swiper
+;; Swiper - isearch with an overview, and more.
+(straight-use-package 'swiper)
+
+;; counsel
+;; Just call one of the interactive functions in this file
+;; to complete the corresponding thing using `ivy'.
+(straight-use-package 'counsel)
 
 ;; End To install a package Write Here!-------------------
 
@@ -157,5 +180,3 @@
         ("zenburn-bg+3"  . "#4F4F4F")))
 
 (load-theme 'zenburn t)
-
-
