@@ -158,6 +158,11 @@
 ;; bind-key
 (straight-use-package 'bind-key)
 
+;; key-chord
+;; Map pairs of simultaneously pressed keys to commands
+(straight-use-package 'key-chord)
+(key-chord-mode 1)
+
 ;; End To install a package Write Here!-------------------
 
 ;;; End straight.el---------------------------------------
@@ -281,8 +286,8 @@
   (scroll-up (prefix-numeric-value current-prefix-arg)))
 (defun scroll-down-one ( ) "Scroll down 1 line." (interactive)
   (scroll-dowon (prefix-numeric-value current-prefix-arg)))
-(define-key global-map "\C-z" 'scroll-up-one)
-(define-key global-map "\M-z" 'scroll-down-one)
+;;(define-key global-map "\C-z" 'scroll-up-one)
+;;(define-key global-map "\M-z" 'scroll-down-one)
 
 ;;;-----------------------------------------------------
 ;;; End Custom Keybind
