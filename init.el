@@ -150,6 +150,11 @@
 ;; to complete the corresponding thing using `ivy'.
 (straight-use-package 'counsel)
 
+;; dired-recent
+;; A history of paths visited with Emacs dired.
+(straight-use-package 'dired-recent)
+(dired-recent-mode 1)
+
 ;; End To install a package Write Here!-------------------
 
 ;;; End straight.el---------------------------------------
