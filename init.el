@@ -77,6 +77,33 @@
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
 
+;;; relative numbering----------------------------------
+;; refs: https://www.reddit.com/r/emacs/comments/l7f85b/how_to_toggle_absolute_and_relative_numbering_in/
+(defun my/display-set-relative ()
+  (setq display-line-numbers 'relative))    ; or 'visual
+
+(defun my/display-set-absolute ()
+  (setq display-line-numbers t))
+
+(add-hook 'evil-insert-state-entry-hook #'my/display-set-absolute)
+(add-hook 'evil-insert-state-exit-hook #'my/display-set-relative)
+
+;;;「Emacs実践入門」大竹智也[著]---------------------------
+;; 行の折り返し表示を切り替える
+;; refs: 「Emacs実践入門」大竹智也[著] p.81
+(require 'bind-key)
+(bind-key "C-c l" 'toggle-truncate-lines)
+
+;; カラム番号も表示する
+(column-number-mode t)
+
+;; タイトルバーにファイルのフルパスを表示する
+(setq frame-title-format "%f")
+
+;;; End「Emacs実践入門」大竹智也[著]-----------------------
+
+
+
 ;;; End 初期設定-------------------------------------------
 
 ;;; custom-set--------------------------------------------
@@ -366,6 +393,41 @@
   (scroll-dowon (prefix-numeric-value current-prefix-arg)))
 ;;(define-key global-map "\C-z" 'scroll-up-one)
 ;;(define-key global-map "\M-z" 'scroll-down-one)
+
+;; comment out
+;; comment-dwim-2
+(require 'bind-key)
+(bind-key "M-;" 'comment-dwim-2)
+
+;; C-u -> scroll up
+;; org-modeと関連パッケージには、C-uに多くの機能が付属してます。
+;; refs: stackoverflow.com/questions/14302171/ctrlu-in-emacs-when-using-evil-key-bindings
+(define-key evil-normal-state-map (kbd "C-u") 'evil-scroll-up)
+(define-key evil-visual-state-map (kbd "C-u") 'evil-scroll-up)
+(define-key evil-insert-state-map (kbd "C-u")
+	    (lambda ()
+	      (interactive)
+	      (evil-delete (point-at-bol) (point))))
+
+;; M-x zap-up-to-char -> M-z
+;; refs: emacs.rubikitch.com/sd1507-builtin/
+;; 指定した文字の直前までを削除する
+;; (require 'misc)
+;; (bind-key "M-z" 'zap-up-to-char)
+;; 削除対象をハイライトしてくれる
+(require 'bind-key)
+(bind-key "M-z" 'zop-up-to-char)
+
+;; 単語移動の亜種
+;; refs: emacs.rubikitch.com/sd1507-builtin/
+(require 'misc)
+(require 'bind-key)
+(bind-key "M-f" 'forward-to-word)  ;移動先が先頭になる
+(bind-key "M-b" 'backward-to-word) ;移動先が末尾になる
+
+;; 設定ファイル用のメジャーモードの定義
+;; refs: emacs.rubikitch.com/sd1508-emacs-column/
+(require 'generic-x)
 
 ;;;-----------------------------------------------------
 ;;; End Custom Keybind
