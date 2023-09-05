@@ -123,6 +123,10 @@
 
 ;;; End custom-set----------------------------------------
 
+;;;-------------------------------------------------------
+;;; Package Manager Settings
+;;;-------------------------------------------------------
+
 ;;; straight.el-------------------------------------------
 ;;; Next-generation, purely functional package manager for the Emacs hacker.
 ;;; refs: github.com/radian-software/straight.el
@@ -195,6 +199,8 @@
 ;; End To install a package Write Here!-------------------
 
 ;;; End straight.el---------------------------------------
+
+;;; End Package Manager Settings--------------------------
 
 ;;;-------------------------------------------------------
 ;;; Pagckage Settings
