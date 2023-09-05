@@ -161,7 +161,6 @@
 ;; key-chord
 ;; Map pairs of simultaneously pressed keys to commands
 (straight-use-package 'key-chord)
-(key-chord-mode 1)
 
 ;; End To install a package Write Here!-------------------
 
@@ -277,6 +276,15 @@
 ;; C-? -> help
 ; (global-set-key (kbd "C-?") 'help-for-help)
 (bind-key* "C-?" 'help-for-help)
+
+;; "fd" to Esc
+;; Exit instert mode by pressing j and then j quickly
+;; https://stackoverflow.com/questions/10569165/how-to-map-jj-to-esc-in-emacs-evil-mode
+(key-chord-mode 1)
+(setq key-chord-two-keys-delay           0.15
+      key-chord-safety-interval-backward 0.1
+      key-chord-safety-interval-forward  0.25)
+(key-chord-define evil-insert-state-map "fd" 'evil-normal-state)
 
 ;;; 著者が勧める時間節約法---------------------------------
 ;; refs: UNIX POWER TOOLS 19.7 著者が勧める時間節約法 p.468
