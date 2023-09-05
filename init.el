@@ -158,7 +158,7 @@
 ;;; Pagckage Settings
 ;;;-------------------------------------------------------
 
-;; ivy
+;; ivy Settings-------------------------------------------
 ;; refs: https://takaxp.github.io/articles/qiita-helm2ivy.html
 (when (require 'ivy nil t)
 
@@ -198,6 +198,15 @@
 
   ;; アクティベート
   (counsel-mode 1))
+
+;; swiper Settings
+(when (require 'swiper nil t)
+
+  ;; キーバインドは一例です．好みに変えましょう．
+  (global-set-key (kbd "M-s M-s") 'swiper-thing-at-point))
+
+
+;; End ivy Settings---------------------------------------
 
 ;;;-------------------------------------------------------
 ;;; End Pagckage Settings
