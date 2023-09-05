@@ -162,6 +162,9 @@
 ;; Map pairs of simultaneously pressed keys to commands
 (straight-use-package 'key-chord)
 
+;; evil-leader
+(straight-use-package 'evil-leader)
+
 ;; End To install a package Write Here!-------------------
 
 ;;; End straight.el---------------------------------------
@@ -258,6 +261,51 @@
 
 ;; End ivy Settings---------------------------------------
 
+;;; Evil Leader-----------------------------------------
+;; Evil Leader provides the <leader> feature from Vim that
+;; provides an easy way to bind keys under a variable prefix key.
+;; For an experienced Emacs User it is nothing more than
+;; a convoluted key map, but for a Evil user coming from
+;; Vim it means an easier start.
+;; refs: https://github.com/cofi/evil-leader
+;;
+;; このevil-leaderのパッケージはel-getではなく、package.elでインストール
+;; する。(el-getでインストールできない)
+(require 'evil-leader)
+(global-evil-leader-mode)
+(evil-leader/set-leader "<SPC>")
+
+(evil-leader/set-key
+  "s" 'switch-to-buffer             ; Switch to buffer
+  "t" 'find-file                    ; find file Table
+  "w" 'save-buffer                  ; Wrote <file>
+  "k" 'kill-buffer                  ; Kill buffer
+  "q" 'save-buffers-kill-emacs      ; Quit save buffers kill emacs
+  "e" 'eval-last-sexp               ; Eval last sexp
+  "c" 'slime-compile-defun          ; slime Compile defun
+  "l" 'slime-compile-and-load-file  ; slime compile and Load file
+  "x" 'other-window                 ; eXchange window
+  "2" 'split-window-vertically      ; split window vertically
+  "3" 'split-window-horizontally    ; vertically split
+  "0" 'delete-window                ; delete window
+  "1" 'delete-other-windows         ; delete other window "only one"
+  ">" 'scroll-right                 ; window scroll to right
+  "<" 'scroll-left                  ; window scroll to left
+  "^" 'enlarge-window               ; window hight up one line
+  "-" 'shrink-window                ; window hight down one line
+  "}" 'enlarge-window-horizontally  ; window wide one enlargefd
+  "{" 'shrink-window-horizontally   ; window wide one shrink
+  "+" 'balance-windows              ; windows same size
+  "!" 'flycheck-list-errors         ; pop-up errors list
+  "a" 'beginning-of-line            ; go to beginning of line
+  ";" 'end-of-line                  ; got to end of line
+  "j" 'skk-mode                     ; skk
+  )
+;;; End Evil Leader-------------------------------------
+
+
+
+
 ;;;-------------------------------------------------------
 ;;; End Pagckage Settings
 ;;;-------------------------------------------------------
@@ -285,6 +333,28 @@
       key-chord-safety-interval-backward 0.1
       key-chord-safety-interval-forward  0.25)
 (key-chord-define evil-insert-state-map "fd" 'evil-normal-state)
+
+;; A TWO-key chord
+(key-chord-mode 1)
+(setq key-chord-two-keys-delay           0.15
+      key-chord-safety-interval-backward 0.1
+      key-chord-safety-interval-forward  0.25)
+
+(key-chord-define-global ";`"  "~")
+(key-chord-define-global ";1"  "!")
+(key-chord-define-global ";2"  "@")
+(key-chord-define-global ";3"  "#")
+(key-chord-define-global ";4"  "$")
+(key-chord-define-global ";5"  "%")
+(key-chord-define-global ";6"  "^")
+(key-chord-define-global "a7"  "&")
+(key-chord-define-global "a8"  "*")
+(key-chord-define-global "a9"  "(")
+(key-chord-define-global "a0"  ")")
+(key-chord-define-global "a-"  "_")
+(key-chord-define-global "a="  "+")
+
+
 
 ;;; 著者が勧める時間節約法---------------------------------
 ;; refs: UNIX POWER TOOLS 19.7 著者が勧める時間節約法 p.468
