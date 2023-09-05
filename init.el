@@ -155,6 +155,9 @@
 (straight-use-package 'dired-recent)
 (dired-recent-mode 1)
 
+;; bind-key
+(straight-use-package 'bind-key)
+
 ;; End To install a package Write Here!-------------------
 
 ;;; End straight.el---------------------------------------
@@ -254,6 +257,26 @@
 ;;;-------------------------------------------------------
 ;;; End Pagckage Settings
 ;;;-------------------------------------------------------
+
+;;;-----------------------------------------------------
+;;; Custom Keybind
+;;;-----------------------------------------------------
+
+;; C-hをBackspaceに変更、C-?にhelpをmapping---------------
+;; refs: malkalech.com/emacs_c-h_backspac:
+;; C-h -> delete-backward-char
+(define-key key-translation-map [?\C-h] [?\C-?])
+;; C-h -> Backspace
+(require 'bind-key)
+(bind-key* "C-h" 'delete-backward-char)
+;; C-? -> help
+; (global-set-key (kbd "C-?") 'help-for-help)
+(bind-key* "C-?" 'help-for-help)
+
+;;;-----------------------------------------------------
+;;; End Custom Keybind
+;;;-----------------------------------------------------
+
 
 ;;;-------------------------------------------------------
 ;;; Color
