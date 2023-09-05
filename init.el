@@ -205,6 +205,25 @@
   ;; キーバインドは一例です．好みに変えましょう．
   (global-set-key (kbd "M-s M-s") 'swiper-thing-at-point))
 
+;; 検索語のハイライト
+(custom-set-faces
+ '(ivy-current-match
+   ((((class color) (background light))
+     :background "#FFF3F3" :distant-foreground "#000000")
+    (((class color) (background dark))
+     :background "#404040" :distant-foreground "#abb2bf")))
+ '(ivy-minibuffer-match-face-1
+   ((((class color) (background light)) :foreground "#666666")
+    (((class color) (background dark)) :foreground "#999999")))
+ '(ivy-minibuffer-match-face-2
+   ((((class color) (background light)) :foreground "#c03333" :underline t)
+    (((class color) (background dark)) :foreground "#e04444" :underline t)))
+ '(ivy-minibuffer-match-face-3
+   ((((class color) (background light)) :foreground "#8585ff" :underline t)
+    (((class color) (background dark)) :foreground "#7777ff" :underline t)))
+ '(ivy-minibuffer-match-face-4
+   ((((class color) (background light)) :foreground "#439943" :underline t)
+    (((class color) (background dark)) :foreground "#33bb33" :underline t))))
 
 ;; End ivy Settings---------------------------------------
 
