@@ -273,6 +273,17 @@
 ; (global-set-key (kbd "C-?") 'help-for-help)
 (bind-key* "C-?" 'help-for-help)
 
+;;; 著者が勧める時間節約法---------------------------------
+;; refs: UNIX POWER TOOLS 19.7 著者が勧める時間節約法 p.468
+
+;; CTRL-zおよびESC-zで、画面を1行「上」または「下」にスクロールする。
+(defun scroll-up-one ( ) "Scroll up 1 line." (interactive)
+  (scroll-up (prefix-numeric-value current-prefix-arg)))
+(defun scroll-down-one ( ) "Scroll down 1 line." (interactive)
+  (scroll-dowon (prefix-numeric-value current-prefix-arg)))
+(define-key global-map "\C-z" 'scroll-up-one)
+(define-key global-map "\M-z" 'scroll-down-one)
+
 ;;;-----------------------------------------------------
 ;;; End Custom Keybind
 ;;;-----------------------------------------------------
