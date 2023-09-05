@@ -230,6 +230,25 @@
    ((((class color) (background light)) :foreground "#439943" :underline t)
     (((class color) (background dark)) :foreground "#33bb33" :underline t))))
 
+;; counsel-recentf 再定義
+;; ファイルの表示を`~`から初める設定
+;; refs: https://takaxp.github.io/articles/qiita-helm2ivy.html#org87d665a3
+(defun ad:counsel-recentf ()
+  "Find a file on `recentf-list'."
+  (interactive)
+  (require 'recentf)
+  (recentf-mode)
+  (ivy-read "Recentf: "
+            (progn
+              (mapcar #'substring-no-properties recentf-list) ;; no need?
+              (mapcar #'abbreviate-file-name recentf-list)) ;; ~/
+            :action (lambda (f)
+                      (with-ivy-window
+                        (find-file f)))
+            :require-match t
+            :caller 'counsel-recentf))
+(advice-add 'counsel-recentf :override #'ad:counsel-recentf)
+
 ;; End ivy Settings---------------------------------------
 
 ;;;-------------------------------------------------------
