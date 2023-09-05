@@ -336,8 +336,25 @@
   )
 ;;; End Evil Leader-------------------------------------
 
+;;; SLIME settings----------------------------------------
+;; SBCL をデフォルトのCommon Lisp処理系に設定
+;; refs: http://modern-cl.blogspot.com/2011/04/3-slime.html
+;; (setq inferior-lisp-program "sbcl")  ;Steel Bank Comoon Lisp
+(setq inferior-lisp-program "ccl")      ;Clozure CL
+;; cclをload-pathに追加
+(add-to-list 'load-path (expand-file-name
+             "~/.roswell/impls/x86-64/darwin/ccl-bin/1.12.2/dx86cl64"))
 
+;; ~/.emacs.d/slimeをload-pathに追加
+(add-to-list 'load-path (expand-file-name "~/.emacs.d/slime"))
+;; SLIMEのロード
+(require 'slime)
+(slime-setup '(slime-repl slime-fancy slime-banner slime-indentation))
+;; SLIMEからの入力をUTF-8に設定
+(setq slime-net-coding-system 'utf-8-unix)
 
+;; ros install slime したので、追記
+(load (expand-file-name "~/.roswell/helper.el"))
 
 ;;;-------------------------------------------------------
 ;;; End Pagckage Settings
