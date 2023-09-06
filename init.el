@@ -1,7 +1,7 @@
-;;;; ~/.emacs.d/init.el
+;;; ~/.emacs.d/init.el
 
-; ;;; load-pathを追加する関数を定義----------------------------
-; ;; refs: 「Emacs実践入門」大竹智也 p.61
+;;; load-pathを追加する関数を定義----------------------------
+;;  refs: 「Emacs実践入門」大竹智也 p.61
 (defun add-to-load-path (&rest paths)
   (let (path)
     (dolist (path paths paths)
@@ -105,6 +105,7 @@
 ;;; End 初期設定-------------------------------------------
 
 ;;; custom-set--------------------------------------------
+;;  These 'custom-set are from `Emacs'! I don't write here.
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -126,8 +127,8 @@
 ;;;-------------------------------------------------------
 
 ;;; straight.el-------------------------------------------
-;;; Next-generation, purely functional package manager for the Emacs hacker.
-;;; refs: github.com/radian-software/straight.el
+;;  Next-generation, purely functional package manager for the Emacs hacker.
+;;  refs: github.com/radian-software/straight.el
 (defvar bootstrap-version)
 (let ((bootstrap-file
        (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
@@ -210,7 +211,7 @@
 ;;; Pagckage Settings
 ;;;-------------------------------------------------------
 
-;; ivy Settings-------------------------------------------
+;;; ivy Settings------------------------------------------
 ;; refs: https://takaxp.github.io/articles/qiita-helm2ivy.html
 (when (require 'ivy nil t)
 
@@ -296,7 +297,7 @@
             :caller 'counsel-recentf))
 (advice-add 'counsel-recentf :override #'ad:counsel-recentf)
 
-;; End ivy Settings---------------------------------------
+;;; End ivy Settings------------------------------------
 
 ;;; Evil Leader-----------------------------------------
 ;; Evil Leader provides the <leader> feature from Vim that
@@ -360,7 +361,7 @@
 ;; ros install slime したので、追記
 (load (expand-file-name "~/.roswell/helper.el"))
 
-;; company Setting----------------------------------------
+;;; company Setting---------------------------------------
 ;; 補完用パッケージ
 ;; refs: https://qiita.com/sune2/items/b73037f9e85962f5afb7
 (require 'company)
@@ -408,9 +409,6 @@
 
 ;;; End company Setting-----------------------------------
 
-
-
-
 ;;;-------------------------------------------------------
 ;;; End Pagckage Settings
 ;;;-------------------------------------------------------
@@ -423,9 +421,11 @@
 ;; refs: malkalech.com/emacs_c-h_backspac:
 ;; C-h -> delete-backward-char
 (define-key key-translation-map [?\C-h] [?\C-?])
+
 ;; C-h -> Backspace
 (require 'bind-key)
 (bind-key* "C-h" 'delete-backward-char)
+
 ;; C-? -> help
 ; (global-set-key (kbd "C-?") 'help-for-help)
 (bind-key* "C-?" 'help-for-help)
@@ -445,6 +445,8 @@
       key-chord-safety-interval-backward 0.1
       key-chord-safety-interval-forward  0.25)
 
+;; Don't use shift key. But I can type to
+;; " ~ ! @ # $ % ^ & * ( ) _ + : " ".
 (key-chord-define-global ";`"  "~")
 (key-chord-define-global ";1"  "!")
 (key-chord-define-global ";2"  "@")
@@ -458,8 +460,6 @@
 (key-chord-define-global "a0"  ")")
 (key-chord-define-global "a-"  "_")
 (key-chord-define-global "a="  "+")
-
-
 
 ;; 著者が勧める時間節約法
 ;; refs: UNIX POWER TOOLS 19.7 著者が勧める時間節約法 p.468
@@ -538,3 +538,5 @@
         ("zenburn-bg+3"  . "#4F4F4F")))
 
 (load-theme 'zenburn t)
+
+;;; ~/.emacs.d/init.el ends here
