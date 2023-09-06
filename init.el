@@ -101,6 +101,13 @@
 (setq frame-title-format "%f")
 
 ;;; End「Emacs実践入門」大竹智也[著]-----------------------
+;; clipboard Setting-----------------------------------
+;; Emacsから他のエディターにAlt+vでペーストはできるが、その逆にEmacsへは
+;; ペーストできない。
+;; refs: saitodev.co/article/Emacsでクリップボードを使ってコピペしたい/
+(cond (window-system
+  (setq x-select-enable-clipboard t)))
+
 
 ;;; End 初期設定-------------------------------------------
 
@@ -267,6 +274,29 @@
   ;; アクティベート
   (ivy-mode 1))
 
+;; 検索語のハイライト
+;; rers: https://takaxp.github.io/articles/qiita-helm2ivy.html
+(custom-set-faces
+ '(ivy-current-match
+   ((((class color) (background light))
+     :background "#FFF3F3" :distant-foreground "#000000")
+    (((class color) (background dark))
+     :background "#404040" :distant-foreground "#abb2bf")))
+ '(ivy-minibuffer-match-face-1
+   ((((class color) (background light)) :foreground "#666666")
+    (((class color) (background dark)) :foreground "#999999")))
+ '(ivy-minibuffer-match-face-2
+   ((((class color) (background light)) :foreground "#c03333" :underline t)
+    (((class color) (background dark)) :foreground "#e04444" :underline t)))
+ '(ivy-minibuffer-match-face-3
+   ((((class color) (background light)) :foreground "#8585ff" :underline t)
+    (((class color) (background dark)) :foreground "#7777ff" :underline t)))
+ '(ivy-minibuffer-match-face-4
+   ((((class color) (background light)) :foreground "#439943" :underline t)
+    (((class color) (background dark)) :foreground "#33bb33" :underline t))))
+
+;;; End ivy Setting---------------------------------------
+
 ;; counsel Settings
 (when (require 'counsel nil t)
 
@@ -287,26 +317,6 @@
   ;; キーバインドは一例です．好みに変えましょう．
   (global-set-key (kbd "M-s M-s") 'swiper-thing-at-point))
 
-;; 検索語のハイライト
-(custom-set-faces
- '(ivy-current-match
-   ((((class color) (background light))
-     :background "#FFF3F3" :distant-foreground "#000000")
-    (((class color) (background dark))
-     :background "#404040" :distant-foreground "#abb2bf")))
- '(ivy-minibuffer-match-face-1
-   ((((class color) (background light)) :foreground "#666666")
-    (((class color) (background dark)) :foreground "#999999")))
- '(ivy-minibuffer-match-face-2
-   ((((class color) (background light)) :foreground "#c03333" :underline t)
-    (((class color) (background dark)) :foreground "#e04444" :underline t)))
- '(ivy-minibuffer-match-face-3
-   ((((class color) (background light)) :foreground "#8585ff" :underline t)
-    (((class color) (background dark)) :foreground "#7777ff" :underline t)))
- '(ivy-minibuffer-match-face-4
-   ((((class color) (background light)) :foreground "#439943" :underline t)
-    (((class color) (background dark)) :foreground "#33bb33" :underline t))))
-
 ;; counsel-recentf 再定義
 ;; ファイルの表示を`~`から初める設定
 ;; refs: https://takaxp.github.io/articles/qiita-helm2ivy.html#org87d665a3
@@ -326,7 +336,6 @@
             :caller 'counsel-recentf))
 (advice-add 'counsel-recentf :override #'ad:counsel-recentf)
 
-;;; End ivy Settings------------------------------------
 
 ;;; Evil Leader-----------------------------------------
 ;; Evil Leader provides the <leader> feature from Vim that
@@ -335,9 +344,6 @@
 ;; a convoluted key map, but for a Evil user coming from
 ;; Vim it means an easier start.
 ;; refs: https://github.com/cofi/evil-leader
-;;
-;; このevil-leaderのパッケージはel-getではなく、package.elでインストール
-;; する。(el-getでインストールできない)
 (require 'evil-leader)
 (global-evil-leader-mode)
 (evil-leader/set-leader "<SPC>")
@@ -438,14 +444,34 @@
 
 ;;; End company Setting-----------------------------------
 
-;; flycheck Setting
+;; Flycheck Settings--------------------------------------
+;; MacOS $PATH環境変数を修正する
+;; refs: https://www.flycheck.org/en/latest/
+(package-install 'exec-path-from-shell)
+(exec-path-from-shell-initialize)
+
 (require 'flycheck)
 (add-hook 'after-init-hook #'global-flycheck-mode)
+(require 'bind-key)
+(bind-key "M-n" 'flycheck-next-error)
+(bind-key "M-p" 'flycheck-previous-error)
 
-;; flycheck-pos-tip Setting
-(require 'flycheck-pos-tip)
+;; flycheck-pos-tip
 (with-eval-after-load 'flycheck
   (flycheck-pos-tip-mode))
+
+;; Disply Flycheck error list window
+;; refs: blog.3qe.us/entry/2022/09/29/124700
+(add-to-list 'display-buffer-alist
+	     `(,(rx bos "*Flycheck errors*" eos)
+              (display-buffer-reuse-window
+               display-buffer-in-side-window)
+              (side            . bottom)
+              (reusable-frames . visible)
+              (window-height   . 0.2)))
+
+;; End Flycheck Settings----------------------------------
+
 
 
 ;; tempbuf
@@ -569,7 +595,6 @@
 ;;; End Custom Keybind
 ;;;-----------------------------------------------------
 
-
 ;;;-------------------------------------------------------
 ;;; Color
 ;;;-------------------------------------------------------
@@ -596,5 +621,31 @@
         ("zenburn-bg+3"  . "#4F4F4F")))
 
 (load-theme 'zenburn t)
+
+;; visual modeの範囲指定を見易くする
+;; refs :https://cortyuming.hateblo.jp/entry/20140218/p1
+(set-face-attribute 'highlight nil :foreground 'unspecified)
+
+;; Emacsで背景色の透明度を変更する-------------------------
+;; http://osanai.org/17/
+;; (if window-system (progn
+;;   (set-background-color "Black")
+;;   (set-foreground-color "LightGray")
+;;   (set-cursor-color "Gray")
+;;   (set-frame-parameter nil 'alpha 50))) ;透明度
+
+;; Emacsの画面に透明度を設定する
+(defun set-transparency ()
+  "set frame transparency"
+  (set-frame-parameter nil 'alpha 50))  ;透明度
+
+;; 透明度を変更するコマンド M-x set-alpha
+;; refs: http://qiita.com/marcy@github/items/ba0d018a03381a964f24
+(defun set-alpha (alpha-num)
+  "set frame parameter 'alpha"
+  (interactive "nAlpha: ")
+  (set-frame-parameter nil 'alpha (cons alpha-num '(50))))
+
+;; End Emacsで背景色の透明度を変更する---------------------
 
 ;;; ~/.emacs.d/init.el ends here
