@@ -213,6 +213,9 @@
 ;; flycheck-haskell
 (straight-use-package 'flycheck-haskell)
 
+;; darkroom
+(straight-use-package 'darkroom)
+
 ;;;-------------------------------------------------------
 ;; End To install a package Write Here!-------------------
 
