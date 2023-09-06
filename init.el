@@ -165,7 +165,6 @@
 ;; Evil is an extensible vi layer for Emacs.
 ;; Also see our page on EmacsWiki.
 (straight-use-package 'evil)
-(evil-mode 1)
 
 ;; ivy
 ;; Ivy - a generic completion frontend for Emacs,
@@ -183,7 +182,6 @@
 ;; dired-recent
 ;; A history of paths visited with Emacs dired.
 (straight-use-package 'dired-recent)
-(dired-recent-mode 1)
 
 ;; bind-key
 (straight-use-package 'bind-key)
@@ -202,9 +200,6 @@
 (straight-use-package 'comment-dwim-2)
 
 ;; flycheck
-;; (use-package flycheck
-;;   :straight (:ensure t
-;;              :init (global-flycheck-mode)))
 (straight-use-package 'flycheck)
 
 ;; flycheck-pos-tip
@@ -216,6 +211,18 @@
 ;; darkroom
 (straight-use-package 'darkroom)
 
+;; tempbuf.el
+;; 不要なバッファを自動的にkillしてくれる
+(straight-use-package 'tempbuf)
+
+;; smex
+;; M-xを超強化するsmexパッケージ
+(straight-use-package 'smex)
+
+;; ido-vertical-mode
+;; smexパッケージといっしょに使う
+(straight-use-package 'ido-vertical-mode)
+
 ;;;-------------------------------------------------------
 ;; End To install a package Write Here!-------------------
 
@@ -226,6 +233,12 @@
 ;;;-------------------------------------------------------
 ;;; Pagckage Settings
 ;;;-------------------------------------------------------
+
+;; Evil Settig
+(evil-mode 1)
+
+;; dired-recent
+(dired-recent-mode 1)
 
 ;;; ivy Settings------------------------------------------
 ;; refs: https://takaxp.github.io/articles/qiita-helm2ivy.html
@@ -433,6 +446,26 @@
 (require 'flycheck-pos-tip)
 (with-eval-after-load 'flycheck
   (flycheck-pos-tip-mode))
+
+
+;; tempbuf
+;; automatically kill unnecessary buffers
+;; refs: shigemk2.com/entry/20120908/1347090453
+(require 'tempbuf)
+(add-hook 'find-file-hooks 'turn-on-tempbuf-mode)
+(add-hook 'dired-mode-hook 'turn-on-tempbuf-mode)
+
+;; smex
+;; M-x を超強化するsmexパッケージ
+(setq ido-max-window-height 0.75)
+(setq ido-enable-flex-matching t)
+(ido-vertical-mode 1)
+(setq ido-vertical-define-keys 'C-n-and-C-p-only)
+(smex-initialize)
+(require 'bind-key)
+(bind-key "M-x" 'smex)
+(bind-key "M-X" 'smex-major-mode-commands)
+
 
 ;;;-------------------------------------------------------
 ;;; End Pagckage Settings
