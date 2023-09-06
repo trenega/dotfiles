@@ -202,9 +202,11 @@
 (straight-use-package 'comment-dwim-2)
 
 ;; flycheck
-(use-package flycheck
-  :straight (:ensure t
-             :init (global-flycheck-mode)))
+;; (use-package flycheck
+;;   :straight (:ensure t
+;;              :init (global-flycheck-mode)))
+(straight-use-package 'flycheck)
+
 ;;;-------------------------------------------------------
 ;; End To install a package Write Here!-------------------
 
@@ -414,6 +416,8 @@
 
 ;;; End company Setting-----------------------------------
 
+;; flycheck Setting
+(add-hook 'after-init-hook #'global-flycheck-mode)
 ;;;-------------------------------------------------------
 ;;; End Pagckage Settings
 ;;;-------------------------------------------------------
