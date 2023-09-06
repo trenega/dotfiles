@@ -201,6 +201,11 @@
 ;; comment-dwim-2
 (straight-use-package 'comment-dwim-2)
 
+;; flycheck
+(use-package flycheck
+  :straight (:ensure t
+             :init (global-flycheck-mode)))
+;;;-------------------------------------------------------
 ;; End To install a package Write Here!-------------------
 
 ;;; End straight.el---------------------------------------
