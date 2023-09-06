@@ -230,6 +230,10 @@
 ;; smexパッケージといっしょに使う
 (straight-use-package 'ido-vertical-mode)
 
+;; smartrep
+;; プレフィクスキーを省略させる
+;; ウィンドウ操作をひとまとめにする
+(straight-use-package 'smartrep)
 ;;;-------------------------------------------------------
 ;; End To install a package Write Here!-------------------
 
@@ -376,6 +380,26 @@
   )
 ;;; End Evil Leader-------------------------------------
 
+;; smartrep
+;; プレフィクスキーを省略させる
+;; ウィンドウ操作をひとまとめにする
+;; 始めに"C-x"キーを押してから、"一文字"を入力する
+(require 'smartrep)
+(smartrep-define-key global-map "C-x"
+  '(("x" . (other-window))
+    ("0" . (delete-window))
+    ("1" . (delete-other-windows))
+    ("2" . (split-window-below))
+    ("3" . (split-window-right))
+    ("{" . (shrink-window-horizontally))
+    ("}" . (enlarge-window-horizontally))
+    ("+" . (balance-windows))
+    ("^" . (enlarge-window))
+    ("-" . (shrink-window))))
+
+;;; End package-install settigs---------------------------
+
+
 ;;; SLIME settings----------------------------------------
 ;; SBCL をデフォルトのCommon Lisp処理系に設定
 ;; refs: http://modern-cl.blogspot.com/2011/04/3-slime.html
@@ -471,8 +495,6 @@
               (window-height   . 0.2)))
 
 ;; End Flycheck Settings----------------------------------
-
-
 
 ;; tempbuf
 ;; automatically kill unnecessary buffers
