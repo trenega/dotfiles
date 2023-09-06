@@ -346,7 +346,7 @@
              "~/.roswell/impls/x86-64/darwin/ccl-bin/1.12.2/dx86cl64"))
 
 ;; ~/.emacs.d/slimeをload-pathに追加
-(add-to-list 'load-path (expand-file-name "~/.emacs.d/slime"))
+(add-to-list 'load-path (expand-file-name "~/.emacs.d-straight/slime"))
 ;; SLIMEのロード
 (require 'slime)
 (slime-setup '(slime-repl slime-fancy slime-banner slime-indentation))
