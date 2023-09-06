@@ -207,6 +207,12 @@
 ;;              :init (global-flycheck-mode)))
 (straight-use-package 'flycheck)
 
+;; flycheck-pos-tip
+(straight-use-package 'flycheck-pos-tip)
+
+;; flycheck-haskell
+(straight-use-package 'flycheck-haskell)
+
 ;;;-------------------------------------------------------
 ;; End To install a package Write Here!-------------------
 
@@ -418,6 +424,11 @@
 
 ;; flycheck Setting
 (add-hook 'after-init-hook #'global-flycheck-mode)
+
+;; flycheck-pos-tip Setting
+(with-eval-after-load 'flycheck
+  (flycheck-pos-tip-mode))
+
 ;;;-------------------------------------------------------
 ;;; End Pagckage Settings
 ;;;-------------------------------------------------------
