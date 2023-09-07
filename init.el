@@ -1,4 +1,6 @@
-;;; ~/.emacs.d/init.el
+;;;; nis's ~/.emacs.d/init.el
+;; Takashi Niijima
+;; 2023-09-05
 
 ;;; load-pathを追加する関数を定義----------------------------
 ;;  refs: 「Emacs実践入門」大竹智也 p.61
@@ -234,7 +236,11 @@
 ;; プレフィクスキーを省略させる
 ;; ウィンドウ操作をひとまとめにする
 (straight-use-package 'smartrep)
-;;;-------------------------------------------------------
+
+;; evil-surround
+(straight-use-package 'evil-surround)
+
+;-------------------------------------------------------
 ;; End To install a package Write Here!-------------------
 
 ;;; End straight.el---------------------------------------
@@ -474,25 +480,25 @@
 (package-install 'exec-path-from-shell)
 (exec-path-from-shell-initialize)
 
-(require 'flycheck)
-(add-hook 'after-init-hook #'global-flycheck-mode)
-(require 'bind-key)
-(bind-key "M-n" 'flycheck-next-error)
-(bind-key "M-p" 'flycheck-previous-error)
+;; (require 'flycheck)
+;; (add-hook 'after-init-hook #'global-flycheck-mode)
+;; (require 'bind-key)
+;; (bind-key "M-n" 'flycheck-next-error)
+;; (bind-key "M-p" 'flycheck-previous-error)
 
 ;; flycheck-pos-tip
-(with-eval-after-load 'flycheck
-  (flycheck-pos-tip-mode))
+;; (with-eval-after-load 'flycheck
+;;   (flycheck-pos-tip-mode))
 
 ;; Disply Flycheck error list window
 ;; refs: blog.3qe.us/entry/2022/09/29/124700
-(add-to-list 'display-buffer-alist
-	     `(,(rx bos "*Flycheck errors*" eos)
-              (display-buffer-reuse-window
-               display-buffer-in-side-window)
-              (side            . bottom)
-              (reusable-frames . visible)
-              (window-height   . 0.2)))
+;; (add-to-list 'display-buffer-alist
+;; 	     `(,(rx bos "*Flycheck errors*" eos)
+;;               (display-buffer-reuse-window
+;;                display-buffer-in-side-window)
+;;               (side            . bottom)
+;;               (reusable-frames . visible)
+;;               (window-height   . 0.2)))
 
 ;; End Flycheck Settings----------------------------------
 
@@ -514,6 +520,9 @@
 (bind-key "M-x" 'smex)
 (bind-key "M-X" 'smex-major-mode-commands)
 
+;; evil-surround
+(require 'evil-surround)
+(global-evil-surround-mode 1)
 
 ;;;-------------------------------------------------------
 ;;; End Pagckage Settings
