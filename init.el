@@ -30,6 +30,43 @@
       (other-window (- n))  ; nがnilでないとき
     (other-window -1)))     ; nがnilのとき
 
+;;; 一回に1行のスクロールする関数を定義する
+;; 関数の名前をわかりやすい名前で参照する
+;; refs: 「GNU Emacs 拡張ガイド」p.24
+(defalias 'scroll-ahead 'scroll-up)
+(defalias 'scroll-behind 'scroll-down)
+
+(defun scroll-one-line-ahead ()
+  "Scroll ahead one line."
+  (interactive)
+  (scroll-ahead 1))
+
+(defun scroll-one-line-behind ()
+  "Scroll behind one line."
+  (interactive)
+  (scroll-behind 1))
+
+;;; カーソルをウィンドウの左上隅にジャンプさせる関数
+;; refs: 「GNU Emacs 拡張ガイド」p.26
+(defun point-to-top ()
+  "Put point on top line of window."
+  (interactive)
+  (move-to-window-line 0))
+
+;;; カーソルをウィンドウの左下隅にジャンプさせる関数
+;; refs: 「GNU Emacs 拡張ガイド」p.26
+(defun point-to-bottom ()
+  "Put point at beginning of last visible line."
+  (interactive)
+  (move-to-window-line -1))
+
+;;; 現在カーソルのある行がウィンドウの最初の行になるようにスクロールさせる
+;; refs: 「GNU Emacs 拡張ガイド」p.26
+(defun line-to-top ()
+  "Move current line to top of window."
+  (interactive)
+  (recenter 0))
+
 ;;;; End Define function----------------------------------
 
 ;;;;------------------------------------------------------
@@ -388,17 +425,21 @@
   "3" 'split-window-horizontally    ; vertically split
   "0" 'delete-window                ; delete window
   "1" 'delete-other-windows         ; delete other window "only one"
+  "d" 'scroll-one-line-ahead        ; one line scroll up
+  "u" 'scroll-one-line-behind       ; one line scroll down
   ">" 'scroll-right                 ; window scroll to right
   "<" 'scroll-left                  ; window scroll to left
+  "," 'point-to-top                 ; cursor goto top left corner
+  "." 'point-to-bottom              ; cursor goto bottom left corner
+  "!" 'line-to-top                  ; Move current line to top of window
   "^" 'enlarge-window               ; window hight up one line
   "-" 'shrink-window                ; window hight down one line
   "}" 'enlarge-window-horizontally  ; window wide one enlargefd
   "{" 'shrink-window-horizontally   ; window wide one shrink
   "+" 'balance-windows              ; windows same size
-  "!" 'flycheck-list-errors         ; pop-up errors list
+  "f" 'flycheck-list-errors         ; pop-up errors list
   "a" 'beginning-of-line            ; go to beginning of line
   ";" 'end-of-line                  ; got to end of line
-  "j" 'skk-mode                     ; skk
   )
 ;;; End Evil Leader-------------------------------------
 
