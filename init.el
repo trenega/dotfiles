@@ -23,10 +23,12 @@
 
 ;;; other-window-backwordを定義する
 ;; refs: 「GNU Emacs 拡張ガイド」p.16
-(defun other-window-backword ()
-  "Select the previous window."
-  (interactive)
-  (other-window -1))
+(defun other-window-backword (&optional n)    ; version 3
+  "Select Nth previous window."
+  (interactive "p")
+  (if n
+      (other-window (- n))  ; nがnilでないとき
+    (other-window -1)))     ; nがnilのとき
 
 ;;;; End Define function----------------------------------
 
