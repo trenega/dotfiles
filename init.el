@@ -2,6 +2,10 @@
 ;; Takashi Niijima
 ;; 2023-09-05
 
+;;;;------------------------------------------------------
+;;;; Define function
+;;;;------------------------------------------------------
+
 ;;; load-pathを追加する関数を定義----------------------------
 ;;  refs: 「Emacs実践入門」大竹智也 p.61
 (defun add-to-load-path (&rest paths)
@@ -17,12 +21,22 @@
 ;; ~/.emacs.d/straight/repos/melpa/recipes
 (add-to-load-path "straight/repos/melpa/recipes")
 
-;;; End load-pathを追加する関数を定義------------------------
+;;; other-window-backwordを定義する
+;; refs: 「GNU Emacs 拡張ガイド」p.16
+(defun other-window-backword ()
+  "Select the previous window."
+  (interactive)
+  (other-window -1))
 
+;;;; End Define function----------------------------------
 
-;;;-------------------------------------------------------
-;;; 初期設定
-;;;-------------------------------------------------------
+;;;;------------------------------------------------------
+;;;; Initialization
+;;;;------------------------------------------------------
+
+;; I use 'eval-expressin'
+;; ミニバッファでLisp式の入力を促し、与えられた式を評価して結果を表示する
+(put 'eval-expression 'disabled nil)
 
 ;; ウィンドウ（フレーム）のサイズ設定する
 ;; [重要]: (height . 38) を (height . 39) に変更しないこと！！
@@ -102,8 +116,7 @@
 ;; タイトルバーにファイルのフルパスを表示する
 (setq frame-title-format "%f")
 
-;;; End「Emacs実践入門」大竹智也[著]-----------------------
-;; clipboard Setting-----------------------------------
+;; clipboard Setting--------------------------------------
 ;; Emacsから他のエディターにAlt+vでペーストはできるが、その逆にEmacsへは
 ;; ペーストできない。
 ;; refs: saitodev.co/article/Emacsでクリップボードを使ってコピペしたい/
@@ -111,7 +124,7 @@
   (setq x-select-enable-clipboard t)))
 
 
-;;; End 初期設定-------------------------------------------
+;;; End Initialization-------------------------------------------
 
 ;;; custom-set--------------------------------------------
 ;;  These 'custom-set are from `Emacs'! I don't write here.
@@ -131,9 +144,9 @@
 
 ;;; End custom-set----------------------------------------
 
-;;;-------------------------------------------------------
-;;; Package Manager Settings
-;;;-------------------------------------------------------
+;;;;------------------------------------------------------
+;;;; Package Manager Settings
+;;;;------------------------------------------------------
 
 ;;; straight.el-------------------------------------------
 ;;  Next-generation, purely functional package manager for the Emacs hacker.
@@ -240,16 +253,16 @@
 ;; evil-surround
 (straight-use-package 'evil-surround)
 
-;-------------------------------------------------------
+;---------------------------------------------------------
 ;; End To install a package Write Here!-------------------
 
 ;;; End straight.el---------------------------------------
 
 ;;; End Package Manager Settings--------------------------
 
-;;;-------------------------------------------------------
-;;; Pagckage Settings
-;;;-------------------------------------------------------
+;;;;------------------------------------------------------
+;;;; Pagckage Settings
+;;;;------------------------------------------------------
 
 ;; Evil Settig
 (evil-mode 1)
@@ -367,7 +380,8 @@
   "e" 'eval-last-sexp               ; Eval last sexp
   "c" 'slime-compile-defun          ; slime Compile defun
   "l" 'slime-compile-and-load-file  ; slime compile and Load file
-  "x" 'other-window                 ; eXchange window
+  "n" 'other-window                 ; move to next window
+  "p" 'other-window-backword        ; move to previous window
   "2" 'split-window-vertically      ; split window vertically
   "3" 'split-window-horizontally    ; vertically split
   "0" 'delete-window                ; delete window
@@ -402,9 +416,6 @@
     ("+" . (balance-windows))
     ("^" . (enlarge-window))
     ("-" . (shrink-window))))
-
-;;; End package-install settigs---------------------------
-
 
 ;;; SLIME settings----------------------------------------
 ;; SBCL をデフォルトのCommon Lisp処理系に設定
@@ -500,7 +511,7 @@
 ;;               (reusable-frames . visible)
 ;;               (window-height   . 0.2)))
 
-;; End Flycheck Settings----------------------------------
+;;; End Flycheck Settings---------------------------------
 
 ;; tempbuf
 ;; automatically kill unnecessary buffers
@@ -524,13 +535,11 @@
 (require 'evil-surround)
 (global-evil-surround-mode 1)
 
-;;;-------------------------------------------------------
-;;; End Pagckage Settings
-;;;-------------------------------------------------------
+;;; End Pagckage Settings-------------------------------
 
-;;;-----------------------------------------------------
+;;;;----------------------------------------------------
 ;;; Custom Keybind
-;;;-----------------------------------------------------
+;;;;----------------------------------------------------
 
 ;; C-hをBackspaceに変更、C-?にhelpをmapping---------------
 ;; refs: malkalech.com/emacs_c-h_backspac:
@@ -578,7 +587,6 @@
 
 ;; 著者が勧める時間節約法
 ;; refs: UNIX POWER TOOLS 19.7 著者が勧める時間節約法 p.468
-
 ;; CTRL-zおよびESC-zで、画面を1行「上」または「下」にスクロールする。
 (defun scroll-up-one ( ) "Scroll up 1 line." (interactive)
   (scroll-up (prefix-numeric-value current-prefix-arg)))
@@ -595,12 +603,12 @@
 ;; C-u -> scroll up
 ;; org-modeと関連パッケージには、C-uに多くの機能が付属してます。
 ;; refs: stackoverflow.com/questions/14302171/ctrlu-in-emacs-when-using-evil-key-bindings
-(define-key evil-normal-state-map (kbd "C-u") 'evil-scroll-up)
-(define-key evil-visual-state-map (kbd "C-u") 'evil-scroll-up)
-(define-key evil-insert-state-map (kbd "C-u")
-	    (lambda ()
-	      (interactive)
-	      (evil-delete (point-at-bol) (point))))
+;; (define-key evil-normal-state-map (kbd "C-u") 'evil-scroll-up)
+;; (define-key evil-visual-state-map (kbd "C-u") 'evil-scroll-up)
+;; (define-key evil-insert-state-map (kbd "C-u")
+;; 	    (lambda ()
+;; 	      (interactive)
+;; 	      (evil-delete (point-at-bol) (point))))
 
 ;; M-x zap-up-to-char -> M-z
 ;; refs: emacs.rubikitch.com/sd1507-builtin/
@@ -622,13 +630,11 @@
 ;; refs: emacs.rubikitch.com/sd1508-emacs-column/
 (require 'generic-x)
 
-;;;-----------------------------------------------------
-;;; End Custom Keybind
-;;;-----------------------------------------------------
+;;; End Custom Keybind------------------------------------
 
-;;;-------------------------------------------------------
-;;; Color
-;;;-------------------------------------------------------
+;;;;------------------------------------------------------
+;;;; Color
+;;;;------------------------------------------------------
 
 ;; 画面を黒く設定する
 ;; refs: kei10in.hatenablog.jp/entry/20101101/1288617632
@@ -678,5 +684,7 @@
   (set-frame-parameter nil 'alpha (cons alpha-num '(50))))
 
 ;; End Emacsで背景色の透明度を変更する---------------------
+
+;;; End Color------------------------------------------
 
 ;;; ~/.emacs.d/init.el ends here
