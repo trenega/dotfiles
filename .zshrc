@@ -159,6 +159,8 @@ alias memo='nvim ~/data/memo/memo'
 # Common Lisp: PEPL
 alias lispi='rlwrap ros run'
 
+# Clojure repl
+alias clor='lein repl'
 
 #End ALIAS AND FUNCTIONS------------------
 
