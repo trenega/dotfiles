@@ -466,6 +466,9 @@ inoremap <silent> zj <C-o>z-
 
 "End INSERT MODE KEYMAPS------------------
 
+
+inoremap <silent> a9 (
+
 " ファイルを編集したあと、sudoでそのファイルを保存する
 " Reference: https://laboradian.com/save-buffer-using-sudo-in-vim/
 cmap w!! w !sudo tee > /dev/null %
