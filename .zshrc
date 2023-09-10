@@ -160,7 +160,7 @@ alias memo='nvim ~/data/memo/memo'
 alias lispi='rlwrap ros run'
 
 # Clojure repl
-alias clor='lein repl'
+alias clj='lein repl'
 
 #End ALIAS AND FUNCTIONS------------------
 
