@@ -134,5 +134,9 @@ manpath=(
 export PERL_CPANM_OPT="--local-lib=~/local/lib/perl5"
 export PERL5LIB=$HOME/local/lib/perl5/lib/perl5:$PERL5LIB;
 
+# java
+# JAVA_HOME
+export JAVA_HOME=`/usr/libexec/java_home -v 17.0.8.1`
+
 # END OF FILE .zshenv ------------------------------------------------
 
