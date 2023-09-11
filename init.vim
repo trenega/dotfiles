@@ -473,7 +473,7 @@ inoremap <silent> a9 (
 " Reference: https://laboradian.com/save-buffer-using-sudo-in-vim/
 cmap w!! w !sudo tee > /dev/null %
 
-"Python codes execute on Terminal-------------------
+"Python codes execute on Terminal---------
 autocmd Filetype python nnoremap <buffer> <F5> :w<CR>:terminal python3 "%"<CR>
 " Python codes execute on Terminal (Vertical windows)
 " Please the new window close, then to codes window.
@@ -487,7 +487,7 @@ if has("autocmd")
         \ endif
 endif
 
-"Undoの永続化 Script------------------
+"Undoの永続化 Script----------------------
 " Reference:
 " Vimをカスタマイズしよう〜Vimはいいぞ！ゴリラと学ぶVim講座(6)
 " 2019.12.03
@@ -513,7 +513,7 @@ endif
 "        augroup END
 "endif
 
-"Search by Google on the cursor word----------------
+"Search by Google on the cursor word------
 " Reference: https://www.rasukarusan.com/entry/2019/03/09/011630
 function! s:search_by_google()
     let line = line(".")
@@ -995,5 +995,3 @@ syntax enable
 " ----------------------------------------------------------------------------
 " END OF FILE: init.vim
 " ----------------------------------------------------------------------------
-
-
