@@ -292,6 +292,9 @@
 ;; evil-surround
 (straight-use-package 'evil-surround)
 
+;; ediprolog
+(straight-use-package 'ediprolog)
+
 ;---------------------------------------------------------
 ;; End To install a package Write Here!-------------------
 
@@ -672,6 +675,11 @@
 ;; 設定ファイル用のメジャーモードの定義
 ;; refs: emacs.rubikitch.com/sd1508-emacs-column/
 (require 'generic-x)
+
+;; SWI-Prolog Setting
+;; (global-set-key "\C-c\C-e" 'ediprolog-dwim)
+(require 'ediprolog)
+(setq ediprolog-system 'swi)
 
 ;;; End Custom Keybind------------------------------------
 
