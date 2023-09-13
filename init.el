@@ -297,6 +297,9 @@
 ;; ediprolog
 (straight-use-package 'ediprolog)
 
+;; clojure-mode
+(straight-use-package 'clojure-mode)
+
 ;---------------------------------------------------------
 ;; End To install a package Write Here!-------------------
 
