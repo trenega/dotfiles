@@ -164,6 +164,8 @@
 (cond (window-system
   (setq x-select-enable-clipboard t)))
 
+;; 対応する括弧を光らせる
+(show-paren-mode 1)
 
 ;;; End Initialization-------------------------------------------
 
