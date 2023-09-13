@@ -302,6 +302,9 @@
 ;; clojure-mode
 (straight-use-package 'clojure-mode)
 
+;; rainbow-delimiters
+(straight-use-package 'rainbow-delimiters)
+
 ;---------------------------------------------------------
 ;; End To install a package Write Here!-------------------
 
@@ -345,6 +348,8 @@
 
   ;; アクティベート
   (ivy-mode 1))
+
+;;; End ivy Settings--------------------------------------
 
 ;; 検索語のハイライト
 ;; rers: https://takaxp.github.io/articles/qiita-helm2ivy.html
@@ -587,6 +592,9 @@
 ;; evil-surround
 (require 'evil-surround)
 (global-evil-surround-mode 1)
+
+;; rainbow-delimiters
+(add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
 
 ;;; End Pagckage Settings-------------------------------
 
