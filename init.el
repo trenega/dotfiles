@@ -19,7 +19,9 @@
 
 ;; 引数のディレクトリとそのサブディレクトリをload-pathに追加
 ;; ~/.emacs.d/straight/repos/melpa/recipes
-(add-to-load-path "straight/repos/melpa/recipes")
+;; ~/.emacs.d/public-repos
+(add-to-load-path "straight/repos/melpa/recipes"
+                  "public-repos")
 
 ;;; other-window-backwordを定義する
 ;; refs: 「GNU Emacs 拡張ガイド」p.16
@@ -678,8 +680,13 @@
 
 ;; SWI-Prolog Setting
 ;; (global-set-key "\C-c\C-e" 'ediprolog-dwim)
-(require 'ediprolog)
-(setq ediprolog-system 'swi)
+;; (require 'ediprolog)
+;;(setq ediprolog-system 'swi)
+(setq prolog-system 'swi)  ; optional, the system you are using;
+                            ; see `prolog-system' below for possible values
+(setq auto-mode-alist (append '(("\\.pl\\'" . prolog-mode)
+                                 ("\\.m\\'" . mercury-mode))
+                                auto-mode-alist))
 
 ;;; End Custom Keybind------------------------------------
 
