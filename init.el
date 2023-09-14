@@ -302,6 +302,11 @@
 ;; clojure-mode
 (straight-use-package 'clojure-mode)
 
+;; cider
+;; CIDER extends Emacs with support for interactive programming
+;; in Clojure.
+(straight-use-package 'cider)
+
 ;; rainbow-delimiters
 (straight-use-package 'rainbow-delimiters)
 
@@ -595,6 +600,11 @@
 
 ;; rainbow-delimiters
 (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
+
+;; CIDER
+(require 'cider)
+;; clojure-modeでCIDERを有効にする
+(add-hook 'clojure-mode-hook 'cider-mode)
 
 ;;; End Pagckage Settings-------------------------------
 
