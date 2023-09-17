@@ -278,7 +278,7 @@
 
 ;; tempbuf.el
 ;; 不要なバッファを自動的にkillしてくれる
-(straight-use-package 'tempbuf)
+;; (straight-use-package 'tempbuf)
 
 ;; smex
 ;; M-xを超強化するsmexパッケージ
@@ -579,9 +579,9 @@
 ;; tempbuf
 ;; automatically kill unnecessary buffers
 ;; refs: shigemk2.com/entry/20120908/1347090453
-(require 'tempbuf)
-(add-hook 'find-file-hooks 'turn-on-tempbuf-mode)
-(add-hook 'dired-mode-hook 'turn-on-tempbuf-mode)
+;; (require 'tempbuf)
+;; (add-hook 'find-file-hooks 'turn-on-tempbuf-mode)
+;; (add-hook 'dired-mode-hook 'turn-on-tempbuf-mode)
 
 ;; smex
 ;; M-x を超強化するsmexパッケージ
@@ -605,6 +605,8 @@
 (require 'cider)
 ;; clojure-modeでCIDERを有効にする
 (add-hook 'clojure-mode-hook 'cider-mode)
+;; CIDERのstart bannerを消す
+(setq-default cider-repl-display-help-banner nil)
 
 ;;; End Pagckage Settings-------------------------------
 
