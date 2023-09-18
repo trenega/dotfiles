@@ -310,6 +310,9 @@
 ;; rainbow-delimiters
 (straight-use-package 'rainbow-delimiters)
 
+;; ParEdit
+(straight-use-package 'paredit)
+
 ;---------------------------------------------------------
 ;; End To install a package Write Here!-------------------
 
@@ -607,6 +610,12 @@
 (add-hook 'clojure-mode-hook 'cider-mode)
 ;; CIDERのstart bannerを消す
 (setq-default cider-repl-display-help-banner nil)
+
+;; ParEdit
+(require 'paredit)
+
+(add-hook 'emacs-lisp-mode-hook 'enable-paredit-mode)
+(add-hook 'lisp-interaction-mode-hook 'enable-paredit-mode)
 
 ;;; End Pagckage Settings-------------------------------
 
