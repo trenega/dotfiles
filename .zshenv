@@ -138,5 +138,10 @@ export PERL5LIB=$HOME/local/lib/perl5/lib/perl5:$PERL5LIB;
 # JAVA_HOME
 export JAVA_HOME=`/usr/libexec/java_home -v 17.0.8.1`
 
+# clojure classpath
+CLOJURE_DIR=$HOME/.CLOJURE
+PROGRAMMING_CLOJURE_DIR=$CLOJURE_DIR/programming-clojure
+CLASSPATH=$CLASSPATH:$PROGRAMMING_CLOJURE_DIR
+
 # END OF FILE .zshenv ------------------------------------------------
 
