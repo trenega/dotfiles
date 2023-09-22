@@ -7,7 +7,7 @@
 ;;;;------------------------------------------------------
 
 ;;; load-pathを追加する関数を定義----------------------------
-;;  refs: 「Emacs実践入門」大竹智也 p.61
+;;  refer: 「Emacs実践入門」大竹智也 p.61
 (defun add-to-load-path (&rest paths)
   (let (path)
     (dolist (path paths paths)
@@ -24,7 +24,7 @@
                   "public-repos")
 
 ;;; other-window-backwordを定義する
-;; refs: 「GNU Emacs 拡張ガイド」p.16
+;; refer: 「GNU Emacs 拡張ガイド」p.16
 (defun other-window-backword (&optional n)    ; version 3
   "Select Nth previous window."
   (interactive "p")
@@ -34,7 +34,7 @@
 
 ;;; 一回に1行のスクロールする関数を定義する
 ;; 関数の名前をわかりやすい名前で参照する
-;; refs: 「GNU Emacs 拡張ガイド」p.24
+;; refer: 「GNU Emacs 拡張ガイド」p.24
 (defalias 'scroll-ahead 'scroll-up)
 (defalias 'scroll-behind 'scroll-down)
 
@@ -49,21 +49,21 @@
   (scroll-behind 1))
 
 ;;; カーソルをウィンドウの左上隅にジャンプさせる関数
-;; refs: 「GNU Emacs 拡張ガイド」p.26
+;; refer: 「GNU Emacs 拡張ガイド」p.26
 (defun point-to-top ()
   "Put point on top line of window."
   (interactive)
   (move-to-window-line 0))
 
 ;;; カーソルをウィンドウの左下隅にジャンプさせる関数
-;; refs: 「GNU Emacs 拡張ガイド」p.26
+;; refer: 「GNU Emacs 拡張ガイド」p.26
 (defun point-to-bottom ()
   "Put point at beginning of last visible line."
   (interactive)
   (move-to-window-line -1))
 
 ;;; 現在カーソルのある行がウィンドウの最初の行になるようにスクロールさせる
-;; refs: 「GNU Emacs 拡張ガイド」p.26
+;; refer: 「GNU Emacs 拡張ガイド」p.26
 (defun line-to-top ()
   "Move current line to top of window."
   (interactive)
@@ -86,7 +86,7 @@
 (setq default-frame-alist '((width . 125) (height . 38)))
 
 ;; Alt key -> Meta key setting
-;; refs: https://qiita.com/hayamiz/items/0f0b7a012ec730351678
+;; refer: https://qiita.com/hayamiz/items/0f0b7a012ec730351678
 (when (eq system-type 'darwin)
   (setq ns-command-modifier (quote meta)))
 
@@ -109,8 +109,8 @@
 (setq uniquify-ignore-buffers-re "[^*]+")
 
 ;; 以前開いたファイルを再度開いた時、元のカーソル位置を復元する
-;; refs: http://www.emacswiki.org/emacs/SavePlace
-;; refs: emacs.rubikitch.com/save-place-mode-emacs25/
+;; refer: http://www.emacswiki.org/emacs/SavePlace
+;; refer: emacs.rubikitch.com/save-place-mode-emacs25/
 ;; sakashita-net.jp/2017/08/emacs.html
 (save-place-mode 1)
 
@@ -135,7 +135,7 @@
 (scroll-bar-mode -1)
 
 ;;; relative numbering----------------------------------
-;; refs: https://www.reddit.com/r/emacs/comments/l7f85b/how_to_toggle_absolute_and_relative_numbering_in/
+;; refer: https://www.reddit.com/r/emacs/comments/l7f85b/how_to_toggle_absolute_and_relative_numbering_in/
 (defun my/display-set-relative ()
   (setq display-line-numbers 'relative))    ; or 'visual
 
@@ -147,7 +147,7 @@
 
 ;;;「Emacs実践入門」大竹智也[著]---------------------------
 ;; 行の折り返し表示を切り替える
-;; refs: 「Emacs実践入門」大竹智也[著] p.81
+;; refer: 「Emacs実践入門」大竹智也[著] p.81
 (require 'bind-key)
 (bind-key "C-c l" 'toggle-truncate-lines)
 
@@ -160,7 +160,7 @@
 ;; clipboard Setting--------------------------------------
 ;; Emacsから他のエディターにAlt+vでペーストはできるが、その逆にEmacsへは
 ;; ペーストできない。
-;; refs: saitodev.co/article/Emacsでクリップボードを使ってコピペしたい/
+;; refer: saitodev.co/article/Emacsでクリップボードを使ってコピペしたい/
 (cond (window-system
   (setq x-select-enable-clipboard t)))
 
@@ -193,7 +193,7 @@
 
 ;;; straight.el-------------------------------------------
 ;;  Next-generation, purely functional package manager for the Emacs hacker.
-;;  refs: github.com/radian-software/straight.el
+;;  refer: github.com/radian-software/straight.el
 (defvar bootstrap-version)
 (let ((bootstrap-file
        (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
@@ -331,7 +331,7 @@
 (dired-recent-mode 1)
 
 ;;; ivy Settings------------------------------------------
-;; refs: https://takaxp.github.io/articles/qiita-helm2ivy.html
+;; refer: https://takaxp.github.io/articles/qiita-helm2ivy.html
 (when (require 'ivy nil t)
 
   ;; M-o を ivy-hydra-read-action に割り当てる．
@@ -404,7 +404,7 @@
 
 ;; counsel-recentf 再定義
 ;; ファイルの表示を`~`から初める設定
-;; refs: https://takaxp.github.io/articles/qiita-helm2ivy.html#org87d665a3
+;; refer: https://takaxp.github.io/articles/qiita-helm2ivy.html#org87d665a3
 (defun ad:counsel-recentf ()
   "Find a file on `recentf-list'."
   (interactive)
@@ -428,7 +428,7 @@
 ;; For an experienced Emacs User it is nothing more than
 ;; a convoluted key map, but for a Evil user coming from
 ;; Vim it means an easier start.
-;; refs: https://github.com/cofi/evil-leader
+;; refer: https://github.com/cofi/evil-leader
 (require 'evil-leader)
 (global-evil-leader-mode)
 (evil-leader/set-leader "<SPC>")
@@ -485,7 +485,7 @@
 
 ;;; SLIME settings----------------------------------------
 ;; SBCL をデフォルトのCommon Lisp処理系に設定
-;; refs: http://modern-cl.blogspot.com/2011/04/3-slime.html
+;; refer: http://modern-cl.blogspot.com/2011/04/3-slime.html
 ;; (setq inferior-lisp-program "sbcl")  ;Steel Bank Comoon Lisp
 (setq inferior-lisp-program "ccl")      ;Clozure CL
 ;; cclをload-pathに追加
@@ -505,16 +505,16 @@
 
 ;;; company Setting---------------------------------------
 ;; 補完用パッケージ
-;; refs: https://qiita.com/sune2/items/b73037f9e85962f5afb7
+;; refer: https://qiita.com/sune2/items/b73037f9e85962f5afb7
 (require 'company)
 ;; (global-company-mode t) ; 全バッファで有効にする
-(add-hook 'after-init-hook 'global-company-mode) ; refs: http://company-mode.github.io/
+(add-hook 'after-init-hook 'global-company-mode) ; refer: http://company-mode.github.io/
 (setq company-idle-delay 0) ; デフォルトは0.5
 (setq company-minimum-prefix-length 2) ; デフォルトは4
 (setq company-selection-wrap-around t) ; 候補の一番下でさらに下に行こうとすると一番上に戻る
 
 ;; 色付けをauto-complete風に変更する
-;; refs: https://qiita.com/syohex/items/8d21d7422f14e9b53b17
+;; refer: https://qiita.com/syohex/items/8d21d7422f14e9b53b17
 (set-face-attribute 'company-tooltip nil
                     :foreground "black" :background "lightgrey")
 (set-face-attribute 'company-tooltip-common nil
@@ -531,7 +531,7 @@
                     :background "gray40")
 
 ;; Keybind
-;; refs: https://qiita.com/syohex/items/8d21d7422f14e9b53b17
+;; refer: https://qiita.com/syohex/items/8d21d7422f14e9b53b17
 (global-set-key (kbd "C-M-i") 'company-complete)
 
 ;; C-n, C-pで補完候補を次/前の候補を選択
@@ -553,7 +553,7 @@
 
 ;; Flycheck Settings--------------------------------------
 ;; MacOS $PATH環境変数を修正する
-;; refs: https://www.flycheck.org/en/latest/
+;; refer: https://www.flycheck.org/en/latest/
 (package-install 'exec-path-from-shell)
 (exec-path-from-shell-initialize)
 
@@ -568,7 +568,7 @@
 ;;   (flycheck-pos-tip-mode))
 
 ;; Disply Flycheck error list window
-;; refs: blog.3qe.us/entry/2022/09/29/124700
+;; refer: blog.3qe.us/entry/2022/09/29/124700
 ;; (add-to-list 'display-buffer-alist
 ;; 	     `(,(rx bos "*Flycheck errors*" eos)
 ;;               (display-buffer-reuse-window
@@ -581,7 +581,7 @@
 
 ;; tempbuf
 ;; automatically kill unnecessary buffers
-;; refs: shigemk2.com/entry/20120908/1347090453
+;; refer: shigemk2.com/entry/20120908/1347090453
 ;; (require 'tempbuf)
 ;; (add-hook 'find-file-hooks 'turn-on-tempbuf-mode)
 ;; (add-hook 'dired-mode-hook 'turn-on-tempbuf-mode)
@@ -624,7 +624,7 @@
 ;;;;----------------------------------------------------
 
 ;; C-hをBackspaceに変更、C-?にhelpをmapping---------------
-;; refs: malkalech.com/emacs_c-h_backspac:
+;; refer: malkalech.com/emacs_c-h_backspac:
 ;; C-h -> delete-backward-char
 (define-key key-translation-map [?\C-h] [?\C-?])
 
@@ -668,7 +668,7 @@
 (key-chord-define-global "a="  "+")
 
 ;; 著者が勧める時間節約法
-;; refs: UNIX POWER TOOLS 19.7 著者が勧める時間節約法 p.468
+;; refer: UNIX POWER TOOLS 19.7 著者が勧める時間節約法 p.468
 ;; CTRL-zおよびESC-zで、画面を1行「上」または「下」にスクロールする。
 (defun scroll-up-one ( ) "Scroll up 1 line." (interactive)
   (scroll-up (prefix-numeric-value current-prefix-arg)))
@@ -684,7 +684,7 @@
 
 ;; C-u -> scroll up
 ;; org-modeと関連パッケージには、C-uに多くの機能が付属してます。
-;; refs: stackoverflow.com/questions/14302171/ctrlu-in-emacs-when-using-evil-key-bindings
+;; refer: stackoverflow.com/questions/14302171/ctrlu-in-emacs-when-using-evil-key-bindings
 ;; (define-key evil-normal-state-map (kbd "C-u") 'evil-scroll-up)
 ;; (define-key evil-visual-state-map (kbd "C-u") 'evil-scroll-up)
 ;; (define-key evil-insert-state-map (kbd "C-u")
@@ -693,7 +693,7 @@
 ;; 	      (evil-delete (point-at-bol) (point))))
 
 ;; M-x zap-up-to-char -> M-z
-;; refs: emacs.rubikitch.com/sd1507-builtin/
+;; refer: emacs.rubikitch.com/sd1507-builtin/
 ;; 指定した文字の直前までを削除する
 ;; (require 'misc)
 ;; (bind-key "M-z" 'zap-up-to-char)
@@ -702,14 +702,14 @@
 (bind-key "M-z" 'zop-up-to-char)
 
 ;; 単語移動の亜種
-;; refs: emacs.rubikitch.com/sd1507-builtin/
+;; refer: emacs.rubikitch.com/sd1507-builtin/
 (require 'misc)
 (require 'bind-key)
 (bind-key "M-f" 'forward-to-word)  ;移動先が先頭になる
 (bind-key "M-b" 'backward-to-word) ;移動先が末尾になる
 
 ;; 設定ファイル用のメジャーモードの定義
-;; refs: emacs.rubikitch.com/sd1508-emacs-column/
+;; refer: emacs.rubikitch.com/sd1508-emacs-column/
 (require 'generic-x)
 
 ;; SWI-Prolog Setting
@@ -722,14 +722,29 @@
                                  ("\\.m\\'" . mercury-mode))
                                 auto-mode-alist))
 
+;; alias my-keys
+(defalias 'my-keys 'describe-personal-keybindings)
 ;;; End Custom Keybind------------------------------------
+
+;;;;------------------------------------------------------
+;;;; Customize Settings
+;;;;------------------------------------------------------
+
+;; cideraで補完候補をfuzzy matchさせる
+;; refer: docs.cider.mx/cider/usage/code_completion.html#fuzzy-condidate-matching
+(add-hook 'cider-repl-mode-hook
+          #'cider-company-enable-fuzzy-completion)
+(add-hook 'cider-mode-hook
+          #'cider-company-enable-fuzzy-completion)
+
+;;; End Customize Settings--------------------------------
 
 ;;;;------------------------------------------------------
 ;;;; Color
 ;;;;------------------------------------------------------
 
 ;; 画面を黒く設定する
-;; refs: kei10in.hatenablog.jp/entry/20101101/1288617632
+;; refer: kei10in.hatenablog.jp/entry/20101101/1288617632
 (setq default-frame-alist
       (append
        (list
@@ -742,7 +757,7 @@
 ;; zenburn-theme
 ;; To Customize just the lighter background colors,
 ;; you could add to your init file:
-;; refs: github.com/bbatsov/zenburn-emacs
+;; refer: github.com/bbatsov/zenburn-emacs
 (setq zenburn-override-colors-alist
       '(("zenburn-bg+05" . "#282828")
         ("zenburn-bg+1"  . "#2F2F2F")
@@ -769,7 +784,7 @@
   (set-frame-parameter nil 'alpha 50))  ;透明度
 
 ;; 透明度を変更するコマンド M-x set-alpha
-;; refs: http://qiita.com/marcy@github/items/ba0d018a03381a964f24
+;; refer: http://qiita.com/marcy@github/items/ba0d018a03381a964f24
 (defun set-alpha (alpha-num)
   "set frame parameter 'alpha"
   (interactive "nAlpha: ")
