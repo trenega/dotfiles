@@ -374,7 +374,7 @@ nnoremap <silent> b9 :<C-u>:b9<CR>
 let g:miniBufExplMapWindowNavVim = 1
 let g:miniBufExplMapWindowNavArrows = 1
 
-" refs: https://uskey.hatenablog.com/entry/2015/08/16/080000
+" refer: https://uskey.hatenablog.com/entry/2015/08/16/080000
 " 無条件でバッファ一覧が開く
 " let g:miniBufExplorerMoreThanOne = 0
 
@@ -505,7 +505,7 @@ inoremap <C-]> <Esc><Right>
 let mapleader = "\<Space>"
 
 " Make a simple "search" text object.
-" refs:https://vim.fandom.com/wiki/Copy_or_change_search_hit
+" refer:https://vim.fandom.com/wiki/Copy_or_change_search_hit
 " 検索を実行するには通常と同様に /something を使う
 " cgn を押し、最初の一致項目を置換して、 <Esc> を押す
 " n.n.n.n.n. と押して、全ての一致項目を確認しながら置換する
@@ -521,7 +521,7 @@ omap s :normal vs<CR>
 nnoremap <Leader> <Nop>
 
 " {motion} のテキストを大文字にする。
-" refs: ~/.config/nvim/dein/.cache/init.vim/.dein/doc/change.jax
+" refer: ~/.config/nvim/dein/.cache/init.vim/.dein/doc/change.jax
 map! <Leader>u <Esc>gUiw`]a
 
 " カレントファイルを開く。
@@ -533,7 +533,7 @@ nnoremap <Leader>e :e<Space>
 nnoremap <Leader>n :enew<CR>
 
 " ファイルを保存する
-" refs: thinca vimrc
+" refer: thinca vimrc
 nnoremap <silent> <Leader>w :<C-u>update<CR>
 nnoremap <silent> <Leader>W :<C-u>update!<CR>
 " nvimを終了する
@@ -643,7 +643,7 @@ imap <c-x><c-f> <plug>(fzf-complete-path)
 imap <c-x><c-j> <plug>(fzf-complete-file-ag)
 imap <c-x><c-l> <plug>(fzf-complete-line)
 
-" refs: https://qiita.com/yuucu/items/03baae12d40f9699ec59
+" refer: https://qiita.com/yuucu/items/03baae12d40f9699ec59
 nnoremap <silent> <Leader>f :Files<CR>
 nnoremap <silent> <Leader>g :GFiles<CR>
 nnoremap <silent> <Leader>G :GFiles?<CR>
