@@ -75,7 +75,7 @@ let g:python3_host_prog = $HOME . '/.pyenv/versions/neovim3/bin/python'
 set rtp+=/usr/local/opt/fzf
 
 " Use vim-polyglot
-" refs: https://eh-career.com/engineerhub/entry/2019/01/28/103000
+" refer: https://eh-career.com/engineerhub/entry/2019/01/28/103000
 set runtimepath+=~/src/vim-polyglot
 
 " dein update Setting
@@ -156,7 +156,7 @@ set statusline=%<%f\ %h%m%r%{FugitiveStatusline()}%=%-14.(%l,%c%V%)\ %P
 
 " Vimのページスクロールの挙動をちょっと改善するマッピング
 "「<C-f>/<C-b>を入力すると<C-d>/<C-u>を2回実行する」マッピングを作りました。
-" refs: https://zenn.dev/kawarimidoll/articles/17dad86545cbb4
+" refer: https://zenn.dev/kawarimidoll/articles/17dad86545cbb4
 nnoremap <C-f> <Cmd>set scroll=0<CR><Cmd>execute 'normal!' repeat("\<C-d>", v:count1 * 2)<CR>
 nnoremap <C-b> <Cmd>set scroll=0<CR><Cmd>execute 'normal!' repeat("\<C-u>", v:count1 * 2)<CR>
 
@@ -282,7 +282,7 @@ inoremap <C-]> <Esc><Right>
 let mapleader = "\<Space>"
 
 " Make a simple "search" text object.
-" refs:https://vim.fandom.com/wiki/Copy_or_change_search_hit
+" refer:https://vim.fandom.com/wiki/Copy_or_change_search_hit
 " 検索を実行するには通常と同様に /something を使う
 " cgn を押し、最初の一致項目を置換して、 <Esc> を押す
 " n.n.n.n.n. と押して、全ての一致項目を確認しながら置換する
@@ -298,14 +298,14 @@ omap s :normal vs<CR>
 nnoremap <Leader> <Nop>
 
 " space 4で行末へ移動（shiftを押しながらの$は、手が遠いので）
-" refs: https://original-game.com/mini_howto/how-to-use-the-leader-key-in-vim/
+" refer: https://original-game.com/mini_howto/how-to-use-the-leader-key-in-vim/
 nnoremap <Leader>4 $
 
 " space 6で行頭へ移動（英字キーボードの場合、shiftを押しながらの^は、手が遠いので）
 nnoremap <Leader>6 ^
 
 " {motion} のテキストを大文字にする。
-" refs: ~/.config/nvim/dein/.cache/init.vim/.dein/doc/change.jax
+" refer: ~/.config/nvim/dein/.cache/init.vim/.dein/doc/change.jax
 map! <Leader>U <Esc>gUiw`]a
 
 " {motion} のテキストを小文字にする。
@@ -323,7 +323,7 @@ nnoremap <Leader>n :enew<CR>
 nnoremap <Leader>r :r<Space>
 
 " ファイルを保存する
-" refs: thinca vimrc
+" refer: thinca vimrc
 nnoremap <silent> <Leader>w :<C-u>update<CR>
 nnoremap <silent> <Leader>W :<C-u>update!<CR>
 " nvimを終了する
@@ -393,7 +393,7 @@ nnoremap <Leader>sw :<C-u>SweepTrail<CR>
 nnoremap <Leader>ut :<C-u>UndotreeToggle<CR>
 
 "vim-fugitive Mapping---------------------
-" refs: https://code-log.hatenablog.com/entry/2018/12/08/101732
+" refer: https://code-log.hatenablog.com/entry/2018/12/08/101732
 nnoremap <Leader>ga :Git add %:p<CR><CR>
 nnoremap <Leader>gs :Gstatus<CR>
 nnoremap <Leader>gd :Gdiff<CR>
@@ -401,7 +401,7 @@ nnoremap <Leader>gl :GlLog<CR>
 nnoremap <Leader>gb :Gblame<CR>
 
 " Reload init.vim without restarting neovim
-" refs: https://dev-to.translate.goog/reobin/reload-init-vim-without-restarting-neovim-1h82?_x_tr_sl=en&_x_tr_tl=ja&_x_tr_hl=ja&_x_tr_pto=sc
+" refer: https://dev-to.translate.goog/reobin/reload-init-vim-without-restarting-neovim-1h82?_x_tr_sl=en&_x_tr_tl=ja&_x_tr_hl=ja&_x_tr_pto=sc
 nnoremap <silent> <Leader>rl :source $MYVIMRC<CR>
 
 "End Leader Key Setting-------------------
@@ -427,7 +427,7 @@ imap <c-x><c-f> <plug>(fzf-complete-path)
 imap <c-x><c-j> <plug>(fzf-complete-file-ag)
 imap <c-x><c-l> <plug>(fzf-complete-line)
 
-" refs: https://qiita.com/yuucu/items/03baae12d40f9699ec59
+" refer: https://qiita.com/yuucu/items/03baae12d40f9699ec59
 nnoremap <silent> <Leader>f :Files<CR>
 nnoremap <silent> <Leader>g :GFiles<CR>
 nnoremap <silent> <Leader>G :GFiles?<CR>
