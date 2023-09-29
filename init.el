@@ -436,6 +436,7 @@
 (evil-leader/set-key
   "s" 'switch-to-buffer             ; Switch to buffer
   "t" 'find-file                    ; find file Table
+  "r" 'insert-file                  ; insert-file
   "w" 'save-buffer                  ; Wrote <file>
   "k" 'kill-buffer                  ; Kill buffer
   "q" 'save-buffers-kill-emacs      ; Quit save buffers kill emacs
@@ -723,7 +724,11 @@
                                 auto-mode-alist))
 
 ;; alias my-keys
-(defalias 'my-keys 'describe-personal-keybindings)
+(defalias 'my-key 'describe-personal-keybindings)
+
+;; alias bindings
+(defalias 'bindings 'describe-bindings)
+
 ;;; End Custom Keybind------------------------------------
 
 ;;;;------------------------------------------------------
