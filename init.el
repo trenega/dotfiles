@@ -742,6 +742,24 @@
 (add-hook 'cider-mode-hook
           #'cider-company-enable-fuzzy-completion)
 
+;;
+;; Mac OS のクリップボードと同期する
+;; https://suwaru.tokyo/%E3%80%90%E7%B0%A1%E5%8D%98%E3%80%91emacs%E5%9F%BA%E6%9C%AC%E7%9A%84%E3%81%AA%E8%A8%AD%E5%AE%9A%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%AE%E6%9B%B8%E3%81%8D%E6%96%B9%E3%80%90init-el%E3%80%91/
+(defun copy-from-osx ()
+ (shell-command-to-string "pbpaste"))
+(defun paste-to-osx (text &optional push)
+ (let ((process-connection-type nil))
+     (let ((proc (start-process "pbcopy" "*Messages*" "pbcopy")))
+       (process-send-string proc text)
+       (process-send-eof proc))))
+(setq interprogram-cut-function 'paste-to-osx)
+(setq interprogram-paste-function 'copy-from-osx)
+
+;; "yes or no" の選択を "y or n" にする
+(fset 'yes-or-no-p 'y-or-n-p)
+
+;; End suraru.tokyo
+
 ;;; End Customize Settings--------------------------------
 
 ;;;;------------------------------------------------------
