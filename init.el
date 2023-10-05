@@ -760,6 +760,30 @@
 
 ;; End suraru.tokyo
 
+;; Gauche-------------------------------------------------
+;; Schemeの処理系
+;; refer: https://haskell.hatenablog.com/entry/Settings-to-use-Gauche_Scheme-with-Emacs
+;; 日本語を扱うことを可能にする
+(modify-coding-system-alist 'process "gosh" '(utf-8 . utf-8))
+
+(setq scheme-program-name "gosh -i")
+(autoload 'scheme-mode "cmuscheme" "Major mode for scheme." t)
+(autoload 'run-scheme "cmuscheme" "Run a n inferior Scheme process." t)
+
+;; Gauche Settings
+(defun scheme-other-window ()
+  "Run scheme on other window"
+  (interactive)
+  (switch-to-buffer-other-window
+    (get-buffer-create "*scheme*"))
+  (run-scheme scheme-program-name))
+
+(define-key global-map
+  "\C-cs" 'scheme-other-window)
+
+;; End Gauche---------------------------------------------
+
+
 ;;; End Customize Settings--------------------------------
 
 ;;;;------------------------------------------------------
