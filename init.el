@@ -313,7 +313,9 @@
 ;; ParEdit
 (straight-use-package 'paredit)
 
-;---------------------------------------------------------
+;; gauche-mode
+(straight-use-package 'gauche-mode)
+
 ;; End To install a package Write Here!-------------------
 
 ;;; End straight.el---------------------------------------
@@ -780,6 +782,8 @@
 
 (define-key global-map
   "\C-cs" 'scheme-other-window)
+
+;;(require 'gauche-mode-autoloads)
 
 ;; End Gauche---------------------------------------------
 
