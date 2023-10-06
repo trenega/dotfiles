@@ -766,11 +766,11 @@
 ;; 日本語を扱うことを可能にする
 (modify-coding-system-alist 'process "gosh" '(utf-8 . utf-8))
 
+;; Gauche Settings
 (setq scheme-program-name "gosh -i")
 (autoload 'scheme-mode "cmuscheme" "Major mode for scheme." t)
 (autoload 'run-scheme "cmuscheme" "Run a n inferior Scheme process." t)
 
-;; Gauche Settings
 (defun scheme-other-window ()
   "Run scheme on other window"
   (interactive)
@@ -782,6 +782,37 @@
   "\C-cs" 'scheme-other-window)
 
 ;; End Gauche---------------------------------------------
+
+;; Schemeの式をEmacsで簡単に実行する-------------------------
+;; refer: https://ryu-tk.hatenablog.com/entry/2021/12/21/013537
+;; (defun my-execute-scheme ()
+;;   (interactive)
+;;   (if (string= mode-name "Scheme")
+;;       (progn (run-scheme scheme-program-name)
+;;              (end-of-buffer)
+;;              (other-window -1)
+;;              (scheme-send-last-sexp))
+;;     )
+;;   )
+
+;; (add-hook 'scheme-mode-hook
+;;           '(lambda ()
+;;              (define-key scheme-mode-map (kbd "C-c C-j") 'my-execute-scheme)))
+
+
+;; (defun my-execute-scheme-all ()
+;;   (interactive)
+;;   (if (string= mode-name "Scheme")
+;;       (progn (run-scheme scheme-program-name)
+;;              (end-of-buffer)
+;;              (other-window -1)
+;;              (scheme-load-file (buffer-file-name (current-buffer))))))
+;; ;;(global-set-key (kbd "C-c C-a") 'my-execute-scheme-all)
+;; (add-hook 'scheme-mode-hook
+;;           '(lambda ()
+;;              (define-key scheme-mode-map (kbd "C-c C-a") 'my-execute-scheme-all)))
+
+;; End Schemeの式をEmacsで簡単に実行する---------------------
 
 
 ;;; End Customize Settings--------------------------------
