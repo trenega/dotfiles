@@ -6,7 +6,7 @@
 ;;;; Define function
 ;;;;------------------------------------------------------
 
-;;; load-pathを追加する関数を定義----------------------------
+;;; load-pathを追加する関数を定義
 ;;  refer: 「Emacs実践入門」大竹智也 p.61
 (defun add-to-load-path (&rest paths)
   (let (path)
@@ -134,7 +134,7 @@
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
 
-;;; relative numbering----------------------------------
+;;; relative numbering
 ;; refer: https://www.reddit.com/r/emacs/comments/l7f85b/how_to_toggle_absolute_and_relative_numbering_in/
 (defun my/display-set-relative ()
   (setq display-line-numbers 'relative))    ; or 'visual
@@ -145,7 +145,7 @@
 (add-hook 'evil-insert-state-entry-hook #'my/display-set-absolute)
 (add-hook 'evil-insert-state-exit-hook #'my/display-set-relative)
 
-;;;「Emacs実践入門」大竹智也[著]---------------------------
+;;;「Emacs実践入門」大竹智也[著]
 ;; 行の折り返し表示を切り替える
 ;; refer: 「Emacs実践入門」大竹智也[著] p.81
 (require 'bind-key)
@@ -157,7 +157,7 @@
 ;; タイトルバーにファイルのフルパスを表示する
 (setq frame-title-format "%f")
 
-;; clipboard Setting--------------------------------------
+;;; clipboard Setting
 ;; Emacsから他のエディターにAlt+vでペーストはできるが、その逆にEmacsへは
 ;; ペーストできない。
 ;; refer: saitodev.co/article/Emacsでクリップボードを使ってコピペしたい/
@@ -167,7 +167,7 @@
 ;; 対応する括弧を光らせる
 (show-paren-mode 1)
 
-;;; End Initialization-------------------------------------------
+;;; End Initialization------------------------------------
 
 ;;; custom-set--------------------------------------------
 ;;  These 'custom-set are from `Emacs'! I don't write here.
@@ -191,7 +191,7 @@
 ;;;; Package Manager Settings
 ;;;;------------------------------------------------------
 
-;;; straight.el-------------------------------------------
+;;; straight.el
 ;;  Next-generation, purely functional package manager for the Emacs hacker.
 ;;  refer: github.com/radian-software/straight.el
 (defvar bootstrap-version)
@@ -221,7 +221,10 @@
 ;; want.
 (straight-use-package 'el-patch)
 
-;; To install a package Write Here!-----------------------
+;;--------------------------------------------------------
+;; To install a package Write Here!
+;;--------------------------------------------------------
+
 
 ;; zenburn-theme
 (straight-use-package 'zenburn-theme)
@@ -316,7 +319,9 @@
 ;; gauche-mode
 (straight-use-package 'gauche-mode)
 
-;; End To install a package Write Here!-------------------
+;;--------------------------------------------------------
+;; End To install a package Write Here!
+;;--------------------------------------------------------
 
 ;;; End straight.el---------------------------------------
 
@@ -359,8 +364,6 @@
   ;; アクティベート
   (ivy-mode 1))
 
-;;; End ivy Settings--------------------------------------
-
 ;; 検索語のハイライト
 ;; rers: https://takaxp.github.io/articles/qiita-helm2ivy.html
 (custom-set-faces
@@ -382,7 +385,7 @@
    ((((class color) (background light)) :foreground "#439943" :underline t)
     (((class color) (background dark)) :foreground "#33bb33" :underline t))))
 
-;;; End ivy Setting---------------------------------------
+;;; End ivy Settings--------------------------------------
 
 ;; counsel Settings
 (when (require 'counsel nil t)
@@ -393,7 +396,7 @@
   (global-set-key (kbd "C-M-z") 'counsel-fzf)
   (global-set-key (kbd "C-M-r") 'counsel-recentf)
   (global-set-key (kbd "C-x C-b") 'counsel-ibuffer)
-  (global-set-key (kbd "C-M-f") 'counsel-ag)
+;;  (global-set-key (kbd "C-M-f") 'counsel-ag)
 
   ;; アクティベート
   (counsel-mode 1))
@@ -467,6 +470,7 @@
   "a" 'beginning-of-line            ; go to beginning of line
   ";" 'end-of-line                  ; got to end of line
   )
+
 ;;; End Evil Leader-------------------------------------
 
 ;; smartrep
@@ -552,9 +556,9 @@
 ;; 各種メジャーモードでも C-M-iで company-modeの補完を使う
 (define-key emacs-lisp-mode-map (kbd "C-M-i") 'company-complete)
 
-;;; End company Setting-----------------------------------
+;;; End company Settings-----------------------------------
 
-;; Flycheck Settings--------------------------------------
+;;; Flycheck Settings--------------------------------------
 ;; MacOS $PATH環境変数を修正する
 ;; refer: https://www.flycheck.org/en/latest/
 (package-install 'exec-path-from-shell)
@@ -626,7 +630,7 @@
 ;;; Custom Keybind
 ;;;;----------------------------------------------------
 
-;; C-hをBackspaceに変更、C-?にhelpをmapping---------------
+;; C-hをBackspaceに変更、C-?にhelpをmapping
 ;; refer: malkalech.com/emacs_c-h_backspac:
 ;; C-h -> delete-backward-char
 (define-key key-translation-map [?\C-h] [?\C-?])
@@ -636,7 +640,7 @@
 (bind-key* "C-h" 'delete-backward-char)
 
 ;; C-? -> help
-; (global-set-key (kbd "C-?") 'help-for-help)
+;; (global-set-key (kbd "C-?") 'help-for-help)
 (bind-key* "C-?" 'help-for-help)
 
 ;; "fd" to Esc
@@ -715,7 +719,7 @@
 ;; refer: emacs.rubikitch.com/sd1508-emacs-column/
 (require 'generic-x)
 
-;; SWI-Prolog Setting
+;; SWI-Prolog Settings
 ;; (global-set-key "\C-c\C-e" 'ediprolog-dwim)
 ;; (require 'ediprolog)
 ;;(setq ediprolog-system 'swi)
@@ -744,7 +748,6 @@
 (add-hook 'cider-mode-hook
           #'cider-company-enable-fuzzy-completion)
 
-;;
 ;; Mac OS のクリップボードと同期する
 ;; https://suwaru.tokyo/%E3%80%90%E7%B0%A1%E5%8D%98%E3%80%91emacs%E5%9F%BA%E6%9C%AC%E7%9A%84%E3%81%AA%E8%A8%AD%E5%AE%9A%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%AE%E6%9B%B8%E3%81%8D%E6%96%B9%E3%80%90init-el%E3%80%91/
 (defun copy-from-osx ()
@@ -762,7 +765,7 @@
 
 ;; End suraru.tokyo
 
-;; Gauche-------------------------------------------------
+;;; Gauche------------------------------------------------
 ;; Schemeの処理系
 ;; refer: https://haskell.hatenablog.com/entry/Settings-to-use-Gauche_Scheme-with-Emacs
 ;; 日本語を扱うことを可能にする
@@ -785,9 +788,9 @@
 
 ;;(require 'gauche-mode-autoloads)
 
-;; End Gauche---------------------------------------------
+;;; End Gauche--------------------------------------------
 
-;; Schemeの式をEmacsで簡単に実行する-------------------------
+;;; Schemeの式をEmacsで簡単に実行する------------------------
 ;; refer: https://ryu-tk.hatenablog.com/entry/2021/12/21/013537
 ;; (defun my-execute-scheme ()
 ;;   (interactive)
@@ -816,7 +819,7 @@
 ;;           '(lambda ()
 ;;              (define-key scheme-mode-map (kbd "C-c C-a") 'my-execute-scheme-all)))
 
-;; End Schemeの式をEmacsで簡単に実行する---------------------
+;;; End Schemeの式をEmacsで簡単に実行する--------------------
 
 
 ;;; End Customize Settings--------------------------------
@@ -825,7 +828,7 @@
 ;;;; Color
 ;;;;------------------------------------------------------
 
-;; 画面を黒く設定する
+;;; 画面を黒く設定する
 ;; refer: kei10in.hatenablog.jp/entry/20101101/1288617632
 (setq default-frame-alist
       (append
@@ -836,7 +839,7 @@
 	)
        default-frame-alist))
 
-;; zenburn-theme
+;;; zenburn-theme
 ;; To Customize just the lighter background colors,
 ;; you could add to your init file:
 ;; refer: github.com/bbatsov/zenburn-emacs
@@ -848,11 +851,11 @@
 
 (load-theme 'zenburn t)
 
-;; visual modeの範囲指定を見易くする
+;;; visual modeの範囲指定を見易くする
 ;; refs :https://cortyuming.hateblo.jp/entry/20140218/p1
 (set-face-attribute 'highlight nil :foreground 'unspecified)
 
-;; Emacsで背景色の透明度を変更する-------------------------
+;;; Emacsで背景色の透明度を変更する------------------------
 ;; http://osanai.org/17/
 ;; (if window-system (progn
 ;;   (set-background-color "Black")
@@ -860,20 +863,20 @@
 ;;   (set-cursor-color "Gray")
 ;;   (set-frame-parameter nil 'alpha 50))) ;透明度
 
-;; Emacsの画面に透明度を設定する
+;;; Emacsの画面に透明度を設定する
 (defun set-transparency ()
   "set frame transparency"
   (set-frame-parameter nil 'alpha 50))  ;透明度
 
-;; 透明度を変更するコマンド M-x set-alpha
+;;; 透明度を変更するコマンド M-x set-alpha
 ;; refer: http://qiita.com/marcy@github/items/ba0d018a03381a964f24
 (defun set-alpha (alpha-num)
   "set frame parameter 'alpha"
   (interactive "nAlpha: ")
   (set-frame-parameter nil 'alpha (cons alpha-num '(50))))
 
-;; End Emacsで背景色の透明度を変更する---------------------
+;;; End Emacsで背景色の透明度を変更する--------------------
 
-;;; End Color------------------------------------------
+;;;; End Color-----------------------------------------
 
 ;;; ~/.emacs.d/init.el ends here
