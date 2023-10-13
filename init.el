@@ -12,10 +12,10 @@
   (let (path)
     (dolist (path paths paths)
       (let ((default-directory
-	      (expand-file-name (concat user-emacs-directory path))))
-	(add-to-list 'load-path default-directory)
-	(if (fboundp 'normal-top-level-add-subdirs-to-load-path)
-	    (normal-top-level-add-subdirs-to-load-path))))))
+              (expand-file-name (concat user-emacs-directory path))))
+        (add-to-list 'load-path default-directory)
+        (if (fboundp 'normal-top-level-add-subdirs-to-load-path)
+            (normal-top-level-add-subdirs-to-load-path))))))
 
 ;; 引数のディレクトリとそのサブディレクトリをload-pathに追加
 ;; ~/.emacs.d/straight/repos/melpa/recipes
@@ -655,31 +655,22 @@
       key-chord-safety-interval-forward  0.25)
 
 ;; Don't use shift key. But I can type " ~ ! @ # $ % ^ & * ( ) _ + : " ".
-(key-chord-define-global ";`"  "~")
-(key-chord-define-global ";1"  "!")
-(key-chord-define-global ";2"  "@")
-(key-chord-define-global ";3"  "#")
-(key-chord-define-global ";4"  "$")
-(key-chord-define-global ";5"  "%")
-(key-chord-define-global ";6"  "^")
-(key-chord-define-global "a7"  "&")
-(key-chord-define-global "a8"  "*")
-(key-chord-define-global "a9"  "(")
-(key-chord-define-global "a0"  ")")
-(key-chord-define-global "a-"  "_")
-(key-chord-define-global "a="  "+")
-
-;; sticky-shift ;;２つでshiftを押した状態にする
-;; https://mugijiru.github.io/.emacs.d/keybinds/key-chord/
-(key-chord-define-global ";;"
-                         'event-apply-shift-modifier)
-
-(key-chord-define key-translation-map
-                  ";;"
-                  'event-apply-shift-modifier)
+;; (key-chord-define-global ";`"  "~")
+;; (key-chord-define-global ";1"  "!")
+;; (key-chord-define-global ";2"  "@")
+;; (key-chord-define-global ";3"  "#")
+;; (key-chord-define-global ";4"  "$")
+;; (key-chord-define-global ";5"  "%")
+;; (key-chord-define-global ";6"  "^")
+;; (key-chord-define-global "a7"  "&")
+;; (key-chord-define-global "a8"  "*")
+;; (key-chord-define-global "a9"  "(")
+;; (key-chord-define-global "a0"  ")")
+;; (key-chord-define-global "a-"  "_")
+;; (key-chord-define-global "a="  "+")
 
 ;; scheme-load-file
-(key-chord-define-global "sl" 'scheme-load-file) 
+(key-chord-define-global "sl" 'scheme-load-file)
 
 ;; switch-to-scheme
 (key-chord-define-global "go" 'switch-to-scheme)  ; "go" -> "gosh>"
@@ -750,11 +741,26 @@
   "view-mode と通常モードの切り替えコマンド"
   (interactive)
   (cond (view-mode
-         (hl-line-mode -1)
          (view-mode -1))
         (t
-         (hl-line-mode 1)
          (view-mode 1))))
+
+;; whitespace-mode
+;; https://mugijiru.github.io/.emacs.d/editing/view-mode/
+(require 'whitespace)
+(setq whitespace-style '(face
+                         trailing
+                         tabs
+                         spaces
+                         empty
+                         indentation))
+
+;; 保存時に自動的に余計な空白を消す
+;; https://mugijiru.github.io/.emacs.d/editing/view-mode/
+(setq whitespace-action '(auto-cleanup))
+
+;; whitespace-mode
+;;(global-whitespace-mode 1)
 
 
 ;; alias--------------------------------------------------
@@ -867,10 +873,10 @@
 (setq default-frame-alist
       (append
        (list
-	'(background-color . "Black")
-	'(foreground-color . "Lightgray")
-	'(cursor-color . "Gray")
-	)
+        '(background-color . "Black")
+        '(foreground-color . "Lightgray")
+        '(cursor-color . "Gray")
+        )
        default-frame-alist))
 
 ;;; zenburn-theme
