@@ -9,13 +9,13 @@
 ;;; load-pathを追加する関数を定義
 ;;  refer: 「Emacs実践入門」大竹智也 p.61
 (defun add-to-load-path (&rest paths)
- (let (path)
- (dolist (path paths paths)
- (let ((default-directory
- (expand-file-name (concat user-emacs-directory path))))
- (add-to-list 'load-path default-directory)
- (if (fboundp 'normal-top-level-add-subdirs-to-load-path)
-   (normal-top-level-add-subdirs-to-load-path))))))
+  (let (path)
+    (dolist (path paths paths)
+      (let ((default-directory
+              (expand-file-name (concat user-emacs-directory path))))
+        (add-to-list 'load-path default-directory)
+        (if (fboundp 'normal-top-level-add-subdirs-to-load-path)
+            (normal-top-level-add-subdirs-to-load-path))))))
 
 ;; 引数のディレクトリとそのサブディレクトリをload-pathに追加
 ;; ~/.emacs.d/straight/repos/melpa/recipes
@@ -25,12 +25,12 @@
 
 ;;; other-window-backwordを定義する
 ;; refer: 「GNU Emacs 拡張ガイド」p.16
-(defun other-window-backword (&optional n) ; version 3
- "Select Nth previous window."
- (interactive "p")
- (if n
- (other-window (- n))  ; nがnilでないとき
- (other-window -1)))     ; nがnilのとき
+(defun other-window-backword (&optional n)    ; version 3
+  "Select Nth previous window."
+  (interactive "p")
+  (if n
+      (other-window (- n))  ; nがnilでないとき
+    (other-window -1)))     ; nがnilのとき
 
 ;;; 一回に1行のスクロールする関数を定義する
 ;; 関数の名前をわかりやすい名前で参照する
@@ -89,11 +89,11 @@
 ;;(setq default-frame-alist '((width . 125) (height . 38)))
 
 ;; 起動時に fullscreen にする
-;; https://mugijiru.github.io/.emacs.d/ui/fullscreen/
 (if (or (eq window-system 'ns) (eq window-system 'darwin))
-   (add-hook 'window-setup-hook
-            (lambda ()
-            (set-frame-parameter nil 'fullscreen 'fullboth))))
+    (add-hook 'window-setup-hook
+              (lambda ()
+                (set-frame-parameter nil 'fullscreen 'fullboth))))
+
 
 ;; Alt key -> Meta key setting
 ;; refer: https://qiita.com/hayamiz/items/0f0b7a012ec730351678
@@ -189,10 +189,8 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(column-number-mode t)
- '(highlight-indent-guides-method 'character)
-;; '(highlight-indent-guides-responsive 'stack)
  '(initial-frame-alist '((height . 38) (width . 125) (left . 0) (top . 0)))
- ;;'(menu-bar-mode nil)
+ '(menu-bar-mode nil)
  '(tool-bar-mode nil))
 
 (custom-set-faces
@@ -246,6 +244,7 @@
 ;;--------------------------------------------------------
 ;; To install a package Write Here!
 ;;--------------------------------------------------------
+
 
 ;; zenburn-theme
 (straight-use-package 'zenburn-theme)
@@ -339,9 +338,6 @@
 
 ;; gauche-mode
 (straight-use-package 'gauche-mode)
-
-;; highlight-indent-guides
-(straight-use-package 'highlight-indent-guides)
 
 ;;--------------------------------------------------------
 ;; End To install a package Write Here!
@@ -630,15 +626,6 @@
 
 (add-hook 'emacs-lisp-mode-hook 'enable-paredit-mode)
 (add-hook 'lisp-interaction-mode-hook 'enable-paredit-mode)
-
-;; highlight-indent-guides
-;; https://github.com/DarthFennec/highlight-indent-guides
-(require 'highlight-indent-guides)
-(add-hook 'prog-mode-hook 'highlight-indent-guides-mode)
-
-(set-face-background 'highlight-indent-guides-odd-face "darkgray")
-(set-face-background 'highlight-indent-guides-even-face "dimgray")
-(set-face-foreground 'highlight-indent-guides-character-face "dimgray")
 
 ;;; End Pagckage Settings-------------------------------
 
