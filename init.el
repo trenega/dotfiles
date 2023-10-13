@@ -189,8 +189,9 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(column-number-mode t)
+ '(highlight-indent-guides-method 'character)
  '(initial-frame-alist '((height . 38) (width . 125) (left . 0) (top . 0)))
- '(menu-bar-mode nil)
+ ;;'(menu-bar-mode nil)
  '(tool-bar-mode nil))
 
 (custom-set-faces
@@ -338,6 +339,9 @@
 
 ;; gauche-mode
 (straight-use-package 'gauche-mode)
+
+;; highlight-indent-guides
+(straight-use-package 'highlight-indent-guides)
 
 ;;--------------------------------------------------------
 ;; End To install a package Write Here!
@@ -627,6 +631,11 @@
 (add-hook 'emacs-lisp-mode-hook 'enable-paredit-mode)
 (add-hook 'lisp-interaction-mode-hook 'enable-paredit-mode)
 
+;; highlight-indent-guides
+(require 'highlight-indent-guides)
+(add-hook 'prog-mode-hook 'highlight-indent-guides-mode)
+
+
 ;;; End Pagckage Settings-------------------------------
 
 ;;;;----------------------------------------------------
@@ -759,8 +768,7 @@
                          trailing
                          tabs
                          spaces
-                         empty
-                         indentation))
+                         empty))
 
 ;; 保存時に自動的に余計な空白を消す
 ;; https://mugijiru.github.io/.emacs.d/editing/view-mode/
