@@ -689,8 +689,6 @@
 
 ;; End A TWO-key chord----------------------------------
 
-
-
 ;; 著者が勧める時間節約法
 ;; refer: UNIX POWER TOOLS 19.7 著者が勧める時間節約法 p.468
 ;; CTRL-zおよびESC-zで、画面を1行「上」または「下」にスクロールする。
@@ -746,6 +744,19 @@
                                  ("\\.m\\'" . mercury-mode))
                                 auto-mode-alist))
 
+;; view-mode と通常モードの切り替えコマンド
+;; https://mugijiru.github.io/.emacs.d/editing/view-mode/
+(defun my/toggle-view-mode ()
+  "view-mode と通常モードの切り替えコマンド"
+  (interactive)
+  (cond (view-mode
+         (hl-line-mode -1)
+         (view-mode -1))
+        (t
+         (hl-line-mode 1)
+         (view-mode 1))))
+
+
 ;; alias--------------------------------------------------
 ;; alias my-keys
 (defalias 'my-key 'describe-personal-keybindings)
@@ -784,7 +795,7 @@
 (setq interprogram-paste-function 'copy-from-osx)
 
 ;; "yes or no" の選択を "y or n" にする
-(fset 'yes-or-no-p 'y-or-n-p)
+;;(fset 'yes-or-no-p 'y-or-n-p)
 
 ;; End suraru.tokyo
 
