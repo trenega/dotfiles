@@ -75,6 +75,9 @@
 ;;;; Initialization
 ;;;;------------------------------------------------------
 
+;; 起動画面を表示しない
+(setq inhibit-startup-screen t)
+
 ;; I use 'eval-expressin'
 ;; ミニバッファでLisp式の入力を促し、与えられた式を評価して結果を表示する
 (put 'eval-expression 'disabled nil)
@@ -95,7 +98,7 @@
 (setq-default bidi-display-reordering nil)
 
 ;; splash scrrenを無効にする
-(setq inhibit-splash-screen t)
+(setq inhibitrsplash-screen t)
 
 ;; 同じ内容を履歴に記録しないようにする
 (setq history-delete-duplicates t)
@@ -130,8 +133,10 @@
 (setq history-length 1000)
 
 ;; メニューバーとツールバーとスクロールバーを消す
-(menu-bar-mode -1)
+;;(menu-bar-mode -1)
+(menu-bar-mode t)
 (tool-bar-mode -1)
+;;(tool-bar-mode t)
 (scroll-bar-mode -1)
 
 ;;; relative numbering
@@ -176,14 +181,22 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(initial-frame-alist '((height . 38) (width . 125) (left . 0) (top . 0))))
+ '(column-number-mode t)
+ '(initial-frame-alist '((height . 38) (width . 125) (left . 0) (top . 0)))
+ '(menu-bar-mode nil)
+ '(tool-bar-mode nil))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:family "UDEV Gothic 35NF" :foundry "nil" :slant normal :weight regular :height 240 :width normal)))))
+ '(default ((t (:family "UDEV Gothic 35NF" :foundry "nil" :slant normal :weight regular :height 240 :width normal))))
+ '(ivy-current-match ((((class color) (background light)) :background "#FFF3F3" :distant-foreground "#000000") (((class color) (background dark)) :background "#404040" :distant-foreground "#abb2bf")))
+ '(ivy-minibuffer-match-face-1 ((((class color) (background light)) :foreground "#666666") (((class color) (background dark)) :foreground "#999999")))
+ '(ivy-minibuffer-match-face-2 ((((class color) (background light)) :foreground "#c03333" :underline t) (((class color) (background dark)) :foreground "#e04444" :underline t)))
+ '(ivy-minibuffer-match-face-3 ((((class color) (background light)) :foreground "#8585ff" :underline t) (((class color) (background dark)) :foreground "#7777ff" :underline t)))
+ '(ivy-minibuffer-match-face-4 ((((class color) (background light)) :foreground "#439943" :underline t) (((class color) (background dark)) :foreground "#33bb33" :underline t))))
 
 ;;; End custom-set----------------------------------------
 
@@ -366,24 +379,7 @@
 
 ;; 検索語のハイライト
 ;; rers: https://takaxp.github.io/articles/qiita-helm2ivy.html
-(custom-set-faces
- '(ivy-current-match
-   ((((class color) (background light))
-     :background "#FFF3F3" :distant-foreground "#000000")
-    (((class color) (background dark))
-     :background "#404040" :distant-foreground "#abb2bf")))
- '(ivy-minibuffer-match-face-1
-   ((((class color) (background light)) :foreground "#666666")
-    (((class color) (background dark)) :foreground "#999999")))
- '(ivy-minibuffer-match-face-2
-   ((((class color) (background light)) :foreground "#c03333" :underline t)
-    (((class color) (background dark)) :foreground "#e04444" :underline t)))
- '(ivy-minibuffer-match-face-3
-   ((((class color) (background light)) :foreground "#8585ff" :underline t)
-    (((class color) (background dark)) :foreground "#7777ff" :underline t)))
- '(ivy-minibuffer-match-face-4
-   ((((class color) (background light)) :foreground "#439943" :underline t)
-    (((class color) (background dark)) :foreground "#33bb33" :underline t))))
+
 
 ;;; End ivy Settings--------------------------------------
 
@@ -644,7 +640,7 @@
 (bind-key* "C-?" 'help-for-help)
 
 ;; "fd" to Esc
-;; Exit instert mode by pressing j and then j quickly
+;; Exit instert mode by pressing f and then d quickly
 ;; https://stackoverflow.com/questions/10569165/how-to-map-jj-to-esc-in-emacs-evil-mode
 (key-chord-mode 1)
 (setq key-chord-two-keys-delay           0.15
@@ -652,14 +648,13 @@
       key-chord-safety-interval-forward  0.25)
 (key-chord-define evil-insert-state-map "fd" 'evil-normal-state)
 
-;; A TWO-key chord
+;; A TWO-key chord-------------------------------------
 (key-chord-mode 1)
 (setq key-chord-two-keys-delay           0.15
       key-chord-safety-interval-backward 0.1
       key-chord-safety-interval-forward  0.25)
 
-;; Don't use shift key. But I can type to
-;; " ~ ! @ # $ % ^ & * ( ) _ + : " ".
+;; Don't use shift key. But I can type " ~ ! @ # $ % ^ & * ( ) _ + : " ".
 (key-chord-define-global ";`"  "~")
 (key-chord-define-global ";1"  "!")
 (key-chord-define-global ";2"  "@")
@@ -674,11 +669,33 @@
 (key-chord-define-global "a-"  "_")
 (key-chord-define-global "a="  "+")
 
+;; sticky-shift ;;２つでshiftを押した状態にする
+;; https://mugijiru.github.io/.emacs.d/keybinds/key-chord/
+(key-chord-define-global ";;"
+                         'event-apply-shift-modifier)
+
+(key-chord-define key-translation-map
+                  ";;"
+                  'event-apply-shift-modifier)
+
+;; scheme-load-file
+(key-chord-define-global "sl" 'scheme-load-file) 
+
+;; switch-to-scheme
+(key-chord-define-global "go" 'switch-to-scheme)  ; "go" -> "gosh>"
+
+;; indent-sexp
+(key-chord-define-global "is" 'indent-sexp)
+
+;; End A TWO-key chord----------------------------------
+
+
+
 ;; 著者が勧める時間節約法
 ;; refer: UNIX POWER TOOLS 19.7 著者が勧める時間節約法 p.468
 ;; CTRL-zおよびESC-zで、画面を1行「上」または「下」にスクロールする。
 (defun scroll-up-one ( ) "Scroll up 1 line." (interactive)
-  (scroll-up (prefix-numeric-value current-prefix-arg)))
+       (scroll-up (prefix-numeric-value current-prefix-arg)))
 (defun scroll-down-one ( ) "Scroll down 1 line." (interactive)
   (scroll-dowon (prefix-numeric-value current-prefix-arg)))
 ;;(define-key global-map "\C-z" 'scroll-up-one)
@@ -729,11 +746,17 @@
                                  ("\\.m\\'" . mercury-mode))
                                 auto-mode-alist))
 
+;; alias--------------------------------------------------
 ;; alias my-keys
 (defalias 'my-key 'describe-personal-keybindings)
 
 ;; alias bindings
 (defalias 'bindings 'describe-bindings)
+
+;; alias indent-sexp
+(defalias 'is 'indent-sexp)
+
+;; End alias----------------------------------------------
 
 ;;; End Custom Keybind------------------------------------
 
