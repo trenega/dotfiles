@@ -86,7 +86,14 @@
 ;; [重要]: (height . 38) を (height . 39) に変更しないこと！！
 ;; Emacs が立ち上がらなくなる！！
 ;;(setq default-frame-alist '((width . 84) (height . 38)))
-(setq default-frame-alist '((width . 125) (height . 38)))
+;;(setq default-frame-alist '((width . 125) (height . 38)))
+
+;; 起動時に fullscreen にする
+(if (or (eq window-system 'ns) (eq window-system 'darwin))
+    (add-hook 'window-setup-hook
+              (lambda ()
+                (set-frame-parameter nil 'fullscreen 'fullboth))))
+
 
 ;; Alt key -> Meta key setting
 ;; refer: https://qiita.com/hayamiz/items/0f0b7a012ec730351678
