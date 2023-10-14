@@ -86,13 +86,13 @@
 ;; [重要]: (height . 38) を (height . 39) に変更しないこと！！
 ;; Emacs が立ち上がらなくなる！！
 ;;(setq default-frame-alist '((width . 84) (height . 38)))
-;;(setq default-frame-alist '((width . 125) (height . 38)))
+(setq default-frame-alist '((width . 125) (height . 38)))
 
 ;; 起動時に fullscreen にする
-(if (or (eq window-system 'ns) (eq window-system 'darwin))
-    (add-hook 'window-setup-hook
-              (lambda ()
-                (set-frame-parameter nil 'fullscreen 'fullboth))))
+;; (if (or (eq window-system 'ns) (eq window-system 'darwin))
+;;     (add-hook 'window-setup-hook
+;;               (lambda ()
+;;                 (set-frame-parameter nil 'fullscreen 'fullboth))))
 
 
 ;; Alt key -> Meta key setting
@@ -189,7 +189,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(column-number-mode t)
- '(highlight-indent-guides-method 'character)
+;; '(highlight-indent-guides-method 'character)
  '(initial-frame-alist '((height . 38) (width . 125) (left . 0) (top . 0)))
  ;;'(menu-bar-mode nil)
  '(tool-bar-mode nil))
@@ -440,10 +440,10 @@
 ;; For an experienced Emacs User it is nothing more than
 ;; a convoluted key map, but for a Evil user coming from
 ;; Vim it means an easier start.
-;; refer: https://github.com/cofi/evil-leader
+;; refer: htps://github.com/cofi/evil-leader
 (require 'evil-leader)
 (global-evil-leader-mode)
-(evil-leader/set-leader "<SPC>")
+(evil-leader/set-leader ",")
 
 (evil-leader/set-key
   "s" 'switch-to-buffer             ; Switch to buffer
@@ -693,6 +693,9 @@
 
 ;; indent-sexp
 (key-chord-define-global "is" 'indent-sexp)
+
+;; lisp-complete-symbol
+(key-chord-define-global "lc" 'lisp-complete-symbol)
 
 ;; End A TWO-key chord----------------------------------
 
