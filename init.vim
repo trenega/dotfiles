@@ -279,7 +279,8 @@ inoremap <C-]> <Esc><Right>
 " Reference:
 " How to boost your Vim productivity (2014-03-21) by Adam Stankiewicz
 " https://postd.cc/how-to-boost-your-vim-productivity/
-let mapleader = "\<Space>"
+" let mapleader = "\<Space>"
+let mapleader = ","
 
 " Make a simple "search" text object.
 " refer:https://vim.fandom.com/wiki/Copy_or_change_search_hit
