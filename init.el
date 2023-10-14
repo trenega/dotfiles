@@ -183,6 +183,9 @@
 
 ;;; custom-set--------------------------------------------
 ;;  These 'custom-set are from `Emacs'! I don't write here.
+;;
+;;  highlight-indent-guides
+;;  emacs-jp.github.io/packages/package
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -190,8 +193,8 @@
  ;; If there is more than one, they won't work right.
  '(column-number-mode t)
  '(highlight-indent-guides-method 'character)
+ '(highlight-indent-guides-responsive 'top)
  '(initial-frame-alist '((height . 38) (width . 125) (left . 0) (top . 0)))
- ;;'(menu-bar-mode nil)
  '(tool-bar-mode nil))
 
 (custom-set-faces
@@ -341,6 +344,7 @@
 (straight-use-package 'gauche-mode)
 
 ;; highlight-indent-guides
+;; emacs-jp.github.io/packages/package
 (straight-use-package 'highlight-indent-guides)
 
 ;;--------------------------------------------------------
@@ -632,6 +636,7 @@
 (add-hook 'lisp-interaction-mode-hook 'enable-paredit-mode)
 
 ;; highlight-indent-guides
+;; emacs-jp.github.io/packages/package
 (require 'highlight-indent-guides)
 (add-hook 'prog-mode-hook 'highlight-indent-guides-mode)
 
