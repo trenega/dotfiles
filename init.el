@@ -679,6 +679,11 @@
 (setq dired-details-hidden-string "")
 (setq dired-details-hide-link-targets nil)
 
+;; wdired(Writable DIRED)
+(require 'wdired)
+(setq wdired-allow-to-change-permissions t)
+(define-key dired-mode-map "e" 'wdired-change-to-wdired-mode)
+
 ;;; End Pagckage Settings-------------------------------
 
 ;;;;----------------------------------------------------
