@@ -78,10 +78,6 @@
 ;; 起動画面を表示しない
 (setq inhibit-startup-screen t)
 
-;; I use 'eval-expressin'
-;; ミニバッファでLisp式の入力を促し、与えられた式を評価して結果を表示する
-(put 'eval-expression 'disabled nil)
-
 ;; ウィンドウ（フレーム）のサイズ設定する
 ;; [重要]: (height . 38) を (height . 39) に変更しないこと！！
 ;; Emacs が立ち上がらなくなる！！
@@ -94,6 +90,20 @@
 ;;               (lambda ()
 ;;                 (set-frame-parameter nil 'fullscreen 'fullboth))))
 
+;; メニューバーとツールバーとスクロールバーを消す
+;;(menu-bar-mode -1)
+(menu-bar-mode t)
+(tool-bar-mode -1)
+;;(tool-bar-mode t)
+(scroll-bar-mode -1)
+
+;; ビープ音禁止
+;; http://yohshiy.blog.fc2.com/blog-entry-324.html
+(setq ring-bell-function 'ignore)
+
+;; I use 'eval-expressin'
+;; ミニバッファでLisp式の入力を促し、与えられた式を評価して結果を表示する
+(put 'eval-expression 'disabled nil)
 
 ;; Alt key -> Meta key setting
 ;; refer: https://qiita.com/hayamiz/items/0f0b7a012ec730351678
@@ -138,13 +148,6 @@
 
 ;; 履歴をたくさん保存する
 (setq history-length 1000)
-
-;; メニューバーとツールバーとスクロールバーを消す
-;;(menu-bar-mode -1)
-(menu-bar-mode t)
-(tool-bar-mode -1)
-;;(tool-bar-mode t)
-(scroll-bar-mode -1)
 
 ;;; relative numbering
 ;; refer: https://www.reddit.com/r/emacs/comments/l7f85b/how_to_toggle_absolute_and_relative_numbering_in/
@@ -684,6 +687,9 @@
 ;; (key-chord-define-global "a0"  ")")
 ;; (key-chord-define-global "a-"  "_")
 ;; (key-chord-define-global "a="  "+")
+
+;; eval-defun
+(key-chord-define-global "ed" 'eval-defun)
 
 ;; scheme-load-file
 (key-chord-define-global "sl" 'scheme-load-file)
