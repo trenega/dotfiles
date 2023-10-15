@@ -17,7 +17,7 @@
         (if (fboundp 'normal-top-level-add-subdirs-to-load-path)
             (normal-top-level-add-subdirs-to-load-path))))))
 
-;; 引数のディレクトリとそのサブディレクトリをload-pathに追加
+;;; 引数のディレクトリとそのサブディレクトリをload-pathに追加
 ;; ~/.emacs.d/straight/repos/melpa/recipes
 ;; ~/.emacs.d/public-repos
 (add-to-load-path "straight/repos/melpa/recipes"
@@ -75,6 +75,11 @@
 ;;;; Initialization
 ;;;;------------------------------------------------------
 
+;; Alt key -> Meta key setting
+;; refer: https://qiita.com/hayamiz/items/0f0b7a012ec730351678
+(when (eq system-type 'darwin)
+  (setq ns-command-modifier (quote meta)))
+
 ;; 起動画面を表示しない
 (setq inhibit-startup-screen t)
 
@@ -82,13 +87,25 @@
 ;; [重要]: (height . 38) を (height . 39) に変更しないこと！！
 ;; Emacs が立ち上がらなくなる！！
 ;;(setq default-frame-alist '((width . 84) (height . 38)))
-(setq default-frame-alist '((width . 125) (height . 38)))
+(setq default-frame-alist '((width . 125) (height . 38)))  ;; fullscreen
 
-;; 起動時に fullscreen にする
+;;; 起動時に fullscreen にする
 ;; (if (or (eq window-system 'ns) (eq window-system 'darwin))
 ;;     (add-hook 'window-setup-hook
 ;;               (lambda ()
 ;;                 (set-frame-parameter nil 'fullscreen 'fullboth))))
+
+;; Unixコマンド エミュレーションを無効にする
+;; http://emacs.rubikitch.com/sd1412-eshell/
+(eval-after-load "esh-module"
+    '(setq eshell-modules-list (delq 'eshell-ls (delq 'eshell-unix eshell-modules-list))))
+
+;; ビープ音禁止
+;; http://yohshiy.blog.fc2.com/blog-entry-324.html
+(setq ring-bell-function 'ignore)
+
+;; splash screenを無効にする
+(setq inhibitrsplash-screen t)
 
 ;; メニューバーとツールバーとスクロールバーを消す
 ;;(menu-bar-mode -1)
@@ -97,36 +114,59 @@
 ;;(tool-bar-mode t)
 (scroll-bar-mode -1)
 
-;; ビープ音禁止
-;; http://yohshiy.blog.fc2.com/blog-entry-324.html
-(setq ring-bell-function 'ignore)
+;; タイトルバーにファイルのフルパスを表示する
+(setq frame-title-format "%f")
 
-;; I use 'eval-expressin'
-;; ミニバッファでLisp式の入力を促し、与えられた式を評価して結果を表示する
-(put 'eval-expression 'disabled nil)
+;; カラム番号も表示する
+(column-number-mode t)
 
-;; Alt key -> Meta key setting
-;; refer: https://qiita.com/hayamiz/items/0f0b7a012ec730351678
-(when (eq system-type 'darwin)
-  (setq ns-command-modifier (quote meta)))
+;; png, jpg などのファイルを画像として表示
+(setq auto-image-file-mode t)
+
+;; 対応する括弧を光らせる
+(show-paren-mode 1)
+
+;; インデントにTabを使わないようにする
+(setq-default indent-tabs-mode nil)
+
+;; ediff 時にフレームを使わない
+(setq ediff-window-setup-function 'ediff-setup-windows-plain)
 
 ;; rers: emacs.rubikitch.com/sd1407/
 ;; 右から左に読む言語に対応させないことで描写高速化
 (setq-default bidi-display-reordering nil)
 
-;; splash scrrenを無効にする
-(setq inhibitrsplash-screen t)
+;; GCを減らして軽くする
+(setq gc-cons-threshold (* 10 gc-cons-threshold))
 
-;; 同じ内容を履歴に記録しないようにする
-(setq history-delete-duplicates t)
+;; I use 'eval-expressin'
+;; ミニバッファでLisp式の入力を促し、与えられた式を評価して結果を表示する
+(put 'eval-expression 'disabled nil)
 
 ;; C-U C-SPC C-SPC ...でどんどん過去のマークを遡る
 (setq set-mark-command-repeat-pop t)
 
-;; 複数のディレクトリで同じファイル名のファイルを開いた時のバッファ名を調整する
-(require 'uniquify)  ;filename<dir> 形式のバッファ名にする
-(setq uniquify-buffer-name-style 'post-forward-angle-brackets)
-(setq uniquify-ignore-buffers-re "[^*]+")
+;; ログの記録行数を増やす
+(setq message-log-max 10000)
+
+;; 履歴をたくさん保存する
+(setq history-length 1000)
+
+;; ミニバッファ履歴を次回Emacs起動時にも保存する
+(savehist-mode 1)
+
+;; 同じ内容を履歴に記録しないようにする
+(setq history-delete-duplicates t)
+
+;; スクロールのステップ量
+;; http://yohshiy.blog.fc2.com/blog-entry-320.html
+(setq scroll-conservatively 1)
+
+;; スクロール時の重複行数
+(setq next-screen-context-lines 5)
+
+;; ページスクロール時に画面上におけるカーソルの位置をなるべく変えない
+(setq scroll-preserve-screen-position t)
 
 ;; 以前開いたファイルを再度開いた時、元のカーソル位置を復元する
 ;; refer: http://www.emacswiki.org/emacs/SavePlace
@@ -134,20 +174,10 @@
 ;; sakashita-net.jp/2017/08/emacs.html
 (save-place-mode 1)
 
-;; インデントにTabを使わないようにする
-(setq-default indent-tabs-mode nil)
-
-;; ミニバッファ履歴を次回Emacs起動時にも保存する
-(savehist-mode 1)
-
-;; GCを減らして軽くする
-(setq gc-cons-threshold (* 10 gc-cons-threshold))
-
-;; ログの記録行数を増やす
-(setq message-log-max 10000)
-
-;; 履歴をたくさん保存する
-(setq history-length 1000)
+;; 複数のディレクトリで同じファイル名のファイルを開いた時のバッファ名を調整する
+(require 'uniquify)  ;filename<dir> 形式のバッファ名にする
+(setq uniquify-buffer-name-style 'post-forward-angle-brackets)
+(setq uniquify-ignore-buffers-re "[^*]+")
 
 ;;; relative numbering
 ;; refer: https://www.reddit.com/r/emacs/comments/l7f85b/how_to_toggle_absolute_and_relative_numbering_in/
@@ -166,21 +196,12 @@
 (require 'bind-key)
 (bind-key "C-c l" 'toggle-truncate-lines)
 
-;; カラム番号も表示する
-(column-number-mode t)
-
-;; タイトルバーにファイルのフルパスを表示する
-(setq frame-title-format "%f")
-
 ;;; clipboard Setting
 ;; Emacsから他のエディターにAlt+vでペーストはできるが、その逆にEmacsへは
 ;; ペーストできない。
 ;; refer: saitodev.co/article/Emacsでクリップボードを使ってコピペしたい/
 (cond (window-system
   (setq x-select-enable-clipboard t)))
-
-;; 対応する括弧を光らせる
-(show-paren-mode 1)
 
 ;;; End Initialization------------------------------------
 
