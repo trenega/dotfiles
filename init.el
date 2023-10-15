@@ -132,6 +132,9 @@
 ;; ediff 時にフレームを使わない
 (setq ediff-window-setup-function 'ediff-setup-windows-plain)
 
+;; diredを２画面ファイラーとして使う
+(setq dired-dwim-target t)
+
 ;; rers: emacs.rubikitch.com/sd1407/
 ;; 右から左に読む言語に対応させないことで描写高速化
 (setq-default bidi-display-reordering nil)
@@ -366,6 +369,15 @@
 
 ;; highlight-indent-guides
 (straight-use-package 'highlight-indent-guides)
+
+;; dired-detalias
+;; http://emacs.rubikitch.com/sd1411-dired-wdired/
+(straight-use-package 'dired-details)
+
+;; dired-toggle
+;; http://emacs.rubikitch.com/sd1411-dired-wdired/
+(straight-use-package 'dired-toggle)
+
 
 ;;--------------------------------------------------------
 ;; End To install a package Write Here!
@@ -659,6 +671,13 @@
 (require 'highlight-indent-guides)
 (add-hook 'prog-mode-hook 'highlight-indent-guides-mode)
 
+;;; diredでファイル名のみを表示する
+;; http://emacs.rubikitch.com/sd1411-dired-wdired/
+(require 'dired)
+(require 'dired-details)
+(dired-details-install)
+(setq dired-details-hidden-string "")
+(setq dired-details-hide-link-targets nil)
 
 ;;; End Pagckage Settings-------------------------------
 
