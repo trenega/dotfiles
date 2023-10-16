@@ -432,15 +432,13 @@
 
 ;; counsel Settings
 (when (require 'counsel nil t)
-
   ;; キーバインドは一例です．好みに変えましょう．
   (global-set-key (kbd "M-x") 'counsel-M-x)
   (global-set-key (kbd "M-y") 'counsel-yank-pop)
   (global-set-key (kbd "C-M-z") 'counsel-fzf)
   (global-set-key (kbd "C-M-r") 'counsel-recentf)
   (global-set-key (kbd "C-x C-b") 'counsel-ibuffer)
-;;  (global-set-key (kbd "C-M-f") 'counsel-ag)
-
+;;  (global-set-key (kbd "C-M-f") 'counsel-ag)  ; C-M-f は元々はS式を単位としてカーソル移動するバインド
   ;; アクティベート
   (counsel-mode 1))
 
@@ -761,16 +759,6 @@
 (key-chord-define-global "di" 'dired)
 
 ;; End A TWO-key chord----------------------------------
-
-;; 著者が勧める時間節約法
-;; refer: UNIX POWER TOOLS 19.7 著者が勧める時間節約法 p.468
-;; CTRL-zおよびESC-zで、画面を1行「上」または「下」にスクロールする。
-(defun scroll-up-one ( ) "Scroll up 1 line." (interactive)
-       (scroll-up (prefix-numeric-value current-prefix-arg)))
-(defun scroll-down-one ( ) "Scroll down 1 line." (interactive)
-  (scroll-dowon (prefix-numeric-value current-prefix-arg)))
-;;(define-key global-map "\C-z" 'scroll-up-one)
-;;(define-key global-map "\M-z" 'scroll-down-one)
 
 ;; comment out
 ;; comment-dwim-2
