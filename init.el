@@ -87,13 +87,13 @@
 ;; [重要]: (height . 38) を (height . 39) に変更しないこと！！
 ;; Emacs が立ち上がらなくなる！！
 ;;(setq default-frame-alist '((width . 84) (height . 38)))
-(setq default-frame-alist '((width . 125) (height . 38)))  ;; fullscreen
+;;(setq default-frame-alist '((width . 125) (height . 38)))  ;; fullscreen
 
 ;;; 起動時に fullscreen にする
-;; (if (or (eq window-system 'ns) (eq window-system 'darwin))
-;;     (add-hook 'window-setup-hook
-;;               (lambda ()
-;;                 (set-frame-parameter nil 'fullscreen 'fullboth))))
+(if (or (eq window-system 'ns) (eq window-system 'darwin))
+    (add-hook 'window-setup-hook
+              (lambda ()
+                (set-frame-parameter nil 'fullscreen 'fullboth))))
 
 ;; Unixコマンド エミュレーションを無効にする
 ;; http://emacs.rubikitch.com/sd1412-eshell/
@@ -132,7 +132,7 @@
 ;; ediff 時にフレームを使わない
 (setq ediff-window-setup-function 'ediff-setup-windows-plain)
 
-;; diredを２画面ファイラーとして使う
+;; Diredを２画面ファイラーとして使う
 (setq dired-dwim-target t)
 
 ;; rers: emacs.rubikitch.com/sd1407/
@@ -512,6 +512,8 @@
   "f" 'flycheck-list-errors         ; pop-up errors list
   "a" 'beginning-of-line            ; go to beginning of line
   ";" 'end-of-line                  ; got to end of line
+  "(" 'backward-kill-sexp           ; カーソルの前にあるS式を削除する
+  ")" 'kill-sexp                    ; カーソルの後にあるS式を削除する
   )
 
 ;;; End Evil Leader-------------------------------------
@@ -687,7 +689,7 @@
 ;;; End Pagckage Settings-------------------------------
 
 ;;;;----------------------------------------------------
-;;; Custom Keybind
+;;; Custom Bind
 ;;;;----------------------------------------------------
 
 ;; C-hをBackspaceに変更、C-?にhelpをmapping
@@ -702,6 +704,10 @@
 ;; C-? -> help
 ;; (global-set-key (kbd "C-?") 'help-for-help)
 (bind-key* "C-?" 'help-for-help)
+
+;; eshell
+;; http://yohshiy.blog.fc2.com/blog-entry-323.html
+(global-set-key (kbd "<f8>") 'eshell)
 
 ;; "fd" to Esc
 ;; Exit instert mode by pressing f and then d quickly
@@ -736,6 +742,9 @@
 ;; eval-defun
 (key-chord-define-global "ed" 'eval-defun)
 
+;; scheme-compile-file
+(key-chord-define-global "sc" 'scheme-compile-file)
+
 ;; scheme-load-file
 (key-chord-define-global "sl" 'scheme-load-file)
 
@@ -747,6 +756,9 @@
 
 ;; lisp-complete-symbol
 (key-chord-define-global "lc" 'lisp-complete-symbol)
+
+;; dired
+(key-chord-define-global "di" 'dired)
 
 ;; End A TWO-key chord----------------------------------
 
@@ -831,7 +843,6 @@
 ;; whitespace-mode
 ;;(global-whitespace-mode 1)
 
-
 ;; alias--------------------------------------------------
 ;; alias my-keys
 (defalias 'my-key 'describe-personal-keybindings)
@@ -844,7 +855,7 @@
 
 ;; End alias----------------------------------------------
 
-;;; End Custom Keybind------------------------------------
+;;; End Custom Bind------------------------------------
 
 ;;;;------------------------------------------------------
 ;;;; Customize Settings
