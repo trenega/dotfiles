@@ -791,6 +791,7 @@ bindkey '^f' fzf-z-search
 # End fzf
 # -------------------------------------------------------------------
 
+# ghcup-env
 [ -f "/Users/nis/.ghcup/env" ] && source "/Users/nis/.ghcup/env" # ghcup-env
 
 # Don't end with errors.
