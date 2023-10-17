@@ -142,4 +142,7 @@ export JAVA_HOME=`/usr/libexec/java_home -v 17.0.8.1`
 export VISUAL=emacsclient
 export EDITOR=emacsclient
 
+# デフォルトの pager を less から lv に設定
+export PAGER='lv -c'
+
 # END OF FILE .zshenv ------------------------------------------------
