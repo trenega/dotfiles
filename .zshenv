@@ -36,7 +36,7 @@ PATH=$PATH":/usr/local/bin"
 export XDG_CONFIG_HOME=~/.config
 
 # Use Neovim as "preferred editor"
-export VISUAL=nvim
+# export VISUAL=nvim
 
 # Open init.vim file of setting
 export MYVIMRC=~/.config/nvim/init.vim
@@ -138,5 +138,8 @@ export PERL5LIB=$HOME/local/lib/perl5/lib/perl5:$PERL5LIB;
 # JAVA_HOME
 export JAVA_HOME=`/usr/libexec/java_home -v 17.0.8.1`
 
-# END OF FILE .zshenv ------------------------------------------------
+# emacsclient
+export VISUAL=emacsclient
+export EDITOR=emacsclient
 
+# END OF FILE .zshenv ------------------------------------------------
