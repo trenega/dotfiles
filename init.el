@@ -12,7 +12,7 @@
   (let (path)
     (dolist (path paths paths)
       (let ((default-directory
-              (expand-file-name (concat user-emacs-directory path))))
+             (expand-file-name (concat user-emacs-directory path))))
         (add-to-list 'load-path default-directory)
         (if (fboundp 'normal-top-level-add-subdirs-to-load-path)
             (normal-top-level-add-subdirs-to-load-path))))))
@@ -175,11 +175,7 @@
 ;; refer: http://www.emacswiki.org/emacs/SavePlace
 ;; refer: emacs.rubikitch.com/save-place-mode-emacs25/
 ;; sakashita-net.jp/2017/08/emacs.html
-;;(save-place-mode 1)
-;; https://neocat.hatenablog.com/entry/20131108/1383937311
-(require 'saveplace)
-(setq-default save-place t)
-(run-at-time 600 600 'save-place-kill-emacs-hook)
+(save-place-mode 1)
 
 ;; 複数のディレクトリで同じファイル名のファイルを開いた時のバッファ名を調整する
 (require 'uniquify)  ;filename<dir> 形式のバッファ名にする
