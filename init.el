@@ -86,14 +86,14 @@
 ;; ウィンドウ（フレーム）のサイズ設定する
 ;; [重要]: (height . 38) を (height . 39) に変更しないこと！！
 ;; Emacs が立ち上がらなくなる！！
-;;(setq default-frame-alist '((width . 84) (height . 38)))
+(setq default-frame-alist '((width . 84) (height . 38)))
 ;;(setq default-frame-alist '((width . 125) (height . 38)))  ;; fullscreen
 
 ;;; 起動時に fullscreen にする
-(if (or (eq window-system 'ns) (eq window-system 'darwin))
-    (add-hook 'window-setup-hook
-              (lambda ()
-                (set-frame-parameter nil 'fullscreen 'fullboth))))
+;; (if (or (eq window-system 'ns) (eq window-system 'darwin))
+;;     (add-hook 'window-setup-hook
+;;               (lambda ()
+;;                 (set-frame-parameter nil 'fullscreen 'fullboth))))
 
 ;; Unixコマンド エミュレーションを無効にする
 ;; http://emacs.rubikitch.com/sd1412-eshell/
@@ -117,6 +117,9 @@
 ;; タイトルバーにファイルのフルパスを表示する
 (setq frame-title-format "%f")
 
+;; 現在ポイントがある関数名をモードラインに表示
+(which-function-mode 1)
+
 ;; カラム番号も表示する
 (column-number-mode t)
 
@@ -125,6 +128,9 @@
 
 ;; 対応する括弧を光らせる
 (show-paren-mode 1)
+
+;; リージョンのハイライト
+(transient-mark-mode 1)
 
 ;; インデントにTabを使わないようにする
 (setq-default indent-tabs-mode nil)
@@ -206,7 +212,7 @@
 (cond (window-system
   (setq x-select-enable-clipboard t)))
 
-;;; End Initialization------------------------------------
+;;;; End Initialization------------------------------------
 
 ;;; custom-set--------------------------------------------
 ;;  These 'custom-set are from `Emacs'! I don't write here.
@@ -867,9 +873,6 @@
        (process-send-eof proc))))
 (setq interprogram-cut-function 'paste-to-osx)
 (setq interprogram-paste-function 'copy-from-osx)
-
-;; "yes or no" の選択を "y or n" にする
-;;(fset 'yes-or-no-p 'y-or-n-p)
 
 ;; End suraru.tokyo
 
