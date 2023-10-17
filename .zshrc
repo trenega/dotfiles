@@ -81,9 +81,9 @@ alias vi='vim -u NONE -N'                       # 設定ファイル や環境�
 alias em='emacs'                                # emacs
 alias emd='emacs --debug-init'                  # emacs debug
 
-alias E='emacsclient -nc -a ""'                 # Emacs Client グラフィカル
-alias Ec='emacsclient -t -a ""'                 # Emacs Client コンソールクライアント
-alias kill-emacs="emacsclient -e '(kill-emacs)'" # Emacs daemonの終了
+# alias E='emacsclient -nc -a ""'                 # Emacs Client グラフィカル
+# alias Ec='emacsclient -t -a ""'                 # Emacs Client コンソールクライアント
+# alias kill-emacs="emacsclient -e '(kill-emacs)'" # Emacs daemonの終了
 
 alias note=/Users/nis/script/note.py            # alias of script/note.py
 alias pylint='pylint --max-line-length=79'      # pylint
