@@ -114,6 +114,9 @@
 ;;(tool-bar-mode t)
 (scroll-bar-mode -1)
 
+;; scratch の初期メッセージ消去
+(setq initial-scratch-message "")
+
 ;; タイトルバーにファイルのフルパスを表示する
 (setq frame-title-format "%f")
 
