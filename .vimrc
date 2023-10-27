@@ -686,71 +686,61 @@ inoremap <silent> zj <C-o>z-
 
 "End Insert Mode Keymaps------------------
 
-"" ペースト設定 クリップボードからペーストする時だけ、インデントしない
-"if &term =~ "xterm"
-"        let &t_SI        .= "\e[?2004h"
-"        let &t_EI        .= "\e[?2004l"
-"        let &pastetoggle =  "\e[201~"
+" ペースト設定 クリップボードからペーストする時だけ、インデントしない
+if &term =~ "xterm"
+        let &t_SI        .= "\e[?2004h"
+        let &t_EI        .= "\e[?2004l"
+        let &pastetoggle =  "\e[201~"
 
-"        function XTermPasteBegin(ret)
-"                set paste
-"                return a:ret
-"        endfunction
+        function XTermPasteBegin(ret)
+                set paste
+                return a:ret
+        endfunction
 
-"        inoremap <special> <expr> <Esc>[200~ XTermPasteBegin("")
-"endif
+        inoremap <special> <expr> <Esc>[200~ XTermPasteBegin("")
+endif
 
-"" 最後のカーソル位置を復元する--------------------------------
-"if has("autocmd")
-"        autocmd BufReadPost *
-"        \ if line("'\"") > 0 && line ("'\"") <= line("$") |
-"        \   exe "normal! g'\"" |
-"        \ endif
-"endif
+" 最後のカーソル位置を復元する--------------------------------
+if has("autocmd")
+        autocmd BufReadPost *
+        \ if line("'\"") > 0 && line ("'\"") <= line("$") |
+        \   exe "normal! g'\"" |
+        \ endif
+endif
 
-"" Undoの永続化-------------------------------------------------
-"" Comment out for Error MacVim.app
-"" % mvim
-"" E15 無効な式です: . undo_path
-""if has('persistent_undo')
-""        let undo_path = expand('~/.vim/undo')
-""        exe 'set undodir=' .. undo_path
-""        set undofile
-""endif
+"カーソル下の単語をGoogleで検索する -------------------------
+function! s:search_by_google()
+    let line = line(".")
+    let col  = col(".")
+    let searchWord = expand("<cword>")
+    if searchWord  != ''
+        execute 'read !open https://www.google.co.jp/search\?q\=' . searchWord
+        execute 'call cursor(' . line . ',' . col . ')'
+    endif
+endfunction
+command! SearchByGoogle call s:search_by_google()
+nnoremap <silent> <Space>gg :SearchByGoogle<CR>
 
-""カーソル下の単語をGoogleで検索する -------------------------
-"function! s:search_by_google()
-"    let line = line(".")
-"    let col  = col(".")
-"    let searchWord = expand("<cword>")
-"    if searchWord  != ''
-"        execute 'read !open https://www.google.co.jp/search\?q\=' . searchWord
-"        execute 'call cursor(' . line . ',' . col . ')'
-"    endif
-"endfunction
-"command! SearchByGoogle call s:search_by_google()
-"nnoremap <silent> <Space>gg :SearchByGoogle<CR>
-
-""goyo.vim の散文モード ---------------------------------------
-"" Reference: https://postd.cc/vim3/
-"" VIM AFTER 15 YEARS (2017-10-17) by Ian Langworth
-"function! ProseMode()
-"        call goyo#execute(0, [])
-"        set nocopyindent nosmartindent noautoindent nolist noshowmode noshowcmd
-"        set complete+=s
-"        set background=light
-"        if !has('gui_running')
-"                let g:solarized_termcolors=256
-"        endif
-"        colors solarized
-"endfunction
-"command! ProseMode call ProseMode()
-"nnoremap \p :ProseMode<CR>
+"goyo.vim の散文モード ---------------------------------------
+" Reference: https://postd.cc/vim3/
+" VIM AFTER 15 YEARS (2017-10-17) by Ian Langworth
+function! ProseMode()
+        call goyo#execute(0, [])
+        set nocopyindent nosmartindent noautoindent nolist noshowmode noshowcmd
+        set complete+=s
+        set background=light
+        if !has('gui_running')
+                let g:solarized_termcolors=256
+        endif
+        colors solarized
+endfunction
+command! ProseMode call ProseMode()
+nnoremap \p :ProseMode<CR>
 
 
-"" set vim-commentary commentstring
-"autocmd FileType python setlocal commentstring=#\ %s
-"autocmd FileType haskell setlocal commentstring=--\ %s
+" set vim-commentary commentstring
+autocmd FileType python setlocal commentstring=#\ %s
+autocmd FileType haskell setlocal commentstring=--\ %s
 
 ""eskk Settings----------------------------
 "" Reference: https://zenn.dev/kato_k/articles/753b36262b3213
