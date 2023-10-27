@@ -73,7 +73,7 @@ set cursorline                                  " cursorline on
 
 set laststatus=2                                " Disply statuslines 2
 
-set statusline=%<%f\ %h%m%r%{FugitiveStatusline()}%=%-14.(%l,%c%V%)\ %P
+"set statusline=%<%f\ %h%m%r%{FugitiveStatusline()}%=%-14.(%l,%c%V%)\ %P
                                                 " Disply statusline [Git(master)]
 " ----------------------------------------------------------------------------
 " PLUGIN SETTINGS
@@ -102,10 +102,10 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 " ここに追加したいVimプラグインを記述する・・・・・・・②
 
 " カラースキームmolokai
-NeoBundle 'tomasr/molokai'
+"NeoBundle 'tomasr/molokai'
 
 " Solarized install
-NeoBundle 'altercation/vim-colors-solarized'
+"NeoBundle 'altercation/vim-colors-solarized'
 
 " iceberg.vim
 NeoBundle 'cocopon/iceberg.vim'
@@ -164,9 +164,9 @@ autocmd! User GoyoLeave Limelight!
 
 "End goyo + limelight (focus mode)--------
 
-" ----------------------------------------------------------------------------
-" vim-plug
-" ----------------------------------------------------------------------------
+"" ----------------------------------------------------------------------------
+"" vim-plug
+"" ----------------------------------------------------------------------------
 
 call plug#begin('~/.vim/plugged')
 
@@ -217,7 +217,7 @@ Plug 'simeji/winresizer'
 Plug 'fholgado/minibufexpl.vim'
 
 "-----------------------------------------
-call plug#end()
+"call plug#end()
 "-----------------------------------------
 
 " ----------------------------------------------------------------------------
@@ -229,7 +229,7 @@ call plug#end()
 let g:deepl#endpoint = "https://api-free.deepl.com/v2/translate"
 
 " AuthKey
-let g:deepl#auth_key = "027ec6a8-c7a9-627c-40d6-2a6b3824b210:fx"
+"g:deepl#auth_key = "027ec6a8-c7a9-627c-40d6-2a6b3824b210:fx"
 
 " replace a visual selection
 vmap ,e <Cmd>call deepl#v("EN")<CR>
@@ -246,38 +246,38 @@ nmap ,j yypV<Cmd>call deepl#v("JA")<CR>
 " Customize global Settings
 " Use around source.
 " Reference: https://github.com/Shougo/ddc-around
-call ddc#custom#patch_global('sources', ['around'])
+"call ddc#custom#patch_global('sources', ['around'])
 
 " Use matcher_head and sorter_rank.
 " Reference: https://github.com/Shougo/ddc-matcher_head
 " Reference: https://github.com/Shougo/ddc-sorter_rank
-call ddc#custom#patch_global('sourceOptions', {
-      \ '_': {
-      \   'matchers': ['matcher_head'],
-      \   'sorters': ['sorter_rank']},
-      \ })
+"call ddc#custom#patch_global('sourceOptions', {
+"      \ '_': {
+"      \   'matchers': ['matcher_head'],
+"      \   'sorters': ['sorter_rank']},
+"      \ })
 
 " Change source options
-call ddc#custom#patch_global('sourceOptions', {
-      \ 'around': {'mark': 'A'},
-      \ })
-call ddc#custom#patch_global('sourceParams', {
-      \ 'around': {'maxSize': 500},
-      \ })
+"call ddc#custom#patch_global('sourceOptions', {
+"      \ 'around': {'mark': 'A'},
+"      \ })
+"call ddc#custom#patch_global('sourceParams', {
+"      \ 'around': {'maxSize': 500},
+"      \ })
 
 " Mappings
 
 " <TAB>: completion.
-inoremap <silent><expr> <TAB>
-\ ddc#map#pum_visible() ? '<C-n>' :
-\ (col('.') <= 1 <Bar><Bar> getline('.')[col('.') - 2] =~# '\s') ?
-\ '<TAB>' : ddc#map#manual_complete()
+"inoremap <silent><expr> <TAB>
+"\ ddc#map#pum_visible() ? '<C-n>' :
+"\ (col('.') <= 1 <Bar><Bar> getline('.')[col('.') - 2] =~# '\s') ?
+"\ '<TAB>' : ddc#map#manual_complete()
 
 " <S-TAB>: completion back.
-inoremap <expr><S-TAB>  ddc#map#pum_visible() ? '<C-p>' : '<C-h>'
+"inoremap <expr><S-TAB>  ddc#map#pum_visible() ? '<C-p>' : '<C-h>'
 
 " Use ddc.
-call ddc#enable()
+"call ddc#enable()
 
 "End ddc.vim------------------------------
 
@@ -351,9 +351,9 @@ let g:fern#renderer#nerdfont#indent_markers = 1
     autocmd! *
     autocmd FileType fern call glyph_palette#apply()
     autocmd FileType nerdtree,startify call glyph_palette#apply()
-  augroup END
+"  augroup END
 
-"End fern.vim (filer)---------------------
+""End fern.vim (filer)---------------------
 
 "minibufexpl.vim--------------------------
 map <silent><Space>b :MBEOpen<cr>
@@ -376,7 +376,7 @@ let g:miniBufExplMapWindowNavArrows = 1
 
 " refer: https://uskey.hatenablog.com/entry/2015/08/16/080000
 " 無条件でバッファ一覧が開く
-" let g:miniBufExplorerMoreThanOne = 0
+let g:miniBufExplorerMoreThanOne = 0
 
 " MiniBufExplorer 内を'hjkl'で移動
 " miniBufExplMapWindowNavVim = 1
@@ -480,10 +480,10 @@ nnoremap <silent> <Space><Space> :let @/ = '\<' . expand('<cword>') . '\>'<CR>:s
 " つまり右辺最初の<Space><Space>によって上のハイライトmapを発動させるということです。
 " 通常mapはnoreを付けて再マップ無しでmapすることが一般的ですが、
 " きちんと理解した上で再マップを利用するのはアリです。
-" nnoremap ` <Nop>
-" nmap ` <Space><Space>:%s/<C-r>///gc<Left><Left><Left>
+ nnoremap ` <Nop>
+ nmap ` <Space><Space>:%s/<C-r>///gc<Left><Left><Left>
 
-" ハイライトを消去する
+"" ハイライトを消去する
 nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
 
 " 挿入モードでのDelete, Backspace
@@ -502,7 +502,7 @@ inoremap <C-]> <Esc><Right>
 " Vimの生産性を高める12の方法
 " How to boost your Vim productivity (2014-03-21) by Adam Stankiewicz
 " Reference: https://postd.cc/how-to-boost-your-vim-productivity/
-" let mapleader = "\<Space>"
+"let mapleader = "\<Space>"
 let mapleader = ","
 
 " Make a simple "search" text object.
@@ -548,7 +548,7 @@ nnoremap <Leader>r :r<Space>
 " もし {count} が与えられた場合、{count} ウィンドウを閉じる。
 nnoremap <Leader>cl :clo
 
-" <Space>p と <Space>y でシステムのクリップボードにコピー＆ペーストする
+"" <Space>p と <Space>y でシステムのクリップボードにコピー＆ペーストする
 nmap <Leader><Leader> V
 
 " Reference: https://postd.cc/how-to-boost-your-vim-productivity/
@@ -614,313 +614,313 @@ nnoremap <Leader>gb :Gblame<CR>
 
 "End vim-fugitive-------------------------
 
-"-----------------------------------------------------------------------
-"End LEADER kEY MAPPINGS
-"-----------------------------------------------------------------------
+""-----------------------------------------------------------------------
+""End LEADER kEY MAPPINGS
+""-----------------------------------------------------------------------
 
-"fzf.vim----------------------------------
-" Reference: https://wonderwall.hatenablog.com/entry/2017/10/07/220000
-" dispay new window
-let g:fzf_layout = { 'window': 'enew' }
+""fzf.vim----------------------------------
+"" Reference: https://wonderwall.hatenablog.com/entry/2017/10/07/220000
+"" dispay new window
+"let g:fzf_layout = { 'window': 'enew' }
 
-" Mapping selecting mappings
-" :Maps
-nnoremap s <Nop>
-nnoremap s :Buffers<CR>
-nnoremap t <Nop>
-nnoremap t :Files<CR>
+"" Mapping selecting mappings
+"" :Maps
+"nnoremap s <Nop>
+"nnoremap s :Buffers<CR>
+"nnoremap t <Nop>
+"nnoremap t :Files<CR>
 
-" Reference: https://github.com/junegunn/fzf.vim
-nmap <Leader><tab> <plug>(fzf-maps-n)
-xmap <Leader><tab> <plug>(fzf-maps-x)
-omap <Leader><tab> <plug>(fzf-maps-o)
+"" Reference: https://github.com/junegunn/fzf.vim
+"nmap <Leader><tab> <plug>(fzf-maps-n)
+"xmap <Leader><tab> <plug>(fzf-maps-x)
+"omap <Leader><tab> <plug>(fzf-maps-o)
 
-" Insert mode completion
-" Reference: https://github.com/junegunn/fzf.vim
-" INSERT modeでファイル名や行を補完する
-" <C-x><C-l>
-imap <c-x><c-k> <plug>(fzf-complete-word)
-imap <c-x><c-f> <plug>(fzf-complete-path)
-imap <c-x><c-j> <plug>(fzf-complete-file-ag)
-imap <c-x><c-l> <plug>(fzf-complete-line)
+"" Insert mode completion
+"" Reference: https://github.com/junegunn/fzf.vim
+"" INSERT modeでファイル名や行を補完する
+"" <C-x><C-l>
+"imap <c-x><c-k> <plug>(fzf-complete-word)
+"imap <c-x><c-f> <plug>(fzf-complete-path)
+"imap <c-x><c-j> <plug>(fzf-complete-file-ag)
+"imap <c-x><c-l> <plug>(fzf-complete-line)
 
-" refer: https://qiita.com/yuucu/items/03baae12d40f9699ec59
-nnoremap <silent> <Leader>f :Files<CR>
-nnoremap <silent> <Leader>g :GFiles<CR>
-nnoremap <silent> <Leader>G :GFiles?<CR>
-nnoremap <silent> <Leader>b :Buffers<CR>
-" nnoremap <silent> <Leader>h :History<CR>
-" nnoremap <silent> <Leader>r :Rg<CR>
+"" refer: https://qiita.com/yuucu/items/03baae12d40f9699ec59
+"nnoremap <silent> <Leader>f :Files<CR>
+"nnoremap <silent> <Leader>g :GFiles<CR>
+"nnoremap <silent> <Leader>G :GFiles?<CR>
+"nnoremap <silent> <Leader>b :Buffers<CR>
+"" nnoremap <silent> <Leader>h :History<CR>
+"" nnoremap <silent> <Leader>r :Rg<CR>
 
-"End fzf.vim------------------------------
+""End fzf.vim------------------------------
 
-" :helpを3倍の速度で引く
-nnoremap ,h :<C-u>help<Space>
+"" :helpを3倍の速度で引く
+"nnoremap ,h :<C-u>help<Space>
 
-" 検索後にジャンプした際に検索単語を画面中央に持ってくる
-nnoremap n nzz
-nnoremap N Nzz
-nnoremap * *zz
-nnoremap # #zz
-nnoremap g* g*zz
-nnoremap g# g#zz
+"" 検索後にジャンプした際に検索単語を画面中央に持ってくる
+"nnoremap n nzz
+"nnoremap N Nzz
+"nnoremap * *zz
+"nnoremap # #zz
+"nnoremap g* g*zz
+"nnoremap g# g#zz
 
-" 'verymagic'
-nnoremap / /\v
+"" 'verymagic'
+"nnoremap / /\v
 
-"Insert Mode Keymaps----------------------
-" Change INSERT mode to NORMAL mode
-inoremap <silent> fd <Esc>
+""Insert Mode Keymaps----------------------
+"" Change INSERT mode to NORMAL mode
+"inoremap <silent> fd <Esc>
 
-" File Save
-inoremap <silent> js <C-o>:write<CR>
+"" File Save
+"inoremap <silent> js <C-o>:write<CR>
 
-" Scroll to center line
-inoremap <silent> zz <C-o>zz
+"" Scroll to center line
+"inoremap <silent> zz <C-o>zz
 
-" Scroll to top line
-inoremap <silent> zk <C-o>z<CR>
+"" Scroll to top line
+"inoremap <silent> zk <C-o>z<CR>
 
-" Scroll to bottom line
-inoremap <silent> zj <C-o>z-
+"" Scroll to bottom line
+"inoremap <silent> zj <C-o>z-
 
-"End Insert Mode Keymaps------------------
+""End Insert Mode Keymaps------------------
 
-" ペースト設定 クリップボードからペーストする時だけ、インデントしない
-if &term =~ "xterm"
-        let &t_SI        .= "\e[?2004h"
-        let &t_EI        .= "\e[?2004l"
-        let &pastetoggle =  "\e[201~"
+"" ペースト設定 クリップボードからペーストする時だけ、インデントしない
+"if &term =~ "xterm"
+"        let &t_SI        .= "\e[?2004h"
+"        let &t_EI        .= "\e[?2004l"
+"        let &pastetoggle =  "\e[201~"
 
-        function XTermPasteBegin(ret)
-                set paste
-                return a:ret
-        endfunction
+"        function XTermPasteBegin(ret)
+"                set paste
+"                return a:ret
+"        endfunction
 
-        inoremap <special> <expr> <Esc>[200~ XTermPasteBegin("")
-endif
-
-" 最後のカーソル位置を復元する--------------------------------
-if has("autocmd")
-        autocmd BufReadPost *
-        \ if line("'\"") > 0 && line ("'\"") <= line("$") |
-        \   exe "normal! g'\"" |
-        \ endif
-endif
-
-" Undoの永続化-------------------------------------------------
-" Comment out for Error MacVim.app
-" % mvim
-" E15 無効な式です: . undo_path
-"if has('persistent_undo')
-"        let undo_path = expand('~/.vim/undo')
-"        exe 'set undodir=' .. undo_path
-"        set undofile
+"        inoremap <special> <expr> <Esc>[200~ XTermPasteBegin("")
 "endif
 
-"カーソル下の単語をGoogleで検索する -------------------------
-function! s:search_by_google()
-    let line = line(".")
-    let col  = col(".")
-    let searchWord = expand("<cword>")
-    if searchWord  != ''
-        execute 'read !open https://www.google.co.jp/search\?q\=' . searchWord
-        execute 'call cursor(' . line . ',' . col . ')'
-    endif
-endfunction
-command! SearchByGoogle call s:search_by_google()
-nnoremap <silent> <Space>gg :SearchByGoogle<CR>
+"" 最後のカーソル位置を復元する--------------------------------
+"if has("autocmd")
+"        autocmd BufReadPost *
+"        \ if line("'\"") > 0 && line ("'\"") <= line("$") |
+"        \   exe "normal! g'\"" |
+"        \ endif
+"endif
 
-"goyo.vim の散文モード ---------------------------------------
-" Reference: https://postd.cc/vim3/
-" VIM AFTER 15 YEARS (2017-10-17) by Ian Langworth
-function! ProseMode()
-        call goyo#execute(0, [])
-        set nocopyindent nosmartindent noautoindent nolist noshowmode noshowcmd
-        set complete+=s
-        set background=light
-        if !has('gui_running')
-                let g:solarized_termcolors=256
-        endif
-        colors solarized
-endfunction
-command! ProseMode call ProseMode()
-nnoremap \p :ProseMode<CR>
+"" Undoの永続化-------------------------------------------------
+"" Comment out for Error MacVim.app
+"" % mvim
+"" E15 無効な式です: . undo_path
+""if has('persistent_undo')
+""        let undo_path = expand('~/.vim/undo')
+""        exe 'set undodir=' .. undo_path
+""        set undofile
+""endif
 
+""カーソル下の単語をGoogleで検索する -------------------------
+"function! s:search_by_google()
+"    let line = line(".")
+"    let col  = col(".")
+"    let searchWord = expand("<cword>")
+"    if searchWord  != ''
+"        execute 'read !open https://www.google.co.jp/search\?q\=' . searchWord
+"        execute 'call cursor(' . line . ',' . col . ')'
+"    endif
+"endfunction
+"command! SearchByGoogle call s:search_by_google()
+"nnoremap <silent> <Space>gg :SearchByGoogle<CR>
 
-" set vim-commentary commentstring
-autocmd FileType python setlocal commentstring=#\ %s
-autocmd FileType haskell setlocal commentstring=--\ %s
-
-"eskk Settings----------------------------
-" Reference: https://zenn.dev/kato_k/articles/753b36262b3213
-" eskk dictionary autoload
-if !filereadable(expand('~/.config/eskk/SKK-JISYO.L'))
-  call mkdir('~/.config/eskk', 'p')
-  call system('cd ~/.config/eskk/ && wget http://openlab.jp/skk/dic/SKK-JISYO.L.gz && gzip -d SKK-JISYO.L.gz')
-endif
-
-" eskk read dictionary
-let g:eskk#directory = "~/.config/eskk"
-let g:eskk#dictionary = { 'path': "~/.config/eskk/my_jisyo", 'sorted': 1, 'encoding': 'utf-8',}
-let g:eskk#large_dictionary = {'path': "~/.config/eskk/SKK-JISYO.L", 'sorted': 1, 'encoding': 'euc-jp',}
-
-" StatusLine dispy change mode
-function L_eskk_get_mode()
-    if (mode() == 'i') && eskk#is_enabled()
-        return g:eskk#statusline_mode_strings[eskk#get_mode()]
-    else
-        return ''
-    endif
-endfunction
-
-let g:lightline = {
-\   'active': {
-\     'left': [ ['mode', 'paste'], ['readonly', 'filename', 'eskk', 'modified'] ]
-\   },
-\   'component_function': {
-\     'eskk': 'L_eskk_get_mode'
-\   },
-\ }
-
-" Basic Setting
-" Reference: https://zenn.dev/kouta/articles/87947515bff4da
-let g:eskk#kakutei_when_unique_candidate = 1 " 漢字変換した時に候補が1つの場合、自動的に確定する
-let g:eskk#enable_completion = 0             " neocompleteを入れないと、1にすると動作しなくなるため0推奨
-let g:eskk#keep_state = 0                    " ノーマルモードに戻るとeskkモードを初期値にする
-let g:eskk#egg_like_newline = 1              " 漢字変換を確定しても改行しない。
-
-"表示文字を変更(オレ サンカクデ ハンダン デキナイ)
-" let g:eskk#marker_henkan = "`c`"
-" let g:eskk#marker_henkan_select = "`o`"
-" let g:eskk#marker_okuri = "`s`"
-let g:eskk#marker_jisyo_touroku = "`d`"
-
-" Sticky Shift
-autocmd User eskk-initialize-post call s:eskk_initial_pre()
-function! s:eskk_initial_pre() abort
-  EskkUnmap -type=sticky Q
-  EskkMap -type=sticky ;
-endfunction
-
-" 'l' inputed -> eskk mode break through
-augroup vimrc_eskk
-  autocmd!
-  autocmd User eskk-enable-post lmap <buffer> l <Plug>(eskk:disable)
-augroup END
-
-" eskk mode on keymapping
-imap jk <Plug>(eskk:toggle)
-cmap jk <Plug>(eskk:toggle)
-
-"End eskk Settings------------------------
-
-"cursor Change----------------------------
-" Reference: https://qiita.com/Linda_pp/items/9e0c94eb82b18071db34
-if has('vim_starting')
-    " 挿入モード時に非点滅の縦棒タイプのカーソル
-    let &t_SI .= "\e[6 q"
-
-    " ノーマルモード時に点滅のブロックタイプのカーソル
-    let &t_EI .= "\e[1 q"
-
-    " 置換モード時に非点滅の下線タイプのカーソル
-    let &t_SR .= "\e[4 q"
-    endif
-
-" NOMAL modeのカーソルを非点滅させる
-" Reference: https://chanko.hatenadiary.jp/entry/2016/10/28/162648
-" let &t_EI .= "\e[2 q"
-
-"End cursor Change------------------------
-
-"neoterm Setting--------------------------
-" Wrapper of some vim/neovim's :terminal functions.
-let g:neoterm_default_mod='belowright'
-let g:neoterm_size=10
-" Command done -> dispay result
-let g:neoterm_autoscroll=1
-" TERMINAL(insert-mode) -> vim(NORMAL)
-tnoremap <silent> <C-w> <C-\><C-n><C-w>
-" 3<leader>tl will clear neoterm-3.
-nnoremap <leader>tl :<c-u>exec v:count.'Tclear'<cr>
-" RUN REPL
-"       use: C-n
-nnoremap <silent> <C-n> :TREPLSendLine<CR>j0
-vnoremap <silent> <C-n> V:TREPLSendSelection<CR>'>j0
-
-"End neoterm Setting----------------------
-
-"Vimの生産性を高める12の方法--------------
-" How to boost your Vim productivity (2014-03-21) by Adam Stankiewicz
-" Reference: https://postd.cc/how-to-boost-your-vim-productivity/
-" 12<Enter> を押して、12行目に移動する（ 12G だと手首が曲がってしまう）
-" Enterを押して、ファイルの末尾に移動する
-nnoremap <CR> <Nop>
-nnoremap <CR> G
-
-"End Vimの生産性を高める12の方法----------
-
-"cpと打つと ペーストモードになる
-" Reference: https://kekaku.addisteria.com/wp/20170621231629
-nnoremap cp :set paste<CR>
-
-"挿入モードを抜けるとき、set nopaste を実行する。
-autocmd InsertLeave * set nopaste
+""goyo.vim の散文モード ---------------------------------------
+"" Reference: https://postd.cc/vim3/
+"" VIM AFTER 15 YEARS (2017-10-17) by Ian Langworth
+"function! ProseMode()
+"        call goyo#execute(0, [])
+"        set nocopyindent nosmartindent noautoindent nolist noshowmode noshowcmd
+"        set complete+=s
+"        set background=light
+"        if !has('gui_running')
+"                let g:solarized_termcolors=256
+"        endif
+"        colors solarized
+"endfunction
+"command! ProseMode call ProseMode()
+"nnoremap \p :ProseMode<CR>
 
 
-" ----------------------------------------------------------------------------
-" ABBREVIATION
-" ----------------------------------------------------------------------------
+"" set vim-commentary commentstring
+"autocmd FileType python setlocal commentstring=#\ %s
+"autocmd FileType haskell setlocal commentstring=--\ %s
 
-iabbrev .b #!/bin/bash
-iabbrev .r #!/usr/bin/ruby
-iabbrev EC # -*- coding: utf-8 -*-
-iabbrev .e niijimatakashi993@icloud.com
-iabbrev .g niijimatakashi993@gmail.com
-iabbrev .t takashiniijima213@gmail.com
-iabbrev .y takashiniijima213@yahoo.co.jp
+""eskk Settings----------------------------
+"" Reference: https://zenn.dev/kato_k/articles/753b36262b3213
+"" eskk dictionary autoload
+"if !filereadable(expand('~/.config/eskk/SKK-JISYO.L'))
+"  call mkdir('~/.config/eskk', 'p')
+"  call system('cd ~/.config/eskk/ && wget http://openlab.jp/skk/dic/SKK-JISYO.L.gz && gzip -d SKK-JISYO.L.gz')
+"endif
 
-" ----------------------------------------------------------------------------
-" End ABBREVIATION
-" ----------------------------------------------------------------------------
+"" eskk read dictionary
+"let g:eskk#directory = "~/.config/eskk"
+"let g:eskk#dictionary = { 'path': "~/.config/eskk/my_jisyo", 'sorted': 1, 'encoding': 'utf-8',}
+"let g:eskk#large_dictionary = {'path': "~/.config/eskk/SKK-JISYO.L", 'sorted': 1, 'encoding': 'euc-jp',}
 
-" ----------------------------------------------------------------------------
-"  COLORS
-" ----------------------------------------------------------------------------
+"" StatusLine dispy change mode
+"function L_eskk_get_mode()
+"    if (mode() == 'i') && eskk#is_enabled()
+"        return g:eskk#statusline_mode_strings[eskk#get_mode()]
+"    else
+"        return ''
+"    endif
+"endfunction
 
-"iceberg.vim
-colorscheme iceberg
+"let g:lightline = {
+"\   'active': {
+"\     'left': [ ['mode', 'paste'], ['readonly', 'filename', 'eskk', 'modified'] ]
+"\   },
+"\   'component_function': {
+"\     'eskk': 'L_eskk_get_mode'
+"\   },
+"\ }
 
-" ----------------------------------------------------------------------------
-"  SCRIPTS NEED PUT ON THE END OF .vimrc
-" ----------------------------------------------------------------------------
+"" Basic Setting
+"" Reference: https://zenn.dev/kouta/articles/87947515bff4da
+"let g:eskk#kakutei_when_unique_candidate = 1 " 漢字変換した時に候補が1つの場合、自動的に確定する
+"let g:eskk#enable_completion = 0             " neocompleteを入れないと、1にすると動作しなくなるため0推奨
+"let g:eskk#keep_state = 0                    " ノーマルモードに戻るとeskkモードを初期値にする
+"let g:eskk#egg_like_newline = 1              " 漢字変換を確定しても改行しない。
 
-" 貼り付け時にペーストバッファが上書きされないようにする
-" Reference: https://postd.cc/how-to-boost-your-vim-productivity/
-" コードを ~/.vimrc の末尾付近に置きます
-" vp doesn't replace paste buffer
-function! RestoreRegister()
-  let @" = s:restore_reg
-  return ''
-endfunction
-function! s:Repl()
-  let s:restore_reg = @"
-  return "p@=RestoreRegister()\<cr>"
-endfunction
-vmap <silent> <expr> p <sid>Repl()
+""表示文字を変更(オレ サンカクデ ハンダン デキナイ)
+"" let g:eskk#marker_henkan = "`c`"
+"" let g:eskk#marker_henkan_select = "`o`"
+"" let g:eskk#marker_okuri = "`s`"
+"let g:eskk#marker_jisyo_touroku = "`d`"
 
-" SBCLにファイルを読み込んでREPLを起動するコマンドライン入力
-abbrev lil rlwrap ros -l <file> run
+"" Sticky Shift
+"autocmd User eskk-initialize-post call s:eskk_initial_pre()
+"function! s:eskk_initial_pre() abort
+"  EskkUnmap -type=sticky Q
+"  EskkMap -type=sticky ;
+"endfunction
 
-"-----------------------------------------------------------------------------
-" 日付挿入
-"-----------------------------------------------------------------------------
-inoremap <Leader>date <C-R>=strftime('%Y/%m/%d (%a)')<CR>
-inoremap <Leader>time <C-R>=strftime('%H:%M')<CR>
-inoremap <Leader>w3cd <C-R>=strftime('%Y-%m-%dT%H:%M:%S+09:00')<CR>
+"" 'l' inputed -> eskk mode break through
+"augroup vimrc_eskk
+"  autocmd!
+"  autocmd User eskk-enable-post lmap <buffer> l <Plug>(eskk:disable)
+"augroup END
 
-" ----------------------------------------------------------------------------
-" END OF FILE: .vimrc
-" ----------------------------------------------------------------------------
+"" eskk mode on keymapping
+"imap jk <Plug>(eskk:toggle)
+"cmap jk <Plug>(eskk:toggle)
+
+""End eskk Settings------------------------
+
+""cursor Change----------------------------
+"" Reference: https://qiita.com/Linda_pp/items/9e0c94eb82b18071db34
+"if has('vim_starting')
+"    " 挿入モード時に非点滅の縦棒タイプのカーソル
+"    let &t_SI .= "\e[6 q"
+
+"    " ノーマルモード時に点滅のブロックタイプのカーソル
+"    let &t_EI .= "\e[1 q"
+
+"    " 置換モード時に非点滅の下線タイプのカーソル
+"    let &t_SR .= "\e[4 q"
+"    endif
+
+"" NOMAL modeのカーソルを非点滅させる
+"" Reference: https://chanko.hatenadiary.jp/entry/2016/10/28/162648
+"" let &t_EI .= "\e[2 q"
+
+""End cursor Change------------------------
+
+""neoterm Setting--------------------------
+"" Wrapper of some vim/neovim's :terminal functions.
+"let g:neoterm_default_mod='belowright'
+"let g:neoterm_size=10
+"" Command done -> dispay result
+"let g:neoterm_autoscroll=1
+"" TERMINAL(insert-mode) -> vim(NORMAL)
+"tnoremap <silent> <C-w> <C-\><C-n><C-w>
+"" 3<leader>tl will clear neoterm-3.
+"nnoremap <leader>tl :<c-u>exec v:count.'Tclear'<cr>
+"" RUN REPL
+""       use: C-n
+"nnoremap <silent> <C-n> :TREPLSendLine<CR>j0
+"vnoremap <silent> <C-n> V:TREPLSendSelection<CR>'>j0
+
+""End neoterm Setting----------------------
+
+""Vimの生産性を高める12の方法--------------
+"" How to boost your Vim productivity (2014-03-21) by Adam Stankiewicz
+"" Reference: https://postd.cc/how-to-boost-your-vim-productivity/
+"" 12<Enter> を押して、12行目に移動する（ 12G だと手首が曲がってしまう）
+"" Enterを押して、ファイルの末尾に移動する
+"nnoremap <CR> <Nop>
+"nnoremap <CR> G
+
+""End Vimの生産性を高める12の方法----------
+
+""cpと打つと ペーストモードになる
+"" Reference: https://kekaku.addisteria.com/wp/20170621231629
+"nnoremap cp :set paste<CR>
+
+""挿入モードを抜けるとき、set nopaste を実行する。
+"autocmd InsertLeave * set nopaste
+
+
+"" ----------------------------------------------------------------------------
+"" ABBREVIATION
+"" ----------------------------------------------------------------------------
+
+"iabbrev .b #!/bin/bash
+"iabbrev .r #!/usr/bin/ruby
+"iabbrev EC # -*- coding: utf-8 -*-
+"iabbrev .e niijimatakashi993@icloud.com
+"iabbrev .g niijimatakashi993@gmail.com
+"iabbrev .t takashiniijima213@gmail.com
+"iabbrev .y takashiniijima213@yahoo.co.jp
+
+"" ----------------------------------------------------------------------------
+"" End ABBREVIATION
+"" ----------------------------------------------------------------------------
+
+"" ----------------------------------------------------------------------------
+""  COLORS
+"" ----------------------------------------------------------------------------
+
+""iceberg.vim
+"colorscheme iceberg
+
+"" ----------------------------------------------------------------------------
+""  SCRIPTS NEED PUT ON THE END OF .vimrc
+"" ----------------------------------------------------------------------------
+
+"" 貼り付け時にペーストバッファが上書きされないようにする
+"" Reference: https://postd.cc/how-to-boost-your-vim-productivity/
+"" コードを ~/.vimrc の末尾付近に置きます
+"" vp doesn't replace paste buffer
+"function! RestoreRegister()
+"  let @" = s:restore_reg
+"  return ''
+"endfunction
+"function! s:Repl()
+"  let s:restore_reg = @"
+"  return "p@=RestoreRegister()\<cr>"
+"endfunction
+"vmap <silent> <expr> p <sid>Repl()
+
+"" SBCLにファイルを読み込んでREPLを起動するコマンドライン入力
+"abbrev lil rlwrap ros -l <file> run
+
+""-----------------------------------------------------------------------------
+"" 日付挿入
+""-----------------------------------------------------------------------------
+"inoremap <Leader>date <C-R>=strftime('%Y/%m/%d (%a)')<CR>
+"inoremap <Leader>time <C-R>=strftime('%H:%M')<CR>
+"inoremap <Leader>w3cd <C-R>=strftime('%Y-%m-%dT%H:%M:%S+09:00')<CR>
+
+"" ----------------------------------------------------------------------------
+"" END OF FILE: .vimrc
+"" ----------------------------------------------------------------------------
 
