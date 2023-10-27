@@ -742,90 +742,90 @@ nnoremap \p :ProseMode<CR>
 autocmd FileType python setlocal commentstring=#\ %s
 autocmd FileType haskell setlocal commentstring=--\ %s
 
-""eskk Settings----------------------------
-"" Reference: https://zenn.dev/kato_k/articles/753b36262b3213
-"" eskk dictionary autoload
-"if !filereadable(expand('~/.config/eskk/SKK-JISYO.L'))
-"  call mkdir('~/.config/eskk', 'p')
-"  call system('cd ~/.config/eskk/ && wget http://openlab.jp/skk/dic/SKK-JISYO.L.gz && gzip -d SKK-JISYO.L.gz')
-"endif
+"eskk Settings----------------------------
+" Reference: https://zenn.dev/kato_k/articles/753b36262b3213
+" eskk dictionary autoload
+if !filereadable(expand('~/.config/eskk/SKK-JISYO.L'))
+  call mkdir('~/.config/eskk', 'p')
+  call system('cd ~/.config/eskk/ && wget http://openlab.jp/skk/dic/SKK-JISYO.L.gz && gzip -d SKK-JISYO.L.gz')
+endif
 
-"" eskk read dictionary
-"let g:eskk#directory = "~/.config/eskk"
-"let g:eskk#dictionary = { 'path': "~/.config/eskk/my_jisyo", 'sorted': 1, 'encoding': 'utf-8',}
-"let g:eskk#large_dictionary = {'path': "~/.config/eskk/SKK-JISYO.L", 'sorted': 1, 'encoding': 'euc-jp',}
+" eskk read dictionary
+let g:eskk#directory = "~/.config/eskk"
+let g:eskk#dictionary = { 'path': "~/.config/eskk/my_jisyo", 'sorted': 1, 'encoding': 'utf-8',}
+let g:eskk#large_dictionary = {'path': "~/.config/eskk/SKK-JISYO.L", 'sorted': 1, 'encoding': 'euc-jp',}
 
-"" StatusLine dispy change mode
-"function L_eskk_get_mode()
-"    if (mode() == 'i') && eskk#is_enabled()
-"        return g:eskk#statusline_mode_strings[eskk#get_mode()]
-"    else
-"        return ''
-"    endif
-"endfunction
+" StatusLine dispy change mode
+function L_eskk_get_mode()
+    if (mode() == 'i') && eskk#is_enabled()
+        return g:eskk#statusline_mode_strings[eskk#get_mode()]
+    else
+        return ''
+    endif
+endfunction
 
-"let g:lightline = {
-"\   'active': {
-"\     'left': [ ['mode', 'paste'], ['readonly', 'filename', 'eskk', 'modified'] ]
-"\   },
-"\   'component_function': {
-"\     'eskk': 'L_eskk_get_mode'
-"\   },
-"\ }
+let g:lightline = {
+\   'active': {
+\     'left': [ ['mode', 'paste'], ['readonly', 'filename', 'eskk', 'modified'] ]
+\   },
+\   'component_function': {
+\     'eskk': 'L_eskk_get_mode'
+\   },
+\ }
 
-"" Basic Setting
-"" Reference: https://zenn.dev/kouta/articles/87947515bff4da
-"let g:eskk#kakutei_when_unique_candidate = 1 " 漢字変換した時に候補が1つの場合、自動的に確定する
-"let g:eskk#enable_completion = 0             " neocompleteを入れないと、1にすると動作しなくなるため0推奨
-"let g:eskk#keep_state = 0                    " ノーマルモードに戻るとeskkモードを初期値にする
-"let g:eskk#egg_like_newline = 1              " 漢字変換を確定しても改行しない。
+" Basic Setting
+" Reference: https://zenn.dev/kouta/articles/87947515bff4da
+let g:eskk#kakutei_when_unique_candidate = 1 " 漢字変換した時に候補が1つの場合、自動的に確定する
+let g:eskk#enable_completion = 0             " neocompleteを入れないと、1にすると動作しなくなるため0推奨
+let g:eskk#keep_state = 0                    " ノーマルモードに戻るとeskkモードを初期値にする
+let g:eskk#egg_like_newline = 1              " 漢字変換を確定しても改行しない。
 
-""表示文字を変更(オレ サンカクデ ハンダン デキナイ)
-"" let g:eskk#marker_henkan = "`c`"
-"" let g:eskk#marker_henkan_select = "`o`"
-"" let g:eskk#marker_okuri = "`s`"
-"let g:eskk#marker_jisyo_touroku = "`d`"
+"表示文字を変更(オレ サンカクデ ハンダン デキナイ)
+" let g:eskk#marker_henkan = "`c`"
+" let g:eskk#marker_henkan_select = "`o`"
+" let g:eskk#marker_okuri = "`s`"
+let g:eskk#marker_jisyo_touroku = "`d`"
 
-"" Sticky Shift
-"autocmd User eskk-initialize-post call s:eskk_initial_pre()
-"function! s:eskk_initial_pre() abort
-"  EskkUnmap -type=sticky Q
-"  EskkMap -type=sticky ;
-"endfunction
+" Sticky Shift
+autocmd User eskk-initialize-post call s:eskk_initial_pre()
+function! s:eskk_initial_pre() abort
+  EskkUnmap -type=sticky Q
+  EskkMap -type=sticky ;
+endfunction
 
-"" 'l' inputed -> eskk mode break through
-"augroup vimrc_eskk
-"  autocmd!
-"  autocmd User eskk-enable-post lmap <buffer> l <Plug>(eskk:disable)
-"augroup END
+" 'l' inputed -> eskk mode break through
+augroup vimrc_eskk
+  autocmd!
+  autocmd User eskk-enable-post lmap <buffer> l <Plug>(eskk:disable)
+augroup END
 
-"" eskk mode on keymapping
-"imap jk <Plug>(eskk:toggle)
-"cmap jk <Plug>(eskk:toggle)
+" eskk mode on keymapping
+imap jk <Plug>(eskk:toggle)
+cmap jk <Plug>(eskk:toggle)
 
-""End eskk Settings------------------------
+"End eskk Settings------------------------
 
-""cursor Change----------------------------
-"" Reference: https://qiita.com/Linda_pp/items/9e0c94eb82b18071db34
-"if has('vim_starting')
-"    " 挿入モード時に非点滅の縦棒タイプのカーソル
-"    let &t_SI .= "\e[6 q"
+"cursor Change----------------------------
+" Reference: https://qiita.com/Linda_pp/items/9e0c94eb82b18071db34
+if has('vim_starting')
+    " 挿入モード時に非点滅の縦棒タイプのカーソル
+    let &t_SI .= "\e[6 q"
 
-"    " ノーマルモード時に点滅のブロックタイプのカーソル
-"    let &t_EI .= "\e[1 q"
+    " ノーマルモード時に点滅のブロックタイプのカーソル
+    let &t_EI .= "\e[1 q"
 
-"    " 置換モード時に非点滅の下線タイプのカーソル
-"    let &t_SR .= "\e[4 q"
-"    endif
+    " 置換モード時に非点滅の下線タイプのカーソル
+    let &t_SR .= "\e[4 q"
+    endif
 
-"" NOMAL modeのカーソルを非点滅させる
-"" Reference: https://chanko.hatenadiary.jp/entry/2016/10/28/162648
-"" let &t_EI .= "\e[2 q"
+" NOMAL modeのカーソルを非点滅させる
+" Reference: https://chanko.hatenadiary.jp/entry/2016/10/28/162648
+" let &t_EI .= "\e[2 q"
 
-""End cursor Change------------------------
+"End cursor Change------------------------
 
-""neoterm Setting--------------------------
-"" Wrapper of some vim/neovim's :terminal functions.
+"neoterm Setting--------------------------
+" Wrapper of some vim/neovim's :terminal functions.
 "let g:neoterm_default_mod='belowright'
 "let g:neoterm_size=10
 "" Command done -> dispay result
@@ -839,24 +839,24 @@ autocmd FileType haskell setlocal commentstring=--\ %s
 "nnoremap <silent> <C-n> :TREPLSendLine<CR>j0
 "vnoremap <silent> <C-n> V:TREPLSendSelection<CR>'>j0
 
-""End neoterm Setting----------------------
+"End neoterm Setting----------------------
 
-""Vimの生産性を高める12の方法--------------
-"" How to boost your Vim productivity (2014-03-21) by Adam Stankiewicz
-"" Reference: https://postd.cc/how-to-boost-your-vim-productivity/
-"" 12<Enter> を押して、12行目に移動する（ 12G だと手首が曲がってしまう）
-"" Enterを押して、ファイルの末尾に移動する
-"nnoremap <CR> <Nop>
-"nnoremap <CR> G
+"Vimの生産性を高める12の方法--------------
+" How to boost your Vim productivity (2014-03-21) by Adam Stankiewicz
+" Reference: https://postd.cc/how-to-boost-your-vim-productivity/
+" 12<Enter> を押して、12行目に移動する（ 12G だと手首が曲がってしまう）
+" Enterを押して、ファイルの末尾に移動する
+nnoremap <CR> <Nop>
+nnoremap <CR> G
 
-""End Vimの生産性を高める12の方法----------
+"End Vimの生産性を高める12の方法----------
 
-""cpと打つと ペーストモードになる
-"" Reference: https://kekaku.addisteria.com/wp/20170621231629
-"nnoremap cp :set paste<CR>
+"cpと打つと ペーストモードになる
+" Reference: https://kekaku.addisteria.com/wp/20170621231629
+nnoremap cp :set paste<CR>
 
-""挿入モードを抜けるとき、set nopaste を実行する。
-"autocmd InsertLeave * set nopaste
+"挿入モードを抜けるとき、set nopaste を実行する。
+autocmd InsertLeave * set nopaste
 
 
 "" ----------------------------------------------------------------------------
