@@ -461,10 +461,10 @@ function! QuickfixFilenames()
 endfunction
 
 " Vimのリストをサクサク移動するためのキーマッピング p.116
-" nnoremap <silent> [b :bprevious<CR>
-" nnoremap <silent> ]b :bnext<CR>
-" nnoremap <silent> [B :bfirst<CR>
-" nnoremap <silent> ]B :blast<CR>
+nnoremap <silent> [b :bprevious<CR>
+nnoremap <silent> ]b :bnext<CR>
+nnoremap <silent> [B :bfirst<CR>
+nnoremap <silent> ]B :blast<CR>
 
 "End Practical Vim, Drew Neil-------------
 
@@ -621,70 +621,70 @@ nnoremap <Leader>gb :Gblame<CR>
 ""fzf.vim----------------------------------
 "" Reference: https://wonderwall.hatenablog.com/entry/2017/10/07/220000
 "" dispay new window
-"let g:fzf_layout = { 'window': 'enew' }
+let g:fzf_layout = { 'window': 'enew' }
 
-"" Mapping selecting mappings
-"" :Maps
-"nnoremap s <Nop>
-"nnoremap s :Buffers<CR>
-"nnoremap t <Nop>
-"nnoremap t :Files<CR>
+" Mapping selecting mappings
+" :Maps
+nnoremap s <Nop>
+nnoremap s :Buffers<CR>
+nnoremap t <Nop>
+nnoremap t :Files<CR>
 
-"" Reference: https://github.com/junegunn/fzf.vim
-"nmap <Leader><tab> <plug>(fzf-maps-n)
-"xmap <Leader><tab> <plug>(fzf-maps-x)
-"omap <Leader><tab> <plug>(fzf-maps-o)
+" Reference: https://github.com/junegunn/fzf.vim
+nmap <Leader><tab> <plug>(fzf-maps-n)
+xmap <Leader><tab> <plug>(fzf-maps-x)
+omap <Leader><tab> <plug>(fzf-maps-o)
 
-"" Insert mode completion
-"" Reference: https://github.com/junegunn/fzf.vim
-"" INSERT modeでファイル名や行を補完する
-"" <C-x><C-l>
-"imap <c-x><c-k> <plug>(fzf-complete-word)
-"imap <c-x><c-f> <plug>(fzf-complete-path)
-"imap <c-x><c-j> <plug>(fzf-complete-file-ag)
-"imap <c-x><c-l> <plug>(fzf-complete-line)
+" Insert mode completion
+" Reference: https://github.com/junegunn/fzf.vim
+" INSERT modeでファイル名や行を補完する
+" <C-x><C-l>
+imap <c-x><c-k> <plug>(fzf-complete-word)
+imap <c-x><c-f> <plug>(fzf-complete-path)
+imap <c-x><c-j> <plug>(fzf-complete-file-ag)
+imap <c-x><c-l> <plug>(fzf-complete-line)
 
-"" refer: https://qiita.com/yuucu/items/03baae12d40f9699ec59
-"nnoremap <silent> <Leader>f :Files<CR>
-"nnoremap <silent> <Leader>g :GFiles<CR>
-"nnoremap <silent> <Leader>G :GFiles?<CR>
-"nnoremap <silent> <Leader>b :Buffers<CR>
-"" nnoremap <silent> <Leader>h :History<CR>
-"" nnoremap <silent> <Leader>r :Rg<CR>
+" refer: https://qiita.com/yuucu/items/03baae12d40f9699ec59
+nnoremap <silent> <Leader>f :Files<CR>
+nnoremap <silent> <Leader>g :GFiles<CR>
+nnoremap <silent> <Leader>G :GFiles?<CR>
+nnoremap <silent> <Leader>b :Buffers<CR>
+" nnoremap <silent> <Leader>h :History<CR>
+" nnoremap <silent> <Leader>r :Rg<CR>
 
-""End fzf.vim------------------------------
+"End fzf.vim------------------------------
 
-"" :helpを3倍の速度で引く
-"nnoremap ,h :<C-u>help<Space>
+" :helpを3倍の速度で引く
+nnoremap ,h :<C-u>help<Space>
 
-"" 検索後にジャンプした際に検索単語を画面中央に持ってくる
-"nnoremap n nzz
-"nnoremap N Nzz
-"nnoremap * *zz
-"nnoremap # #zz
-"nnoremap g* g*zz
-"nnoremap g# g#zz
+" 検索後にジャンプした際に検索単語を画面中央に持ってくる
+nnoremap n nzz
+nnoremap N Nzz
+nnoremap * *zz
+nnoremap # #zz
+nnoremap g* g*zz
+nnoremap g# g#zz
 
-"" 'verymagic'
-"nnoremap / /\v
+" 'verymagic'
+nnoremap / /\v
 
-""Insert Mode Keymaps----------------------
-"" Change INSERT mode to NORMAL mode
-"inoremap <silent> fd <Esc>
+"Insert Mode Keymaps----------------------
+" Change INSERT mode to NORMAL mode
+inoremap <silent> fd <Esc>
 
-"" File Save
-"inoremap <silent> js <C-o>:write<CR>
+" File Save
+inoremap <silent> js <C-o>:write<CR>
 
-"" Scroll to center line
-"inoremap <silent> zz <C-o>zz
+" Scroll to center line
+inoremap <silent> zz <C-o>zz
 
-"" Scroll to top line
-"inoremap <silent> zk <C-o>z<CR>
+" Scroll to top line
+inoremap <silent> zk <C-o>z<CR>
 
-"" Scroll to bottom line
-"inoremap <silent> zj <C-o>z-
+" Scroll to bottom line
+inoremap <silent> zj <C-o>z-
 
-""End Insert Mode Keymaps------------------
+"End Insert Mode Keymaps------------------
 
 "" ペースト設定 クリップボードからペーストする時だけ、インデントしない
 "if &term =~ "xterm"
