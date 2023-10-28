@@ -859,58 +859,58 @@ nnoremap cp :set paste<CR>
 autocmd InsertLeave * set nopaste
 
 
-"" ----------------------------------------------------------------------------
-"" ABBREVIATION
-"" ----------------------------------------------------------------------------
+" ----------------------------------------------------------------------------
+" ABBREVIATION
+" ----------------------------------------------------------------------------
 
-"iabbrev .b #!/bin/bash
-"iabbrev .r #!/usr/bin/ruby
-"iabbrev EC # -*- coding: utf-8 -*-
-"iabbrev .e niijimatakashi993@icloud.com
-"iabbrev .g niijimatakashi993@gmail.com
-"iabbrev .t takashiniijima213@gmail.com
-"iabbrev .y takashiniijima213@yahoo.co.jp
+iabbrev .b #!/bin/bash
+iabbrev .r #!/usr/bin/ruby
+iabbrev EC # -*- coding: utf-8 -*-
+iabbrev .e niijimatakashi993@icloud.com
+iabbrev .g niijimatakashi993@gmail.com
+iabbrev .t takashiniijima213@gmail.com
+iabbrev .y takashiniijima213@yahoo.co.jp
 
-"" ----------------------------------------------------------------------------
-"" End ABBREVIATION
-"" ----------------------------------------------------------------------------
+" ----------------------------------------------------------------------------
+" End ABBREVIATION
+" ----------------------------------------------------------------------------
 
-"" ----------------------------------------------------------------------------
-""  COLORS
-"" ----------------------------------------------------------------------------
+" ----------------------------------------------------------------------------
+"  COLORS
+" ----------------------------------------------------------------------------
 
-""iceberg.vim
-"colorscheme iceberg
+"iceberg.vim
+colorscheme iceberg
 
-"" ----------------------------------------------------------------------------
-""  SCRIPTS NEED PUT ON THE END OF .vimrc
-"" ----------------------------------------------------------------------------
+" ----------------------------------------------------------------------------
+"  SCRIPTS NEED PUT ON THE END OF .vimrc
+" ----------------------------------------------------------------------------
 
-"" 貼り付け時にペーストバッファが上書きされないようにする
-"" Reference: https://postd.cc/how-to-boost-your-vim-productivity/
-"" コードを ~/.vimrc の末尾付近に置きます
-"" vp doesn't replace paste buffer
-"function! RestoreRegister()
-"  let @" = s:restore_reg
-"  return ''
-"endfunction
-"function! s:Repl()
-"  let s:restore_reg = @"
-"  return "p@=RestoreRegister()\<cr>"
-"endfunction
-"vmap <silent> <expr> p <sid>Repl()
+" 貼り付け時にペーストバッファが上書きされないようにする
+" Reference: https://postd.cc/how-to-boost-your-vim-productivity/
+" コードを ~/.vimrc の末尾付近に置きます
+" vp doesn't replace paste buffer
+function! RestoreRegister()
+  let @" = s:restore_reg
+  return ''
+endfunction
+function! s:Repl()
+  let s:restore_reg = @"
+  return "p@=RestoreRegister()\<cr>"
+endfunction
+vmap <silent> <expr> p <sid>Repl()
 
-"" SBCLにファイルを読み込んでREPLを起動するコマンドライン入力
-"abbrev lil rlwrap ros -l <file> run
+" SBCLにファイルを読み込んでREPLを起動するコマンドライン入力
+abbrev lil rlwrap ros -l <file> run
 
-""-----------------------------------------------------------------------------
-"" 日付挿入
-""-----------------------------------------------------------------------------
-"inoremap <Leader>date <C-R>=strftime('%Y/%m/%d (%a)')<CR>
-"inoremap <Leader>time <C-R>=strftime('%H:%M')<CR>
-"inoremap <Leader>w3cd <C-R>=strftime('%Y-%m-%dT%H:%M:%S+09:00')<CR>
+"-----------------------------------------------------------------------------
+" 日付挿入
+"-----------------------------------------------------------------------------
+inoremap <Leader>date <C-R>=strftime('%Y/%m/%d (%a)')<CR>
+inoremap <Leader>time <C-R>=strftime('%H:%M')<CR>
+inoremap <Leader>w3cd <C-R>=strftime('%Y-%m-%dT%H:%M:%S+09:00')<CR>
 
-"" ----------------------------------------------------------------------------
-"" END OF FILE: .vimrc
-"" ----------------------------------------------------------------------------
+" ----------------------------------------------------------------------------
+" END OF FILE: .vimrc
+" ----------------------------------------------------------------------------
 
