@@ -73,8 +73,9 @@ set cursorline                                  " cursorline on
 
 set laststatus=2                                " Disply statuslines 2
 
-"set statusline=%<%f\ %h%m%r%{FugitiveStatusline()}%=%-14.(%l,%c%V%)\ %P
+set statusline=%<%f\ %h%m%r%{FugitiveStatusline()}%=%-14.(%l,%c%V%)\ %P
                                                 " Disply statusline [Git(master)]
+
 " ----------------------------------------------------------------------------
 " PLUGIN SETTINGS
 " ----------------------------------------------------------------------------
@@ -216,13 +217,11 @@ Plug 'simeji/winresizer'
 " minibufexpl.vim
 Plug 'fholgado/minibufexpl.vim'
 
-"-----------------------------------------
-"call plug#end()
-"-----------------------------------------
+" End Write PLUGINS here!-----------------
 
-" ----------------------------------------------------------------------------
-" END OF vim-plug
-" ----------------------------------------------------------------------------
+call plug#end()
+
+"END OF vim-plug--------------------------
 
 "deepl.vim--------------------------------
 " フリー版のエンドポイントを指定
@@ -371,15 +370,27 @@ nnoremap <silent> b7 :<C-u>:b7<CR>
 nnoremap <silent> b8 :<C-u>:b8<CR>
 nnoremap <silent> b9 :<C-u>:b9<CR>
 
+" MiniBufExplorer 内を'hjkl'で移動
 let g:miniBufExplMapWindowNavVim = 1
+
 let g:miniBufExplMapWindowNavArrows = 1
+let g:miniBufExplMapCTabSwitchBuffs = 1
 
 " refer: https://uskey.hatenablog.com/entry/2015/08/16/080000
 " 無条件でバッファ一覧が開く
 let g:miniBufExplorerMoreThanOne = 0
 
-" MiniBufExplorer 内を'hjkl'で移動
-" miniBufExplMapWindowNavVim = 1
+" minibufexpl
+" let g:miniBufExplMapWindowNavVim=1   "hjklで移動
+" let g:miniBufExplSplitBelow=0        " Put new window above
+" let g:miniBufExplMapWindowNavArrows=1
+" let g:miniBufExplMapCTabSwitchBufs=1
+" let g:miniBufExplModSelTarget=1
+" let g:miniBufExplSplitToEdge=1
+" nnoremap <C-d>    : bd<CR>      " バッファを閉じる
+" nmap <Space>      : MBEbn<CR>   " 次のバッファ
+" nmap <C-n>        : MBEbn<CR>   " 次のバッファ
+" nmap <C-p>        : MBEbp<CR>   " 前のバッファ
 
 "End minibufexpl.vim----------------------
 
