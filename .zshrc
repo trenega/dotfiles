@@ -598,10 +598,10 @@ function precmd() {
 
 # 不要なcommandをhistoryから除外する
 # refs: https://www.m3tech.blog/entry/dotfiles-bonsai
-zshaddhistory() {
-    local line="${1%%$'\n'}"
-    [[ ! "$line" =~ "^(cd|la|ll|ls|rm|rmdir)($| )" ]]
-}
+# zshaddhistory() {
+#     local line="${1%%$'\n'}"
+#     [[ ! "$line" =~ "^(cd|la|ll|ls|rm|rmdir)($| )" ]]
+# }
 
 
 ### Added by Zinit's installer
