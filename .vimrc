@@ -917,7 +917,7 @@ abbrev lil rlwrap ros -l <file> run
 "-----------------------------------------------------------------------------
 " 日付挿入
 "-----------------------------------------------------------------------------
-inoremap <Leader>date <C-R>=strftime('%Y/%m/%d (%a)')<CR>
+inoremap <Leader>date <C-R>=strftime('%Y/%m/%d')<CR>
 inoremap <Leader>time <C-R>=strftime('%H:%M')<CR>
 inoremap <Leader>w3cd <C-R>=strftime('%Y-%m-%dT%H:%M:%S+09:00')<CR>
 
