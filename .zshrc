@@ -70,11 +70,10 @@ mdpu ()	{mkdir -p "$@" && pushd "$*[-1]"}
 alias psd=pushd ppd=popd ds='dirs -v'
 alias cle='clear'
 # alias diff='diff -y --suppress-common-lines --color=auto'
-alias v="vim"
 alias n="nvim"
 alias vv='vim -R'                               # set view mode
 alias nv='nvim -R'                              # set view mode
-alias vi='vim -u NONE -N'                       # 設定ファイル や環境変数による初期化、
+alias vino='vim -u NONE -N'                       # 設定ファイル や環境変数による初期化、
                                                 # .gvimrcによるGUIの初期化も含め、
                                                 # 全て省略される。プラグインも読み込まれない。
                                                 # 'nocompatible' (Vimの拡張を有効) にすることができる。
@@ -156,7 +155,7 @@ alias nvimf='nvim -o `fzf`'                     # vim current file complement
 alias envi='environment'
 
 # install-data
-alias install-ls='nvim ~/data/install/install-data.list'
+alias install-ls='nvim ~/data/install/install-data'
 
 # edit memo
 alias memo='nvim ~/data/memo/memo'
