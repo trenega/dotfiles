@@ -400,6 +400,13 @@
 ;;;; Pagckage Settings
 ;;;;------------------------------------------------------
 
+;;;「Emacs実践入門」大竹智也[著]
+;; 行の折り返し表示を切り替える
+;; refer: 「Emacs実践入門」大竹智也[著] p.81
+(require 'bind-key)
+(bind-key "C-c l" 'toggle-truncate-lines)
+
+
 ;; Evil Settig
 (evil-mode 1)
 
