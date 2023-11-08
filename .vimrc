@@ -16,6 +16,7 @@ filetype plugin indent on                       " Essential for filetype plugins
 set autoindent                                  " Carry over indenting from previous line
 
 set clipboard=unnamedplus
+set clipboard+=unnamed
 
 set encoding=utf-8                              " UTF-8 by default
 
