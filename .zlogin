@@ -16,7 +16,7 @@ manpath=(/usr/*/man(N-/) /usr/local/*/man(N-/) /var/*/man(N-/))
 
 export MANPATH
 #export LESS='-iscj5'
-export LESS='eMqc'
+export LESS='eMqc'  # "Learning the Unix Operating System" p.74
 export JLESSCHARSET=japanese
 export LESSCHARSET=utf-8
 #export BLOCKSIZE=k
