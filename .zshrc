@@ -39,6 +39,9 @@ setopt PUSHD_IGNORE_DUPS
 #setopt auto_menu  correct rm_star_silent sun_keyboard_hack inc_append_history
 setopt share_history hist_reduce_blanks hist_ignore_all_dups
 
+# ファイルの上書きを阻止する
+setopt NO_CLOBBER
+
 #END SET SHELL OPTIONS--------------------
 
 #colordiff
