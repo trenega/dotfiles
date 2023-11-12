@@ -580,7 +580,6 @@ ssh-add -l >& /dev/null || ssh-add
 
 #End Setup ssh-agent----------------------
 
-
 #iTermil2のウィンドウとタブに自動的に名前をつける---
 # https://qiita.com/junkoda/items/8c0c209edbbabfd27f29
 function precmd() {
@@ -793,10 +792,10 @@ bindkey '^f' fzf-z-search
 # ghcup-env
 [ -f "/Users/nis/.ghcup/env" ] && source "/Users/nis/.ghcup/env" # ghcup-env
 
+# NO_CLOBBER ファイルの上書きを阻止する
+setopt NO_CLOBBER
+
 # Don't end with errors.
 # true
 
-# -------------------------------------------------------------------
-# END OF FILE: .zshrc
-# -------------------------------------------------------------------
-
+### .zshrc ends here
