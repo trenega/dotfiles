@@ -145,6 +145,7 @@ alias gcc='gcc -Wall -fno-pic -fomit-frame-pointer'
 alias vimf='vim -o `fzf`'                       # vim current file complement
 alias nvimf='nvim -o `fzf`'                     # vim current file complement
 
+alias less='less -R'                            # color option
 # Rust cargo commands
 # alias cb='cargo build'
 # alias cr='cargo run'
