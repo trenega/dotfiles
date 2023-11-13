@@ -43,13 +43,13 @@ setopt share_history hist_reduce_blanks hist_ignore_all_dups
 
 #colordiff
 # refs: https://qiita.com/catatsuy/items/8bafef2a60762a1c9f0f
-if [[ -x `which colordiff` ]]; then
-  alias diff='colordiff -u'
-else
-  alias diff='diff -u'
-fi
+# if [[ -x `which colordiff` ]]; then
+#   alias diff='colordiff -u'
+# else
+#   alias diff='diff -u'
+# fi
 
-export LESS='-R'
+# export LESS='-R'
 
 #End colordiff
 
