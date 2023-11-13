@@ -110,9 +110,9 @@
 ;; メニューバーとツールバーとスクロールバーを消す
 ;;(menu-bar-mode -1)
 (menu-bar-mode t)
-(tool-bar-mode -1)
+;;(tool-bar-mode -1)
 ;;(tool-bar-mode t)
-(scroll-bar-mode -1)
+;;(scroll-bar-mode -1)
 
 ;; scratch の初期メッセージ消去
 (setq initial-scratch-message "")
